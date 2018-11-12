@@ -1,0 +1,6 @@
+{
+    "name": "cnect-web/blellow",
+    "description": "Institutional Look and Feel for D8",
+    "type": "drupal-theme",
+    "require": {}
+}
