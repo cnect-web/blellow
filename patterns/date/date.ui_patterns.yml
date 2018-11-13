@@ -1,0 +1,9 @@
+date:
+  label: Date
+  description: A date with a label.
+  fields:
+    date:
+      type: date
+      label: Date
+      description: Date d/m/Y
+      preview: 2001-05-15T19:00

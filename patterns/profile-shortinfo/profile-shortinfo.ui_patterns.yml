@@ -1,0 +1,44 @@
+postinfo:
+  label: Post-info
+  description: Block with author information and group information.
+  fields:
+    author_pic_uri:
+      type: url
+      label: Author picture url
+      description: Author picture
+      preview: http://www.attractivepartners.co.uk/create-perfect-profile-picture/
+    profile_name:
+      type: text
+      label: Author name
+      description: The name of the author
+      preview: Peter Neyens
+    profile_uri:
+      type: url
+      label: Profile url
+      description: Url to the author profile
+      preview: https://en.wikipedia.org/wiki/User_profile
+    group_logo:
+      type: image
+      label: Group logo
+      description: Url to the author profile
+      preview: https://commons.wikimedia.org/wiki/File:Logo_TV_2015.png
+    group_url:
+      type: url
+      label: Group url
+      description: Url to the group
+      preview: https://www.google.com
+    group_name:
+      type: text
+      label: Group name
+      description: Group name
+      preview: The best group ever
+    login_check:
+      type: number
+      label: Logged in
+      description: Logged in gives a value of 1 
+      preview: 1
+    creation_date:
+      type: date
+      label: Creation date
+      description: Creation date 'time ago' 
+      preview: Tue, 05/08/2018 - 13:42

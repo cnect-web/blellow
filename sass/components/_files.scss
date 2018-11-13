@@ -1,0 +1,48 @@
+.media--type-file {
+  margin-bottom: 16px;
+}
+
+
+.field--type-file .file{
+  // same as .list__item--file
+  list-style: none;
+  background: transparent no-repeat left top;
+  display: block;
+  padding: 0 0 0 0;
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-file);
+    padding-right: 5px;
+    font-size: 2.4rem;
+    color: $purple;
+  }
+  &.file--x-office-document {
+    &:before {
+      content: fa-content($fa-var-file-word);
+    }
+  }
+  &.file--application-pdf {
+    &:before {
+      content: fa-content($fa-var-file-pdf);
+    }
+  }
+
+  &.file--x-office-presentation {
+    &:before {
+      content: fa-content($fa-var-file-powerpoint);
+    }
+  }
+
+  &.file--x-office-spreadsheet {
+    &:before {
+      content: fa-content($fa-var-file-excel);
+    }
+  }
+
+  &.file--text {
+    &:before {
+      content: fa-content($fa-var-file-alt);
+    }
+  }
+}

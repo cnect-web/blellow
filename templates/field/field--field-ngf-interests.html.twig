@@ -1,0 +1,16 @@
+{% if items is not empty %}
+     <div class="sub-section sub-section--related-taxonomy">
+         {% if label is not empty %}
+             <h3>{{ label }}</h3>
+         {% endif %}
+         <ul class="list list--taxonomy">
+             {% for item in items %}
+                 <li class="list__item list__item--tag">
+                     <a class="tag tag__link" href="{{ item['content']['#url'].toString() }}">
+                         {{ item['content']['#title'] }}
+                     </a>
+                 </li>
+             {% endfor %}
+         </ul>
+     </div>
+{% endif %}

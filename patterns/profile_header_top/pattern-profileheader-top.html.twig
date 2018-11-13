@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * post info pattern.
+ */
+#}
+{% if profile_uri %}
+  <a href="{{ profile_uri }}" class="profile__pic__link">
+{% endif %}
+    {% if profile_pic_uri %}
+      <img src="{{ profile_pic_uri }}" class="profile__pic" alt="{{ profile_title }}" />
+    {% endif %}
+{% if profile_uri %}
+  </a>
+{% endif %}
+
+{% if profile_title %}
+  <h2 class="profile__title"><a href="{{ profile_uri }}">{{ profile_title }}</a></h2>
+{% endif %}
+
+{% if profile_intro %}
+  <div class="profile__intro">{{ profile_intro }}</div>
+{% endif %}
+
+{% if profile_uri_more %}
+  <a href="{{ profile_uri_more }}" class="profile__link--about">
+      {% trans %} Learn more {% endtrans %}<span class="sr-only">{% trans %} about {% endtrans %}{{ profile_title }}</span> <i class="fas fa-chevron-right"></i>
+  </a>
+{% endif %}
+
+{% if profile_uri_back %}
+  <a href="{{ profile_uri_back }}" class="profile__link--about">
+    <i class="fas fa-chevron-left"></i> {% trans %}Back to page {% endtrans %}<span class="sr-only">{% trans %} of {% endtrans %} {{ profile_title }}</span>
+  </a>
+{% endif %}
+
+{% if profile_location %}
+  <ul class="profile__location">
+    <li>
+      <i class="fas fa-map-marker-alt"></i> {{ profile_location }}
+    </li>
+  </ul>
+{% endif %}

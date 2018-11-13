@@ -1,0 +1,14 @@
+event_date:
+  label: Event Date
+  description: Date event info.
+  fields:
+    event_start_date:
+      type: date
+      label: Event start date
+      description: Date d/m/Y
+      preview: 2001-05-15T19:00
+    event_end_date:
+      type: date
+      label: Event end date
+      description: Date d/m/Y
+      preview: 2001-05-15T19:00

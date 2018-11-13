@@ -1,0 +1,25 @@
+name: blellow
+type: theme
+description: 'Blellow theme'
+core: 8.x
+base theme: classy
+regions:
+  header: 'Header'
+  content: 'Content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: 'Footer'
+libraries:
+  - funkywave/global-css
+  - funkywave/global-js
+  - funkywave/global-fonts
+# components module needs to be installed to use
+# {% include "@myLib/box/box.twig" %}
+component-libraries:
+  patterns:
+    paths:
+      - patterns
+libraries-override:
+  classy/base: false
+stylesheets-remove:
+  - modules/contrib/vote_up_down/widgets/thumbs/thumbs.css

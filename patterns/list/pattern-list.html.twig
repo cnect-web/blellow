@@ -1,0 +1,16 @@
+{% if items is not empty %}
+<div class="{{ css_class }}">
+{% if label is not empty %}
+	<h3>{{ label }}</h3>
+{% endif %}
+<ul class="{{ list_class }}">
+    {% for item in items %}
+      <li class="{{ item_class }}">
+        <a class="{{ link_class }}" href="{{ item.url }}">
+        	{{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}

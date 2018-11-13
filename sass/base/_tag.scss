@@ -1,0 +1,90 @@
+a.tag, li.tag, .autocomplete-deluxe-item {
+  background-color: $gray-700;
+  color: $white;
+  border-radius: 2rem;
+  text-shadow: none;
+  box-shadow: none;
+  font-size: 1.3rem;
+  border: solid 1px $gray-700;
+
+  background-image: none;
+}
+
+/*
+
+.autocomplete-deluxe-item {
+    float: left;
+    background-clip: padding-box;
+
+    background-image: -moz-linear-gradient(center top , #F4F4F4 20%, #F0F0F0 50%, #E8E8E8 52%, #EEEEEE 100%);
+
+    cursor: move;
+    line-height: 13px;
+    margin: 3px 0 3px 5px;
+    padding: 3px 20px 3px 5px;
+    position: relative;
+}
+
+*/
+
+.autocomplete-deluxe-item {
+  padding: 0.6rem 30px 0.6rem 1rem;
+}
+
+.autocomplete-deluxe-item-delete {
+  line-height: 2rem;
+  padding: 0.1rem;
+  border: none;
+  background-color: rgba($white,0.8);
+  box-shadow: 0 0 0 3px $gray-700 !important;
+  cursor: pointer;
+  color: $red;
+  border-radius: 10rem;
+  font-weight: 900;
+  height: 2rem;
+  min-width: 2rem;
+  margin-left: 0.6rem;
+  transition: all 0.2s;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    background-color: rgba($white,1);
+    box-shadow: 0 0 0 3px rgba($red, 0.5) !important;
+    transition: all 0.2s;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $red !important;
+    transition: all 0.2s;
+  }
+}
+
+.autocomplete-deluxe-container .form__block {
+  margin: 5px 0 0 0;
+}
+
+div.autocomplete-deluxe-container input.autocomplete-deluxe-form {
+  border: 1px solid $gray-500;
+}
+
+a.tag.tag--deletable, li.tag.tag--deletable {
+  padding-right: 0.2rem;
+}
+
+a.tag {
+  padding: 0.45rem 0.6rem;
+}
+
+a.tag:hover {
+  background-color: $gray-400;
+  color: $gray-900;
+}
+
+
+li.tag {
+  padding: 0.2rem 0.6rem;
+  line-height: 1.1;
+}

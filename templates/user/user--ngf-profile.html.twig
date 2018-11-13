@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ */
+#}
+<header class="profile">
+    {# profile header top #}
+    {% include '@patterns/profile_header_top/pattern-profileheader-top.html.twig'
+        with {
+        profile_pic_uri: user_pic,
+        profile_title: full_name,
+        profile_location: content.field_ngf_city|field_value,
+        profile_uri: profile_uri,
+        profile_uri_back: profile_uri_back,
+        profile_uri_more: profile_uri_more
+    }
+    only %}
+
+    <div class="qr-code-container">
+    {{ content.qr_code }}
+    </div>
+    {{ content.action_panel }}
+    {{ content.followers_panel }}
+</header>

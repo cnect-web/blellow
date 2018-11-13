@@ -1,0 +1,195 @@
+.newsfeed {
+  margin: 0 -15px;
+
+  .view-empty {
+    padding: 0 15px;
+  }
+}
+
+.sub-section {
+    border-top: solid 1px $gray-500;
+  margin-bottom: 16px;
+  }
+
+.field__item.field--type-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.field--type-video iframe,
+.field--type-video object,
+.field--type-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.newsfeed__item {
+    h2 {
+      padding-left: 32px;
+      background: transparent left top no-repeat;
+      background-size: 22px 24px;
+      margin: 0 0 1.8rem 0;
+
+      .newsfeed__item__state {
+        opacity: 0.8;
+        white-space: nowrap;
+      }
+    }
+
+    h2 a {
+      font-family: 'Raleway';
+      font-weight: 800;
+      color: $gray-800;
+      text-shadow: none;
+      box-shadow: none;
+
+      &:hover {
+        color: $purple;
+
+        text-shadow: 0 2px 0 $white, 0 3px 0 $white, 1px 2px 0 $white, -1px 2px 0 $white;
+        box-shadow: 0 1px 0 0 $purple;
+      }
+    }
+
+    .field--name-field-ngf-cover-image, .field--name-field-media-image
+{
+      border-radius: 10px;
+      background: adjust-lightness($gray-800, -3%);
+      max-height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     overflow:hidden;
+
+      img.responsive {
+        max-height: 320px;
+        width: auto;
+        flex-shrink: 0;
+        display: block;
+         //border:1px solid rgba($gray-900, 0);
+      }
+    }
+
+  .newsfeed__article-wrapper {
+    padding: 0 15px;
+  }
+
+  }
+
+  .newsfeed__legend-copyright {
+    font-size: 1.3rem;
+    margin-top: 0.1em;
+    color: $gray-900;
+    opacity: 0.8;
+    text-align: center;
+    max-width: 100%;
+
+    span {
+
+      &:after {
+        content: " | ";
+        display: inline;
+      }
+
+      &:last-child:after {
+        content : "";
+      }
+
+      a{
+        color: $gray-700 !important;
+        box-shadow: 0 1px 0 0 $gray-700 !important;
+        &:hover {
+          color: $purple !important;
+          box-shadow: 0 1px 0 0 $purple !important;
+        }
+      }
+
+    }
+  }
+
+  .newsfeed__item--ngf-discussion {
+    h2 {
+      background-image: url(../images/article--discussion-icon.svg);
+      background-size: 2.38rem 2.5rem;
+    }
+  }
+  .newsfeed__item--ngf-event {
+    h2 {
+      background-image: url(../images/article--event-icon.svg);
+      background-size: 2.38rem 2.5rem;
+    }
+  }
+  .newsfeed__item--unpublished {
+    h2 {
+      background-image: url(../images/article--draft-icon.svg);
+      background-size: 2.38rem 2.5rem;
+    }
+  }
+  .newsfeed__item--pinned {
+    h2 {
+      background-image: url(../images/article--pinned-icon.svg);
+      background-size: 2.38rem 2.5rem;
+      padding-left: 25px;
+    }
+  }
+
+  .newsfeed__item--teaser, .paragraph--view-mode--teaser {
+    background-image: url(../images/hr--wavy.svg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding: 7.5rem 15px 4rem 15px;
+    background-size: 100% 40px;
+    margin-top: -30px;
+    &:first-child {
+      padding-top: 4rem;
+      background-image: none !important;
+      margin-top: 0px;
+    }
+  }
+
+  .newsfeed__item--pinned {
+
+    color: $gray-900;
+
+    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($purple, 90%) 50%, scale-lightness($purple, 90%) 50%), ;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, center bottom;
+    background-size: 100% 40px, 100% calc(100% - 28px);
+
+    a, a:hover, h2 a, h2 a:hover {
+      text-shadow: 0 2px 0 scale-lightness($purple, 90%), 0 3px 0 scale-lightness($purple, 90%), 1px 2px 0 scale-lightness($purple, 90%), -1px 2px 0 scale-lightness($purple, 90%);
+    }
+
+    &.newsfeed__item--teaser:first-child{
+      background-color: scale-lightness($purple, 90%);
+    }
+  }
+
+  .newsfeed__item--unpublished {
+
+    color: $gray-900;
+
+    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($red, 90%) 50%, scale-lightness($red, 90%) 50%) ;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, center bottom;
+    background-size: 100% 40px, 100% calc(100% - 28px);
+
+    > * a, > * a:hover, h2 a, h2 a:hover {
+      text-shadow: 0 2px 0 scale-lightness($red, 90%), 0 3px 0 scale-lightness($red, 90%), 1px 2px 0 scale-lightness($red, 90%), -1px 2px 0 scale-lightness($red, 90%);
+    }
+
+    &.newsfeed__item--teaser:first-child{
+      background-color: scale-lightness($red, 90%);
+    }
+  }
+
+/* remove background wave from group listings */
+
+.profile-listing .newsfeed__item--teaser {
+  background: none;
+  padding: 0rem 0 3rem 0;
+}

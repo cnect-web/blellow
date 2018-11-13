@@ -1,0 +1,41 @@
+{
+  "name": "funkywave",
+  "version": "1.0.0",
+  "description": "Funkywave theme",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnect-web/funkywave.git"
+  },
+  "author": "Peter Neyens",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cnect-web/funkywave/issues"
+  },
+  "homepage": "https://github.com/cnect-web/funkywave#readme",
+  "dependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.23.6",
+    "compass-mixins": "^0.12.10",
+    "glob": "^4.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-cssbeautify": "^1.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-git": "^2.5.2",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-watch": "^5.0.0",
+    "sass": "^1.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-uncss": "^1.0.6",
+    "modularscale-sass": "^3.0.5",
+    "node-sass-globbing": "0.0.23"
+  }
+}

@@ -1,0 +1,13 @@
+global-css:
+  css:
+    theme:
+      css/style.css: {}
+      css/override.css: {}
+global-js:
+  js:
+    js/script.js: {}
+    js/tabs.js: {}
+global-fonts:
+  css:
+    theme:
+      'https://fonts.googleapis.com/css?family=Raleway:300,400,500,700,800,900&amp;subset=latin,latin': { type: external }

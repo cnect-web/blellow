@@ -1,0 +1,250 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a group.
+ *
+ * Available variables:
+ * - group: The group entity with limited access to object properties and
+ *   methods. Only "getter" methods (method names starting with "get", "has",
+ *   or "is") and a few common methods such as "id" and "label" are available.
+ *   Calling other methods (such as group.delete) will result in an exception.
+ * - label: The title of the group.
+ * - content: All group items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the
+ *   printing of a given child element.
+ * - url: Direct URL of the current group.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - group: The current template type (also known as a "theming hook").
+ *   - group--[type]: The current group type. For example, if the group is a
+ *     "Classroom" it would result in "group--classroom". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - group--[view_mode]: The View Mode of the group; for example, a
+ *     teaser would result in: "group--teaser", and full: "group--full".
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ *
+ * @see template_preprocess_group()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+ set classes = [
+   'newsfeed__item',
+   'newsfeed__item--' ~ group.bundle|clean_class,
+   view_mode ? 'newsfeed__item--' ~ view_mode|clean_class,
+ ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+<header>
+  <h2>
+  {% if not page %}
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  {% else %}
+      {{ label }}
+  {% endif %}
+  </h2>
+
+  {# block postinfo #}
+  {% block postinfo %}
+
+  {% if group.uid.entity.user_picture.entity.uri.value is empty %}
+      {% set image_url = file_url(directory ~ '/images/default_user.jpg') %}
+  {% else %}
+      {% set image_url = file_url(group.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
+  {% endif %}
+
+  {% include "@patterns/profile-shortinfo/pattern-profile-shortinfo.html.twig"
+    with {
+      title: group.uid.entity.name.value,
+      image_url: image_url,
+      logged_in: logged_in,
+      url: path('entity.user.canonical', {'user': group.uid.entity.id }),
+      context_text: ngf_context_text,
+      subpic: ngf_sub_picture,
+      container_class: ngf_group_container_class,
+    }
+  %}
+  {% endblock postinfo %}
+  {# end block postinfo #}
+
+  {# block coverimage #}
+  {% block coverimage %}
+    {% if content.field_ngf_cover_image is not empty %}
+      {{ content.field_ngf_cover_image }}
+    {% endif %}
+  {% endblock coverimage %}
+
+  {% block eventdata %}
+
+    {# convert date to an integer stamp #}
+    {% set event_start_date = group.field_ngf_event_start_date.value|date('U') %}
+    {# Convert event_end_date to an integer stamp if not empty #}
+    {% if group.field_ngf_event_end_date is not empty %}
+      {% set event_end_date = group.field_ngf_event_end_date.value|date('U') %}
+    {% else %}
+      {% set event_end_date = NULL %}
+    {% endif %}
+
+    {# Event year #}
+    {% set event_start_date_year = event_start_date|date('Y') %}
+    {% set event_end_date_year = event_end_date|date('Y') %}
+
+    {# Event month #}
+    {% set event_start_date_month = event_start_date|date('m') %}
+    {% set event_end_date_month = event_end_date|date('m') %}
+
+    {# Start date & end date the same #}
+
+    <div class="event-data">
+      {% if content.field_ngf_event_start_date is not empty %}
+      <h3><i class="fas fa-calendar-alt"></i> {% trans %} Date and time {% endtrans %}</h3>
+      <p>
+      {% if event_end_date is null %}
+        <time><span class="event-start-date">{{ event_start_date|format_date('ngf_day_month_year') }}</span></time>
+      {% else %}
+        {# same month same year #}
+        {% if (event_start_date_month == event_end_date_month) and (event_start_date_year == event_end_date_year) %}
+          <time><span class="event-start-date">{{ event_start_date|format_date('ngf_day') }}</span></time>
+          <span>-</span>
+          <time><span class="event-end-date">{{ event_end_date|format_date('ngf_day_month_year') }}</span></time>
+        {# different month same year #}
+        {% elseif (event_start_date_month != event_end_date_month) and (event_start_date_year == event_end_date_year) %}
+           <time><span class="event-start-date">{{ event_start_date|format_date('ngf_day_month') }}</span></time>
+           <span>-</span>
+           <time><span class="event-end-date">{{ event_end_date|format_date('ngf_day_month_year') }}</span></time>
+        {# different year for event start date & end date #}
+        {% elseif (event_start_date_year != event_end_date_year) %}
+           <time><span class="event-start-date">{{ event_start_date|format_date('ngf_day_month_year') }}</span></time>
+           <span>-</span>
+           <time><span class="event-end-date">{{ event_end_date|format_date('ngf_day_month_year') }}</span></time>
+        {% endif %}
+      {% endif %}
+      </p>
+      {% endif %}
+
+      {% if content.field_ngf_address['#items'] is not empty %}
+        <div class="event-location">
+          <h3><i class="fas fa-map-marker-alt"></i> {% trans %} Location {% endtrans %}</h3>
+            <h4>{{ content.field_ngf_venue|field_raw('value') }} </h4>
+            {{ content.field_ngf_address|field_value }}
+        </div>
+      {% endif %}
+
+      {% if content.field_ngf_address|render %}
+        {{ content.field_ngf_location }}
+      {% endif %}
+
+    </div>
+  {% endblock eventdata %}
+</header>
+
+  {# Event Summary #}
+  {% block eventintrotext %}
+    {% if content.field_ngf_introtext is not empty %}
+      <p>{{ content.field_ngf_introtext|field_value }}</p>
+    {% endif %}
+  {% endblock eventintrotext %}
+
+  {#  Show more button (will only be printed in teaser view mode) #}
+  {% if content.show_more %}
+  {% include "@patterns/button/pattern-button.html.twig"
+    with {
+      url: path('entity.group.canonical', {'group': content.show_more['#url'].routeParameters.group }),
+      label: content.show_more['#title'],
+      container_class: 'btn-list btn-list--right',
+      button_class: 'btn--green',
+    }
+  %}
+  {% endif %}
+
+  {# Event Description #}
+  {% block eventdescritption %}
+    {% if content.field_ngf_description is not empty %}
+      {{ content.field_ngf_description }}
+    {% endif %}
+  {% endblock eventdescritption %}
+
+  {# Event speakers #}
+  {% block eventspeakers %}
+    {# todo needs development #}
+  {% endblock eventspeakers %}
+
+  {# Event register #}
+  {% block eventregister %}
+    {% set event_registration_url = content.field_ngf_registration_link|field_raw('uri') %}
+    {% set event_registration_title = content.field_ngf_registration_link|field_raw('title') %}
+    {% if event_registration_url is not empty %}
+      {% include "@patterns/button/pattern-button.html.twig"
+        with{
+          url: event_registration_url,
+          label: event_registration_title,
+          container_class: 'btn-list--center extra-space--top',
+          button_class: 'btn--blue btn--large',
+        }
+      %}
+    {% endif %}
+  {% endblock eventregister %}
+
+  {% block related_topics %}
+
+  {# TODO
+
+  {% include "@patterns/list/pattern-list.html.twig"
+    with {
+      items: content.field_ngf_interests['#items'],
+      css_class: sub-section sub-section--related-taxonomy,
+      label: content.field_ngf_interests['#title'],
+      list_class: list list--taxonomy,
+      item_class: list__item list__item--tag,
+      link_class: tag tag__link,
+      url: '',
+      title: '',
+    }
+  %}
+  #}
+
+  {% set label = content.field_ngf_interests['#title'] %}
+  {% set items = content.field_ngf_interests['#items'] %}
+  {% set css_class = 'sub-section sub-section--related-taxonomy' %}
+
+  {% if items is not empty %}
+  <div class="{{ css_class }}">
+    {% if label is not empty %}
+      <h3>{{ label }}</h3>
+    {% endif %}
+    {% if items is not empty %}
+      <ul class="list list--taxonomy">
+        {% for item in items %}
+          <li class="list__item list__item--tag">
+            <a class="tag tag__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.entity.id}) }}">
+              {{ item.entity.name.value }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% endblock related_topics %}
+
+  {# Comments #}
+  {% if view_mode == "full" %}
+    {{ content.field_ngf_comments }}
+  {% endif %}
+
+</article>

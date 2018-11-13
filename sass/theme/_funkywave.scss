@@ -1,0 +1,73 @@
+// ===============        COLORS      ========================== //
+
+$white:  #FFFFFF ;
+$gray-100: #f7f8fa ;
+$gray-200: #edeff5 ;
+$gray-300: #dfe0e5 ;
+$gray-400: #c6c7cc ;
+$gray-500: #a6a7ab ;
+$gray-600: #88898c ;
+$gray-700: #515155 ;
+$gray-800: #26252B ;
+$gray-900: #05111E ;
+$black:  #000 ;
+
+$blue:      #186aff;
+$darkblue:  #1a3773;
+$indigo:    #6610f2;
+$purple:    #662D91;
+$pink:      #ff397f;
+$red:       #ff3939;
+$orange:    #f9713d;
+$yellow:    #ffea00;
+$green:     #46b200;
+$teal:      #1eb49c;
+$cyan:      #00c9ff;
+
+$colors: () ;
+$colors: map-merge((
+  blue: $blue,
+  darkblue: $darkblue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800
+), $colors);
+
+$theme-colors: ();
+$theme-colors: map-merge((
+  primary: $cyan,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $orange,
+  error: $red,
+  light: $gray-200,
+  dark: $gray-600,
+  reactive: $purple
+), $theme-colors);
+
+// =================     VARIABLES    ====================== //
+// ===================     FONT   ========================== //
+
+$body__font: 'Raleway';
+$headings__font: 'Raleway';
+
+// ================== COMPONENTS =========================== //
+// ------------------ logo-area ---------------------------- //
+
+$text__font-wight : 500;
+$logo__font-weight: 900;
+$logo__color: $white;
+$logo-area__background-image--sm: url('../images/logo-area-bckgrd--sm.svg');
+$logo-area__background-image--md: url('../images/logo-area-bckgrd--md.svg');
+$logo-area__background-image--lg: url('../images/logo-area-bckgrd.svg');
+$account-info__background: url('../images/account-info__background--idle.svg');

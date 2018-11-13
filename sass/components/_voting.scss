@@ -1,0 +1,81 @@
+.vud-widget > div {
+  display: inline-block;
+}
+
+.vud-widget-thumbs a {
+  box-shadow: none;
+  width: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.vote-current-score {
+  text-align: center;
+  margin: 0 10px 0 10px;
+}
+
+.vote-thumb {
+  cursor: pointer;
+}
+
+.vud-widget-thumbs .up.inactive,
+.vud-widget-thumbs .down.inactive,
+.vud-widget-thumbs .up.active,
+.vud-widget-thumbs .down.active {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.vud-widget-thumbs a.up.active,
+.vud-widget-thumbs a.up.inactive
+ {
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-arrow-alt-circle-up);
+    line-height: inherit;
+  }
+}
+
+.vud-widget-thumbs a.down.active,
+.vud-widget-thumbs a.down.inactive {
+    &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-arrow-alt-circle-down);
+    line-height: inherit;
+  }
+}
+
+.vud-widget-thumbs a.up.inactive,
+.vud-widget-thumbs a.down.inactive {
+  color: $purple;
+}
+
+.vud-widget-thumbs a.up.inactive {
+  &:hover {
+    color: $green;
+  }
+}
+
+.vud-widget-thumbs a.down.inactive {
+  &:hover {
+    color: $red;
+  }
+}
+
+.vud-widget-thumbs a.up.active {
+  color: $green;
+}
+
+.vud-widget-thumbs a.down.active {
+  color: $red;
+}
+
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+

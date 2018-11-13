@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Image pattern.
+ */
+#}
+
+{% set day = date|date('d') %}
+{% set month = date|date('m') %}
+{% set year = date|date('Y') %}	
+
+<time class="date" datetime="{{date}}"> {{ day }}.{{ month }}.{{ year }} </time> 

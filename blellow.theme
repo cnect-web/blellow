@@ -1,0 +1,314 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Bartik theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+use Drupal\Core\Link;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use \Drupal\Core\Url;
+
+
+function blellow_preprocess_form_element_label(&$variables) {
+  $element = $variables['element'];
+  // A #id property of a dedicated #type 'label' element as precedence.
+  if (!empty($element['#id'])) {
+    $variables['id'] = $element['#id'];
+  }
+}
+
+/**
+ * Implement template_preprocess_node().
+ */
+function blellow_preprocess_node(&$variables) {
+  $node = $variables['elements']['#node'];
+  $view_mode = $variables['view_mode'];
+  $display_modes = [
+    'full',
+    'teaser',
+    'ngf_teaser_user_commented',
+    'ngf_teaser_user_created',
+    'ngf_follow_up',
+  ];
+
+  if (in_array($view_mode, $display_modes)
+    && $node->getType() == 'ngf_discussion') {
+
+    $variables['ngf_sub_picture'] = NULL;
+    $variables['ngf_context_text'] = t(
+      'Posted @created_date ago', [
+      '@created_date' => \Drupal::service('date.formatter')
+        ->formatTimeDiffSince($node->created->value),
+    ]);
+
+    $variables['ngf_group_container_class'] = 'profile-shortinfo--no-group';
+    if (isset($node->group) && $group = $node->group) {
+      _blellow_group_context($node, $node->group, $variables);
+    }
+    elseif ($view_mode == 'ngf_teaser_user_commented') {
+      $variables['ngf_context_text'] = t('Commented');
+    }
+  }
+}
+
+function _blellow_group_context($entity, $group, &$variables) {
+  $variables['ngf_group_container_class'] = 'profile-shortinfo--group';
+
+  if (!$group->field_ngf_cover_image->isEmpty()) {
+    $media_id = $group->get('field_ngf_cover_image')->target_id;
+    $media_entity = Media::load($media_id);
+
+    $render = [
+      '#theme' => 'image_style',
+      '#style_name' => 'thumbnail',
+      '#uri' => $media_entity->get('field_media_image')->entity->getFileUri(),
+      '#attributes' => [
+        'class' => ['profile-shortinfo__picture profile-shortinfo__picture--group responsive'],
+        'alt' => $group->label(),
+      ],
+    ];
+  }
+  else {
+    $render = [
+      '#theme' => 'custom_image',
+      '#url' => file_create_url($variables['directory'] . '/images/default_group.jpg'),
+      '#attributes' => [
+        'class' => ['profile-shortinfo__picture profile-shortinfo__picture--group responsive'],
+        'alt' => $group->label(),
+      ],
+    ];
+  }
+
+  $link_render = [
+    '#title' => $render,
+    '#type' => 'link',
+    '#url' => $group->toUrl(),
+    '#attributes' => [
+      'class' => [
+        'profile-shortinfo__link profile-shortinfo__link--group',
+      ],
+    ],
+  ];
+  $variables['ngf_sub_picture'] = $link_render;
+
+  $variables['ngf_context_text'] = t(
+    'Posted @created_date ago in <a href=":group_url" class="profile-shortinfo__link profile-shortinfo__group-link">@group_title</a>',
+    [
+      '@created_date' => \Drupal::service('date.formatter')
+        ->formatTimeDiffSince($entity->created->value),
+      ':group_url' => $group->url(),
+      '@group_title' => $group->label(),
+    ]
+  );
+}
+
+/**
+ * Implements template_preprocess_user().
+ */
+function blellow_preprocess_user(&$variables) {
+  $user = $variables['user'];
+
+  $view_mode = $variables['elements']['#view_mode'];
+
+  $user_id = $user->id();
+  if ($view_mode == 'compact') {
+    $variables['context_text'] = $user->field_ngf_city->value;
+  }
+
+  if (!empty($user->user_picture->entity)) {
+    $cover_image = $user->user_picture->entity->getFileUri();
+    $variables['user_pic'] = ImageStyle::load('thumbnail')
+      ->buildUrl($cover_image);
+  }
+  else {
+    $variables['user_pic'] = file_create_url($variables['directory'] . '/images/default_user.jpg');
+  }
+
+  $variables['user_name'] = $user->getUsername();
+  $variables['full_name'] = $user->full_name->value;
+
+  if ($user->id() == \Drupal::currentUser()->id()) {
+    $variables['profile_uri'] = Url::fromRoute('ngf_user_profile.page.profile')
+      ->toString();
+  }
+  else {
+    $variables['profile_uri'] = Url::fromRoute('ngf_user_profile.page.user_profile', [
+      'user' => $user_id,
+    ])->toString();
+  }
+
+  if (\Drupal::routeMatch()
+      ->getRouteName() == 'ngf_user_profile.page.user_about') {
+    $variables['profile_uri_back'] = $variables['profile_uri'];
+    $variables['profile_uri_more'] = '';
+  }
+  else {
+    $variables['profile_uri_back'] = '';
+    $variables['profile_uri_more'] = Url::fromRoute('ngf_user_profile.page.user_about', [
+      'user' => $user_id,
+    ])->toString();
+  }
+
+}
+
+/**
+ * Implements template_preprocess_group.
+ */
+function blellow_preprocess_group(&$variables) {
+  $group = $variables['group'];
+  $view_mode = $variables['view_mode'];
+  $group_type_id = $group->getGroupType()->id();
+
+  //* Create url for the default group image to be called in group templates.
+  $variables['group_pic'] = file_create_url($variables['directory'] . '/images/default_group.jpg');
+  $variables['ngf_group_container_class'] = 'profile-shortinfo--no-group';
+
+  if ($group_type_id == 'ngf_event') {
+    $display_modes = [
+      'full',
+      'teaser',
+      'ngf_follow_up',
+    ];
+
+    if (in_array($view_mode, $display_modes)) {
+      // This is needed so the group name is printed along with {{content}}.
+      $variables['content']['label']['#printed'] = FALSE;
+      if (!empty($group->group)) {
+        _blellow_group_context($group, $group->group, $variables);
+      }
+      else {
+        $variables['ngf_context_text'] = t(
+          'Posted @created_date ago',
+          [
+            '@created_date' => \Drupal::service('date.formatter')
+              ->formatTimeDiffSince($group->created->value),
+          ]
+        );
+      }
+    }
+
+  }
+  elseif ($group_type_id == 'ngf_discussion_group') {
+
+    $display_modes = [
+      'teaser',
+      'ngf_user_created',
+    ];
+
+    if (in_array($view_mode, $display_modes)) {
+      if (!empty($group->group)) {
+        _blellow_group_context($group, $group->group, $variables);
+      }
+
+      /*
+      if ($group->field_ngf_group_visibility->value == NGF_GROUP_PUBLIC) {
+        $variables['ngf_context_text'] = t('Public group');
+      }
+      elseif ($group->field_ngf_group_visibility->value == NGF_GROUP_PRIVATE) {
+        $visibility_icon = 'fa fa-lock';
+        $variables['ngf_context_text'] = '<i class="' . $visibility_icon . '"></i> ' . t('Private group');
+      }
+      elseif ($group->field_ngf_group_visibility->value == NGF_GROUP_SECRET) {
+        $visibility_icon = 'fa fa-eye-slash';
+        $variables['ngf_context_text'] = '<i class="' . $visibility_icon . '"></i> ' . t('Secret group');
+      }
+      */
+    }
+
+    if ($view_mode == 'ngf_header') {
+      if (\Drupal::routeMatch()->getRouteName() == 'ngf_group.page.info') {
+        $variables['profile_uri_back'] = $group->url();
+        $variables['profile_uri_more'] = '';
+      }
+      else {
+        $variables['profile_uri_back'] = '';
+        $variables['profile_uri_more'] = Url::fromRoute('ngf_group.page.info', [
+          'group' => $group->id(),
+        ])->toString();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter()
+ * Create theme suggestions for user profile templates
+ **/
+function blellow_theme_suggestions_user_alter(&$suggestions, array $variables) {
+  $suggestions[] = 'user__' . $variables['elements']['#view_mode'];
+}
+
+/**
+ * Implements hook_theme_form_alter()
+ * The form id becomes the data attribute on the input fields and submit button
+ **/
+function blellow_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!empty($form['actions']['submit'])) {
+    $form['actions']['submit']['#attributes']['data-twig-suggestion'] = $form['#id'];
+  }
+  if (!empty($form['actions']['preview'])) {
+    $form['actions']['preview']['#attributes']['data-twig-suggestion'] = $form['#id'];
+  }
+  $suggestion = str_replace(['-'], '_', $form['#id']);
+  $form['keys']['#attributes']['data-twig-suggestion'] = $suggestion;
+}
+
+/**
+ * theme suggestions input alter to create the completely custom and flexible
+ * template suggestion
+ **/
+function blellow_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestion_suffix = str_replace(['-'], '_', $element['#attributes']['data-twig-suggestion']);
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $suggestion_suffix;
+    $suggestions[] = 'input__' . $element['#type'] . '__action';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_container_alter().
+ */
+function blellow_theme_suggestions_container_alter(&$suggestions, array $variables) {
+  if (!empty($variables['element']['#type'])) {
+    $suggestions[] = 'container__' . $variables['element']['#type'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function blellow_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  // If there is HTTP Exception..
+  if ($exception = \Drupal::request()->attributes->get('exception')) {
+    // Get the status code.
+    $status_code = $exception->getStatusCode();
+    if (in_array($status_code, [401, 403, 404])) {
+      $suggestions[] = 'page__error';
+      $suggestions[] = 'page__error__' . $status_code;
+    }
+  }
+}
+
+function blellow_theme() {
+  $themes['custom_image'] = [
+    'variables' => [
+      'attributes' => [],
+      'url' => NULL,
+    ],
+  ];
+  $themes['short_list_item'] = [
+    'variables' => [
+      'url' => NULL,
+      'title' => NULL,
+      'context' => NULL,
+    ],
+  ];
+  return $themes;
+}

@@ -1,0 +1,1 @@
+$(document).ready(function(){$("ul.nav--tabs").each(function(){var h,t,a=$(this).find("a");(h=$(a.filter('[href="'+location.hash+'"]')[0]||a[0])).addClass("active"),t=$(h[0].hash),a.not(h).each(function(){$(this.hash).hide()}),$(this).on("click","a",function(a){a.preventDefault(),h.removeClass("active"),t.hide(),h=$(this),t=$(this.hash),h.addClass("active"),t.show()})})});

@@ -1,0 +1,210 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{{ attach_library('classy/node') }}
+
+{%
+ set classes = [
+   'newsfeed__item',
+   'newsfeed__item--' ~ node.bundle|clean_class,
+   node.isPromoted() ? 'newsfeed__item--promoted',
+   node.isSticky() ? 'newsfeed__item--sticky',
+   not node.isPublished() ? 'node--unpublished newsfeed__item--unpublished',
+   view_mode ? 'newsfeed__item--' ~ view_mode|clean_class,
+ ]
+%}
+
+{% if node.uid.entity.user_picture.entity.uri.value is empty %}
+    {% set image_url = file_url(directory ~ '/images/default_user.jpg') %}
+{% else %}
+    {% set image_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
+{% endif %}
+
+{% block article %}
+<article{{ attributes.addClass(classes) }}>
+  {% block header %}
+  <header>
+    {{ title_prefix }}
+
+    <h2>
+        {% if not page %}
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        {% else %}
+            {{ label }}
+        {% endif %}
+    </h2>
+    {#block postinfo #}
+
+    {% block postinfo %}
+
+      {% include "@patterns/profile-shortinfo/pattern-profile-shortinfo.html.twig"
+        with {
+          image_url: image_url,
+          title: node.owner.full_name.value,
+          url: path('entity.user.canonical', {'user': node.uid.entity.id}),
+          logged_in: logged_in,
+          context_text: ngf_context_text,
+          subpic: ngf_sub_picture,
+          container_class: ngf_group_container_class,
+          vote_content: content.field_ngf_vote,
+          follow_content: content.flag_ngf_follow_content,
+          save_content: content.flag_ngf_save_content,
+          report_content: content.report_content,
+        }
+      %}
+    {% endblock postinfo %}
+    {# end block postinfo #}
+
+   {# block coverimage #}
+    {% block coverimage %}
+      {% if content.field_ngf_cover_image is not empty %}
+        {{ content.field_ngf_cover_image }}
+      {% endif %}
+    {% endblock coverimage %}
+
+  </header>
+  {% endblock header %}
+
+  {# Introtext #}
+  {% block introtext %}
+    {% if content.field_ngf_introtext is not empty %}
+      <p>{{ content.field_ngf_introtext|field_value }}</p>
+    {% endif %}
+  {% endblock introtext %}
+
+  {% block show_more %}
+    {# Show more button (will only be printed in teaser view mode) #}
+    {% if content.show_more %}
+    {% include "@patterns/button/pattern-button.html.twig"
+      with {
+        url: path('entity.node.canonical', {'node': content.show_more['#url'].routeParameters.node }),
+        label: content.show_more['#title'],
+        container_class: 'btn-list btn-list--right',
+        button_class: 'btn--green',
+      }
+    %}
+    {% endif %}
+  {% endblock show_more %}
+
+  {# Show description (paragraphs) #}
+  {{ content.field_ngf_description }}
+
+  {% if view_mode == "full" %}
+  <div class="sub-section sub-section--social-share">
+    {{ drupal_entity('block', 'socialsharingblock', check_access=false) }}
+  </div>
+  {% endif %}
+
+  {% block related_topics %}
+
+  {# TODO
+
+  {% include "@patterns/list/pattern-list.html.twig"
+    with {
+      items: content.field_ngf_interests['#items'],
+      css_class: sub-section sub-section--related-taxonomy,
+      label: content.field_ngf_interests['#title'],
+      list_class: list list--taxonomy,
+      item_class: list__item list__item--tag,
+      link_class: tag tag__link,
+      url: '',
+      title: '',
+    }
+  %}
+  #}
+
+  {{ content.field_ngf_interests }}
+
+  {% endblock related_topics %}
+
+  {# Call view related content #}
+  {% block related_content %}
+    {# to avoid endless loop #}
+    {% if view_mode == "full" %}
+      {# checks if the view returns a result, it needs a wrapper. needs improvement #}
+      {% if drupal_view_result('ngf_discussion_related_content', 'block') %}
+        <div class="sub-section sub-section--related">
+          <h3 class="sub-section__title sub-section--related__title sub-section--related__title--discussion">Follow up</h3>
+          {{ drupal_view('ngf_discussion_related_content', 'block') }}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endblock related_content %}
+
+
+  {# Comments #}
+  {{ content.field_comments }}
+
+
+</article>
+{% endblock article %}

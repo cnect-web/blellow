@@ -1,0 +1,39 @@
+.ui-widget-overlay {
+  background: $black;
+  opacity: 0.8;
+}
+
+.ui-dialog {
+  /* background: transparent; */
+  background: $white;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ui-dialog-titlebar {
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    /* color: $white; */
+  }
+  .ui-dialog-title {
+    font-size: 3rem;
+  }
+}
+
+.ui-widget.ui-widget-content {
+  border: none;
+}
+
+.ui-button .ui-icon {
+  background-image: none;
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-times);
+    /* color: $white; */
+    text-indent: initial;
+    display: block;
+  }
+}

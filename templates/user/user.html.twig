@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ */
+#}
+
+  <header class="profile">
+
+  	{% set first_name = content.field_ngf_first_name|field_raw.value %}
+  	{% set last_name = content.field_ngf_last_name|field_raw.value %}
+    {% set profile_pic_url = file_url(content.user_picture|field_target_entity.uri.value|image_style('thumbnail')) %}
+
+    {% if profile_pic_url %}
+  	<a href="#" class="profile__pic__link"><!-- link to full pic -->
+      <img src="{{ profile_pic_url }}" alt="{{ first_name }} {{ last_name }} {% trans %} Profile picture {% endtrans %}" class="profile__pic" />
+    </a>
+    {% endif %}
+
+    <h2 class="profile__title">{{ first_name }} {{ last_name }}</h2>
+    <a href="#" class="profile__link--about">{% trans %} Learn more {% endtrans %}<span class="sr-only">{% trans %}about{% endtrans %} {{ first_name }} {{ last_name }}</span> <i class="fas fa-chevron-right"></i>
+    </a>
+
+     <ul class="profile__meta">
+      <li></li>
+    </ul>
+
+  </header>
+
+{{ content }}

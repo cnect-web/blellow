@@ -1,0 +1,55 @@
+{#
+/**
+* @file
+* post info pattern.
+*/
+#}
+<div class="profile-shortinfo {{ container_class }} clearfix">
+  {% if image_url %}
+  <div class="profile-shortinfo__ilustration">
+      {% if url %}
+      <a href="{{ url }}" class="profile-shortinfo__link profile-shortinfo__link--account">
+      {% endif %}
+
+      <img src="{{ image_url }}" alt="{{ title }}" class="profile-shortinfo__picture profile-shortinfo__picture--account responsive" />
+
+      {% if url %}
+      </a>
+      {% endif %}
+      {{ subpic }}
+  </div>
+  {% endif %}
+  <div class="profile-shortinfo__details">
+
+    <h4 class="profile-shortinfo__author">
+        {% if url %}
+          <a href="{{ url }}" class="profile-shortinfo__link profile-shortinfo__account-link">
+              {{ title }}
+          </a>
+        {% else %}
+            {{ title }}
+        {% endif %}
+    </h4>
+      {% if context_text %}
+        <p class="profile-shortinfo__metadata">
+            {{ context_text | raw }}
+        </p>
+      {% endif %}
+    {% if (vote_content or follow_content or save_content or report_content) and logged_in %}
+    <div class="profile-shortinfo__actions">
+      {% if vote_content %}
+        {{ vote_content }}
+      {% endif %}
+      {% if follow_content %}
+        {{ follow_content }}
+      {% endif %}
+      {% if save_content %}
+        {{ save_content }}
+      {% endif %}
+      {% if report_content %}
+        {{ report_content }}
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>

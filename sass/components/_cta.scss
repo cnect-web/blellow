@@ -1,0 +1,138 @@
+.cta--wrapper {
+  display: flex;
+  position: absolute;
+  top:0;
+  width: 100%;
+}
+
+.cta--sidebar {
+  color: $white;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 3.5rem;
+  cursor: pointer;
+
+  h3 {
+    margin-top: 0;
+    text-shadow: none;
+    color: #000;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 700;
+    text-shadow: none;
+    color: $black;
+    line-height: 3.5rem;
+    max-width: 100%;
+
+    span {
+      font-weight: 400;
+    }
+  }
+}
+
+.cta--join {
+  background: rgba($purple, 0.5);
+  &:hover{
+    background: rgba($purple, 0.8);
+    transition: all 0.2s;
+
+    p {
+      color: $white;
+    }
+
+  }
+}
+.cta--signin {
+  background: rgba($purple, 0.3);
+  &:hover{
+    background: rgba($purple, 0.8);
+    transition: all 0.2s;
+
+    p {
+      color: $white;
+    }
+  }
+}
+
+.user-not-logged-in .block-useraccountblock {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  width: 100%;
+  background: rgba($purple, 0.3);
+  > a {
+    text-shadow: none;
+    box-shadow: none;
+    color: $black;
+    font-weight: 700;
+    margin: 0 15px 0 0;
+    &:hover {
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+
+  .user-not-logged-in .block-useraccountblock {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: left;
+    box-shadow: none;
+    display: initial;
+    background: initial;
+
+    > a {
+      color: $white;
+      padding: 0.5rem 1rem;
+      font-weight: normal;
+      border: 1px solid $white;
+      border-radius: 0.5rem;
+      margin: 0 10px 0 0;
+
+      &:hover {
+        color: $pink;
+        border: 1px solid $pink;
+      }
+    }
+  }
+
+  .cta--wrapper {
+    display: block;
+    position: relative;
+    top: auto;
+  }
+
+
+  .cta--sidebar {
+    position: relative;
+    height: auto;
+    border-radius: 15px;
+    background-color: rgba($white, 0.2);
+    margin: 0px;
+    margin-bottom: 15px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: none;
+
+
+    h3, p {
+      color: $white;
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-top: 1.4rem;
+      line-height: 1.8;
+    }
+  }
+}
+
+

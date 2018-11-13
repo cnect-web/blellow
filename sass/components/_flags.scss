@@ -1,0 +1,70 @@
+
+.profile-shortinfo__actions {
+  display: inline-block;
+  margin: 0 0 0 0;
+  width: 100%;
+
+  > div {
+    display: inline-block;
+    margin: 0 1rem 1rem 0;
+  }
+
+  .flag a {
+    box-shadow: none;
+
+    span {
+      display: none;
+    }
+
+    &:before {
+      line-height: 1;
+      padding-right: 5px;
+    }
+  }
+}
+
+/* save content flag */
+
+.flag-ngf-save-content a {
+  &:before {
+    @include fa-icon;
+    @extend .far;
+    content: fa-content($fa-var-bookmark);
+  }
+}
+
+.flag-ngf-save-content.action-unflag a {
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+  }
+}
+
+/* follow content flag */
+
+.flag-ngf-follow-content a {
+  &:before {
+    @include fa-icon;
+    @extend .far;
+    content: fa-content($fa-var-heart);
+  }
+}
+
+.flag-ngf-follow-content.action-unflag a {
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-heart);
+  }
+}
+
+/* report content flag */
+
+.flag-ngf-report-content.action-unflag a,
+.flag-ngf-report-content.action-flag a {
+  &:before {
+    @include fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-exclamation);
+  }
+}

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * profile actions pattern.
+ */
+#}
+
+<ul class="profile__actions">
+  {% if action_contact %}
+    <li><a href="{{ action_contact_uri }}" class="profile__actions--contact">{{ action_contact }}</a></li>
+  {% endif %}
+  {% if action_join %}
+    <li><a href="{{ action_join_uri }}" class="profile__actions--join">{{ action_join }}</a></li>
+  {% endif %}
+  {% if action_leave %}
+    <li><a href="{{ action_leave_uri }}" class="profile__actions--leave">{{ action_leave }}</a></li>
+  {% endif %}
+  {% if action_follow %}
+    <li>{{ action_follow }}</li>
+  {% endif %}
+</ul>

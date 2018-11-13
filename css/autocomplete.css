@@ -1,0 +1,12 @@
+/**
+ * @file
+ * Table drag behavior.
+ *
+ * @see tabledrag.js
+ */
+.field-multiple-drag,
+.tabledrag-hide,
+.tabledrag-toggle-weight-wrapper,
+a.tabledrag-handle .handle {
+    display: none;
+}
