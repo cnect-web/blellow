@@ -2,5 +2,10 @@
     "name": "cnect-web/blellow",
     "description": "Institutional Look and Feel for D8",
     "type": "drupal-theme",
-    "require": {}
+    "require": {
+      "drupal/group": "^1.0",
+      "drupal/components": "^1.0"
+    }
 }
+
+
