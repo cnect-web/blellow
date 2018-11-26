@@ -49,27 +49,28 @@
 
 .vud-widget-thumbs a.up.inactive,
 .vud-widget-thumbs a.down.inactive {
-  color: $purple;
+  color: $color-primary;
 }
 
 .vud-widget-thumbs a.up.inactive {
   &:hover {
-    color: $green;
+    color: $color-success;
   }
 }
 
 .vud-widget-thumbs a.down.inactive {
   &:hover {
-    color: $red;
+    color: $color-error;
   }
 }
 
+
 .vud-widget-thumbs a.up.active {
-  color: $green;
+  color: $color-success;
 }
 
 .vud-widget-thumbs a.down.active {
-  color: $red;
+  color: $color-error;
 }
 
 .element-invisible {

@@ -41,12 +41,12 @@
 #}
 
 
-{% embed '@funkywave/group/group--ngf-discussion-group--ngf-header.html.twig' %}
+{% embed '@blellow/group/group--ngf-discussion-group--ngf-header.html.twig' %}
 {% endembed %}
 
 {{ content.field_ngf_description }}
 
-{% embed '@funkywave/content/node--ngf-discussion.html.twig' %}
+{% embed '@blellow/content/node--ngf-discussion.html.twig' %}
   {% block article %}
     {# Grab only related_topics block #}
     {% block related_topics %}

@@ -1,15 +1,4 @@
-$logo__font-weight: bold !default;
-$logo__color: $gray-900 !default;
-$logo-area__background-image: none !default;
-$logo-area__background-image--sm: $logo-area__background-image !default;
-$logo-area__background-image--md: $logo-area__background-image !default;
-$logo-area__background-image--lg: $logo-area__background-image !default;
-
 .logo-area {
-  background-image: linear-gradient($darkblue, $darkblue), $logo-area__background-image--sm;
-  background-repeat: no-repeat;
-  background-size: 100vw 26px, 100vw 10vh;
-  background-position: center 0, center 25px;
   height: 100px;
   width: 100vw;
 }

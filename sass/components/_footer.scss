@@ -21,14 +21,11 @@
         }
 
         a {
-          color: $gray-500;
-          text-shadow: 0 2px 0 $white, 0 3px 0 $white, 1px 2px 0 $white, -1px 2px 0 $white;
-          box-shadow: 0 1px 0 0 $purple;
+          //color: $gray-500;
           transition: all .2s ease;
 
           &:hover {
-            color: $darkblue;
-            box-shadow: 0 1px 0 0 $purple;
+            //color: $darkblue;
             transition: all .2s ease;
           }
 
@@ -43,14 +40,11 @@
   }
 
   a {
-    color: $gray-500;
-    text-shadow: 0 2px 0 $gray-800, 0 3px 0 $gray-800, 1px 2px 0 $gray-800, -1px 2px 0 $gray-800;
-    box-shadow: 0 1px 0 0 $gray-400;
+    //color: $gray-500;
     transition: all .2s ease;
 
     &:hover {
-      color: $pink;
-      box-shadow: 0 1px 0 0 $pink;
+      //color: $pink;
       transition: all .2s ease;
     }
   }
@@ -59,7 +53,7 @@
 @media (min-width: 768px) {
   .general-footer {
     z-index: 500;
-    background: $gray-800;
+    //background: $gray-800;
 
     ul.menu {
       padding: 0;
@@ -91,14 +85,11 @@
         }
 
         a {
-          color: $gray-500;
-          text-shadow: 0 2px 0 $white, 0 3px 0 $white, 1px 2px 0 $white, -1px 2px 0 $white;
-          box-shadow: 0 1px 0 0 $purple;
+          //color: $gray-500;
           transition: all .2s ease;
 
           &:hover {
-            color: $darkblue;
-            box-shadow: 0 1px 0 0 $purple;
+            //color: $darkblue;
             transition: all .2s ease;
           }
 
@@ -111,7 +102,7 @@
 
 @media (min-width: 992px) {
   .general-footer {
-    background-color: $gray-800;
+    //background-color: $gray-800;
 
     &--card {
       background-color: transparent;

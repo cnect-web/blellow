@@ -28,22 +28,22 @@ form, .form {
     padding: 0.7rem 0.9rem;
     font-size: 1.6rem;
     line-height: 1.8;
-    color: $gray-700;
+    color: map-get($colors, 'grey-75');
     max-width: 32em;
     width: 100%;
-    border: solid 2px $gray-500;
+    border: solid 2px map-get($colors, 'grey-50');
     box-shadow:   inset 0 0 10px rgba(#000, 0.1);
     transition: border-color 0.2s;
     font-family: $body__font;
 
     &:focus:hover, &:focus {
       outline: none;
-      border: solid 2px $purple;
+      border: solid 2px $color-primary;
       transition: border-color 0.2s;
     }
 
     &:hover{
-      border-color: $gray-700;
+      border-color: map-get($colors, 'grey-75');
       transition: border-color 0.2s;
     }
 
@@ -52,7 +52,7 @@ form, .form {
     }
 
     &.error {
-      border: solid 2px $red;
+      border: solid 2px $color-error;
       transition: border-color 0.2s;
     }
 
@@ -110,7 +110,7 @@ form, .form {
       background: $white;
       margin: 3px 20px 0 0;
       transition: 0.2s margin;
-      border: solid 2px $gray-500;
+      border: 2px solid map-get($colors, 'grey-50');
       position: absolute;
     }
 
@@ -121,18 +121,18 @@ form, .form {
     }
 
     input[type=checkbox]:focus+label .onoffswitch-inner{
-       box-shadow: 0px 0px 0px 1px $purple;
-       border: solid 2px $purple !important;
+       box-shadow: 0px 0px 0px 1px $color-primary;
+       border: solid 2px $color-primary !important;
     }
 
     input[type=checkbox]:checked+label .onoffswitch-inner{
       display: inline-block;
       height: 2.2rem;
       width: 2.2rem;
-      background: $teal;
+      background: $color-success;
       margin: 3px 20px 0 0;
       transition: 0.2s margin;
-      border: solid 2px $gray-500;
+      border: solid 2px map-get($colors, 'grey-50');
       position: absolute;
 
       &:before, &:after {
@@ -140,7 +140,7 @@ form, .form {
         content: '';
         width: 3px;
         height: 2.7rem;
-        background-color: rgba($gray-900, 0.8);
+        background-color: map-get($colors, 'grey-75');
       }
 
       &:before {
@@ -160,7 +160,7 @@ form, .form {
      margin: 1.5rem 0 1rem;
 
     input[type=checkbox]+label:before{
-      background-color: #FFF;
+      background-color: $white;
       background-size: 40rem 20rem;
       content: "";
       width: 3.9rem;
@@ -169,28 +169,28 @@ form, .form {
       margin-right: -40px;
       margin-top: 3px;
       border-radius: 20px;
-      border: solid 2px $gray-400;
+      border: solid 2px map-get($colors, 'grey-25');
       transition: background-color .2s;
-      box-shadow:   inset 0 0 10px rgba(#000, 0.2);
+      box-shadow:   inset 0 0 10px map-get($colors, 'grey-25');
       position: absolute;
     }
 
      input[type=checkbox]:focus+label:before{
-       box-shadow: 0px 0px 0px 1px $purple;
-       border: solid 2px $purple !important;
+       box-shadow: 0px 0px 0px 1px $color-primary;
+       border: solid 2px $color-primary !important;
     }
 
     input[type=checkbox]:checked+label:before{
-      background-color: $teal;
+      background-color: $color-success;
       transition: background-color .2s;
-      border: solid 2px rgba(#000, 0.2);
+      border: solid 2px map-get($colors, 'grey-75');
     }
 
     input[type=checkbox]:checked+label .onoffswitch-inner{
       display: inline-block;
-      background: $gray-200;
+      background: map-get($colors, 'grey-25');
       margin: 3px 0 0 20px;
-      border: solid 2px $gray-500;
+      border: solid 2px map-get($colors, 'grey-50');
       height: 2.2rem;
       width: 2.2rem;
     }
@@ -199,11 +199,11 @@ form, .form {
       display: inline-block;
       height: 2.2rem;
       width: 2.2rem;
-      background: $gray-200;
+      background: map-get($colors, 'grey-25');
       margin: 3px 20px 0 0;
       transition: 0.2s margin;
       border-radius:  1rem;
-      border: solid 2px $gray-500;
+      border: solid 2px map-get($colors, 'grey-50');
       position: absolute;
     }
 
@@ -227,15 +227,15 @@ form, .form {
 
       padding: 0.7rem 0.9rem;
     font-size: 1.6rem;
-    color: $gray-700;
+    color: map-get($colors, 'grey-75');
     max-width: 32em;
     width: 100%;
-    border: solid 2px $gray-500;
+    border: solid 2px map-get($colors, 'grey-50');
     box-shadow:   inset 0 0 10px rgba(#000, 0.1);
 
     &:focus {
       outline: none;
-      border: solid 2px $purple;
+      border: solid 2px $color-primary;
     }
 
         text-overflow: ellipsis;
@@ -252,7 +252,7 @@ form, .form {
     .form__input--file:focus + label,
     .form__input--file.has-focus + label {
         outline: none;
-      border: solid 2px $purple;
+      border: solid 2px map-get($colors, 'grey-25');
 
     }
 
@@ -262,7 +262,7 @@ form, .form {
     }
 
 .form__input--file + label .form__label--file {
-  background-color: $gray-600;
+  background-color: map-get($colors, 'grey-50');
   color: $white;
   text-align: right;
   float: right;
@@ -271,14 +271,14 @@ form, .form {
 }
 
 .form__input--file:hover + label .form__label--file {
-  background-color: $gray-700;
+  background-color: map-get($colors, 'grey-75');
   color: rgba($white, 0.9);
   transition: background-color 0.2s;
   transition: color 0.2s;
 }
 
 .form__input--file:focus + label .form__label--file {
-  background-color: $purple;
+  background-color: $color-primary;
   color: rgba($white, 0.9);
   transition: background-color 0.2s;
   transition: color 0.2s;
@@ -289,11 +289,11 @@ form, .form {
 }
 
     .form__input--file + label {
-          color: $gray-700;
+          color: map-get($colors, 'grey-75');;
       }
 
       .form__input--file + label {
-          border: solid 2px $gray-500;
+          border: solid 2px map-get($colors, '$grey-50');
           box-shadow:   inset 0 0 10px rgba(#000, 0.1);
           transition: border-color 0.2s;
           background-color: $white;
@@ -301,7 +301,7 @@ form, .form {
       }
 
       .form__input--file + label:hover {
-          border-color: $gray-700;
+          border-color: map-get($colors, 'grey-75');
         transition: border-color 0.2s;
       }
 

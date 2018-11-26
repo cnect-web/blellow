@@ -44,11 +44,37 @@
 #}
 <div class="general-container">
 
-  <header class="general-header clearfix">
+  <!-- <header class="general-header clearfix">
     {{ page.header }}
-  </header>
+  </header> -->
 
-  <div class="wrapper">
+  {% if page.site_top_bar %}
+    <div class="container site-topbar">
+      {{ page.site_top_bar }}
+    </div>
+  {% endif %}
+
+  {% block site_header %}
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__banner">
+      {{ page.site_header }}
+    </div>
+  </header>
+  {% endblock %}
+
+  {% block page_header %}
+  <div class="page-header">
+    <div class="container">
+      {{ page.breadcrumb }}
+      {% if page.page_header %}
+      <div class="page-header__body">
+        {{ page.page_header }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
 
       <div class="layout-content">
         <main role="main">
@@ -75,6 +101,5 @@
         </footer>
       {% endif %}
 
-  </div>
 
 </div>{# /.layout-container #}

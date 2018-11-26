@@ -26,10 +26,10 @@
       &.active {
         background: url(../images/navigation-menu__item--active__background--sm.svg) no-repeat center bottom;
         background-size: cover;
-        border-bottom: solid 2px $pink;
+        border-bottom: solid 2px $color-primary;
 
         a {
-          /* color: scale-lightness($pink, 40); */
+          /* color: scale-lightness($color-primary, 40); */
           color: $white;
         }
       }
@@ -160,11 +160,11 @@
             box-shadow: none;
 
            &:hover {
-             color: $pink;
+             color: $color-primary;
              box-shadow: none;
 
              .badge {
-               background-color: $pink;
+               background-color: $color-primary;
                transition: all 0.2s;
              }
            }
@@ -175,7 +175,7 @@
             border-bottom: none;
 
             .fas {
-              color: $pink;
+              color: $color-primary;
             }
           }
 
@@ -190,16 +190,14 @@
             line-height: 1.8;
             padding: 0.5rem 0.8rem;
             border-radius: 0.5rem;
-            border: solid 3px rgba($cyan, 1);
-            color: $gray-900;
+            color: $color-shade;
             text-shadow: none;
             box-shadow: none;
             transition: background-color 0.2s;
             &:hover {
               box-shadow: none;
-              background: rgba($cyan, 1);
               transition: background-color 0.2s;
-              color: $gray-900;
+              color: $color-shade;
             }
 
             &.active {
@@ -227,20 +225,14 @@
         justify-content: flex-end;
         top: 0px;
         z-index: 10001;
-        background-image: $logo-area__background-image--md;
-        background-repeat: no-repeat;
-        background-size: 100% 80px;
-        background-position: left top;
-        height: 100px;
-        width: 100vw;
         margin-left: -15px;
 
         &:empty {
-          background-image: url(../images/logo-area-bckgrd--md--no-action.svg);
+
         }
 
         &.navigation-menu__list--single-tool {
-          background-image: url(../images/logo-area-bckgrd--md--one-action.svg);
+
         }
 
         .navigation-menu__item {
@@ -277,9 +269,6 @@
         .navigation-menu__item--tool {
           text-align: center;
           display: inline-block;
-          background-image: url(../images/navigation-tools__btn__background.svg);
-          background-repeat: none;
-          color: $gray-900;
 
           &.navigation-menu__item--filter {
             height: 54px;
@@ -311,7 +300,7 @@
         background: rgba($white, 0.8);
         padding: 0rem 0.5rem 0.1rem;
         border-radius: 0.5rem;
-        color: $gray-900;
+        color: $color-shade;
         text-align: center;
       }
   }

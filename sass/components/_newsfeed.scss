@@ -7,7 +7,7 @@
 }
 
 .sub-section {
-    border-top: solid 1px $gray-500;
+    border-top: solid 1px map-get($colors, 'grey-50');
   margin-bottom: 16px;
   }
 
@@ -27,6 +27,7 @@
   height: 100%;
 }
 
+
 .newsfeed__item {
     h2 {
       padding-left: 32px;
@@ -43,22 +44,22 @@
     h2 a {
       font-family: 'Raleway';
       font-weight: 800;
-      color: $gray-800;
+      color: $color-primary;
       text-shadow: none;
       box-shadow: none;
 
       &:hover {
-        color: $purple;
+        color: $color-primary;
 
         text-shadow: 0 2px 0 $white, 0 3px 0 $white, 1px 2px 0 $white, -1px 2px 0 $white;
-        box-shadow: 0 1px 0 0 $purple;
+        box-shadow: 0 1px 0 0 $color-primary;
       }
     }
 
     .field--name-field-ngf-cover-image, .field--name-field-media-image
 {
       border-radius: 10px;
-      background: adjust-lightness($gray-800, -3%);
+      background: adjust-lightness($color-primary, -3%);
       max-height: 320px;
       display: flex;
       justify-content: center;
@@ -70,7 +71,7 @@
         width: auto;
         flex-shrink: 0;
         display: block;
-         //border:1px solid rgba($gray-900, 0);
+         //border:1px solid rgba($color-shade, 0);
       }
     }
 
@@ -83,7 +84,7 @@
   .newsfeed__legend-copyright {
     font-size: 1.3rem;
     margin-top: 0.1em;
-    color: $gray-900;
+    color: $color-shade;
     opacity: 0.8;
     text-align: center;
     max-width: 100%;
@@ -100,11 +101,9 @@
       }
 
       a{
-        color: $gray-700 !important;
-        box-shadow: 0 1px 0 0 $gray-700 !important;
+        color: $color-primary !important;
         &:hover {
-          color: $purple !important;
-          box-shadow: 0 1px 0 0 $purple !important;
+          color: $color-primary !important;
         }
       }
 
@@ -153,37 +152,37 @@
 
   .newsfeed__item--pinned {
 
-    color: $gray-900;
+    color: $color-shade;
 
-    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($purple, 90%) 50%, scale-lightness($purple, 90%) 50%), ;
+    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($color-primary, 90%) 50%, scale-lightness($color-primary, 90%) 50%), ;
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center bottom;
     background-size: 100% 40px, 100% calc(100% - 28px);
 
     a, a:hover, h2 a, h2 a:hover {
-      text-shadow: 0 2px 0 scale-lightness($purple, 90%), 0 3px 0 scale-lightness($purple, 90%), 1px 2px 0 scale-lightness($purple, 90%), -1px 2px 0 scale-lightness($purple, 90%);
+      text-shadow: 0 2px 0 scale-lightness($color-primary, 90%), 0 3px 0 scale-lightness($color-primary, 90%), 1px 2px 0 scale-lightness($color-primary, 90%), -1px 2px 0 scale-lightness($color-primary, 90%);
     }
 
     &.newsfeed__item--teaser:first-child{
-      background-color: scale-lightness($purple, 90%);
+      background-color: scale-lightness($color-primary, 90%);
     }
   }
 
   .newsfeed__item--unpublished {
 
-    color: $gray-900;
+    color: $color-shade;
 
-    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($red, 90%) 50%, scale-lightness($red, 90%) 50%) ;
+    background-image: url(../images/hr--wavy.svg), linear-gradient( scale-lightness($color-error, 90%) 50%, scale-lightness($color-error, 90%) 50%) ;
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center bottom;
     background-size: 100% 40px, 100% calc(100% - 28px);
 
     > * a, > * a:hover, h2 a, h2 a:hover {
-      text-shadow: 0 2px 0 scale-lightness($red, 90%), 0 3px 0 scale-lightness($red, 90%), 1px 2px 0 scale-lightness($red, 90%), -1px 2px 0 scale-lightness($red, 90%);
+      text-shadow: 0 2px 0 scale-lightness($color-error, 90%), 0 3px 0 scale-lightness($color-error, 90%), 1px 2px 0 scale-lightness($color-error, 90%), -1px 2px 0 scale-lightness($color-error, 90%);
     }
 
     &.newsfeed__item--teaser:first-child{
-      background-color: scale-lightness($red, 90%);
+      background-color: scale-lightness($color-error, 90%);
     }
   }
 

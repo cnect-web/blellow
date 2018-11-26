@@ -1,18 +1,18 @@
 {
-  "name": "funkywave",
+  "name": "blellow",
   "version": "1.0.0",
-  "description": "Funkywave theme",
+  "description": "Blellow theme",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cnect-web/funkywave.git"
+    "url": "git+https://github.com/cnect-web/blellow.git"
   },
   "author": "Peter Neyens",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cnect-web/funkywave/issues"
+    "url": "https://github.com/cnect-web/blellow/issues"
   },
-  "homepage": "https://github.com/cnect-web/funkywave#readme",
+  "homepage": "https://github.com/cnect-web/blellow#readme",
   "dependencies": {
     "breakpoint-sass": "^2.7.1",
     "browser-sync": "^2.23.6",

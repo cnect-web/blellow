@@ -1,73 +1,46 @@
-// ===============        COLORS      ========================== //
+$colors: (
+  blue-120: #012b58,
+  blue-110: #003776,
+  blue-100: #004494,
+  blue-75: #4073af,
+  blue-50: #7fa1c9,
+  blue-25: #bfd0e4,
+  yellow-120: #f8ae21,
+  yellow-110: #fbc11d,
+  yellow-100: #ffd617,
+  yellow-75: #ffde39,
+  yellow-50: #ffe879,
+  yellow-25: #fff4bb,
+  grey-100: #404040,
+  grey-75: #707070,
+  grey-50: #9f9f9f,
+  grey-25: #cfcfcf,
+  grey-15: #e3e3e3,
+  grey-10: #ebebeb,
+  grey-5: #f5f5f5,
+  purple-100: #550745
+) !default;
 
-$white:  #FFFFFF ;
-$gray-100: #f7f8fa ;
-$gray-200: #edeff5 ;
-$gray-300: #dfe0e5 ;
-$gray-400: #c6c7cc ;
-$gray-500: #a6a7ab ;
-$gray-600: #88898c ;
-$gray-700: #515155 ;
-$gray-800: #26252B ;
-$gray-900: #05111E ;
-$black:  #000 ;
+/*
+ * Aliases
+ */
 
-$blue:      #186aff;
-$darkblue:  #1a3773;
-$indigo:    #6610f2;
-$purple:    #662D91;
-$pink:      #ff397f;
-$red:       #ff3939;
-$orange:    #f9713d;
-$yellow:    #ffea00;
-$green:     #46b200;
-$teal:      #1eb49c;
-$cyan:      #00c9ff;
+$color-primary: map-get($colors, 'blue-100') !default;
+$color-secondary: map-get($colors, 'yellow-100') !default;
+$color-shade: map-get($colors, 'grey-100') !default;
+$white: #ffffff;
+$black: map-get($colors, 'grey-100') !default;
 
-$colors: () ;
-$colors: map-merge((
-  blue: $blue,
-  darkblue: $darkblue,
-  indigo: $indigo,
-  purple: $purple,
-  pink: $pink,
-  red: $red,
-  orange: $orange,
-  yellow: $yellow,
-  green: $green,
-  teal: $teal,
-  cyan: $cyan,
-  white: $white,
-  gray: $gray-600,
-  gray-dark: $gray-800
-), $colors);
+$color-info: #006fb4 !default;
+$color-warning: #f29527 !default;
+$color-success: #467a39 !default;
+$color-error: #da2130 !default;
 
-$theme-colors: ();
-$theme-colors: map-merge((
-  primary: $cyan,
-  secondary: $gray-600,
-  success: $green,
-  info: $cyan,
-  warning: $orange,
-  error: $red,
-  light: $gray-200,
-  dark: $gray-600,
-  reactive: $purple
-), $theme-colors);
+$font-family-sans-serif: Arial, sans-serif !default;
+$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
 
-// =================     VARIABLES    ====================== //
-// ===================     FONT   ========================== //
+$body__font: $font-family-sans-serif !default;
+$headings__font: $font-family-sans-serif !default;
 
-$body__font: 'Raleway';
-$headings__font: 'Raleway';
-
-// ================== COMPONENTS =========================== //
-// ------------------ logo-area ---------------------------- //
-
-$text__font-wight : 500;
-$logo__font-weight: 900;
-$logo__color: $white;
-$logo-area__background-image--sm: url('../images/logo-area-bckgrd--sm.svg');
-$logo-area__background-image--md: url('../images/logo-area-bckgrd--md.svg');
-$logo-area__background-image--lg: url('../images/logo-area-bckgrd.svg');
-$account-info__background: url('../images/account-info__background--idle.svg');
+$text-color: map-get($colors, 'grey-75') !default;

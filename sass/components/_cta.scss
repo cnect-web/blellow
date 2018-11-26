@@ -34,9 +34,9 @@
 }
 
 .cta--join {
-  background: rgba($purple, 0.5);
+  background: rgba($color-primary, 0.5);
   &:hover{
-    background: rgba($purple, 0.8);
+    background: rgba($color-primary, 0.8);
     transition: all 0.2s;
 
     p {
@@ -46,9 +46,9 @@
   }
 }
 .cta--signin {
-  background: rgba($purple, 0.3);
+  background: rgba($color-primary, 0.3);
   &:hover{
-    background: rgba($purple, 0.8);
+    background: rgba($color-primary, 0.8);
     transition: all 0.2s;
 
     p {
@@ -65,7 +65,7 @@
   height: 3.5rem;
   line-height: 3.5rem;
   width: 100%;
-  background: rgba($purple, 0.3);
+  background: rgba($color-primary, 0.3);
   > a {
     text-shadow: none;
     box-shadow: none;
@@ -98,8 +98,8 @@
       margin: 0 10px 0 0;
 
       &:hover {
-        color: $pink;
-        border: 1px solid $pink;
+        color: map-get($colors, '$blue-75');
+        border: 1px solid map-get($colors, '$blue-75');
       }
     }
   }

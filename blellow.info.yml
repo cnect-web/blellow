@@ -4,15 +4,18 @@ description: 'Blellow theme'
 core: 8.x
 base theme: classy
 regions:
-  header: 'Header'
+  site_top_bar: 'Site Top bar'
+  site_header: 'Site Header'
+  page_header: 'Page Header'
+  breadcrumb: 'breadcrumb'
   content: 'Content'
   sidebar_first: 'Sidebar first'
   sidebar_second: 'Sidebar second'
   footer: 'Footer'
 libraries:
-  - funkywave/global-css
-  - funkywave/global-js
-  - funkywave/global-fonts
+  - blellow/global-css
+  - blellow/global-js
+  - blellow/global-fonts
 # components module needs to be installed to use
 # {% include "@myLib/box/box.twig" %}
 component-libraries:

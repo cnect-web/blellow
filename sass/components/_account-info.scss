@@ -20,7 +20,7 @@
 
 
 .account-info {
-  background: $account-info__background no-repeat left top;
+  /* background: $account-info__background no-repeat left top; */
   background-size: 100% 100%;
   /*width: 23.4vw;
   height: 26.5vw;
@@ -34,7 +34,7 @@
 
   &.account-info--menu-only {
     height: 88px;
-    background-image: url(../images/account-info__background--idle.svg);
+    /* background-image: url(../images/account-info__background--idle.svg); */
     background-position: left top;
     background-size: 100% 100%;
 
@@ -51,7 +51,7 @@
   &.account-info--notification {
     width: 93px;
     height: 85px;
-    background-image: url(../images/account-info__background--notification.svg);
+    /* background-image: url(../images/account-info__background--notification.svg); */
     background-position: left top;
     background-size: 100% 100%;
 
@@ -125,7 +125,7 @@
       width: 200px;
       margin-left: calc( 65px - 200px);
       margin-right: 15px;
-      background-color: adjust-lightness($darkblue, -15);
+      /* background-color: adjust-lightness($darkblue, -15); */
       margin-top: -5px;
       border-radius: 5px;
       z-index: 5004;
@@ -159,7 +159,7 @@
           padding: 6px 0;
 
           &:hover {
-           color: $pink;
+           color: $color-primary;
           }
         }
 
@@ -184,7 +184,7 @@
         display: block;
       height: 21px;
       width: 21px;
-      background: $pink;
+      background: $color-primary;
       border-radius: 20px;
       text-shadow: none;
       box-shadow: none;
@@ -224,10 +224,10 @@
         border-bottom-left-radius: 5rem;
         border-top-right-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
-        color: $pink;
+        color: $color-primary;
 
         img {
-          border: 2px solid rgba($pink, 1);
+          border: 2px solid rgba($color-primary, 1);
           box-shadow: 0px 0px 0px 2px rgba(#FFF,0.1);
           transition: all 0.2s;
         }

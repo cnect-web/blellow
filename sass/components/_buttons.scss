@@ -1,227 +1,228 @@
-@mixin button-bg($bg) {
 
-  display: inline-block;
-  background: $bg;
-  background-image: none;
-  box-shadow: 0 0 0 4px rgba($bg, 0.5) !important;
-  text-shadow: none;
-  transition: all 0.2s ease;
-  transform: rotateX(0deg);
-  transform-style: preserve-3d;
+//   @mixin button-bg($bg) {
 
-  &:not([disabled]):hover {
-    background:darken($bg,8%);
-    transition: all 0.2s ease;
+//   display: inline-block;
+//   background: $bg;
+//   background-image: none;
+//   box-shadow: 0 0 0 4px rgba($bg, 0.5) !important;
+//   text-shadow: none;
+//   transition: all 0.2s ease;
+//   transform: rotateX(0deg);
+//   transform-style: preserve-3d;
 
-  }
-  &:active {
-    background:darken($bg,25%);
-  }
-}
+//   &:not([disabled]):hover {
+//     background:darken($bg,8%);
+//     transition: all 0.2s ease;
 
-input.btn{
-  appearance: none;
-}
+//   }
+//   &:active {
+//     background:darken($bg,25%);
+//   }
+// }
 
-.btn-list--right {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  /* flex-direction: column; */
-  flex-direction: row;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  align-content: flex-start;
+// input.btn{
+//   appearance: none;
+// }
 
-  > .btn, .button {
-    position: relative;
-    /* flex-grow: 1; */
-    margin: 15px 0 15px 15px;
-  }
+// .btn-list--right {
+//   width: 100%;
+//   display: flex;
+//   align-items: flex-end;
+//   /* flex-direction: column; */
+//   flex-direction: row;
+//   justify-content: flex-end;
+//   flex-wrap: nowrap;
+//   align-content: flex-start;
 
-  .opposite {
-     align-self: flex-start;
-    order: -1;
-    flex-grow: 0;
-    position: absolute;
-  }
-}
-.btn-list--left {
-  text-align: left;
-}
-.btn-list--byside.btn-list--left {
-  float: left
-}
-.btn-list--byside.btn-list--right {
-  float: right;
-}
+//   > .btn, .button {
+//     position: relative;
+//     /* flex-grow: 1; */
+//     margin: 15px 0 15px 15px;
+//   }
 
-.btn[disabled], .btn.disabled {
-  opacity: 0.7 !important;
-  cursor: not-allowed !important;
-  color: rgba($gray-900, 0.5) !important;
-  transition: all 0.2s;
-}
+//   .opposite {
+//      align-self: flex-start;
+//     order: -1;
+//     flex-grow: 0;
+//     position: absolute;
+//   }
+// }
+// .btn-list--left {
+//   text-align: left;
+// }
+// .btn-list--byside.btn-list--left {
+//   float: left
+// }
+// .btn-list--byside.btn-list--right {
+//   float: right;
+// }
+
+// .btn[disabled], .btn.disabled {
+//   opacity: 0.7 !important;
+//   cursor: not-allowed !important;
+//   color: rgba($gray-900, 0.5) !important;
+//   transition: all 0.2s;
+// }
 
 
-.btn-list--center {
-  text-align: center;
-  width: 80%;
-  max-width: 512px;
-  margin: auto;
+// .btn-list--center {
+//   text-align: center;
+//   width: 80%;
+//   max-width: 512px;
+//   margin: auto;
 
-  > a.btn, input.btn, button.btn {
-    &:not(.btn--large):last-child {
-      margin: 2.5rem auto 2rem auto;
-    }
-    display: block;
-     margin: 2.5rem auto 2rem auto;
-  }
-}
+//   > a.btn, input.btn, button.btn {
+//     &:not(.btn--large):last-child {
+//       margin: 2.5rem auto 2rem auto;
+//     }
+//     display: block;
+//      margin: 2.5rem auto 2rem auto;
+//   }
+// }
 
-.btn.btn--large {
-  width: 100%;
-  max-width: 32em;
-  padding: 0.3rem 1rem;
-  font-size: 1.8rem;
+// .btn.btn--large {
+//   width: 100%;
+//   max-width: 32em;
+//   padding: 0.3rem 1rem;
+//   font-size: 1.8rem;
 
-  .icon {
-    height: 1.8rem;
-    margin-right : 1rem;
-    display: inline-block;
-  }
-}
+//   .icon {
+//     height: 1.8rem;
+//     margin-right : 1rem;
+//     display: inline-block;
+//   }
+// }
 
-a.btn, input.btn, button.btn, a.button {
-   color: $gray-900;
-   font-size: 1.3rem;
-   text-decoration:none;
-   padding: 0.1rem 1.5rem;
-   border-radius:300px;
-   text-align: center;
-   text-shadow: none !important;
-   min-width: 12rem;
-   font-weight: 700;
-   line-height: 1.3;
-   margin: 15px 10px 15px 0;
-   border: none;
-   cursor: pointer;
+// a.btn, input.btn, button.btn, a.button {
+//    color: $gray-900;
+//    font-size: 1.3rem;
+//    text-decoration:none;
+//    padding: 0.1rem 1.5rem;
+//    border-radius:300px;
+//    text-align: center;
+//    text-shadow: none !important;
+//    min-width: 12rem;
+//    font-weight: 700;
+//    line-height: 1.3;
+//    margin: 15px 10px 15px 0;
+//    border: none;
+//    cursor: pointer;
 
-  .icon {
-    height: 1.3rem;
-    margin-right : 1rem;
-    display: inline-block;
-  }
+//   .icon {
+//     height: 1.3rem;
+//     margin-right : 1rem;
+//     display: inline-block;
+//   }
 
-  /*
-   &:not(.btn--large):last-child {
-      margin-bottom: 0px;
-   }
-   */
+//   /*
+//    &:not(.btn--large):last-child {
+//       margin-bottom: 0px;
+//    }
+//    */
 
-   &:not([disabled]):hover {
-      color: $white;
-   }
+//    &:not([disabled]):hover {
+//       color: $white;
+//    }
 
-   &:focus {
-      box-shadow: 0 0 0 4px $purple !important;
-     outline: none;
-  }
-}
+//    &:focus {
+//       box-shadow: 0 0 0 4px $purple !important;
+//      outline: none;
+//   }
+// }
 
-.btn--grey, .paragraphs-icon-button, .form-submit {
-   @include button-bg($gray-400);
-}
+// .btn--grey, .paragraphs-icon-button, .form-submit {
+//    @include button-bg($gray-400);
+// }
 
-.btn--green {
-   @include button-bg($teal);
-}
+// .btn--green {
+//    @include button-bg($teal);
+// }
 
-.btn--blue,
-.field-add-more-submit,
-#edit-field-ngf-cover-image-actions-ief-add {
-   @include button-bg($cyan);
-}
+// .btn--blue,
+// .field-add-more-submit,
+// #edit-field-ngf-cover-image-actions-ief-add {
+//    @include button-bg($cyan);
+// }
 
-.button--danger {
-  @include button-bg($red);
-}
+// .button--danger {
+//   @include button-bg($red);
+// }
 
-.field-add-more-submit {
-  &:before {
-    @include fa-icon;
-    @extend .fas;
-    padding-right: 5px;
-    content: fa-content($fa-var-plus);
-  }
-}
+// .field-add-more-submit {
+//   &:before {
+//     @include fa-icon;
+//     @extend .fas;
+//     padding-right: 5px;
+//     content: fa-content($fa-var-plus);
+//   }
+// }
 
-#field-ngf-description-ngf-text-add-more {
-  &:before {
-    content: fa-content($fa-var-edit);
-  }
-}
+// #field-ngf-description-ngf-text-add-more {
+//   &:before {
+//     content: fa-content($fa-var-edit);
+//   }
+// }
 
-#field-ngf-description-ngf-file-add-more {
-  &:before {
-    content: fa-content($fa-var-file);
-  }
-}
+// #field-ngf-description-ngf-file-add-more {
+//   &:before {
+//     content: fa-content($fa-var-file);
+//   }
+// }
 
-#field-ngf-description-ngf-image-add-more {
-  &:before {
-    content: fa-content($fa-var-image);
-  }
-}
+// #field-ngf-description-ngf-image-add-more {
+//   &:before {
+//     content: fa-content($fa-var-image);
+//   }
+// }
 
-#field-ngf-description-ngf-video-add-more {
-  &:before {
-    content: fa-content($fa-var-video);
-  }
-}
+// #field-ngf-description-ngf-video-add-more {
+//   &:before {
+//     content: fa-content($fa-var-video);
+//   }
+// }
 
-button.paragraphs-dropdown-action {
-  border: none;
-  box-shadow: none !important;
-  margin-bottom: 0;
-}
+// button.paragraphs-dropdown-action {
+//   border: none;
+//   box-shadow: none !important;
+//   margin-bottom: 0;
+// }
 
-.btn-list {
-  margin-top: 3rem;
-}
+// .btn-list {
+//   margin-top: 3rem;
+// }
 
-.paragraphs-actions > .button {
-  margin: 0;
-}
+// .paragraphs-actions > .button {
+//   margin: 0;
+// }
 
-.flip {
-  transform: rotateX(90deg);
-  transform-style: preserve-3d;
-  transition: all 0.2s;
-}
+// .flip {
+//   transform: rotateX(90deg);
+//   transform-style: preserve-3d;
+//   transition: all 0.2s;
+// }
 
-@media (min-width: 768px) {
+// @media (min-width: 768px) {
 
-  a.btn, input.btn, button.btn, a.button {
-    font-size: 1.6rem;
-  }
+//   a.btn, input.btn, button.btn, a.button {
+//     font-size: 1.6rem;
+//   }
 
-  .btn.btn--large {
-    padding: 0.4rem 0rem;
-    font-size: 2rem;
-  }
+//   .btn.btn--large {
+//     padding: 0.4rem 0rem;
+//     font-size: 2rem;
+//   }
 
-  .btn-list--center {
-    //width: 60%;
-    text-align: center;
+//   .btn-list--center {
+//     //width: 60%;
+//     text-align: center;
 
-  > a.btn, input.btn, button.btn {
-    &:not(.btn--large):last-child {
-      margin: 2.5rem auto 2rem auto;
-    }
-    display: block;
-     margin: 2.5rem auto 2rem auto;
-  }
-}
+//   > a.btn, input.btn, button.btn {
+//     &:not(.btn--large):last-child {
+//       margin: 2.5rem auto 2rem auto;
+//     }
+//     display: block;
+//      margin: 2.5rem auto 2rem auto;
+//   }
+// }
 
-}
+// }
