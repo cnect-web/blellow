@@ -18,7 +18,7 @@ $colors: (
   grey-15: #e3e3e3,
   grey-10: #ebebeb,
   grey-5: #f5f5f5,
-  purple-100: #550745
+  purple-100: #550745,
 ) !default;
 
 /*
@@ -35,12 +35,10 @@ $color-success: #467a39 !default;
 $color-error: #da2130 !default;
 
 $font-family-sans-serif: Arial, sans-serif !default;
-$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 
-$body__font: $font-family-sans-serif !default;
-$headings__font: $font-family-sans-serif !default;
+$body-font: $font-family-sans-serif !default;
+$headings-font: $font-family-sans-serif !default;
 
-$text-color: $gray-700 !default;
-
-
+$white: #fff;

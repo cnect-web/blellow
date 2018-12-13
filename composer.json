@@ -4,7 +4,9 @@
     "type": "drupal-theme",
     "require": {
       "drupal/group": "^1.0",
-      "drupal/components": "^1.0"
+      "drupal/components": "^1.0",
+      "openeuropa/ecl-twig-loader": "^0.1.1",
+      "openeuropa/oe_multilingual": "^0.1.5||~0.2"
     }
 }
 

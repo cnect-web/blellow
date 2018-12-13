@@ -1,14 +1,16 @@
 .general-container {
   @include display-grid;
+
   /* grid-template-columns: 1fr;
   -ms-grid-columns: 1fr;
   grid-auto-rows: auto;
   height: calc(100vh - 70px);
   max-width: 1200px;
   margin: 0 auto; */
-  width: 100%;
   margin-top: 70px;
-  /*grid-template-areas:
+  width: 100%;
+
+  /* grid-template-areas:
     "site_top_bar"
     "site_header_header"
     "page_header"
@@ -20,53 +22,56 @@
 }
 
 .site-topbar {
-  grid-area: topbar;
   background: map-get($colors, 'grey-25');
+  grid-area: topbar;
 }
 
-.site-header {
-  grid-area: site-header;
+.ecl-site-header {
   background: $white;
+  grid-area: site-header;
 }
 
-.page-header {
-  grid-area: page-header;
+.ecl-page-header {
   background: $color-primary;
+  grid-area: page-header;
 }
 
 .layout-content {
+  background: $white;
   grid-area: content;
+
   /* @include grid-child (1, 2, 1, 2); */
-  background: $white;
-  padding: 15px 15px 15px 15px;
-  background: $white;
+  padding: 15px;
 }
 
 .layout-sidebar-first {
   grid-area: sidebar1;
+
   /* @include grid-child (1, 2, 2, 3); */
 }
 
 .layout-sidebar-second {
   grid-area: sidebar2;
+
   /* @include grid-child (1, 2, 3, 4);  */
 }
 
 .general-footer {
-  grid-area: footer;
-  /* @include grid-child (1, 2, 4, 5); */
   background: $color-primary;
+  grid-area: footer;
+
+  /* @include grid-child (1, 2, 4, 5); */
 }
 
 .layout-sidebar-first,
 .layout-sidebar-second {
   background: map-get($colors, 'grey-25');
-  padding: 15px 15px 15px 15px;
+  padding: 15px;
 }
 
 @media (min-width: 768px) {
   .general-container {
-    /*grid-template-columns: 1fr 2fr;
+    /* grid-template-columns: 1fr 2fr;
     -ms-grid-columns: 1fr 2fr;
     grid-template-rows: auto;
      grid-template-areas:
@@ -97,27 +102,25 @@
     /* grid-template-columns: 1fr 2fr 1fr;
     -ms-grid-columns: 1fr 2fr 1fr;
     grid-template-rows: auto 50px; */
-
+    grid-template-areas:
+      'topbar topbar topbar topbar topbar topbar'
+      'site-header site-header site-header site-header site-header site-header'
+      'page-header page-header page-header page-header page-header page-header'
+      '. sidebar1 content content sidebar2 .'
+      'footer  footer  footer footer  footer  footer';
     grid-template-columns: 1fr repeat(4, minmax(auto, 18em)) 1fr;
     grid-template-rows: minmax(1em, auto) minmax(1em, auto) minmax(1em, auto) 1fr auto minmax(1em, auto);
-
-    grid-template-areas:
-      "topbar topbar topbar topbar topbar topbar"
-      "site-header site-header site-header site-header site-header site-header"
-      "page-header page-header page-header page-header page-header page-header"
-      ". sidebar1 content content sidebar2 ."
-      "footer  footer  footer footer  footer  footer";
   }
 
   .site-topbar {
     @include grid-child (1, 7, 1, 2);
   }
 
-  .site-header {
+  .ecl-site-header {
     @include grid-child (1, 7, 2, 3);
   }
 
-  .page-header {
+  .ecl-page-header {
     @include grid-child (1, 7, 3, 4);
   }
 

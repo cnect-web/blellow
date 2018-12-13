@@ -1,24 +1,31 @@
-// Import external libraries.
-@import "compass";
-@import "modularscale";
-@import "breakpoint";
+@import '../ec-custom-preset/ec-preset-full';
+// from old theme
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/grid';
 
-@import "fontawesome/fontawesome.scss";
-@import "fontawesome/regular.scss";
-@import "fontawesome/solid.scss";
+.main-content {
+  .block {
+    margin-bottom: map-get($ecl-spacing, 'm');
+  }
+}
 
+/**
+ * Required field
+ */
+.form-required::after {
+  background-image: url('../images/required.svg');
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  content: '';
+  display: inline-block;
+  height: 6px;
+  margin: 0 0.3em;
+  vertical-align: super;
+}
 
+// Remove top margin from text formats containers.
+.form-item-text-format-value + .ecl-form-group {
+  margin-top: 0;
+}
 
-// Import theme variables
-@import "theme/**/*.scss";
-
-// ecl
-
-@import "ecl/**/*.scss";
-/* @import "ecl/ec-base/ec-base.scss"; */
-
-
-
-// Import sass partials
-@import "base/**/*.scss";
-@import "components/**/*.scss";

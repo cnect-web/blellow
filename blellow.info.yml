@@ -2,7 +2,7 @@ name: blellow
 type: theme
 description: 'Blellow theme'
 core: 8.x
-base theme: classy
+base theme: False
 regions:
   site_top_bar: 'Site Top bar'
   site_header: 'Site Header'
@@ -13,6 +13,8 @@ regions:
   sidebar_second: 'Sidebar second'
   footer: 'Footer'
 libraries:
+  - blellow/style
+  - blellow/base
   - blellow/global-css
   - blellow/global-js
   - blellow/global-fonts
@@ -22,6 +24,9 @@ component-libraries:
   patterns:
     paths:
       - patterns
+  ecl:
+    paths:
+      - templates/components
 libraries-override:
   classy/base: false
 stylesheets-remove:
