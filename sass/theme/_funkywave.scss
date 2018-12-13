@@ -28,7 +28,7 @@ $colors: (
 $color-primary: map-get($colors, 'blue-100') !default;
 $color-secondary: map-get($colors, 'yellow-100') !default;
 $color-shade: map-get($colors, 'grey-100') !default;
-$white: #ffffff;
+$white: #fff;
 $black: map-get($colors, 'grey-100') !default;
 
 $color-info: #006fb4 !default;
@@ -37,10 +37,10 @@ $color-success: #467a39 !default;
 $color-error: #da2130 !default;
 
 $font-family-sans-serif: Arial, sans-serif !default;
-$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-monospace: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 
-$body__font: $font-family-sans-serif !default;
-$headings__font: $font-family-sans-serif !default;
+$body-font: $font-family-sans-serif !default;
+$headings-font: $font-family-sans-serif !default;
 
 $text-color: map-get($colors, 'grey-75') !default;

@@ -1,41 +1,32 @@
 {
-  "name": "blellow",
-  "version": "1.0.0",
-  "description": "Blellow theme",
-  "main": "gulpfile.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cnect-web/blellow.git"
-  },
-  "author": "Peter Neyens",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cnect-web/blellow/issues"
-  },
-  "homepage": "https://github.com/cnect-web/blellow#readme",
-  "dependencies": {
-    "breakpoint-sass": "^2.7.1",
-    "browser-sync": "^2.23.6",
-    "compass-mixins": "^0.12.10",
-    "glob": "^4.2.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-cssbeautify": "^1.0.0",
-    "gulp-cssmin": "^0.2.0",
-    "gulp-git": "^2.5.2",
-    "gulp-plumber": "^1.2.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-watch": "^5.0.0",
-    "sass": "^1.9.0"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-sass": "^3.1.0",
-    "gulp-strip-css-comments": "^2.0.0",
-    "gulp-uglify": "^3.0.0",
-    "gulp-uncss": "^1.0.6",
-    "modularscale-sass": "^3.0.5",
-    "node-sass-globbing": "0.0.23"
-  }
+    "name": "blellow",
+    "license": "EUPL-1.1",
+    "version": "0.0.1",
+    "description": "Bellow base theme. Based on ec components",
+    "private": true,
+    "scripts": {
+        "build:copy": "ecl-builder copy",
+        "build:scripts": "ecl-builder scripts",
+        "build:styles": "ecl-builder styles",
+        "build": "npm-run-all --parallel build:* -ln",
+        "watch:scripts": "chokidar \"./sass/**/*.js\" -i \"/node_modules/\" -c \"eslint {path} & npm run build:scripts\"",
+        "watch:styles": "chokidar \"./sass/**/*.scss\" -i \"/node_modules/\" -c \"stylelint {path} & npm run build:styles\"",
+        "watch": "npm-run-all --parallel watch:* -ln",
+        "prepare": "patch-package"
+    },
+    "dependencies": {
+        "@ecl/builder": "0.2.0",
+        "@ecl/ec-preset-website": "1.2.0",
+        "@ecl/stylelint-config": "0.2.0",
+        "chokidar-cli": "1.2.0",
+        "npm-run-all": "4.0.2",
+        "patch-package": "^5.1.1",
+        "stylelint": "9.1.1",
+        "stylelint-config-prettier": "2.1.0",
+        "stylelint-no-browser-hacks": "^1.1.0"
+    },
+    "engines": {
+        "node": ">=8",
+        "yarn": ">=0.27.5"
+    }
 }

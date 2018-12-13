@@ -3,6 +3,9 @@ global-css:
     theme:
       css/style.css: {}
       css/override.css: {}
+base:
+  js:
+    js/base.js: {}
 global-js:
   js:
     js/script.js: {}
@@ -11,3 +14,39 @@ global-fonts:
   css:
     theme:
       'https://fonts.googleapis.com/css?family=Raleway:300,400,500,700,800,900&amp;subset=latin,latin': { type: external }
+accordions:
+  js:
+    js/accordions.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base
+inpage_navigation:
+  js:
+    js/inpage_navigation.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base
+language_switcher:
+  js:
+    js/language_switcher.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base
+lang_select_pages:
+  js:
+    js/lang_select_pages.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base
+navigation:
+  js:
+    js/navigation.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base
+tables:
+  js:
+    js/tables.js: {}
+  dependencies:
+    - core/drupal
+    - dsmbasetheme/base

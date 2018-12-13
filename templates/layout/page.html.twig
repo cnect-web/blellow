@@ -56,7 +56,7 @@
 
   {% block site_header %}
 
-  <header class="site-header" role="banner">
+  <header class="ecl-site-header" role="banner">
     <div class="container site-header__banner">
       {{ page.site_header }}
     </div>
@@ -64,11 +64,11 @@
   {% endblock %}
 
   {% block page_header %}
-  <div class="page-header">
-    <div class="container">
+  <div class="ecl-page-header">
+    <div class="ecl-container">
       {{ page.breadcrumb }}
       {% if page.page_header %}
-      <div class="page-header__body">
+      <div class="ecl-page-header__body">
         {{ page.page_header }}
       </div>
       {% endif %}
