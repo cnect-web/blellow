@@ -44,10 +44,6 @@
 #}
 <div class="general-container">
 
-  <!-- <header class="general-header clearfix">
-    {{ page.header }}
-  </header> -->
-
   {% if page.site_top_bar %}
     <div class="container site-topbar">
       {{ page.site_top_bar }}
@@ -55,7 +51,6 @@
   {% endif %}
 
   {% block site_header %}
-
   <header class="ecl-site-header" role="banner">
     <div class="ecl-container ecl-site-header__banner">
       {{ page.site_header }}
@@ -68,38 +63,43 @@
     <div class="ecl-container">
       {{ page.breadcrumb }}
       {% if page.page_header %}
-      <div class="ecl-page-header__body">
-        {{ page.page_header }}
-      </div>
+        <div class="ecl-page-header__body">
+          {{ page.page_header }}
+        </div>
       {% endif %}
     </div>
   </div>
   {% endblock %}
 
-      <div class="layout-content">
-        <main role="main">
+  {% block navigation %}
+    {{ page.navigation }}
+  {% endblock %}
+
+  {% block content %}
+    <div class="layout-content">
+      <main role="main">
         <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-        {{ page.content }}
-        </main>
-      </div>{# /.layout-content #}
+         {{ page.content }}
+      </main>
+    </div>{# /.layout-content #}
 
-      {% if page.sidebar_first %}
-        <aside class="layout-sidebar-first" role="complementary">
-          {{ page.sidebar_first }}
-        </aside>
-      {% endif %}
+    {% if page.sidebar_first %}
+      <aside class="layout-sidebar-first" role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
 
-      {% if page.sidebar_second %}
-        <aside class="layout-sidebar-second" role="complementary">
-          {{ page.sidebar_second }}
-        </aside>
-      {% endif %}
+    {% if page.sidebar_second %}
+      <aside class="layout-sidebar-second" role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+    {% endif %}
+  {% endblock %}
 
-      {% if page.footer %}
-        <footer class="no-display--sm general-footer">
-          {{ page.footer }}
-        </footer>
-      {% endif %}
+  {% if page.footer %}
+    <footer class="no-display--sm general-footer">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
 
-
-</div>{# /.layout-container #}
+</div>{# /.general-container #}
