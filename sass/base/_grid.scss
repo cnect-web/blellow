@@ -22,22 +22,22 @@
 }
 
 .site-topbar {
-  background: map-get($colors, 'grey-25');
+  background: map-get($ecl-colors, 'grey-25');
   grid-area: topbar;
 }
 
 .ecl-site-header {
-  background: $white;
+  background: map-get($ecl-colors-bg, 'default');
   grid-area: site-header;
 }
 
 .ecl-page-header {
-  background: $color-primary;
+  background: $ecl-color-primary;
   grid-area: page-header;
 }
 
 .layout-content {
-  background: $white;
+  background: map-get($ecl-colors-bg, 'default');
   grid-area: content;
 
   /* @include grid-child (1, 2, 1, 2); */
@@ -57,7 +57,7 @@
 }
 
 .general-footer {
-  background: $color-primary;
+  background: $ecl-color-primary;
   grid-area: footer;
 
   /* @include grid-child (1, 2, 4, 5); */
@@ -65,7 +65,7 @@
 
 .layout-sidebar-first,
 .layout-sidebar-second {
-  background: map-get($colors, 'grey-25');
+  background: map-get($ecl-colors, 'grey-25');
   padding: 15px;
 }
 

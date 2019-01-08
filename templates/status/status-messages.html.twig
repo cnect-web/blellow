@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override for a status messages.
+ *
+ * @see ./core/themes/stable/templates/misc/status-messages.html.twig
+ */
+#}
+{% for type, messages in message_list %}
+    {% set extraAttributes = [] %}
+    {% for name,value in attributes %}
+      {% set extraAttributes = extraAttributes|merge([{'name': name, 'value': value}]) %}
+    {% endfor %}
+
+    {% include '@ecl/ec-component-message' with {
+      'title': status_headings[type],
+      'message': messages,
+      'modifier': (type == 'status' ? 'success' : type),
+      'srOnly': status_headings[type],
+      'extra_attributes': extraAttributes,
+    } %}
+{% endfor %}

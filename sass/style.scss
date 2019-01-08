@@ -1,6 +1,5 @@
-@import '../ec-custom-preset/ec-preset-full';
+@import 'ec-custom-preset/ec-preset-full';
 // from old theme
-@import 'base/variables';
 @import 'base/mixins';
 @import 'base/grid';
 
@@ -9,7 +8,6 @@
     margin-bottom: map-get($ecl-spacing, 'm');
   }
 }
-
 
 /**
  * Required field
