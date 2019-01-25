@@ -9,12 +9,13 @@
 {% block content %}
   {% if site_logo %}
 
-  {% include '@ecl/generic-component-logo/generic-component-logo.twig' with {
+ {#} {% include '@ecl/generic-component-logo/generic-component-logo.twig' with {
     'href': url('<front>'),
     'title': site_name,
     'type': 'right',
   } only %}
 
+#}
+
   {% endif %}
 {% endblock %}
-
