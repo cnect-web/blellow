@@ -2,12 +2,11 @@ name: blellow
 type: theme
 description: 'Blellow theme'
 core: 8.x
-base theme: False
+base theme: stable
 regions:
   site_top_bar: 'Site Top bar'
   site_header: 'Site Header'
   page_header: 'Page Header'
-  breadcrumb: 'breadcrumb'
   content: 'Content'
   sidebar_first: 'Sidebar first'
   sidebar_second: 'Sidebar second'
@@ -15,8 +14,6 @@ regions:
 libraries:
   - blellow/style
   - blellow/base
-  - blellow/global-css
-  - blellow/global-js
   - blellow/global-fonts
 # components module needs to be installed to use
 # {% include "@myLib/box/box.twig" %}
@@ -27,7 +24,3 @@ component-libraries:
   ecl:
     paths:
       - templates/components
-libraries-override:
-  classy/base: false
-stylesheets-remove:
-  - modules/contrib/vote_up_down/widgets/thumbs/thumbs.css

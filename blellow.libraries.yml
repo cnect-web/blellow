@@ -1,4 +1,4 @@
-global-css:
+style:
   css:
     theme:
       css/style.css: {}
@@ -6,10 +6,6 @@ global-css:
 base:
   js:
     js/base.js: {}
-global-js:
-  js:
-    js/script.js: {}
-    js/tabs.js: {}
 global-fonts:
   css:
     theme:
