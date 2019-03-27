@@ -1,0 +1,39 @@
+{#
+
+  - "identity" (string) (default: ''): name of the site, i.e. "Site identity"
+  - "breadcrumb" (array)  (default: []): collection of @ecl/generic-component-link
+  - "group_name (string) (default: ''): name of the group"
+  - "group_image (default: ''): path to group image
+  - "group_link (default: ''): path to group landing page
+  - "group_join (default: ''): join a group button
+  - "extra_classes" (string) (default: '')
+  - "system" (string) (default: "generic")
+  - "metas" (array) (default: []): array of strings ; each one corresponds to a meta item
+
+#}
+
+{% set _identity = identity|default('') %}
+{% set _breadcrumb = breadcrumb|default([]) %}
+{% set _group_name = title|default('') %}
+{% set _group_image = group_image|default('') %}
+{% set _group_link = group_link|default('') %}
+{% set _group_join = group_join|default('') %}
+{% set _metas = metas|default([]) %}
+{% set _css_class = 'ecl-page-header' %}  
+
+<div class="{{ _css_class }}"{{ _extra_attributes|raw }}{% if _background_image is not empty %} style="background-image: url('{{ _background_image }}')"{% endif %}>
+  <div class="ecl-container">
+    {% if _breadcrumb is not empty %}
+          {% include '@ecl/generic-component-breadcrumb' with {
+            'segments': _breadcrumb,
+            'system': _system
+          } only %}
+    {% endif %}
+
+    {% if _group_image is not empty %}
+      <a href="{{ group_link }}">
+        <img src="{{ _group_image }}" />
+      </a>
+    {% endif %}
+  </div>
+</div>
