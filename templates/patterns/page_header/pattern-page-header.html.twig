@@ -4,10 +4,24 @@
  * Default implementation for the page header component.
  */
 #}
-{% include '@ecl/ec-component-page-header' with {
+
+
+{#}
+
+{% include '@cnectlib/generic-component-page-header' with {
   'identity': identity,
   'breadcrumb': breadcrumb,
   'title': title,
   'introduction': introduction,
   'metas': metas
+} %}
+
+
+#}
+
+
+{% include '@cnectlib/cnect-component-header/cnect-component-header.twig' with {
+  'breadcrumb': breadcrumb,
+  'group_image': 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/logo_urban_agenda_0.png?itok=ElPa-Fim',
+  'group_link': 'https://ec.europa.eu/futurium/en/urban-agenda'	
 } %}

@@ -24,3 +24,6 @@ component-libraries:
   ecl:
     paths:
       - templates/components
+  cnectlib:
+    paths:
+      - templates/cnect_component_lib
