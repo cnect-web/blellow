@@ -1,12 +1,12 @@
-name: blellow
+name: oe_theme
 type: theme
-description: 'Blellow theme'
+description: 'oe_theme theme'
 package: Cnect
 core: 8.x
 libraries:
-  - blellow/style
-  - blellow/base
-  - blellow/global-fonts
+  - oe_theme/style
+  - oe_theme/base
+  - oe_theme/global-fonts
   
 base theme: stable
 regions:

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Functions to support theming in the blellow theme.
+ * Functions to support theming in the oe_theme theme.
  */
 
 declare(strict_types = 1);
@@ -18,7 +18,7 @@ use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
 /**
  * Implements hook_preprocess_breadcrumb().
  */
-function blellow_preprocess_breadcrumb(&$variables) {
+function oe_theme_preprocess_breadcrumb(&$variables) {
   $request     = \Drupal::request();
   $route_match = \Drupal::routeMatch();
   $title       = \Drupal::service('title_resolver')
@@ -130,7 +130,7 @@ function oe_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
 /**
  * Implements hook_preprocess_menu_local_tasks().
  */
-function blellow_preprocess_menu_local_tasks(array &$variables): void {
+function oe_theme_preprocess_menu_local_tasks(array &$variables): void {
   foreach ($variables['primary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
@@ -272,7 +272,7 @@ function oe_theme_preprocess_pager(array &$variables): void {
       'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] - 1),
     ];
     $variables['items']['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
-    $variables['items']['previous']['text'] = t('‹ Previous');
+    $variables['items']['previous']['text'] = t('ï¿½ Previous');
     $variables['items']['previous']['title'] = t('Go to previous page');
   }
 
@@ -312,7 +312,7 @@ function oe_theme_preprocess_pager(array &$variables): void {
       'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] + 1),
     ];
     $variables['items']['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
-    $variables['items']['next']['text'] = t('Next ›');
+    $variables['items']['next']['text'] = t('Next ï¿½');
     $variables['items']['next']['title'] = t('Go to next page');
 
     // Setting up the variables for the last page link.
