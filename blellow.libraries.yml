@@ -12,62 +12,62 @@ accordions:
     js/accordions.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 dialogs:
   js:
     js/dialogs.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 dropdown:
   js:
     js/dropdown.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 context_nav:
   js:
     js/context_nav.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 file_translations:
   js:
     js/file_translations.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 inpage_navigation:
   js:
     js/inpage_navigation.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 lang_select_pages:
   js:
     js/lang_select_pages.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 navigation:
   js:
     js/navigation.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 tables:
   js:
     js/tables.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
 
 language_switcher:
   js:
     js/language_switcher.js: {}
   dependencies:
     - core/drupal
-    - oe_theme/base
+    - blellow/base
     
 global-fonts:
   css:

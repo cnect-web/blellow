@@ -18,7 +18,7 @@ use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
 /**
  * Implements hook_preprocess_breadcrumb().
  */
-function oe_theme_preprocess_breadcrumb(&$variables) {
+function blellow_preprocess_breadcrumb(&$variables) {
   $request     = \Drupal::request();
   $route_match = \Drupal::routeMatch();
   $title       = \Drupal::service('title_resolver')
@@ -42,7 +42,7 @@ function oe_theme_preprocess_breadcrumb(&$variables) {
 /**
  * Implements hook_preprocess_menu__main().
  */
-function oe_theme_preprocess_menu__main(array &$variables): void {
+function blellow_preprocess_menu__main(array &$variables): void {
   // Massage data to be compliant with ECL navigation menu data structure.
   $variables['links'] = array_map(function ($item) {
     return [
@@ -71,7 +71,7 @@ function oe_theme_preprocess_menu__main(array &$variables): void {
  *
  * Adds a bare, markup-free template suggestion to all paragraph fields.
  */
-function oe_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
+function blellow_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
   // Do not output field labels and wrapping markup for paragraph fields.
   if (isset($variables['element']['#entity_type']) && $variables['element']['#entity_type'] === 'paragraph') {
     // Prepend the new suggestion to the list. This will put it right after the
@@ -84,7 +84,7 @@ function oe_theme_theme_suggestions_field_alter(array &$suggestions, array $vari
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function oe_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
+function blellow_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['elements']['#paragraph'];
 
@@ -97,7 +97,7 @@ function oe_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $
 /**
  * Implements hook_preprocess_paragraph().
  */
-function oe_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
+function blellow_preprocess_paragraph__oe_links_block(array &$variables): void {
   // Massage data to be compliant with ECL links block component data structure.
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [
@@ -110,7 +110,7 @@ function oe_theme_preprocess_paragraph__oe_links_block(array &$variables): void 
 /**
  * Implements hook_preprocess_paragraph__oe_accordion().
  */
-function oe_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
+function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
   // Massage data to be compliant with ECL accordions component data structure.
   $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
   $variables['identifier'] = 'paragraph-' . $variables['paragraph']->id();
@@ -130,7 +130,7 @@ function oe_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
 /**
  * Implements hook_preprocess_menu_local_tasks().
  */
-function oe_theme_preprocess_menu_local_tasks(array &$variables): void {
+function blellow_preprocess_menu_local_tasks(array &$variables): void {
   foreach ($variables['primary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
@@ -159,14 +159,14 @@ function oe_theme_preprocess_menu_local_tasks(array &$variables): void {
 /**
  * Implements hook_preprocess_input__radio().
  */
-function oe_theme_preprocess_input__radio(array &$variables): void {
+function blellow_preprocess_input__radio(array &$variables): void {
   _oe_theme_preprocess_input_label_wrapper($variables);
 }
 
 /**
  * Implements hook_preprocess_input__checkbox().
  */
-function oe_theme_preprocess_input__checkbox(array &$variables): void {
+function blellow_preprocess_input__checkbox(array &$variables): void {
   _oe_theme_preprocess_input_label_wrapper($variables);
 }
 
@@ -213,7 +213,7 @@ function _oe_theme_preprocess_input_label_wrapper(array &$variables): void {
  * Disables displaying of the label for checkbox and radio elements, as the
  * label is already rendered in the input template.
  */
-function oe_theme_preprocess_form_element(array &$variables): void {
+function blellow_preprocess_form_element(array &$variables): void {
   if (in_array($variables['element']['#type'], ['checkbox', 'radio'])) {
     $variables['label_display'] = 'none';
   }
@@ -228,7 +228,7 @@ function oe_theme_preprocess_form_element(array &$variables): void {
  * guide pager component requirements.
  * Most of the bare-bones are copy-pasted from the Drupal implementation.
  */
-function oe_theme_preprocess_pager(array &$variables): void {
+function blellow_preprocess_pager(array &$variables): void {
   $element = $variables['pager']['#element'];
   $parameters = $variables['pager']['#parameters'];
   $route_name = $variables['pager']['#route_name'];
@@ -332,7 +332,7 @@ function oe_theme_preprocess_pager(array &$variables): void {
 /**
  * Implements hook_preprocess_links().
  */
-function oe_theme_preprocess_links__language_block(array &$variables): void {
+function blellow_preprocess_links__language_block(array &$variables): void {
   $current_language = \Drupal::languageManager()
     ->getCurrentLanguage()
     ->getId();
@@ -362,7 +362,7 @@ function oe_theme_preprocess_links__language_block(array &$variables): void {
  * Adds extra variables regarding the current and the unavailable languages,
  * and prepares the links for rendering.
  */
-function oe_theme_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
+function blellow_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
   $entity = \Drupal::service('oe_multilingual.helper')->getEntityFromCurrentRoute();
   /** @var \Drupal\Core\Entity\EntityInterface $translation */
   $translation = \Drupal::service('oe_multilingual.helper')->getCurrentLanguageEntityTranslation($entity);
@@ -395,7 +395,7 @@ function oe_theme_preprocess_links__oe_multilingual_content_language_block(array
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_dialog(array &$variables): void {
+function blellow_preprocess_pattern_dialog(array &$variables): void {
   // Make sure it has default values.
   $variables += [
     'dialog_id' => Html::getUniqueId('ecl-dialog'),
@@ -422,7 +422,7 @@ function oe_theme_preprocess_pattern_dialog(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_gallery__preview(array &$variables): void {
+function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
   foreach ($variables['items'] as &$item) {
     $item = GalleryItemValueObject::fromArray($item);
   }
@@ -431,7 +431,7 @@ function oe_theme_preprocess_pattern_gallery__preview(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_accordion(array &$variables): void {
+function blellow_preprocess_pattern_accordion(array &$variables): void {
   // If no identifier is provided generate a random, unique one.
   if (empty($variables['identifier'])) {
     $random = new Random();
@@ -456,7 +456,7 @@ function oe_theme_preprocess_pattern_accordion(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_dropdown(array &$variables): void {
+function blellow_preprocess_pattern_dropdown(array &$variables): void {
   $defaults = [
     'wrapper_id' => 'ecl-button-dropdown',
     'expandable_id' => 'expandable-ecl-button-dropdown',
@@ -480,7 +480,7 @@ function oe_theme_preprocess_pattern_dropdown(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_link_block(array &$variables): void {
+function blellow_preprocess_pattern_link_block(array &$variables): void {
   // Format links in order to respect ECL expectations.
   foreach ($variables['links'] as $key => $link) {
     $variables['links'][$key]['href'] = $link['url'];
@@ -504,14 +504,14 @@ function _oe_theme_preprocess_pattern_social_media_links(array &$variables): voi
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_social_media_links_vertical(array &$variables): void {
+function blellow_preprocess_pattern_social_media_links_vertical(array &$variables): void {
   _oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_social_media_links_horizontal(array &$variables): void {
+function blellow_preprocess_pattern_social_media_links_horizontal(array &$variables): void {
   _oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
@@ -520,7 +520,7 @@ function oe_theme_preprocess_pattern_social_media_links_horizontal(array &$varia
  *
  * Add css class for splash page.
  */
-function oe_theme_preprocess_html(array &$variables): void {
+function blellow_preprocess_html(array &$variables): void {
   if ('language_selection_page' === \Drupal::request()->attributes->get('_route')) {
     $variables['attributes']['class'][] = 'page-splash';
   }
@@ -529,7 +529,7 @@ function oe_theme_preprocess_html(array &$variables): void {
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
  */
-function oe_theme_preprocess_paragraph__oe_list_item(array &$variables): void {
+function blellow_preprocess_paragraph__oe_list_item(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -579,7 +579,7 @@ function oe_theme_preprocess_paragraph__oe_list_item(array &$variables): void {
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
  */
-function oe_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+function blellow_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -603,7 +603,7 @@ function oe_theme_preprocess_paragraph__oe_list_item_block(array &$variables): v
  * Prepares the inpage navigation by creating links for the inner paragraphs
  * that implement a title.
  */
-function oe_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+function blellow_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -649,7 +649,7 @@ function oe_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigatio
 /**
  * Implements hook_preprocess_pattern().
  */
-function oe_theme_preprocess_pattern_date_block(array &$variables): void {
+function blellow_preprocess_pattern_date_block(array &$variables): void {
   // This make sure that the variant value will always fallback to
   // "default" if an empty or not valid value is passed.
   $variants = [
@@ -667,14 +667,14 @@ function oe_theme_preprocess_pattern_date_block(array &$variables): void {
 /**
  * Implements hook_preprocess_pattern_file__preview().
  */
-function oe_theme_preprocess_pattern_file__preview(array &$variables): void {
+function blellow_preprocess_pattern_file__preview(array &$variables): void {
   $variables['file'] = FileValueObject::fromArray($variables['file']);
 }
 
 /**
  * Implements hook_preprocess_pattern_file_link__preview().
  */
-function oe_theme_preprocess_pattern_file_link__preview(array &$variables): void {
+function blellow_preprocess_pattern_file_link__preview(array &$variables): void {
   $variables['files'] = array_map(
     function ($file) {
       return FileValueObject::fromArray($file);
@@ -686,7 +686,7 @@ function oe_theme_preprocess_pattern_file_link__preview(array &$variables): void
 /**
  * Implements hook_preprocess_pattern_file_translation().
  */
-function oe_theme_preprocess_pattern_file_translation(array &$variables): void {
+function blellow_preprocess_pattern_file_translation(array &$variables): void {
   // This is defined in ui_patterns contrib module in ui_patterns_theme().
   if ($variables['translations'] !== NULL) {
     return;
@@ -700,7 +700,7 @@ function oe_theme_preprocess_pattern_file_translation(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_file_translation__preview(array &$variables): void {
+function blellow_preprocess_pattern_file_translation__preview(array &$variables): void {
   $variables['file'] = FileValueObject::fromArray($variables['file']);
 
   foreach ((array) $variables['translations'] as $index => $translation) {
@@ -711,35 +711,35 @@ function oe_theme_preprocess_pattern_file_translation__preview(array &$variables
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_list_item__variant_date__preview(array &$variables): void {
+function blellow_preprocess_pattern_list_item__variant_date__preview(array &$variables): void {
   $variables['date'] = DateValueObject::fromArray($variables['date']);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_theme_preprocess_pattern_date_block__preview(array &$variables): void {
+function blellow_preprocess_pattern_date_block__preview(array &$variables): void {
   $variables['date'] = DateValueObject::fromArray($variables['date']);
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function oe_theme_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
+function blellow_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
   $suggestions[] = $variables['theme_hook_original'] . '__' . $variables['element']['#form_id'];
 }
 
 /**
  * Implements hook_preprocess_input().
  */
-function oe_theme_preprocess_input__search(array &$variables): void {
+function blellow_preprocess_input__search(array &$variables): void {
   _oe_theme_preprocess_input_text($variables['element']);
 }
 
 /**
  * Implements hook_preprocess_form().
  */
-function oe_theme_preprocess_form__oe_search_search_form(array &$variables): void {
+function blellow_preprocess_form__oe_search_search_form(array &$variables): void {
   _oe_theme_preprocess_input_text($variables['element']['keys']);
   $variables['input'] = $variables['element']['keys']['ecl_array'];
   $variables['label'] = t('Search');
