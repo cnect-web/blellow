@@ -17,7 +17,7 @@ drupal:
     - "./vendor/bin/drush en oe_corporate_blocks -y"
     - "./vendor/bin/drush en config_devel -y"
     - "./vendor/bin/drush en toolbar -y"
-    - "./vendor/bin/drush theme:enable oe_theme -y"
+    - "./vendor/bin/drush theme:enable blellow -y"
     - "./vendor/bin/drush theme:enable seven -y"
     - "./vendor/bin/drush config-set system.theme default oe_theme -y"
     - "./vendor/bin/drush config-set system.theme admin seven -y"
