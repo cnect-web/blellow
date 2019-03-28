@@ -1,8 +1,8 @@
 {
-    "name": "blellow",
+    "name": "oe_theme",
     "license": "EUPL-1.1",
     "version": "0.0.1",
-    "description": "Bellow base theme. Based on ec components",
+    "description": "OpenEuropa base theme.",
     "private": true,
     "scripts": {
         "build:copy": "ecl-builder copy",

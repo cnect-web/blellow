@@ -1,0 +1,27 @@
+parameters:
+  oe_theme_helper.twig_loader.namespaces: ['ec-europa', 'ecl']
+  oe_theme_helper.twig_loader.theme: 'oe_theme'
+  oe_theme_helper.twig_loader.directory: 'templates/components'
+services:
+  oe_theme_helper.twig_loader.component_library:
+    class: Drupal\oe_theme_helper\Loader\ComponentLibraryLoader
+    arguments: ['%oe_theme_helper.twig_loader.namespaces%', '@app.root', '%oe_theme_helper.twig_loader.theme%', '%oe_theme_helper.twig_loader.directory%', '@theme_handler']
+    tags:
+      - { name: twig.loader, priority: -100 }
+  oe_theme_helper.route_subscriber:
+    class: Drupal\oe_theme_helper\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  oe_theme_helper.page_header_context:
+    class: Drupal\oe_theme_helper\ContextProvider\PageHeaderContext
+    arguments: ['@plugin.manager.page_header_metadata']
+    tags:
+      - { name: 'context_provider' }
+  plugin.manager.page_header_metadata:
+    class: Drupal\oe_theme_helper\PageHeaderMetadataPluginManager
+    parent: default_plugin_manager
+  oe_theme_helper.twig_extension.filters:
+    class: Drupal\oe_theme_helper\TwigExtension\Filters
+    arguments: ['@language_manager']
+    tags:
+    - { name: twig.extension }
