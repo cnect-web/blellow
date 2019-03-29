@@ -1,0 +1,21 @@
+
+{#
+/*
+ * Read more 
+ * https://www.drupal.org/docs/8/theming-drupal-8/including-part-template
+ */
+ #}
+
+{#
+/**
+ * @file
+ * Default implementation for the page header component.
+ */
+#}
+{% include '@oe_theme/futurium/fut-component-page-header.twig' with {
+  'identity': identity,
+  'breadcrumb': breadcrumb,
+  'title': title,
+  'introduction': introduction,
+  'metas': metas
+} %}

@@ -777,3 +777,16 @@ function _oe_theme_preprocess_input_text(array &$element): void {
   // Map rest array elements.
   $element['ecl_array']['has_error'] = !empty($element['#errors']);
 }
+
+/**
+ * Provide hook theme suggestions for patterns.
+ *
+ * @see ui_patterns_theme_suggestions_alter()
+ * 
+ * https://ui-patterns.readthedocs.io/en/8.x-1.x/content/developer-documentation.html
+ */
+function oe_theme_ui_patterns_suggestions_alter(array &$suggestions, array $variables, $context) {
+  // kint($variables);
+  $hook = $variables['theme_hook_original'];
+  $suggestions[] = $hook . '__futurium_header';
+}
