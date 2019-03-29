@@ -16,6 +16,9 @@ const banner = `${pkg.name} - ${
 module.exports = {
   scripts: [
     {
+      // TODO: Check if we need this line anymore. 
+      //       if yes we need to find the proper place for it.
+      // entry: path.resolve('sass/ec-custom-preset/ec-preset-full.js'),
       entry: path.resolve(nodeModules, '@ecl/ec-preset-website/ec-preset-website.js'),
       dest: path.resolve(outputFolder, 'js/base.js'),
       options: {
