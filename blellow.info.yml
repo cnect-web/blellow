@@ -1,29 +1,44 @@
 name: blellow
 type: theme
-description: 'Blellow theme'
+description: 'blellow theme'
+package: Cnect
 core: 8.x
-base theme: stable
-regions:
-  site_top_bar: 'Site Top bar'
-  site_header: 'Site Header'
-  page_header: 'Page Header'
-  content: 'Content'
-  sidebar_first: 'Sidebar first'
-  sidebar_second: 'Sidebar second'
-  footer: 'Footer'
 libraries:
   - blellow/style
   - blellow/base
   - blellow/global-fonts
+  
+base theme: stable
+regions:
+  site_top_bar: "Site top bar"
+  site_header: "Site header"
+  page_header: "Page header"
+  navigation: "Navigation"
+  content: "Content"
+  footer: "Footer"
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+
+config_devel:
+  optional:
+    - block.block.oe_multilingual_content_language_switcher
+    - block.block.oe_multilingual_language_switcher
+    - block.block.oe_theme_main_page_content
+    - block.block.oe_theme_page_header
+    - block.block.oe_theme_site_branding
+    - block.block.oe_theme_tabs
+    - block.block.oe_theme_search_form
+    - block.block.oe_theme_corporate_footer
+
 # components module needs to be installed to use
 # {% include "@myLib/box/box.twig" %}
 component-libraries:
   patterns:
     paths:
       - patterns
-  ecl:
-    paths:
-      - templates/components
+  # ecl:
+  #   paths:
+  #     - templates/components
   cnectlib:
     paths:
       - templates/cnect_component_lib

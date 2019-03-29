@@ -1,0 +1,56 @@
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/tests/features
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\Tests\oe_theme\Behat\DrupalContext
+        - Drupal\Tests\oe_theme\Behat\MinkContext
+        - Drupal\Tests\oe_theme\Behat\OeThemeTestContext
+        - OpenEuropa\Behat\TransformationContext:
+            elements:
+              about dropdown menu: "#nav-menu-expandable-group-2 .ecl-navigation-menu__links"
+              breadcrumb: "nav.ecl-breadcrumb"
+              corporate footer: "footer.ecl-footer div.ecl-footer__corporate"
+              language switcher: ".ecl-language-list"
+              language switcher link: ".ecl-lang-select-sites__link .ecl-lang-select-sites__label"
+              language switcher overlay: ".ecl-dialog__body"
+              logo: "a.ecl-logo"
+              page header: ".ecl-page-header__body"
+              priorities dropdown menu: "#nav-menu-expandable-group-3 .ecl-navigation-menu__links"
+              search form: ".ecl-search-form"
+              sites switcher: ".demo-block-site-switcher"
+              dropdown content: ".ecl-link-block__list"
+            pages:
+              user registration: "/user/register"
+              ECL components overview: "/en/components"
+              ECL dropdown component: "components/dropdown"
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      ajax_timeout: 10
+      browser_name: 'chrome'
+      javascript_session: 'selenium2'
+      selenium2:
+        wd_host: '${selenium.host}:${selenium.port}/wd/hub'
+        capabilities: { "browser": "chrome", "version": "*" }
+      base_url: "${drupal.base_url}"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "build"
+      region_map:
+        about dropdown menu: "#nav-menu-expandable-group-2"
+        header: ".ecl-site-header"
+        footer: "footer.ecl-footer"
+        language dialog: ".ecl-dialog"
+        language switcher: ".ecl-language-list"
+        navigation: ".ecl-navigation-menu"
+        page: "body"
+        page header: ".ecl-page-header"
+        page header site identity: ".ecl-page-header__identity"
+        priorities dropdown menu: "#nav-menu-expandable-group-3"
+  formatters:
+    progress: ~

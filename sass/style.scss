@@ -1,7 +1,7 @@
-@import 'ec-custom-preset/ec-preset-full';
-// from old theme
-@import 'base/mixins';
-@import 'base/grid';
+@import '@ecl/ec-preset-website/ec-preset-website.scss';
+@import "./components/form";
+@import "./components/toolbar";
+@import "./components/splash-page";
 
 .main-content {
   .block {
@@ -12,19 +12,19 @@
 /**
  * Required field
  */
-.form-required::after {
-  background-image: url('../images/required.svg');
+.form-required:after {
+  content: '';
+  vertical-align: super;
+  display: inline-block;
+  background-image: url(../images/required.svg);
   background-repeat: no-repeat;
   background-size: 6px 6px;
-  content: '';
-  display: inline-block;
+  width: 6px;
   height: 6px;
   margin: 0 0.3em;
-  vertical-align: super;
 }
 
 // Remove top margin from text formats containers.
 .form-item-text-format-value + .ecl-form-group {
   margin-top: 0;
 }
-
