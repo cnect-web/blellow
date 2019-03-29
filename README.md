@@ -1,6 +1,6 @@
 # Futurium base theme
 
-[![Packagist](https://img.shields.io/badge/Packagist-v1.0.0--alpha-orange.svg)](https://packagist.org/packages/cnect-web/blellow)
+[![Packagist](https://img.shields.io/badge/Packagist-v1.0.0--alpha-orange.svg)](https://packagist.org/packages/cnect-web/oe_theme)
 
 Drupal 8 theme based on the [Europa Component Library][1] (ECL).
 
@@ -19,7 +19,7 @@ In your Drupal project's main `composer.json` add the following dependency:
 ```json
 {
     "require": {
-      "cnect-web/blellow": "dev-develop"
+      "cnect-web/oe_theme": "dev-develop"
     }
 }
 ```

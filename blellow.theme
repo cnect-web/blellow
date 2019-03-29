@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Functions to support theming in the blellow theme.
+ * Functions to support theming in the oe_theme theme.
  */
 
 declare(strict_types = 1);
@@ -11,6 +11,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Component\Utility\Random;
+use Drupal\oe_theme\ValueObject\FileValueObject;
+use Drupal\oe_theme\ValueObject\DateValueObject;
+use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
 
 /**
  * Implements hook_preprocess_breadcrumb().
@@ -32,6 +35,94 @@ function blellow_preprocess_breadcrumb(&$variables) {
   if (!empty($title)) {
     $variables['segments'][] = [
       'label' => $title,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu__main().
+ */
+function blellow_preprocess_menu__main(array &$variables): void {
+  // Massage data to be compliant with ECL navigation menu data structure.
+  $variables['links'] = array_map(function ($item) {
+    return [
+      'href' => $item['url'],
+      'label' => $item['title'],
+      'is_active' => $item['in_active_trail'],
+    ];
+  }, $variables['items']);
+
+  foreach ($variables['items'] as $name => $link) {
+    $variables['links'][$name]['children_links'] = array_map(function ($item) {
+      return [
+        'links' => [[
+          'href' => $item['url'],
+          'label' => $item['title'],
+          'is_active' => $item['in_active_trail'],
+        ],
+        ],
+      ];
+    }, $variables['items'][$name]['below']);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds a bare, markup-free template suggestion to all paragraph fields.
+ */
+function blellow_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
+  // Do not output field labels and wrapping markup for paragraph fields.
+  if (isset($variables['element']['#entity_type']) && $variables['element']['#entity_type'] === 'paragraph') {
+    // Prepend the new suggestion to the list. This will put it right after the
+    // default field template. By doing this we allow to override single
+    // fields, while keeping all the rest markup-free.
+    array_unshift($suggestions, 'field__bare');
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function blellow_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+
+  if ($paragraph->bundle() === 'oe_content_row') {
+    $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__variant_' . $variant;
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function blellow_preprocess_paragraph__oe_links_block(array &$variables): void {
+  // Massage data to be compliant with ECL links block component data structure.
+  foreach (Element::children($variables['content']['field_oe_links']) as $index) {
+    $variables['links'][] = [
+      'label' => $variables['content']['field_oe_links'][$index]['#title'],
+      'url' => $variables['content']['field_oe_links'][$index]['#url'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__oe_accordion().
+ */
+function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
+  // Massage data to be compliant with ECL accordions component data structure.
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+  $variables['identifier'] = 'paragraph-' . $variables['paragraph']->id();
+  $variables['items'] = [];
+
+  /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $field_item */
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $field_item) {
+    $paragraph = $field_item->entity;
+    $variables['items'][] = [
+      'title' => $builder->viewField($paragraph->get('field_oe_text')),
+      'icon' => $paragraph->get('field_oe_icon')->value,
+      'body' => $builder->viewField($paragraph->get('field_oe_text_long')),
     ];
   }
 }
@@ -63,6 +154,628 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
       ];
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_input__radio().
+ */
+function blellow_preprocess_input__radio(array &$variables): void {
+  _oe_theme_preprocess_input_label_wrapper($variables);
+}
+
+/**
+ * Implements hook_preprocess_input__checkbox().
+ */
+function blellow_preprocess_input__checkbox(array &$variables): void {
+  _oe_theme_preprocess_input_label_wrapper($variables);
+}
+
+/**
+ * Helper function to additionally preprocess checkbox and radio elements.
+ *
+ * Moves the label element to the input template and creates some helper
+ * variables to be used with the ECL templates.
+ *
+ * @param array $variables
+ *   Set of available variables.
+ */
+function _oe_theme_preprocess_input_label_wrapper(array &$variables): void {
+  $element = &$variables['element'];
+  $variables['has_error'] = !empty($element['#errors']);
+
+  if (isset($element['#title']) && $element['#title'] !== '') {
+    $variables['title'] = ['#markup' => $element['#title']];
+  }
+
+  // Generate the extra attributes array from the general attributes.
+  $extra_attributes = !empty($variables['attributes']) ? $variables['attributes'] : [];
+  $predefined_attributes = [
+    'id' => 'id',
+    'name' => 'name',
+    'value' => 'value',
+    'checked' => 'checked',
+    'disabled' => 'disabled',
+  ];
+  $extra_attributes = array_diff_key($extra_attributes, $predefined_attributes);
+  foreach ($extra_attributes as $key => $value) {
+    if (is_string($value)) {
+      $variables['input_attributes'][] = [
+        'name' => $key,
+        'value' => $value,
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_form_element().
+ *
+ * Disables displaying of the label for checkbox and radio elements, as the
+ * label is already rendered in the input template.
+ */
+function blellow_preprocess_form_element(array &$variables): void {
+  if (in_array($variables['element']['#type'], ['checkbox', 'radio'])) {
+    $variables['label_display'] = 'none';
+  }
+}
+
+/**
+ * Implements hook_preprocess_pager().
+ *
+ * @see template_preprocess_pager()
+ *
+ * Overwrites the default Drupal pager in order to adapt to the ECL style
+ * guide pager component requirements.
+ * Most of the bare-bones are copy-pasted from the Drupal implementation.
+ */
+function blellow_preprocess_pager(array &$variables): void {
+  $element = $variables['pager']['#element'];
+  $parameters = $variables['pager']['#parameters'];
+  $route_name = $variables['pager']['#route_name'];
+  $route_parameters = $variables['pager']['#route_parameters'] ?? [];
+  global $pager_page_array, $pager_total;
+
+  // Nothing to do if there is only one page.
+  if ($pager_total[$element] <= 1) {
+    return;
+  }
+
+  $quantity = 5;
+  $pager_middle = ceil($quantity / 2);
+  $pager_current = $pager_page_array[$element] + 1;
+  $pager_first = $pager_current - $pager_middle + 1;
+  $pager_last = $pager_current + $quantity - $pager_middle;
+  $pager_max = $pager_total[$element];
+
+  $i = $pager_first;
+  // Compared to the core implementation, we don't re-center but we cut out the
+  // extra elements from the start and end of the query.
+  if ($pager_last > $pager_max) {
+    $pager_last = $pager_max;
+  }
+  if ($i <= 0) {
+    $i = 1;
+  }
+
+  // Create the "first" and "previous" links if we are not on the first page.
+  if ($pager_page_array[$element] > 0) {
+    $variables['items']['first'] = [];
+    $options = [
+      'query' => pager_query_add_page($parameters, $element, 0),
+    ];
+    $variables['items']['first']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['first']['text'] = '1';
+    $variables['items']['first']['title'] = t('Go to page 1');
+
+    $variables['items']['previous'] = [];
+    $options = [
+      'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] - 1),
+    ];
+    $variables['items']['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['previous']['text'] = t('� Previous');
+    $variables['items']['previous']['title'] = t('Go to previous page');
+  }
+
+  if ($i != $pager_max) {
+    // Generate the actual pager piece.
+    $variables['items']['pages'] = [];
+    for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+      // Don't generate a link to the first page when the "first" link is
+      // already available.
+      if ($i == 1 && $pager_current > 1) {
+        continue;
+      }
+
+      // Don't generate a link to the last page when the "last" link is
+      // already available.
+      if ($i == $pager_max && ($pager_current < $pager_max)) {
+        continue;
+      }
+
+      $options = [
+        'query' => pager_query_add_page($parameters, $element, $i - 1),
+      ];
+      $variables['items']['pages'][$i]['href'] = \Drupal::url($route_name, $route_parameters, $options);
+      if ($i == $pager_current) {
+        $variables['current'] = $i;
+      }
+      $variables['items']['pages'][$i]['text'] = (string) $i;
+      $variables['items']['pages'][$i]['title'] = t('Go to page @number', ['@number' => $i]);
+    }
+  }
+
+  // Create the "next" and "last" links if we are not on the last page.
+  if ($pager_page_array[$element] < ($pager_max - 1)) {
+    // Setting up variables for the next page link.
+    $variables['items']['next'] = [];
+    $options = [
+      'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] + 1),
+    ];
+    $variables['items']['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['next']['text'] = t('Next �');
+    $variables['items']['next']['title'] = t('Go to next page');
+
+    // Setting up the variables for the last page link.
+    $variables['items']['last'] = [];
+    $options = [
+      'query' => pager_query_add_page($parameters, $element, $pager_max - 1),
+    ];
+    $variables['items']['last']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['last']['text'] = (string) $pager_total[$element];
+    $variables['items']['last']['title'] = t('Go to page @number', ['@number' => $pager_total[$element]]);
+  }
+
+  // Set up additional variables.
+  $variables['max_page'] = $pager_total[$element];
+}
+
+/**
+ * Implements hook_preprocess_links().
+ */
+function blellow_preprocess_links__language_block(array &$variables): void {
+  $current_language = \Drupal::languageManager()
+    ->getCurrentLanguage()
+    ->getId();
+
+  $variables['languages'] = [];
+  foreach ($variables['links'] as $language_code => $link) {
+    /** @var \Drupal\Core\Url $url */
+    $url = $link['link']['#url'];
+    $href = $url
+      ->setOptions($link['link']['#options'])
+      ->setAbsolute(TRUE)
+      ->toString();
+
+    $variables['languages'][] = [
+      'href' => $href,
+      'hreflang' => $language_code,
+      'label' => $link['link']['#title'],
+      'lang' => $language_code,
+      'is_active' => $language_code === $current_language,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_links__oe_multilingual_content_language_block().
+ *
+ * Adds extra variables regarding the current and the unavailable languages,
+ * and prepares the links for rendering.
+ */
+function blellow_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
+  $entity = \Drupal::service('oe_multilingual.helper')->getEntityFromCurrentRoute();
+  /** @var \Drupal\Core\Entity\EntityInterface $translation */
+  $translation = \Drupal::service('oe_multilingual.helper')->getCurrentLanguageEntityTranslation($entity);
+  $variables['current'] = $translation->language()->getName();
+  /** @var \Drupal\Core\Language\LanguageInterface[] $languages */
+  $languages = \Drupal::service('language_manager')->getNativeLanguages();
+  $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['unavailable'] = $languages[$current_language]->getName();
+
+  // Normalize the links to an array of options suitable for the ECL
+  // "ecl-lang-select-pages" template.
+  $variables['options'] = [];
+  foreach ($variables['links'] as $language_code => $link) {
+    /** @var \Drupal\Core\Url $url */
+    $url = $link['link']['#url'];
+    $href = $url
+      ->setOptions($link['link']['#options'])
+      ->setAbsolute(TRUE)
+      ->toString();
+
+    $variables['options'][] = [
+      'href' => $href,
+      'hreflang' => $language_code,
+      'label' => $link['link']['#title'],
+      'lang' => $language_code,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_dialog(array &$variables): void {
+  // Make sure it has default values.
+  $variables += [
+    'dialog_id' => Html::getUniqueId('ecl-dialog'),
+    'title' => [],
+    'description' => [],
+  ];
+
+  // Format the "title" variable.
+  $variables['title'] = [
+    'id' => Html::getUniqueId('ecl-dialog-title'),
+    'value' => $variables['title'],
+  ];
+
+  // Format the "description" variable.
+  $variables['description'] = [
+    'id' => Html::getUniqueId('ecl-dialog-description'),
+    'value' => $variables['description'],
+  ];
+
+  // Format the "hidden" variable.
+  $variables['hidden'] = $variables['hidden'] ? 'true' : 'false';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    $item = GalleryItemValueObject::fromArray($item);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_accordion(array &$variables): void {
+  // If no identifier is provided generate a random, unique one.
+  if (empty($variables['identifier'])) {
+    $random = new Random();
+    $variables['identifier'] = $random->string(8, TRUE);
+  }
+
+  // Format items in order to respect ECL expectations.
+  foreach (array_values($variables['items']) as $key => $item) {
+    $variables['items'][$key] = [
+      'id' => $variables['identifier'] . '-' . $key,
+      'heading' => [
+        'title' => $item['title'],
+        'icon' => $item['icon'],
+        'level' => $key,
+      ],
+      'body' => $item['body'],
+      'isExpanded' => $key === 0,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_dropdown(array &$variables): void {
+  $defaults = [
+    'wrapper_id' => 'ecl-button-dropdown',
+    'expandable_id' => 'expandable-ecl-button-dropdown',
+    'button_id' => 'button-ecl-button-dropdown',
+  ];
+
+  foreach ($defaults as $key => $id) {
+    if (!empty($variables[$key])) {
+      continue;
+    }
+
+    $variables[$key] = Html::getUniqueId($id);
+  }
+
+  // @todo: Remove this duplicated code and reuse the link_block from below.
+  foreach ($variables['links'] as $key => $link) {
+    $variables['links'][$key]['href'] = $link['url'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_link_block(array &$variables): void {
+  // Format links in order to respect ECL expectations.
+  foreach ($variables['links'] as $key => $link) {
+    $variables['links'][$key]['href'] = $link['url'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function _oe_theme_preprocess_pattern_social_media_links(array &$variables): void {
+  // Format social media links in order to respect ECL expectations.
+  foreach ($variables['links'] as $key => $link) {
+    $variables['links'][$key]['variant'] = $link['service'];
+    $variables['links'][$key]['link'] = [
+      'label' => $link['label'],
+      'href' => $link['url'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_social_media_links_vertical(array &$variables): void {
+  _oe_theme_preprocess_pattern_social_media_links($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_social_media_links_horizontal(array &$variables): void {
+  _oe_theme_preprocess_pattern_social_media_links($variables);
+}
+
+/**
+ * Implements hook_preprocess_html() for html.html.twig.
+ *
+ * Add css class for splash page.
+ */
+function blellow_preprocess_html(array &$variables): void {
+  if ('language_selection_page' === \Drupal::request()->attributes->get('_route')) {
+    $variables['attributes']['class'][] = 'page-splash';
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
+ */
+function blellow_preprocess_paragraph__oe_list_item(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $list_item_variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  $variables['variant'] = $list_item_variant ?? 'default';
+  $variables['url'] = $paragraph->get('field_oe_link')->first()->getUrl();
+
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  // Extract the image if present.
+  if (!$paragraph->get('field_oe_image')->isEmpty()) {
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
+    $image_item = $paragraph->get('field_oe_image')->first();
+    $file = $image_item->get('entity')->getValue();
+    $variables['image'] = [
+      'src' => file_url_transform_relative(file_create_url($file->getFileUri())),
+      'alt' => $image_item->get('alt')->getValue(),
+    ];
+
+    // Caches are handled by the formatter usually. Since we are not rendering
+    // the original render arrays, we need to propagate our caches to the
+    // paragraph template.
+    $cacheability->addCacheableDependency($file);
+  }
+
+  // Prepare the date fields if date is available.
+  if (!$paragraph->get('field_oe_date')->isEmpty()) {
+    $variables['date'] = DateValueObject::fromDateTimeItem($paragraph->get('field_oe_date')->first());
+
+    // Add the timezone context to the cache.
+    // @see \Drupal\datetime\Plugin\Field\FieldFormatter\DateTimeFormatterBase::buildDate()
+    $cacheability->addCacheContexts(['timezone']);
+  }
+
+  // Prepare the metas if available.
+  if (!$paragraph->get('field_oe_meta')->isEmpty()) {
+    $metas = [];
+    foreach ($paragraph->get('field_oe_meta') as $item) {
+      $metas[] = $item->value;
+    }
+    $variables['meta'] = $metas;
+  }
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
+ */
+function blellow_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Set up the correct variant name.
+  $variables['variant'] = 'list_item_block_' . $paragraph->get('field_oe_list_item_block_layout')->first()->value;
+
+  // Prepare the button variables if a link has been specified.
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+  $link_item = $paragraph->get('field_oe_link')->first();
+  $variables['button_url'] = $link_item->getUrl();
+  $variables['button_label'] = $link_item->get('title')->getValue();
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage_navigation.html.twig.
+ *
+ * Prepares the inpage navigation by creating links for the inner paragraphs
+ * that implement a title.
+ */
+function blellow_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->get('field_oe_paragraphs')->isEmpty()) {
+    return;
+  }
+
+  // Add default fallback title for inpage naviagtion.
+  $variables['title'] = t('Page contents');
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+
+  // Create a shortcut to the render array for the field.
+  $field_render = &$variables['content']['field_oe_paragraphs'];
+  $links = [];
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $delta => $sub_paragraph) {
+    /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+    if (!$sub_paragraph->hasField('field_oe_title') || $sub_paragraph->get('field_oe_title')->isEmpty()) {
+      continue;
+    }
+
+    $unique_id = Html::getUniqueId('ecl-inpage-' . $sub_paragraph->id());
+    // Wrap the paragraph in a div with a specific id set as anchor.
+    $field_render[$delta]['#theme_wrappers']['container'] = [
+      '#attributes' => ['id' => $unique_id],
+    ];
+
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+
+    // Add a link pointing to the paragraph.
+    $links[] = [
+      'href' => '#' . $unique_id,
+      'label' => $sub_paragraph->get('field_oe_title')->first()->value,
+    ];
+  }
+
+  $variables['links'] = $links;
+}
+
+/**
+ * Implements hook_preprocess_pattern().
+ */
+function blellow_preprocess_pattern_date_block(array &$variables): void {
+  // This make sure that the variant value will always fallback to
+  // "default" if an empty or not valid value is passed.
+  $variants = [
+    'default',
+    'ongoing',
+    'cancelled',
+    'past',
+  ];
+
+  $variables['variant'] = in_array($variables['variant'], $variants, TRUE) ?
+    $variables['variant'] :
+    'default';
+}
+
+/**
+ * Implements hook_preprocess_pattern_file__preview().
+ */
+function blellow_preprocess_pattern_file__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+}
+
+/**
+ * Implements hook_preprocess_pattern_file_link__preview().
+ */
+function blellow_preprocess_pattern_file_link__preview(array &$variables): void {
+  $variables['files'] = array_map(
+    function ($file) {
+      return FileValueObject::fromArray($file);
+    },
+    $variables['files']
+  );
+}
+
+/**
+ * Implements hook_preprocess_pattern_file_translation().
+ */
+function blellow_preprocess_pattern_file_translation(array &$variables): void {
+  // This is defined in ui_patterns contrib module in ui_patterns_theme().
+  if ($variables['translations'] !== NULL) {
+    return;
+  }
+
+  // Add css ids for expandable javascript behaviour.
+  $variables['translations_id'] = Html::getUniqueId('translations-expand');
+  $variables['translations_button_id'] = Html::getUniqueId('translations-expand-button');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_file_translation__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+
+  foreach ((array) $variables['translations'] as $index => $translation) {
+    $variables['translations'][$index] = FileValueObject::fromArray($translation);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_list_item__variant_date__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function blellow_preprocess_pattern_date_block__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function blellow_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
+  $suggestions[] = $variables['theme_hook_original'] . '__' . $variables['element']['#form_id'];
+}
+
+/**
+ * Implements hook_preprocess_input().
+ */
+function blellow_preprocess_input__search(array &$variables): void {
+  _oe_theme_preprocess_input_text($variables['element']);
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function blellow_preprocess_form__oe_search_search_form(array &$variables): void {
+  _oe_theme_preprocess_input_text($variables['element']['keys']);
+  $variables['input'] = $variables['element']['keys']['ecl_array'];
+  $variables['label'] = t('Search');
+}
+
+/**
+ * Helper function to additionally preprocess textfield search elements.
+ *
+ * Moves the label element to the input template and creates some helper
+ * variables to be used with the ECL templates.
+ *
+ * @param array $element
+ *   Set of element data.
+ */
+function _oe_theme_preprocess_input_text(array &$element): void {
+  // Generate the extra attributes array from the general attributes.
+  $extra_attributes = !empty($element['#attributes']) ? $element['#attributes'] : [];
+  $element['ecl_array'] = [
+    'id' => $element['#attributes']['id'],
+    'name' => $element['#attributes']['name'],
+    'disabled' => isset($element['#attributes']['disabled']) ? $element['#attributes']['disabled'] : FALSE,
+    'type' => $element['#attributes']['type'],
+    'class' => $element['#attributes']['class'],
+  ];
+  $extra_attributes = array_diff_key($extra_attributes, $element['ecl_array']);
+  $element['ecl_array']['extra_attributes'] = [];
+  foreach ($extra_attributes as $key => $value) {
+    if (is_string($value)) {
+      $element['ecl_array']['extra_attributes'][] = [
+        'name' => $key,
+        'value' => $value,
+      ];
+    }
+  }
+  // Map rest array elements.
+  $element['ecl_array']['has_error'] = !empty($element['#errors']);
 }
 
 /**
