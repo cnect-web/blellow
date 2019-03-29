@@ -1,5 +1,5 @@
 {
-    "name": "cnect-web/oe_theme",
+    "name": "cnect-web/blellow",
     "description": "Institutional Look and Feel for D8",
     "type": "drupal-theme",
     "license": "EUPL-1.2",
@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Drupal\\oe_theme\\": "./src/"
+            "Drupal\\blellow\\": "./src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Drupal\\Tests\\oe_theme\\": "./tests/"
+            "Drupal\\Tests\\blellow\\": "./tests/"
         }
     },
     "repositories": {
