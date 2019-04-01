@@ -2,7 +2,7 @@
 
 [![Packagist](https://img.shields.io/badge/Packagist-v1.0.0--alpha-orange.svg)](https://packagist.org/packages/cnect-web/oe_theme)
 
-Drupal 8 theme based on the [Europa Component Library][1] (ECL).
+Drupal 8 theme based on the [Open Europa Theme](https://github.com/openeuropa/oe_theme) and the  [Europa Component Library][1] (ECL).
 
 ## Requirements
 
