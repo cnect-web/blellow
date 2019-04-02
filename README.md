@@ -154,3 +154,8 @@ $ npx patch-package @ecl/[component-name]
 [5]: https://github.com/hechoendrupal/drupal-console/issues/3854
 [6]: https://github.com/openeuropa/ecl-twig-loader
 [7]: https://www.npmjs.com/package/patch-package
+
+
+## Misc
+### Style guide
+- http://localhost:8080/build/admin/appearance/styleguide
