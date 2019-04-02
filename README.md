@@ -291,5 +291,5 @@ The theme needs the "**OpenEuropa Theme Helper**" module installed.
 
 ## Misc
 ### Style guide
-The development environemt will install the Styleguide module. The test page is available in the URL:
+The development environment will install the Styleguide module. The test page is available in the URL:
 - http://localhost:8080/build/admin/appearance/styleguide
