@@ -1,0 +1,18 @@
+image:
+  node:8.15.1-jessie
+
+stages:
+  - package
+
+build:
+  stage: package
+  script:
+    - npm install
+    - npm run build
+    - cd ..
+    - tar --exclude="node_modules" --exclude=".git" -zcvf dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
+    - cp dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
+
+  artifacts:
+    paths:
+    - dist-${CI_COMMIT_SHORT_SHA}.tgz
