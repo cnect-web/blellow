@@ -156,6 +156,9 @@ $ npx patch-package @ecl/[component-name]
 [7]: https://www.npmjs.com/package/patch-package
 
 
+## Dependencies 
+The theme needs the "**OpenEuropa Theme Helper**" module installed.
+
 ## Misc
 ### Style guide
 - http://localhost:8080/build/admin/appearance/styleguide
