@@ -57,7 +57,7 @@ class PageHeaderBlockTest extends AbstractKernelTestBase {
       'provider' => 'oe_theme_helper',
       'label_display' => '0',
       'context_mapping' => [
-        'page_header' => '@oe_theme_helper.page_header_context:page_header',
+        'page_header' => '@blellow_helper.page_header_context:page_header',
       ],
     ];
     $build = $this->buildBlock('oe_theme_helper_page_header', $config);
