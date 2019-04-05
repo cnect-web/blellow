@@ -1,0 +1,13 @@
+{
+    "name": "cnect-web/blellow",
+    "description": "Institutional Look and Feel for D8",
+    "type": "drupal-theme",
+    "license": "EUPL-1.2",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "drupal/components": "^1.0",
+        "drupal/ui_patterns": "^1.0",
+        "openeuropa/ecl-twig-loader": "~0.1"
+    }
+}
