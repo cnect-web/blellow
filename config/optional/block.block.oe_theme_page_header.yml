@@ -5,9 +5,9 @@ dependencies:
     - oe_theme_helper
     - system
   theme:
-    - oe_theme
-id: oe_theme_page_header
-theme: oe_theme
+    - blellow
+id: blellow_page_header
+theme: blellow
 region: page_header
 weight: 0
 provider: null
