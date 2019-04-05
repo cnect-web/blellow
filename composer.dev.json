@@ -1,0 +1,86 @@
+{
+    "name": "cnect-web/blellow",
+    "description": "Institutional Look and Feel for D8",
+    "type": "drupal-theme",
+    "license": "EUPL-1.2",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "drupal/core": "^8.6",
+        "drupal/ui_patterns": "^1.0",
+        "openeuropa/ecl-twig-loader": "~0.1",
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "composer/installers": "~1.5",
+        "drupal-composer/drupal-scaffold": "^2.5.2",
+        "drupal/config_devel": "~1.2",
+        "drupal/console": "~1.0",
+        "drupal/drupal-extension": "~4.0",
+        "drupal/styleguide": "~1.0-alpha3",
+        "drush/drush": "~9.0@stable",
+        "nikic/php-parser": "~3.0",
+        "openeuropa/behat-transformation-context" : "~0.1",
+        "openeuropa/code-review": "^1.0.0-alpha4",
+        "openeuropa/drupal-core-require-dev": "8.6.x-dev",
+        "openeuropa/oe_corporate_blocks": "dev-master",
+        "openeuropa/oe_multilingual": "~0.2.3",
+        "openeuropa/oe_paragraphs": "~0.4",
+        "openeuropa/oe_search": "dev-master",
+        "openeuropa/task-runner": "~1.0-beta5",
+        "phpunit/phpunit": "~5.5||~6.0",
+        "symfony/dom-crawler": "~3.4"
+    },
+    "scripts": {
+        "post-install-cmd": "./vendor/bin/run drupal:site-setup",
+        "post-update-cmd": "./vendor/bin/run drupal:site-setup"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\blellow\\": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\blellow\\": "./tests/"
+        }
+    },
+
+    "comment": {
+        "commentMessage": "Default repositories node. The next one overrides the oe_corporate_blocks target",
+        "repositories": {
+            "drupal": {
+                "type": "composer",
+                "url": "https://packages.drupal.org/8"
+            }
+        }
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/skounis/oe_corporate_blocks"
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "installer-paths": {
+            "build/core": ["type:drupal-core"],
+            "build/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "build/modules/contrib/{$name}": ["type:drupal-module"],
+            "build/themes/contrib/{$name}": ["type:drupal-theme"]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.1.9"
+        }
+    }
+}
