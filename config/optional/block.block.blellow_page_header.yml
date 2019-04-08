@@ -18,7 +18,7 @@ settings:
   provider: oe_theme_helper
   label_display: '0'
   context_mapping:
-    page_header: '@blellow_helper.page_header_context:page_header'
+    page_header: '@oe_theme_helper.page_header_context:page_header'
 visibility:
   request_path:
     id: request_path
