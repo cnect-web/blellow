@@ -23,12 +23,12 @@ config_devel:
   optional:
     - block.block.oe_multilingual_content_language_switcher
     - block.block.oe_multilingual_language_switcher
-    - block.block.oe_theme_main_page_content
-    - block.block.oe_theme_page_header
-    - block.block.oe_theme_site_branding
-    - block.block.oe_theme_tabs
-    - block.block.oe_theme_search_form
-    - block.block.oe_theme_corporate_footer
+    - block.block.blellow_main_page_content
+    - block.block.blellow_page_header
+    - block.block.blellow_site_branding
+    - block.block.blellow_tabs
+    - block.block.blellow_search_form
+    - block.block.blellow_corporate_footer
 
 # components module needs to be installed to use
 # {% include "@myLib/box/box.twig" %}

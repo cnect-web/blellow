@@ -6,9 +6,9 @@ dependencies:
   module:
     - system
   theme:
-    - oe_theme
-id: oe_theme_main_navigation
-theme: oe_theme
+    - blellow
+id: blellow_main_navigation
+theme: blellow
 region: navigation
 weight: 0
 provider: null

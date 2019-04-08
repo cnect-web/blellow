@@ -4,9 +4,9 @@ dependencies:
   module:
     - oe_corporate_blocks
   theme:
-    - oe_theme
-id: oe_theme_corporate_footer
-theme: oe_theme
+    - blellow
+id: blellow_corporate_footer
+theme: blellow
 region: footer
 weight: 0
 provider: null
