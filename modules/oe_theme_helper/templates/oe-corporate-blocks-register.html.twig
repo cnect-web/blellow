@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks login.
+ *
+ * Available variables:
+ *    TODO: see Footerblocks
+ *
+ * @see template_preprocess_corporate_blocks_login()
+ *
+ * @ingroup themeable
+ */
+ #}
+
+<div class="login__corporate-top">
+
+    <div class="ecl-dropdown cnct-dropdown" id="dropdown-register">
+
+        <button type="button" class="ecl-button ecl-button--primary ecl-expandable__button"
+                aria-controls="example-button-dropdown-register" aria-expanded="false"
+                id="example-expandable-button-register">Register</button>
+
+        <div class="ecl-link-block ecl-dropdown__body bl-dropdown__body" id="example-button-dropdown-register"
+             aria-labelledby="example-expandable-button-register" aria-hidden="true">
+
+            <p>Register to Futurium</p>
+            <p><a href="#" class="ecl-link">Accept the European Commission's privacy policy.</a></p>
+            <button type="button" class="ecl-button ecl-button--call ecl-button--caret-right">Register with EU Login</button>
+        </div>
+    </div>
+
+</div>
