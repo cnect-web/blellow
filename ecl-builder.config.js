@@ -40,7 +40,7 @@ module.exports = {
     },
     {
       entry: path.resolve(__dirname, 'sass/components/login-register.scss'),
-      dest: path.resolve(outputFolder, 'css/components/login-register.scss'),
+      dest: path.resolve(outputFolder, 'css/components/login-register.css'),
       options: {
         banner,
         includePaths,
