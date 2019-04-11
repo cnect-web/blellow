@@ -1,16 +1,24 @@
 {#
 
   - "variant" (string) (default: 'default'): can be used if need a variant of the header
-  - "identity" (string) (default: ''): name of the site, i.e. "Site identity"
   - "breadcrumb" (array)  (default: []): collection of @ecl/generic-component-link
+  - "identity" (string) (default: ''): name of the site, i.e. "Site identity"
   - "group_name (string) (default: ''): name of the group"
-  - "group_image (default: ''): path to group image
+  - "group_image (object) width
+      - srcs (object with different image url, depending the screensize)
+      - alt (string)
   - "group_url (default: ''): path to group landing page
-  - "group_join_url (default: ''): join a group button
-  - "group_join_label (default: ''): join a group button label
+  - "group_join (default: ''): join a group button
   - "extra_classes" (string) (default: '')
   - "system" (string) (default: "generic")
   - "metas" (array) (default: []): array of strings ; each one corresponds to a meta item
+
+  'extra_attributes': [
+                 { 'name': 'role', 'value': 'button'},
+                 { 'name': 'id', 'value': 'JoinGroupButton' },
+                 { 'name': 'aria-label', 'value': group_join.label },
+               ],
+
 
 #}
 
@@ -20,10 +28,11 @@
 {% set _group_name = group_name|default('') %}
 {% set _group_image = group_image|default('') %}
 {% set _group_url = group_url|default('') %}
-{% set _group_join_url = group_join_url|default('') %}
-{% set _group_join_label = group_join_label|default('') %}
+{% set _group_join = group_join|default('') %}
 {% set _metas = metas|default([]) %}
 {% set _css_class = 'ecl-page-header' %}
+
+{% set _primary_image = primary_image|default({}) %}
 
 {# Internal logic - Process properties #}
 
@@ -49,7 +58,12 @@
       <div class="ecl-page-header__body">
         {% if _group_image is not empty %}
           <div class="bl-page-header__group-image">
-            <a href="{{ group_url }}"><img src="{{ _group_image }}" /></a>
+            <a href="{{ group_url }}">
+              {% include '@ecl/generic-style-image' with { 
+                'srcs': group_image.srcs,
+                'alt': group_image.alt,
+              } only %}
+            </a>
           </div>
         {% endif %}
           
@@ -78,13 +92,13 @@
           </div>
         {% endif %}                    
         
-        {% if _group_join_url is not empty %}
+        {% if _group_join is not empty %}
           <div class="bl-page-header__join">
             {% include '@ecl/generic-component-button' with {
-              'modifier': 'call',
-              'href': _group_join_url,
-              'icon': icon|default(''),
-              'label': _group_join_label,
+              'modifier': group_join.modifier,
+              'href': group_join.href,
+              'label': group_join.label,
+              'extra_attributes': group_join.extra_attributes,
             } only %}
           </div>
         {% endif %}
