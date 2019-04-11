@@ -8,18 +8,17 @@
 }
 
 .cnect-dropdown .ecl-dropdown__body {
-    background: #404040;
     padding: 5px 10px;
 }
 
 /* TODO: Find a better place. Some of these rules are related to the layout and not the widget */
-.bl-site-header__top-bar .ecl-container {
+.cnect-site-header__top-bar .ecl-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
-.ecl-dropdown__body.bl-dropdown__body {
+.ecl-dropdown__body.cnect-dropdown__body {
     min-width: 300px;
     right: 0;
 }
