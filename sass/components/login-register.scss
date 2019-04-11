@@ -1,0 +1,5 @@
+@import '@ecl/ec-base/variables/index';
+
+.cnect-dropdown .ecl-dropdown__body {
+  color: map-get($ecl-colors, 'grey-100');
+}
