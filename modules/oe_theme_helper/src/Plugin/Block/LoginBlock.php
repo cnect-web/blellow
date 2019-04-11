@@ -40,7 +40,7 @@ class LoginBlock extends BlockBase {
 
     $build['#attached'] = [
         'library' => [
-          'oe_theme_helper/login',
+          'oe_theme_helper/login_register',
         ],
       ];
     return $build;

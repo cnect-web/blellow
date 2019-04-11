@@ -1,13 +1,13 @@
-.cnct-dropdown p,
-.cnct-dropdown a {
+.cnect-dropdown p,
+.cnect-dropdown a {
     color: #fff;
 }
 
-.ecl-dropdown.cnct-dropdown {
+.ecl-dropdown.cnect-dropdown {
     margin-left: 5px;
 }
 
-.cnct-dropdown .ecl-dropdown__body {
+.cnect-dropdown .ecl-dropdown__body {
     background: #404040;
     padding: 5px 10px;
 }
@@ -16,7 +16,7 @@
 .bl-site-header__top-bar .ecl-container {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .ecl-dropdown__body.bl-dropdown__body {

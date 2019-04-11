@@ -1,20 +1,9 @@
-login:
+login_register:
   version: 1.x
   css:
     theme:
-      css/login.css: {}
+      css/components/login-register.css: {}
   js:
-    js/login.js: {}
+    js/components/login-register.js: {}
   dependencies:
   - core/jquery
-
-# TODO: Merge with login library?
-register:
-  version: 1.x
-  css:
-    theme:
-      css/login.css: {}
-  js:
-    js/login.js: {}
-  dependencies:
-    - core/jquery
