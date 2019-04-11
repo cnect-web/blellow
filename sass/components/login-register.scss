@@ -1,5 +1,27 @@
 @import '@ecl/ec-base/variables/index';
 
 .cnect-dropdown .ecl-dropdown__body {
-  color: map-get($ecl-colors, 'grey-100');
+  background-color: map-get($ecl-colors, 'grey-100');
 }
+
+.cnect-dropdown {
+  .ecl-button--primary:hover,
+  .ecl-button--primary:focus,
+  .ecl-button--primary:active {
+    background-color: map-get($ecl-colors, 'grey-100');
+    border-color: map-get($ecl-colors, 'grey-100');
+    color: #fff;
+  }
+
+
+  .ecl-button:focus {
+    color: #fff;
+    outline: 3px solid map-get($ecl-colors, 'grey-100');
+  }
+
+  .ecl-expandable__button[aria-expanded='true'] {
+    background-color: map-get($ecl-colors, 'grey-100');
+    border-color: map-get($ecl-colors, 'grey-100');
+  }
+}
+
