@@ -58,7 +58,7 @@
       <div class="ecl-page-header__body">
         {% if _group_image is not empty %}
           <div class="bl-page-header__group-image">
-            <a href="{{ group_url }}">
+            <a href="{{ group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
               {% include '@ecl/generic-style-image' with { 
                 'srcs': group_image.srcs,
                 'alt': group_image.alt,
@@ -76,7 +76,7 @@
             {% endif %}      
             {% if _group_name is not empty %}
               <div class="ecl-page-header__title">
-                <a href="{{ group_url }}">
+                <a href="{{ _group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
                   <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _group_name }}</h1>
                 </a>
               </div>
