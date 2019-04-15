@@ -6,7 +6,9 @@ core: 8.x
 libraries:
   - blellow/style
   - blellow/base
+  - blellow/login_register
   - blellow/global-fonts
+
   
 base theme: stable
 regions:
