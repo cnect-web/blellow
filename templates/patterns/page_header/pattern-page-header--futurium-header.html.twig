@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Default implementation for the page header component.
+ */
+#}
+
+{#
+
+'group_join_url': 'https://ec.europa.eu/futurium/en/urban-agenda/membership',
+  'group_join_label': 'Join Urban Agenda for the EU',
+  'group_privacy': 'open',
+
+#}
+
+{% include '@cnectlib/cnect-component-header/cnect-component-header.html.twig' with {
+  'breadcrumb': breadcrumb,
+  'identity': identity,
+  'group_name': title,
+  'group_image': {
+  	'srcs': {
+       xs: 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/logo_urban_agenda_0.png',
+       xl: 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/logo_urban_agenda_0.png',
+    },
+    'alt': 'Urban Agenda logo',
+  },
+  'group_url': 'https://ec.europa.eu/futurium/en/urban-agenda',
+  'group_join': {
+  	'modifier': 'call',
+  	'href': 'https://ec.europa.eu/futurium/en/urban-agenda/membership',
+  	'label': 'Join my group',
+  	'extra_attributes': [
+  		  { 'name': 'role', 'value': 'button'},
+        { 'name': 'id', 'value': 'JoinGroupButton' },
+        { 'name': 'aria-label', 'value': 'Join my group' },	
+  	],
+  },
+  'metas': ['news article', '17 September 2014'],		
+} %}
