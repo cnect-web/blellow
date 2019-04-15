@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * OpenEuropa Corporate Blocks module.
+ */
+
+declare(strict_types = 1);
+
+/**
+ * Implements hook_theme().
+ */
+function oe_theme_helper_theme() {
+    return [
+        'oe_corporate_blocks_login' => [
+            'variables' => [
+                'corporate_login' => []
+            ]
+        ],
+        'oe_corporate_blocks_register' => [
+            'variables' => [
+                'corporate_register' => []
+            ]
+        ]
+    ];
+}

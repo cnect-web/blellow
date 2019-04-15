@@ -68,7 +68,15 @@ language_switcher:
   dependencies:
     - core/drupal
     - blellow/base
-    
+
+login_register:
+  css:
+    theme:
+      css/components/login-register.css: {}
+  dependencies:
+    - core/drupal
+    - blellow/base
+
 global-fonts:
   css:
     theme:

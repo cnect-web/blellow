@@ -38,6 +38,15 @@ module.exports = {
         sourceMap: isProd ? 'file' : true,
       },
     },
+    {
+      entry: path.resolve(__dirname, 'sass/components/login-register.scss'),
+      dest: path.resolve(outputFolder, 'css/components/login-register.css'),
+      options: {
+        banner,
+        includePaths,
+        sourceMap: isProd ? 'file' : true,
+      },
+    },
   ],
   copy: [
     { from: path.resolve(nodeModules, '@ecl/generic-style-icon/fonts'), to: path.resolve(outputFolder, 'fonts') },
