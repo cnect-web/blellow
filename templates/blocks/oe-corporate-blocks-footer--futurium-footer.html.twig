@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks footer.
+ *
+ * Available variables:
+ * - corporate_footer: Array with structure compatible to ECL ec-components-footer component.
+ *   - about_ec: Data about EC for corporate footer.
+ *   - social_media: Social media links for corporate footer.
+ *   - about_eu: Data about EU for corporate footer.
+ *
+ * @see template_preprocess_corporate_blocks_footer()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set custom_footer %}
+    <h3>The custom part of the footer</h3>
+{% endset %}
+
+{% include '@ecl/ec-component-footer' with {
+    'custom_footer': {
+        identity: 'Futurium D8',
+        social_links: {
+            label: 'Follow us:',
+            links: [{
+                type: 'social-network',
+                link: {
+                    label: 'Twitter',
+                    href: 'http://ec.europa.eu'
+                },
+                icon: 'twitter '
+            },
+            {
+                type: 'social-network',
+                link: {
+                label: 'Facebook',
+                href: 'http://ec.europa.eu'
+            },
+                icon: 'facebook '
+            }],
+        },
+        other_links: {
+            links: [{
+                link: {
+                    label: 'Contact',
+                    href: 'http://ec.europa.eu'
+                }
+            },
+            {
+                link: {
+                    label: 'Site map',
+                    href: 'http://ec.europa.eu'
+                }
+            }]
+        },
+        other_links_inline: false
+    }
+} %}

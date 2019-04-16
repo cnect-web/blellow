@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_theme_helper
+  theme:
+    - blellow
+id: footer_block
+theme: blellow
+region: footer
+weight: 0
+provider: null
+plugin: oe_footer
+settings:
+  id: oe_footer
+  label: 'Footer block'
+  provider: oe_theme_helper
+  label_display: visible
+visibility: {  }
