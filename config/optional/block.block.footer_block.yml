@@ -15,5 +15,5 @@ settings:
   id: oe_footer
   label: 'Footer block'
   provider: oe_theme_helper
-  label_display: visible
+  label_display: 0
 visibility: {  }
