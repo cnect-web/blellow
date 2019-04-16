@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_theme_helper
+  theme:
+    - blellow
+id: register_block
+theme: blellow
+region: site_top_bar
+weight: 0
+provider: null
+plugin: oe_register
+settings:
+  id: oe_register
+  label: 'Register block'
+  provider: oe_theme_helper
+  label_display: '0'
+visibility: {  }
