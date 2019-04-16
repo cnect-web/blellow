@@ -1,0 +1,10 @@
+/* In this file we can put overrides to fix ecl styling issues */
+
+/**
+ * The items in the site-header were center aligned.
+ * This aligned caused the logo to align in the center of the header
+ * justify-content: flex-start; will align it to the left
+ */
+.ecl-site-header__banner {
+  justify-content: flex-start;
+}
