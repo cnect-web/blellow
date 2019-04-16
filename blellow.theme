@@ -795,8 +795,6 @@ function blellow_ui_patterns_suggestions_alter(array &$suggestions, array $varia
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$suggestions, array $variables): void {
-  kint($variables);
-
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_footer';
 }
