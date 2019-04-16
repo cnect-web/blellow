@@ -31,16 +31,46 @@
   {{ page.navigation }}
 {% endblock %}
 
-{% block content %}
-<section class="main-content ecl-u-mv-l">
+
+{% block main %}
+<div class="main-content ecl-u-mv-l" >
   <div class="ecl-container">
     <div class="ecl-row">
-      <div class="ecl-col">
+
+      {# Sidebar First #}
+      {% if page.sidebar_first %}
+        {% block sidebar_first %}
+          <aside class="ecl-col-sm-3" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+
+      {# Content #}
+      {% set content_classes = [
+        page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
+        page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
+        page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
+        page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
+        ]
+      %}
+      
+      <section {{ content_attributes.addClass(content_classes) }}>
         {{ page.content }}
-      </div>
+      </section>
+
+      {# Sidebar Second #}
+      {% if page.sidebar_second %}
+        {% block sidebar_second %}
+          <aside class="ecl-col-sm-3" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+    
     </div>
   </div>
-</section>
+</div>
 {% endblock %}
 
 {% if page.footer %}
@@ -48,4 +78,3 @@
     {{ page.footer }}
   {% endblock %}
 {% endif %}
-
