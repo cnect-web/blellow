@@ -14,7 +14,7 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides an OpenEuropa Footer block.
+ * Provides an register widget as a block.
  *
  * @Block(
  *   id = "oe_register",
@@ -22,7 +22,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   category = @Translation("Cnect Corporate blocks"),
  * )
  */
-//class LoginBlock extends BlockBase implements ContainerFactoryPluginInterface {
 class RegisterBlock extends BlockBase {
 
   /**
