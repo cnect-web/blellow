@@ -11143,7 +11143,7 @@ body.toolbar-horizontal.toolbar-tray-open .ecl-inpage-navigation {
   .ecl-page-header__body {
     flex-wrap: wrap; } }
 
-.cnect-site-header__top-bar {
+.bl-site-header__top-bar {
   background: #f5f5f5; }
 
 /* In this file we can put overrides to fix ecl styling issues */

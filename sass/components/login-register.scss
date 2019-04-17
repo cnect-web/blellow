@@ -4,7 +4,7 @@
   background-color: map-get($ecl-colors, 'grey-100');
 }
 
-.cnect-site-header__top-bar .ecl-container {
+.bl-site-header__top-bar .ecl-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 575.98px) {
-  .cnect-site-header__top-bar .ecl-container {
+  .bl-site-header__top-bar .ecl-container {
     justify-content: center;
     .ecl-button {
       width: 100%;
@@ -26,7 +26,7 @@
       position: fixed;
     }
   }
-  .cnect-site-header__top-bar .ecl-container > *{
+  .bl-site-header__top-bar .ecl-container > *{
     flex-grow: 1;
   }
 
