@@ -1,3 +1,59 @@
 a {
   @include link;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading();
+}
+
+h1 {
+  @include heading-1();	
+}
+
+h2 {
+  @include heading-2();	
+}
+
+h3 {
+  @include heading-3();	
+}
+
+h4 {
+  @include heading-4();	
+}
+
+h5 {
+  @include heading-5();	
+}
+
+// Spacing
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+* + h1 {
+  margin-top: map-get($ecl-spacing, 'xxl');
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+* + h2 {
+  margin-top: map-get($ecl-spacing, 'xl');
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+* + h3 {
+  margin-top: map-get($ecl-spacing, 'l');
+}
+
+p {
+  @include paragraph();
+
+  max-width: none;  	
+}
+
+ul, ol {
+  @include list();
+
+  max-width: none;	
+}
+
+hr {
+  border-top: 1px solid $ecl-color-shade;	
+}
