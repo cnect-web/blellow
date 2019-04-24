@@ -16,3 +16,20 @@ function hello_world_help($route_name, RouteMatchInterface $route_match) {
     default:
     }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function hello_world_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id == 'salutation_configuration_form') {
+    // Perform alterations.
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function my_module_form_salutation_configuration_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Perform alterations.
+}
