@@ -24,6 +24,10 @@ function hello_world_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $fo
 {
   if ($form_id == 'salutation_configuration_form') {
     // Perform alterations.
+    // http://ratatosk.net/drupal/tutorials/debugging-drupal.html
+//    dpm($form_id, $name = NULL);
+//    dvm($form_id, $name = NULL);
+//    kpr($form_id, $return = FALSE, $name = NULL);
   }
 }
 
