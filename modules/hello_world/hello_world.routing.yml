@@ -10,3 +10,11 @@ hello_world.hello:
     parameters:
       param:
         type: entity:node
+
+hello_world.greeting_form:
+  path: '/admin/config/salutation-configuration'
+  defaults:
+    _form: '\Drupal\hello_world\Form\SalutationConfigurationForm'
+    _title: 'Salutation configuration'
+  requirements:
+    _permission: 'administer site configuration'
