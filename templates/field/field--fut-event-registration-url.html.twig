@@ -1,0 +1,21 @@
+
+{% set href = '' %}
+{% set lbl = '' %}
+{% set variant = '' %}	
+
+{% for item in items %}
+  {% set href = item.content['#url'] %}
+  {% set lbl =  item.content['#title'] %}
+  {% set variant = item.content['#options'].external %}
+{% endfor %}
+
+{% if variant is not empty %}
+  {% set variant = 'external' %}
+{% endif %}
+
+<div>{{ label }}</div>
+{% include '@ecl/ec-component-link' with {
+  'variant': variant, 
+  'href': href,
+  'label': lbl,
+} only %}
