@@ -145,7 +145,7 @@ if (!function_exists('Drupal\Tests\oe_theme\Unit\Patterns\file_create_url')) {
  * which is available when using the Simpletest test runner, but not when
  * using the PHPUnit test runner; hence this hack.
  */
-namespace Drupal\oe_theme\ValueObject;
+namespace Drupal\blellow\ValueObject;
 
 if (!function_exists('Drupal\oe_theme\ValueObject\file_create_url')) {
 
