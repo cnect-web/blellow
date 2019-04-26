@@ -1,0 +1,24 @@
+{% set href = '' %}
+{% set lbl = '' %}
+{% set variant = '' %}	
+
+{% for item in items %}
+  {% set href = item.content['#url'] %}
+  {% set lbl =  item.content['#title'] %}
+  {% set variant = item.content['#options'].external %}
+{% endfor %}
+
+{% if variant is not empty and variant == '1' %}
+  {% set variant = 'external' %}
+{% endif %}
+
+{% if href is not empty %}
+	<div class="bl-group-registration-link">
+	  <h4>{{ label }}</h4>
+	  {% include '@ecl/ec-component-link' with {
+	 	'variant': variant, 
+		'href': href,
+		'label': lbl,
+	  } only %}  
+	</div>
+{% endif %}
