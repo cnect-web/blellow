@@ -798,3 +798,8 @@ function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$sugg
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_footer';
 }
+
+function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$suggestions, array $variables): void {
+  $hook = $variables['theme_hook_original'];
+  $suggestions[] = $hook . '__futurium_footer';
+}
