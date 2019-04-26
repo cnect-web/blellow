@@ -803,3 +803,36 @@ function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$s
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_footer';
 }
+
+
+function blellow_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  // Preprocess "fut_tags" field
+  if (isset($element['#field_name'])) {
+    if ($element['#field_name'] == "fut_tags") {
+      _blellow_preprocess_field__fut_tags($variables, $hook);
+    }
+  }
+}
+
+/**
+ * Prepares the tags array the @ecl/generic-component-tag needs
+ *
+ * @param $variables
+ * @param $hook
+ */
+function _blellow_preprocess_field__fut_tags(&$variables, $hook) {
+  // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
+
+  $variable_name = 'cnect_tag_items';
+  $variables[$variable_name] = [];
+  foreach ($variables['items'] as $key => $value) {
+    if (is_numeric($key)) {
+      $variables[$variable_name][] = [
+        'href' => $value['content']['#url'],
+        'value' => $value['content']['#title'],
+      ];
+    }
+  }
+}
