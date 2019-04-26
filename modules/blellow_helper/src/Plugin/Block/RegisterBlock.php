@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\oe_theme_helper\Plugin\Block;
+namespace Drupal\blellow_helper\Plugin\Block;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Access\AccessResult;
@@ -17,9 +17,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides an register widget as a block.
  *
  * @Block(
- *   id = "oe_register",
+ *   id = "cnect_register",
  *   admin_label = @Translation("Register block"),
- *   category = @Translation("Cnect Corporate blocks (depr)"),
+ *   category = @Translation("Cnect Corporate blocks"),
  * )
  */
 class RegisterBlock extends BlockBase {
@@ -35,11 +35,11 @@ class RegisterBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $build['#theme'] = 'oe_corporate_blocks_register';
+    $build['#theme'] = 'cnect_corporate_blocks_register';
 
     $build['#attached'] = [
         'library' => [
-          'oe_theme_helper/register',
+          'blellow_helper/register',
         ],
       ];
     return $build;

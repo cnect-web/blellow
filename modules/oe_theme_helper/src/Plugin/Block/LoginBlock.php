@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *   id = "oe_login",
  *   admin_label = @Translation("Login block"),
- *   category = @Translation("Cnect Corporate blocks"),
+ *   category = @Translation("Cnect Corporate blocks (depr)"),
  * )
  */
 class LoginBlock extends BlockBase {

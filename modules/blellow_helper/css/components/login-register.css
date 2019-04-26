@@ -1,0 +1,46 @@
+.cnect-dropdown p,
+.cnect-dropdown a {
+  color: #fff;
+}
+.ecl-dropdown.cnect-dropdown {
+  margin-left: 5px;
+}
+.cnect-dropdown .ecl-dropdown__body {
+  padding: 15px;
+}
+
+.cnect-dropdown__body > * {
+  margin: 15px 0;
+}
+.cnect-dropdown__body > *:first-child {
+  margin-top: 0;
+}
+.cnect-dropdown__body > *:last-child {
+  margin-bottom: 0;
+}
+.cnect-dropdown__body label {
+  color: #fff;
+}
+.cnect-dropdown__body a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.cnect-dropdown__body a:visited {
+  color: #fff;
+}
+.cnect-dropdown__body .form-check input[type='checkbox'] {
+  float: left;
+  margin-top: 3px;
+}
+.cnect-dropdown__body .form-check label.form-check-label {
+  display: block;
+  margin-left: 25px;
+}
+.cnect-dropdown__title {
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 0;
+}
+.cnect-dropdown__separator {
+  color: #fff;
+}

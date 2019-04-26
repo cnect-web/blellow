@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\oe_theme_helper\Plugin\Block;
+namespace Drupal\blellow_helper\Plugin\Block;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Block\BlockBase;
@@ -15,9 +15,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides the corporate footer block.
  *
  * @Block(
- *   id = "oe_footer",
+ *   id = "cnect_footer",
  *   admin_label = @Translation("Footer block"),
- *   category = @Translation("Cnect Corporate blocks (depr)"),
+ *   category = @Translation("Cnect Corporate blocks"),
  * )
  */
 class FooterBlock extends BlockBase implements ContainerFactoryPluginInterface {
@@ -65,11 +65,11 @@ class FooterBlock extends BlockBase implements ContainerFactoryPluginInterface {
     $cache = new CacheableMetadata();
     $cache->addCacheContexts(['languages:language_interface']);
 
-    $config = $this->configFactory->get('oe_theme_blocks.data.footer');
+    $config = $this->configFactory->get('blellow_blocks.data.footer');
 
     $cache->addCacheableDependency($config);
 
-    $build['#theme'] = 'oe_corporate_blocks_footer';
+    $build['#theme'] = 'cnect_corporate_blocks_footer';
 
     NestedArray::setValue($build, ['#corporate_footer', 'about_ec', 'title'], $config->get('about_ec_title'));
     NestedArray::setValue($build, ['#corporate_footer', 'about_ec', 'items'], $config->get('about_ec_links'));
