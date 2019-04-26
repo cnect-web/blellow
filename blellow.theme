@@ -11,9 +11,24 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Component\Utility\Random;
-use Drupal\oe_theme\ValueObject\FileValueObject;
-use Drupal\oe_theme\ValueObject\DateValueObject;
-use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
+use Drupal\blellow\ValueObject\FileValueObject;
+use Drupal\blellow\ValueObject\DateValueObject;
+use Drupal\blellow\ValueObject\GalleryItemValueObject;
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function blellow_preprocess_field(array &$variables): void {
+  $element = $variables['element'];
+  if (isset($element['#field_name'])) {
+    if ($element['#field_name'] == 'fut_event_date') {
+      $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
+      $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
+      $date = DateValueObject::fromArray($data);
+      $variables['date'] = $date->getArray();
+    }
+  }
+}
 
 /**
  * Implements hook_preprocess_breadcrumb().

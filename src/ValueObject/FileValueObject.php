@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\oe_theme\ValueObject;
+namespace Drupal\blellow\ValueObject;
 
 use Drupal\file\FileInterface;
 
