@@ -1,0 +1,7 @@
+name: Blellow Theme Helper
+type: module
+description: Blellow theme helpers and tools.
+package: Blellow
+core: 8.x
+dependencies:
+  - ui_patterns:ui_patterns_library
