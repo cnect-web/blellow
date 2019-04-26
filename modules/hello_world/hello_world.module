@@ -1,0 +1,39 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+* Implements hook_help().
+*/
+function hello_world_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+    case 'help.page.hello_world':
+    $output = '';
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('This is an example module.') . '</p>';
+    return $output;
+
+    default:
+    }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function hello_world_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id == 'salutation_configuration_form') {
+    // Perform alterations.
+    // http://ratatosk.net/drupal/tutorials/debugging-drupal.html
+//    dpm($form_id, $name = NULL);
+//    dvm($form_id, $name = NULL);
+//    kpr($form_id, $return = FALSE, $name = NULL);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function my_module_form_salutation_configuration_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Perform alterations.
+}
