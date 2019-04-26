@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\blellow\ValueObject;
+namespace Drupal\oe_theme\ValueObject;
 
 /**
  * Interface implemented by all field type value objects.

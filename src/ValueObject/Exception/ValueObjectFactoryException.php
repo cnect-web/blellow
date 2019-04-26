@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\blellow\ValueObject\Exception;
+namespace Drupal\oe_theme\ValueObject\Exception;
 
 /**
  * Exception thrown by pattern value objects' factory methods.

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\blellow\ValueObject;
+namespace Drupal\oe_theme\ValueObject;
 
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
 use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem;
