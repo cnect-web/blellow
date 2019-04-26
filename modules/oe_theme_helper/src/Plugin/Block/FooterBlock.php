@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *   id = "oe_footer",
  *   admin_label = @Translation("Footer block"),
- *   category = @Translation("Cnect Corporate blocks"),
+ *   category = @Translation("Cnect Corporate blocks (depr)"),
  * )
  */
 class FooterBlock extends BlockBase implements ContainerFactoryPluginInterface {

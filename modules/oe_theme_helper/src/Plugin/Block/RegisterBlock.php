@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @Block(
  *   id = "oe_register",
  *   admin_label = @Translation("Register block"),
- *   category = @Translation("Cnect Corporate blocks"),
+ *   category = @Translation("Cnect Corporate blocks (depr)"),
  * )
  */
 class RegisterBlock extends BlockBase {
