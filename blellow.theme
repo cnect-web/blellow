@@ -16,21 +16,6 @@ use Drupal\oe_theme\ValueObject\DateValueObject;
 use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
 
 /**
- * Implements hook_preprocess_field().
- */
-function blellow_preprocess_field(array &$variables): void {
-  $element = $variables['element'];
-  if (isset($element['#field_name'])) {
-    if ($element['#field_name'] == 'fut_event_date') {
-      $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
-      $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
-      $date = DateValueObject::fromArray($data);
-      $variables['date'] = $date->getArray();
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_breadcrumb().
  */
 function blellow_preprocess_breadcrumb(&$variables) {
@@ -829,6 +814,12 @@ function blellow_preprocess_field(&$variables, $hook) {
       _blellow_preprocess_field__fut_tags($variables, $hook);
     }
   }
+
+  if (isset($element['#field_name'])) {
+    if ($element['#field_name'] == "fut_event_date") {
+      _blellow_preprocess_field__fut_event_date($variables, $hook);
+    }
+  }
 }
 
 /**
@@ -850,4 +841,19 @@ function _blellow_preprocess_field__fut_tags(&$variables, $hook) {
       ];
     }
   }
+}
+
+/**
+ * Prepares the date varialbe for the Date widget of ECL
+ *
+ * @param $variables
+ */
+function _blellow_preprocess_field__fut_event_date(&$variables): void {
+  $element = $variables['element'];
+
+  $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
+  $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
+  $date = DateValueObject::fromArray($data);
+  $variables['date'] = $date->getArray();
+
 }
