@@ -33,17 +33,15 @@
  * - field_type: The type of the field.
  * - label_display: The display settings for the label.
  *
+ *
+ * Preprocessed variables
+ * - cnect_tag_items: tags array the @ecl/generic-component-tag needs
+ *
  * @see template_preprocess_field()
  */
 #}
-
-{% set tags = [] %}
-{% for item in items %}
-  {% set tags = tags|merge([{ value: item.content['#title'], href: item.content['#url'] } ]) %}
-{% endfor %}
-
 {% include '@ecl/generic-component-tag' with {
   'label': label,
-  'tags': tags,
+  'tags': cnect_tag_items,
   'system': 'ec'
 } only %}
