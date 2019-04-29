@@ -19,4 +19,4 @@ accordion:
           title: "Energy Union"
           body: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."
   libraries:
-    - oe_theme/accordions
+    - blellow/accordions
