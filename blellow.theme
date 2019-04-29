@@ -11,9 +11,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Component\Utility\Random;
-use Drupal\oe_theme\ValueObject\FileValueObject;
-use Drupal\oe_theme\ValueObject\DateValueObject;
-use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
+use Drupal\blellow\ValueObject\FileValueObject;
+use Drupal\blellow\ValueObject\DateValueObject;
+use Drupal\blellow\ValueObject\GalleryItemValueObject;
 
 /**
  * Implements hook_preprocess_breadcrumb().
@@ -808,17 +808,20 @@ function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$s
 function blellow_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
 
-  // Preprocess "fut_tags" field
+  // Resolve and call the local hook for the particular field_name, if available
   if (isset($element['#field_name'])) {
-    if ($element['#field_name'] == "fut_tags") {
-      _blellow_preprocess_field__fut_tags($variables, $hook);
-    }
-  }
+    $basename = '_blellow_preprocess_field__';
+    $postfix = $element['#field_name'];
+    $fun_name = $basename . $postfix;
 
-  if (isset($element['#field_name'])) {
-    if ($element['#field_name'] == "fut_event_date") {
-      _blellow_preprocess_field__fut_event_date($variables, $hook);
-    }
+    // Do not proceed if local hook is not available
+    if (!function_exists ($fun_name)) { return; }
+
+    // call_user_func passes parameters by value, we need $variables by ref. For now we use the variable for the call.
+    //  - https://stackoverflow.com/questions/3637164/why-does-the-error-expected-to-be-a-reference-value-given-appear
+    //  - https://www.php.net/call_user_func
+    // call_user_func($fun_name, array(&$variables), $hook);
+    $fun_name($variables, $hook);
   }
 }
 
@@ -828,7 +831,7 @@ function blellow_preprocess_field(&$variables, $hook) {
  * @param $variables
  * @param $hook
  */
-function _blellow_preprocess_field__fut_tags(&$variables, $hook) {
+function _blellow_preprocess_field__fut_tags(&$variables, $hook): void {
   // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
 
   $variable_name = 'cnect_tag_items';
@@ -844,16 +847,16 @@ function _blellow_preprocess_field__fut_tags(&$variables, $hook) {
 }
 
 /**
- * Prepares the date varialbe for the Date widget of ECL
+ * Prepares the date variable for the Date widget of ECL
  *
  * @param $variables
+ * @param $hook
  */
-function _blellow_preprocess_field__fut_event_date(&$variables): void {
+function _blellow_preprocess_field__fut_event_date(&$variables, $hook): void {
   $element = $variables['element'];
 
   $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
   $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
-
 }
