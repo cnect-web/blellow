@@ -19,4 +19,4 @@ dropdown:
         - label: 'Jobs, Growth and Investment'
           url: 'http://example.com'
   libraries:
-    - oe_theme/dropdown
+    - blellow/dropdown

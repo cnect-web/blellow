@@ -39,4 +39,4 @@ file_translation:
           name: "document.pdf"
           language_code: "hu"
   libraries:
-      - oe_theme/file_translations
+      - blellow/file_translations

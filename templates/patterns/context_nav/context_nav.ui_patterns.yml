@@ -34,4 +34,4 @@ context_nav:
       description: "Label of the \"see more items\" button"
       preview: "See more"
   libraries:
-    - oe_theme/context_nav
+    - blellow/context_nav

@@ -37,4 +37,4 @@ dialog:
         hide: false
         label: Dismiss
   libraries:
-    - oe_theme/dialogs
+    - blellow/dialogs
