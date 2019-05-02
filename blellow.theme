@@ -428,11 +428,51 @@ function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
   }
 }
 
-
+/**
+ * Preprocess the $variables before sent them to the page header.
+ *
+ * @param array $variables
+ */
 function blellow_preprocess_pattern_page_header(array &$variables): void {
-  // TODO: Check the ['title'] and replace it with a string if it is an array
-  $variables['test'] = 'test';
+  $title = $variables['title'];
+  $title = _blellow_title_reduce($title);
+  $variables['title'] = $title;
 }
+
+/**
+ * The title reducer, if the title is an array. Reduces the
+ * array to its last scalar item.
+ *
+ * @param $acc
+ * @param $value
+ * @return bool|float|int|string
+ */
+function _blellow_title_reducer($acc, $value) {
+  if(is_scalar($value)) {
+    $acc = $value;
+  }
+  return $acc;
+}
+
+/**
+ * Reduces the title into a string if it is needed
+ * there are cases where the title of the page is an array. Our ECL component expects a string for title
+ *
+ * @param $title
+ * @return mixed|string
+ */
+function _blellow_title_reduce($title) {
+  if (is_scalar($title)) {
+    return $title;
+  }
+  // Try to make a guess and return a scalar/string title
+  if (is_array ($title)) {
+    $value = array_reduce($title, '_blellow_title_reducer');
+    return $value;
+  }
+  return '';
+}
+
 /**
  * Implements hook_preprocess_HOOK().
  */
