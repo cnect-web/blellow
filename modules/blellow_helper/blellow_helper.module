@@ -25,5 +25,10 @@ function blellow_helper_theme() {
         'custom_footer' => [],
       ],
     ],
+    'cnect_corporate_blocks_newsletter' => [
+      'variables' => [
+        'corporate_newsletter' => [],
+      ],
+    ],
   ];
 }
