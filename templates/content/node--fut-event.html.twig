@@ -22,8 +22,15 @@
 	<div class="bl-node__left">
 		<div class="bl-contentmeta"> 
 		  <div class="bl-contentmeta__header">
-		    <div class="bl-contentmeta__avatar">
-		  	  {{ author_picture }}
+		    <div class="bl-contentmeta__avatar">	  	  
+		    	{% if node.uid.entity.user_picture.entity.uri.value is empty %}
+    				{% set image_url = file_url(directory ~ '/images/default_user.jpg') %}
+					{% else %}
+    				{% set image_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
+					{% endif %}
+		  	  <a href="/user/{{ node.getOwnerId() }}">
+		  	    <img src="{{ image_url }}">
+		  		</a>
 		    </div>
 		  </div>
 		  <div class="bl-contentmeta__body">
