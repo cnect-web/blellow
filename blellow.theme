@@ -860,3 +860,45 @@ function _blellow_preprocess_field__fut_event_date(&$variables, $hook): void {
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
 }
+
+/**
+ * Maps an array element into a name/value pair
+ *
+ * @param $value the value of the element
+ * @param $key the key of the element (in the array)
+ * @return array
+ */
+function _blellow_namevalue_mapper($value, $key) {
+  return array('name' => $key, 'value' => $value);
+}
+
+/**
+ * Captures a value from an array and unsets it.
+ *
+ * @param $array
+ * @param $key
+ * @return mixed
+ */
+function _blellow_capture_and_unset(&$array, $key) {
+  $value = $array[$key];
+  unset($array[$key]);
+
+  return $value;
+}
+
+/**
+ * Prepare the varialbles the ecl-style-component needs.
+ *
+ * @param $variables
+ * @param $hook
+ */
+function blellow_preprocess_image(&$variables, $hook): void {
+  $capture = ['src', 'alt', 'typeof'];
+  $attributes = $variables['attributes'];
+
+  foreach ($capture as &$key) {
+    $variables[$key] = _blellow_capture_and_unset($attributes, $key);
+  }
+  $namevalue = array_map('_blellow_namevalue_mapper', $attributes,  array_keys($attributes));
+  $variables['extra_attributes'] = $namevalue;
+}
