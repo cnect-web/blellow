@@ -440,22 +440,6 @@ function blellow_preprocess_pattern_page_header(array &$variables): void {
 }
 
 /**
- * The title reducer, if the title is an array. Reduces the
- * array to its last scalar item.
- *
- * @param $acc
- * @param $value
- *
- * @return bool|float|int|string
- */
-function _blellow_title_reducer($acc, $value) {
-  if (is_scalar($value)) {
-    $acc = $value;
-  }
-  return $acc;
-}
-
-/**
  * Reduces the title into a string if it is needed
  * there are cases where the title of the page is an array. Our ECL component expects a string for title.
  *
@@ -467,12 +451,7 @@ function _blellow_title_reduce($title) {
   if (is_scalar($title)) {
     return $title;
   }
-  // Try to make a guess and return a scalar/string title.
-  if (is_array($title)) {
-    $value = array_reduce($title, '_blellow_title_reducer');
-    return $value;
-  }
-  return '';
+  return render($title)->__toString();
 }
 
 /**
@@ -847,7 +826,7 @@ function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$sugg
 }
 
 /**
- *
+ * Implements hook_theme_suggestions_HOOK_alter().
  */
 function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$suggestions, array $variables): void {
   $hook = $variables['theme_hook_original'];
@@ -855,7 +834,7 @@ function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$s
 }
 
 /**
- *
+ * Implements hook_theme_preprocess_HOOK
  */
 function blellow_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
@@ -881,9 +860,6 @@ function blellow_preprocess_field(&$variables, $hook) {
 
 /**
  * Prepares the tags array the @ecl/generic-component-tag needs.
- *
- * @param $variables
- * @param $hook
  */
 function _blellow_preprocess_field__fut_tags(&$variables, $hook): void {
   // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
@@ -901,9 +877,6 @@ function _blellow_preprocess_field__fut_tags(&$variables, $hook): void {
 
 /**
  * Prepares the date variable for the Date widget of ECL.
- *
- * @param $variables
- * @param $hook
  */
 function _blellow_preprocess_field__fut_event_date(&$variables, $hook): void {
   $element = $variables['element'];
