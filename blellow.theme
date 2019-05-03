@@ -860,3 +860,9 @@ function _blellow_preprocess_field__fut_event_date(&$variables, $hook): void {
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
 }
+
+/* todo: can be removed as not used now */
+function blellow_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $variables['avatar'] = user_view($node->getOwner(), 'fut_default_thumbnail');
+}

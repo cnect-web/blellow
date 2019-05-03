@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see ./core/themes/stable/templates/content/node.html.twig
+ */
+#}
+
+{%
+  set classes = [
+    'bl-node',
+    'bl-node--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'bl-node--promoted',
+    node.isSticky() ? 'bl-node--sticky',
+    not node.isPublished() ? 'node--unpublished newsfeed__item--unpublished',
+    view_mode ? 'bl-node--' ~ view_mode|clean_class,
+  ]
+%}
+
+<article {{ attributes.addClass(classes) }}>
+	<div class="bl-node__left">
+		<div class="bl-contentmeta"> 
+		  <div class="bl-contentmeta__header">
+		    <div class="bl-contentmeta__avatar">
+		  	  {{ author_picture }}
+		    </div>
+		  </div>
+		  <div class="bl-contentmeta__body">
+		    <div class="bl-contentmeta__author-name">
+		  	  {{ author_name }}
+		    </div>	
+		    <div class="bl-contentmeta__date-time">
+		      <span class="bl-contentmeta__post-date">{{ date }}</span>
+					{#
+					/**
+					 * todo: Reading Time
+					 * <span class="bl-contentmeta__reading-time">{{ reading_time }}</span>
+					 */
+					#}
+		    </div>
+		  </div>
+		  <div class="bl-contentmeta__footer">
+		  	<div class="bl-contentmeta__comments">
+		  		{#
+					/**
+					 * todo: Comments
+					 * {{ comments }}
+					 */
+					#}
+		  	</div>
+		  </div>
+		</div>
+	</div>
+	<div class="bl-node__right">
+		<div class="bl-content">
+		  {% if not page %}
+		    <h2{{ title_attributes }}>
+		      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+		    </h2>
+		  {% else %}
+		  	<h1{{ title_attributes }}>{{ label }}</h1>
+		  {% endif %}
+		  <div {{ content_attributes }}>
+		  	{{ content }}
+			</div>
+		</div>
+	</div>
+</article>
