@@ -2,12 +2,13 @@
 	width: 100%;
 }
 
-.bl-node__left {
+.bl-node__side {
 	float: left;
-	width: 100px;
+	width: 150px;
+	padding: 10px;
 }
 
-.bl-node__right {
+.bl-node__content {
 	margin-bottom: map-get($ecl-spacing, 'xs');
-	margin-left: 110px;
+	margin-left: 180px;
 }

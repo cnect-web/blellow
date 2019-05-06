@@ -19,7 +19,8 @@
 %}
 
 <article {{ attributes.addClass(classes) }}>
-	<div class="bl-node__left">
+	{% block node_side %}
+	<div class="bl-node__side">
 		<div class="bl-contentmeta"> 
 		  <div class="bl-contentmeta__header">
 		    <div class="bl-contentmeta__avatar">	  	  
@@ -59,7 +60,9 @@
 		  </div>
 		</div>
 	</div>
-	<div class="bl-node__right">
+	{% endblock node_side %}
+	{% block node_content %}	
+	<div class="bl-node__content">
 		<div class="bl-content">
 		  {% if not page %}
 		    <h2{{ title_attributes }}>
@@ -73,4 +76,5 @@
 			</div>
 		</div>
 	</div>
+  {% endblock %}
 </article>
