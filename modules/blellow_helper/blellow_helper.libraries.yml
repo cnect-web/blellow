@@ -7,3 +7,8 @@ login_register:
     js/components/login-register.js: {}
   dependencies:
     - core/jquery
+newsletter:
+  version: 1.x
+  css:
+    theme:
+      css/components/newsletter.css: {}
