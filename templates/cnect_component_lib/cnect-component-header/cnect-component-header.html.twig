@@ -77,7 +77,7 @@
             {% if _group_name is not empty %}
               <div class="ecl-page-header__title">
                 <a href="{{ _group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
-                  <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _group_name }}</h1>
+                  <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _group_name | raw }}</h1>
                 </a>
               </div>
             {% endif %}

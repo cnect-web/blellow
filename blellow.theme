@@ -429,6 +429,32 @@ function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
 }
 
 /**
+ * Preprocess the $variables before sent them to the page header.
+ *
+ * @param array $variables
+ */
+function blellow_preprocess_pattern_page_header(array &$variables): void {
+  $title = $variables['title'];
+  $title = _blellow_title_reduce($title);
+  $variables['title'] = $title;
+}
+
+/**
+ * Reduces the title into a string if it is needed
+ * there are cases where the title of the page is an array. Our ECL component expects a string for title.
+ *
+ * @param $title
+ *
+ * @return mixed|string
+ */
+function _blellow_title_reduce($title) {
+  if (is_scalar($title)) {
+    return $title;
+  }
+  return render($title)->__toString();
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  */
 function blellow_preprocess_pattern_accordion(array &$variables): void {

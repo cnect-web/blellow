@@ -77,6 +77,30 @@ login_register:
     - core/drupal
     - blellow/base
 
+meta_data:
+  css:
+    theme:
+      css/components/meta-data.css: {}
+  dependencies:
+    - core/drupal
+    - blellow/base
+
+fields:
+  css:
+    theme:
+      css/components/fields.css: {}
+  dependencies:
+    - core/drupal
+    - blellow/base
+
+date_widget:
+  css:
+    theme:
+      css/components/date-widget.css: {}
+  dependencies:
+    - core/drupal
+    - blellow/base
+
 global-fonts:
   css:
     theme:
