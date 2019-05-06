@@ -1,0 +1,16 @@
+.bl-field {
+  margin-bottom: 1.5rem;
+}
+.bl-field:last-child {
+  margin-bottom: 0;
+}
+.bl-field-label {
+  margin-bottom: 0.5rem;
+}
+.bl-field label{
+  font-weight: bold;
+}
+
+.bl-field p {
+  margin: 0;
+}

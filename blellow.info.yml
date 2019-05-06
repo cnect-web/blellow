@@ -7,8 +7,10 @@ libraries:
   - blellow/style
   - blellow/base
   - blellow/login_register
+  - blellow/fields
+  - blellow/date_widget
+  - blellow/meta_data
   - blellow/global-fonts
-
   
 base theme: stable
 regions:
