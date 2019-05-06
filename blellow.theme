@@ -834,12 +834,13 @@ function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$s
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK
+ * Implements hook_theme_preprocess_HOOK().
  */
 function blellow_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
 
-  // Resolve and call the local hook for the particular field_name, if available.
+  // Resolve and call the local hook for the particular field_name,
+  // if available.
   if (isset($element['#field_name'])) {
     $basename = '_blellow_preprocess_field__';
     $postfix = $element['#field_name'];
@@ -850,9 +851,10 @@ function blellow_preprocess_field(&$variables, $hook) {
       return;
     }
 
-    // call_user_func passes parameters by value, we need $variables by ref. For now we use the variable for the call.
-    //  - https://stackoverflow.com/questions/3637164/why-does-the-error-expected-to-be-a-reference-value-given-appear
-    //  - https://www.php.net/call_user_func
+    // call_user_func passes parameters by value, we need $variables by ref.
+    // For now we use the variable for the call.
+    // - https://stackoverflow.com/questions/3637164/why-does-the-error-expected-to-be-a-reference-value-given-appear
+    // - https://www.php.net/call_user_func
     // call_user_func($fun_name, array(&$variables), $hook);.
     $fun_name($variables, $hook);
   }
@@ -860,8 +862,13 @@ function blellow_preprocess_field(&$variables, $hook) {
 
 /**
  * Prepares the tags array the @ecl/generic-component-tag needs.
+ *
+ * @param array $variables
+ *   Twig variables.
+ * @param string $hook
+ *   Hook name.
  */
-function _blellow_preprocess_field__fut_tags(&$variables, $hook): void {
+function _blellow_preprocess_field__fut_tags(array &$variables, $hook): void {
   // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
   $variable_name = 'cnect_tag_items';
   $variables[$variable_name] = [];
@@ -877,12 +884,69 @@ function _blellow_preprocess_field__fut_tags(&$variables, $hook): void {
 
 /**
  * Prepares the date variable for the Date widget of ECL.
+ *
+ * @param array $variables
+ *   Twig variables.
+ * @param string $hook
+ *   Hook name.
  */
-function _blellow_preprocess_field__fut_event_date(&$variables, $hook): void {
+function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void {
   $element = $variables['element'];
 
   $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
   $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
+}
+
+/**
+ * Maps an array element into a name/value pair.
+ *
+ * @param string $value
+ *   The value of the element.
+ * @param string $key
+ *   The key of the element (in the array)
+ *
+ * @return array
+ *   A name/value pair array
+ */
+function _blellow_namevalue_mapper($value, $key) {
+  return ['name' => $key, 'value' => $value];
+}
+
+/**
+ * Captures a value from an array and unsets it.
+ *
+ * @param array $array
+ *   The array to capture values from.
+ * @param string $key
+ *   The key of the element to capture.
+ *
+ * @return mixed
+ *   The captured value.
+ */
+function _blellow_capture_and_unset(array &$array, $key) {
+  $value = $array[$key];
+  unset($array[$key]);
+
+  return $value;
+}
+
+/**
+ * Prepare the varialbles the ecl-style-component needs.
+ *
+ * @param array $variables
+ *   Twig variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function blellow_preprocess_image(array &$variables, $hook): void {
+  $capture = ['src', 'alt', 'typeof'];
+  $attributes = $variables['attributes'];
+
+  foreach ($capture as &$key) {
+    $variables[$key] = _blellow_capture_and_unset($attributes, $key);
+  }
+  $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
+  $variables['extra_attributes'] = $namevalue;
 }

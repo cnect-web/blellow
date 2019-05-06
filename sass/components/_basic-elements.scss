@@ -57,3 +57,12 @@ ul, ol {
 hr {
   border-top: 1px solid $ecl-color-shade;	
 }
+
+.bl-image-wrapper {
+  img {
+    display: block;
+    margin-bottom: map-get($ecl-spacing, 'm');
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override of an image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the img tag.
+ * - style_name: (optional) The name of the image style applied.
+ *
+ * Preprocceses:
+ * - src: the absolut path to the image
+ * - extra_attributes: HTML attributes with the src property removed in the form (array of { name: '', value: '' })
+ *
+ * @see template_preprocess_image()
+ */
+#}
+<div class="bl-image-wrapper">
+  {% include '@ecl/ec-style-image' with {
+    'src': src,
+    'alt': alt,
+    'responsive': true,
+    'extra_attributes': extra_attributes
+  } only %}
+</div>
+
+
+
