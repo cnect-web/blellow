@@ -1,0 +1,12 @@
+/*TODO: Get the values from variables*/
+.cnect-event-meta {
+  background: #f3f3f3;
+  border: 1px solid #ececec;
+  border-radius: 3px;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.cnect-event-meta > legend {
+  display: none;
+}

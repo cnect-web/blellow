@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks newsletter.
+ *
+ * Available variables:
+ *   - none
+ *
+ * @see template_preprocess_corporate_blocks_newsletter()
+ *
+ * @ingroup themeable
+ */
+ #}
+
+<div class="cnect-newletter-widget">
+  <form action="http://ec.europa.eu/information_society/newsroom/cf/urbanagenda/subscription-quick-generic.cfm"
+        method="post" id="nexteuropa-newsroom-newsletter-subscription-form" class="ecl-form" accept-charset="UTF-8">
+    <div>
+      <div class="title">Subscribe to the newsletter of Urban Agenda</div>
+      <div class="hide"></div>
+      <div class="hide"></div>
+      <div>
+        <div class="form-control__wrapper">
+          <input placeholder="Your e-mail" class="form-control form-control form-text ecl-text-input"
+                 id="edit-email" name="email" value="" size="60" maxlength="128" type="text">
+        </div>
+        <span class="input-group">
+          <input class="btn btn-primary call-to-action form-submit btn btn-default ecl-button ecl-button--call
+          ajax-processed" id="edit-submit-email" name="op" value="Subscribe" type="submit">
+        </span>
+      </div>
+      <input name="service_id" value="560" type="hidden">
+      <input name="form_build_id" value="form-Z6nwZynbcuYKZSgOxwLxrzEiEirSFXleBGUtfCwaMME" type="hidden">
+      <input name="form_id" value="nexteuropa_newsroom_newsletter_subscription_form" type="hidden">
+      <div class="url-textfield hidden">
+        <div class="form-item form-type-textfield form-item-url">
+          <label for="edit-url">Leave this field blank </label>
+          <input autocomplete="off" class="form-control form-text" id="edit-url" name="url" value="" size="20"
+                 maxlength="128" type="text">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
