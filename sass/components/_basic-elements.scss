@@ -51,7 +51,9 @@ p {
 ul, ol {
   @include list();
 
-  max-width: none;	
+  color: $ecl-color-shade;
+  font-size: 1.125rem;
+  max-width: none;
 }
 
 hr {

@@ -1,0 +1,14 @@
+.bl-node {
+	width: 100%;
+}
+
+.bl-node__side {
+	float: left;
+	width: 150px;
+	padding: 10px;
+}
+
+.bl-node__content {
+	margin-bottom: map-get($ecl-spacing, 'xs');
+	margin-left: 180px;
+}
