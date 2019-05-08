@@ -39,7 +39,7 @@ config_devel:
 component-libraries:
   patterns:
     paths:
-      - patterns
+      - templates/patterns
   # ecl:
   #   paths:
   #     - templates/components
