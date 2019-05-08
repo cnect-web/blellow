@@ -1,63 +1,85 @@
 a {
-  @include link;
+  box-sizing: border-box;
+  color: $ecl-color-primary;
+  margin: 0;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: #000;
+  }
+
+  &:focus {
+    outline: 3px solid map-get($ecl-colors, 'yellow-100');
+    outline-offset: 2px;
+  }
+
+  &:visited {
+    color: map-get($ecl-colors, 'purple-100');
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  @include heading();
-}
+.main-content {
 
-h1 {
-  @include heading-1();	
-}
+  h1 {
+    @include heading-1(); 
+  }
 
-h2 {
-  @include heading-2();	
-}
+  h2 {
+    @include heading-2(); 
+  }
 
-h3 {
-  @include heading-3();	
-}
+  h3 {
+    @include heading-3(); 
+  }
 
-h4 {
-  @include heading-4();	
-}
+  h4 {
+    @include heading-4(); 
+  }
 
-h5 {
-  @include heading-5();	
-}
+  h5 {
+    @include heading-5();
+  }
 
-// Spacing
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-* + h1 {
-  margin-top: map-get($ecl-spacing, 'xxl');
-}
+  h1, h2, h3, h4, h5, h6 {
+    @include heading();
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-* + h2 {
-  margin-top: map-get($ecl-spacing, 'xl');
-}
+    max-width: none;
+  }
 
-/* stylelint-disable-next-line plugin/selector-bem-pattern */
-* + h3 {
-  margin-top: map-get($ecl-spacing, 'l');
-}
+  // Spacing
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  * + h1 {
+    margin-top: map-get($ecl-spacing, 'xxl');
+  }
 
-p {
-  @include paragraph();
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  * + h2 {
+    margin-top: map-get($ecl-spacing, 'xl');
+  }
 
-  max-width: none;  	
-}
+  /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  * + h3 {
+    margin-top: map-get($ecl-spacing, 'l');
+  }
 
-ul, ol {
-  @include list();
+  p {
+    @include paragraph();
 
-  color: $ecl-color-shade;
-  font-size: 1.125rem;
-  max-width: none;
-}
+    max-width: none;    
+  }
 
-hr {
-  border-top: 1px solid $ecl-color-shade;	
+  ul:not(.ecl-navigation-list), ol {
+    @include list();
+
+    color: $ecl-color-shade;
+    font-size: 1.125rem;
+    max-width: none;
+  }
+
+  hr {
+    border-top: 1px solid $ecl-color-shade; 
+  }
 }
 
 .bl-image-wrapper {
