@@ -25,21 +25,22 @@
 	{% set avatar_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
 {% endif %}
 
-{# Author link if logged in #}
+{# Link to Author profile if users is logged in #}
 {% if logged_in %}
   {% set author_link = path('entity.user.canonical', {'user': node.getOwnerId()}) %}
 {% endif %}
 
 <article {{ attributes.addClass(classes) }}>
-	{% block node_side %}
-	<div class="bl-node__side">
-		{% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
-	    'avatar_url': avatar_url,
-	    'author_link': author_link,
-	    'group_name': author_name,
-	    'date': date,
-		} %}
-	</div>
+	{% block node_side %}	
+		<div class="bl-node__side">
+			{{ content.fut_event_date }}
+			{% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
+		    'avatar_url': avatar_url,
+		    'author_link': author_link,
+		    'group_name': author_name,
+		    'date': date,
+			} %}
+		</div>
 	{% endblock node_side %}
 	{% block node_content %}	
 	<div class="bl-node__content">
@@ -50,7 +51,7 @@
 		    </h2>
 		  {% endif %}
 		  <div {{ content_attributes }}>
-		  	{{ content }}
+		  	{{ content|without('fut_event_date') }}
 			</div>
 		</div>
 	</div>

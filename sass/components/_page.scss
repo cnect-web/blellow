@@ -3,9 +3,12 @@
 }
 
 .bl-node__side {
+	align-items: center;
+  display: flex;
+  flex-direction: column; 	
 	float: left;
+	padding: 0 10px 10px;
 	width: 150px;
-	padding: 10px;
 }
 
 .bl-node__content {
