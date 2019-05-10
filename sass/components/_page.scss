@@ -1,14 +1,17 @@
 .bl-node {
-	width: 100%;
+  width: 100%;
 }
 
 .bl-node__side {
-	float: left;
-	width: 150px;
-	padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;   
+  float: left;
+  padding: 0 10px 10px;
+  width: 150px;
 }
 
 .bl-node__content {
-	margin-bottom: map-get($ecl-spacing, 'xs');
-	margin-left: 180px;
+  margin-bottom: map-get($ecl-spacing, 'xs');
+  margin-left: 180px;
 }

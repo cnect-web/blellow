@@ -1,0 +1,51 @@
+
+{% set _css_class = 'bl-contentmeta' %}
+
+{# Internal logic - Process properties #}
+
+{% if _variant is not empty %}
+  {% set _css_class = _css_class ~ ' ecl-page-header--' ~ _variant %}
+{% endif %} 
+
+<div class="{{ _css_class }}"> 
+  {% if avatar_url is not empty %}
+    <div class="bl-contentmeta__header">
+      <div class="bl-contentmeta__avatar">
+      {% if author_link is not empty %}               
+        <a href="{{ author_link }}">
+          <img src="{{ avatar_url }}">
+        </a>
+      {% else %}
+        <img src="{{ avatar_url }}">
+      {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="bl-contentmeta__body">
+    {% if author_name is not empty %}
+      <div class="bl-contentmeta__author-name">
+        {{ author_name }}
+      </div>
+    {% endif %} 
+    {% if date is not empty %}
+      <div class="bl-contentmeta__date-time">
+        <span class="bl-contentmeta__post-date">{{ date }}</span>
+        {#
+          /**
+          * TODO: Reading Time
+          * <span class="bl-contentmeta__reading-time">{{ reading_time }}</span>
+          */
+        #}
+      </div>
+    {% endif %}
+  </div>
+  <div class="bl-contentmeta__footer">
+    <div class="bl-contentmeta__comments">
+    {#
+    /**
+     * TODO: Comments
+     */
+    #}
+    </div>
+  </div>
+</div>

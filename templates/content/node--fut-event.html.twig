@@ -18,63 +18,42 @@
   ]
 %}
 
+{# avatar_url #}
+{% if node.uid.entity.user_picture.entity.uri.value is empty %}
+  {% set avatar_url = file_url(directory ~ '/images/default_user.jpg') %}
+{% else %}
+  {% set avatar_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
+{% endif %}
+
+{# Link to Author profile if users is logged in #}
+{% if logged_in %}
+  {% set author_link = path('entity.user.canonical', {'user': node.getOwnerId()}) %}
+{% endif %}
+
 <article {{ attributes.addClass(classes) }}>
-	{% block node_side %}
-	<div class="bl-node__side">
-		<div class="bl-contentmeta"> 
-		  <div class="bl-contentmeta__header">
-		    <div class="bl-contentmeta__avatar">	  	  
-		    	{% if node.uid.entity.user_picture.entity.uri.value is empty %}
-    				{% set image_url = file_url(directory ~ '/images/default_user.jpg') %}
-					{% else %}
-    				{% set image_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
-					{% endif %}
-		  	  <a href="/user/{{ node.getOwnerId() }}">
-		  	    <img src="{{ image_url }}">
-		  		</a>
-		    </div>
-		  </div>
-		  <div class="bl-contentmeta__body">
-		    <div class="bl-contentmeta__author-name">
-		  	  {{ author_name }}
-		    </div>	
-		    <div class="bl-contentmeta__date-time">
-		      <span class="bl-contentmeta__post-date">{{ date }}</span>
-					{#
-					/**
-					 * todo: Reading Time
-					 * <span class="bl-contentmeta__reading-time">{{ reading_time }}</span>
-					 */
-					#}
-		    </div>
-		  </div>
-		  <div class="bl-contentmeta__footer">
-		  	<div class="bl-contentmeta__comments">
-		  		{#
-					/**
-					 * todo: Comments
-					 * {{ comments }}
-					 */
-					#}
-		  	</div>
-		  </div>
-		</div>
-	</div>
-	{% endblock node_side %}
-	{% block node_content %}	
-	<div class="bl-node__content">
-		<div class="bl-content">
-		  {% if not page %}
-		    <h2{{ title_attributes }}>
-		      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-		    </h2>
-		  {% else %}
-		  	<h1{{ title_attributes }}>{{ label }}</h1>
-		  {% endif %}
-		  <div {{ content_attributes }}>
-		  	{{ content }}
-			</div>
-		</div>
-	</div>
+  {% block node_side %} 
+    <div class="bl-node__side">
+      {{ content.fut_event_date }}
+      {% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
+        'avatar_url': avatar_url,
+        'author_link': author_link,
+        'group_name': author_name,
+        'date': date,
+      } %}
+    </div>
+  {% endblock node_side %}
+  {% block node_content %}  
+  <div class="bl-node__content">
+    <div class="bl-content">
+      {% if not page %}
+        <h2{{ title_attributes }}>
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+      {% endif %}
+      <div {{ content_attributes }}>
+        {{ content|without('fut_event_date') }}
+      </div>
+    </div>
+  </div>
   {% endblock %}
 </article>
