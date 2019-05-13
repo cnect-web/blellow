@@ -285,6 +285,9 @@ Patches will be generated in `./patches` and applied when running `npm install`.
 [17]: https://drone.io
 [18]: https://www.npmjs.com/package/patch-package
 
+#### Patch the ECL build script
+An improved version of the ecl-builder is used for this project. After the installation we should patch the script:
+- [Patch the `@ecl/builder` build script](https://gist.github.com/skounis/124182c5bc5ef0e45920a2c867f7e160)
 
 ## Dependencies 
 The theme needs the "**OpenEuropa Theme Helper**" module installed.
