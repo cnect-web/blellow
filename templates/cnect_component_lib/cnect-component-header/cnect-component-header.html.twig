@@ -38,11 +38,11 @@
 
 {% if _variant is not empty %}
   {% set _css_class = _css_class ~ ' ecl-page-header--' ~ _variant %}
-{% endif %} 
+{% endif %}
 
 {% if extra_classes is defined and extra_classes is not empty %}
   {% set _css_class = _css_class ~ ' ' ~ extra_classes %}
-{% endif %} 
+{% endif %}
 
 <div class="{{ _css_class }}">
   <div class="ecl-container">
@@ -59,21 +59,22 @@
         {% if _group_image is not empty %}
           <div class="bl-page-header__group-image">
             <a href="{{ group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
-              {% include '@ecl/generic-style-image' with { 
-                'srcs': group_image.srcs,
-                'alt': group_image.alt,
+              {% include '@ecl/generic-style-image' with {
+                'src': _group_image.src,
+                'srcs': _group_image.srcs,
+                'alt': _group_image.alt,
               } only %}
             </a>
           </div>
         {% endif %}
-          
-        {% if _identity is not empty or _group_name is not empty or _metas is not empty %}   
+        
+        {% if _identity is not empty or _group_name is not empty or _metas is not empty %}
           <div class="bl-page-header__group-info">
             {% if _identity is not empty %}
               <div class="ecl-page-header__identity">
                 {{ _identity }}
               </div>
-            {% endif %}      
+            {% endif %}
             {% if _group_name is not empty %}
               <div class="ecl-page-header__title">
                 <a href="{{ _group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
@@ -90,7 +91,7 @@
               </div>
             {% endif %}
           </div>
-        {% endif %}                    
+        {% endif %}
         
         {% if _group_join is not empty %}
           <div class="bl-page-header__join">
