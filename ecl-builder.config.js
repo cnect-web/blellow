@@ -32,6 +32,7 @@ module.exports = {
     // {
     //   entry: path.resolve(__dirname, 'sass/style.scss'),
     //   dest: path.resolve(outputFolder, 'css/style.css'),
+    //   You can also use wildcards in paths like sass/**/*.
     //   options: {
     //     banner,
     //     includePaths,
