@@ -21,9 +21,9 @@
       width: 100%;
     }
     .ecl-dropdown__body.cnect-dropdown__body {
-      left: 1rem;
-      right: 1rem;
       position: fixed;
+      left: map-get($ecl-spacing, 's');
+      right: map-get($ecl-spacing, 's');
     }
   }
   .bl-site-header__top-bar .ecl-container > *{
