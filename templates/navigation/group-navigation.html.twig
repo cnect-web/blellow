@@ -1,0 +1,6 @@
+{{ attach_library('blellow/navigation') }}
+{% if links %}
+  {% include '@ecl/ec-component-navigation-menu' with {
+    'links': links,
+  } %}
+{% endif %}
