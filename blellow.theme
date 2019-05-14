@@ -439,7 +439,9 @@ function blellow_preprocess_pattern_page_header(array &$variables): void {
   $variables['title'] = $title;
 }
 
-// TODO: prefix the block eg fut_group_page_header.
+/**
+ * TODO: prefix the block eg fut_group_page_header.
+ */
 function blellow_preprocess_page_header_block(array &$variables): void {
   $title = $variables['title'];
   $title = _blellow_title_reduce($title);
@@ -452,16 +454,17 @@ function blellow_preprocess_page_header_block(array &$variables): void {
     ];
   }, $variables['breadcrumb']);
 
-  // TODO: attach and handle all the available operaters
+  // TODO: attach and handle all the available operaters.
   $operations = $variables['group_operations'];
   $group_join = [
     'modifier' => 'call',
-  	'href' => $operations['group-join']['url'],
-  	'label'=> $operations['group-join']['title'],
+    'href' => $operations['group-join']['url'],
+    'label' => $operations['group-join']['title'],
   ];
 
   $variables['group_join'] = $group_join;
 }
+
 /**
  * Reduces the title into a string if it is needed
  * there are cases where the title of the page is an array. Our ECL component expects a string for title.
@@ -922,6 +925,9 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $variables['date'] = $date->getArray();
 }
 
+/**
+ *
+ */
 function blellow_preprocess_node(&$variables) {
   /* todo: can be removed as not used now */
   $node = $variables['node'];
