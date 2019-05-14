@@ -1,0 +1,17 @@
+@import '@ecl/ec-base/variables/index';
+
+.bl-field {
+  margin-bottom: map-get($ecl-spacing, 'm');
+}
+.bl-field:last-child {
+  margin-bottom: map-get($ecl-spacing, 'none');
+}
+.bl-field-label {
+  margin-bottom: map-get($ecl-spacing, 'xxs');
+}
+.bl-field label{
+  font-weight: bold;
+}
+.bl-field p {
+  margin: map-get($ecl-spacing, 'none');
+}
