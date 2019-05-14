@@ -432,6 +432,7 @@ function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
  * Preprocess the $variables before sent them to the page header.
  *
  * @param array $variables
+ *   The params.
  */
 function blellow_preprocess_pattern_page_header(array &$variables): void {
   $title = $variables['title'];
@@ -440,12 +441,43 @@ function blellow_preprocess_pattern_page_header(array &$variables): void {
 }
 
 /**
- * Reduces the title into a string if it is needed
- * there are cases where the title of the page is an array. Our ECL component expects a string for title.
+ * TODO: prefix the block eg fut_group_page_header.
+ */
+function blellow_preprocess_page_header_block(array &$variables): void {
+  $title = $variables['title'];
+  $title = _blellow_title_reduce($title);
+  $variables['title'] = $title;
+
+  $variables['breadcrumb'] = array_map(function ($item) {
+    return [
+      'href' => $item->getUrl(),
+      'label' => $item->getText(),
+    ];
+  }, $variables['breadcrumb']);
+
+  // TODO: attach and handle all the available operaters.
+  $operations = $variables['group_operations'];
+  $group_join = [
+    'modifier' => 'call',
+    'href' => $operations['group-join']['url'],
+    'label' => $operations['group-join']['title'],
+  ];
+
+  $variables['group_join'] = $group_join;
+}
+
+/**
+ * Reduces the title into a string if it is needed.
  *
- * @param $title
+ * There are cases where the title of the page is an array.
+ *
+ * Our ECL component expects a string for title.
+ *
+ * @param mixed $title
+ *   The title.
  *
  * @return mixed|string
+ *   Reduced Title.
  */
 function _blellow_title_reduce($title) {
   if (is_scalar($title)) {
@@ -899,6 +931,9 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $variables['date'] = $date->getArray();
 }
 
+/**
+ * Implements hook_preprocess_node().
+ */
 function blellow_preprocess_node(&$variables) {
   /* todo: can be removed as not used now */
   $node = $variables['node'];
