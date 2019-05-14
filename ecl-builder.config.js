@@ -29,24 +29,35 @@ module.exports = {
     }
   ],
   styles: [
+    // {
+    //   entry: path.resolve(__dirname, 'sass/style.scss'),
+    //   dest: path.resolve(outputFolder, 'css/style.css'),
+    //   You can also use wildcards in paths like sass/**/*.
+    //   options: {
+    //     banner,
+    //     includePaths,
+    //     sourceMap: isProd ? 'file' : true,
+    //   },
+    // },
+    // {
+    //   entry: path.resolve(__dirname, 'sass/components/login-register.scss'),
+    //   dest: path.resolve(outputFolder, 'css/components/login-register.css'),
+    //   options: {
+    //     banner,
+    //     includePaths,
+    //     sourceMap: isProd ? 'file' : true,
+    //   },
+    // },
     {
-      entry: path.resolve(__dirname, 'sass/style.scss'),
-      dest: path.resolve(outputFolder, 'css/style.css'),
+      entry: path.resolve(__dirname, 'sass/**/*.scss'),
+      dest: path.resolve(outputFolder, 'css'),
       options: {
         banner,
         includePaths,
         sourceMap: isProd ? 'file' : true,
       },
-    },
-    {
-      entry: path.resolve(__dirname, 'sass/components/login-register.scss'),
-      dest: path.resolve(outputFolder, 'css/components/login-register.css'),
-      options: {
-        banner,
-        includePaths,
-        sourceMap: isProd ? 'file' : true,
-      },
-    },
+    }
+
   ],
   copy: [
     { from: path.resolve(nodeModules, '@ecl/generic-style-icon/fonts'), to: path.resolve(outputFolder, 'fonts') },

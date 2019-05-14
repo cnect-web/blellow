@@ -15,7 +15,7 @@
         "prepare": "patch-package"
     },
     "dependencies": {
-        "@ecl/builder": "0.2.0",
+        "@dgcnect/builder": "^0.2.1",
         "@ecl/ec-preset-website": "1.2.0",
         "@ecl/stylelint-config": "0.2.0",
         "chokidar-cli": "1.2.0",
