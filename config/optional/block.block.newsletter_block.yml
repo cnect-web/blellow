@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+  theme:
+    - blellow
+id: newsletter_block
+theme: blellow
+region: sidebar_second
+weight: 0
+provider: null
+plugin: cnect_newsletter
+settings:
+  id: cnect_newsletter
+  label: 'Newsletter block'
+  provider: blellow_helper
+  label_display: '0'
+visibility: {  }
