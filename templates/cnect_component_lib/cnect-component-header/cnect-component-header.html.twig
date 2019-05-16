@@ -29,6 +29,7 @@
 {% set _group_image = group_image|default('') %}
 {% set _group_url = group_url|default('') %}
 {% set _group_join = group_join|default('') %}
+{% set _operation_links = operation_links|default([]) %}
 {% set _metas = metas|default([]) %}
 {% set _css_class = 'ecl-page-header' %}
 
@@ -101,6 +102,26 @@
               'label': group_join.label,
               'extra_attributes': group_join.extra_attributes,
             } only %}
+            <p>Select button</p>
+            {% include '@ecl/ec-component-button' with {
+              'label': 'Create',
+              'type_attribute': 'button',
+              'extra_classes': 'ecl-expandable__button',
+              'extra_attributes': [
+                { 'name': 'aria-controls', 'value': 'example-button-dropdown1'},
+                { 'name': 'aria-expanded', 'value': 'false'},
+                { 'name': 'id', 'value': 'example-expandable-button1' },
+              ]
+            } %}
+            {% include '@ecl/ec-component-link-block' with {
+              'extra_classes': 'ecl-dropdown__body',
+              'extra_attributes': [
+                { 'name': 'id', 'value': 'example-button-dropdown1'},
+                { 'name': 'aria-labelledby', 'value': 'example-expandable-button1'},
+                { 'name': 'aria-hidden', 'value': 'true'},
+              ],
+              'links': _operation_links,
+            } %}
           </div>
         {% endif %}
       </div>

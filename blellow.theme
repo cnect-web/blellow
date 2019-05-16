@@ -463,6 +463,20 @@ function blellow_preprocess_page_header_block(array &$variables): void {
     'label' => $operations['group-join']['title'],
   ];
 
+  array_walk($variables['group_operations'], function (&$item, $key) {
+    $item['key'] =  $key;
+  });
+
+  $variables['operation_links'] = array_map(function ($item) {
+    return [
+      'href' => $item['url'],
+      'label' => $item['title'],
+      'weight' => $item['weight'],
+      'key' => $item['key'],
+    ];
+  }, $variables['group_operations']);
+
+  $variables['operation_links'] = array_values($variables['operation_links']);
   $variables['group_join'] = $group_join;
 }
 
@@ -1003,23 +1017,4 @@ function blellow_preprocess_group_navigation(array &$variables): void {
       'label' => $item->title,
     ];
   }, $variables['links']);
-
-  // Massage data to be compliant with ECL navigation menu data structure.
-//  $items = [];
-//  $i = 0;
-//  foreach ($variables['links'] as $key => $value) {
-//    $items[$i]['title'] = $variables['links'][$i]->title;
-//    $items[$i]['url'] = $variables['links'][$i]->url;
-//    $i ++;
-//  }
-
-//  $variables['links'] = array_map(function ($item) {
-//    return [
-//      'href' => $item['url'],
-//      'label' => $item['title'],
-//    ];
-//  }, $items);
-
-
-
 }
