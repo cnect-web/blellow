@@ -25,17 +25,28 @@
     flex-direction: row;
   }
 
-  .content-type-name {
-    flex-grow: 1;
-  }
-
   .bl-node__side {
-    margin-right: map-get($ecl-spacing, 's');
+    margin-right: map-get($ecl-spacing, 'm');
   }
 
   .bl-contentmeta {
     display: flex;
     flex-direction: row;
+  }
+
+  /* TODO: needs to be adadpted when template provide for field  */
+  .bl-content div:first-child {
+    color: #404040;
+    font-size: map-get($ecl-font-size, 's');
+    line-height: 1.66;
+    margin-bottom: map-get($ecl-spacing, 's');
+  }
+
+  .content-type-name {
+    color: map-get($ecl-colors, 'grey-75');
+    flex-grow: 1;
+    font-size: map-get($ecl-font-size, 'xs');
+    text-transform: uppercase;
   }
 
   .bl-contentmeta__header {
