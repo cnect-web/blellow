@@ -1,0 +1,9 @@
+/* In this file we can put overrides to fix ecl styling issues */
+/**
+ * The items in the site-header were center aligned.
+ * This aligned caused the logo to align in the center of the header
+ * justify-content: flex-start; will align it to the left
+ */
+.ecl-site-header__banner {
+  justify-content: flex-start; }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Nhc3MvZWNsLWZpeGVzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsaUVBQWlFO0FBRWpFOzs7O0dBSUc7QUFFSDtFQUNFLDRCQUEyQixFQUM1QiIsImZpbGUiOiJlY2wtZml4ZXMuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogSW4gdGhpcyBmaWxlIHdlIGNhbiBwdXQgb3ZlcnJpZGVzIHRvIGZpeCBlY2wgc3R5bGluZyBpc3N1ZXMgKi9cblxuLyoqXG4gKiBUaGUgaXRlbXMgaW4gdGhlIHNpdGUtaGVhZGVyIHdlcmUgY2VudGVyIGFsaWduZWQuXG4gKiBUaGlzIGFsaWduZWQgY2F1c2VkIHRoZSBsb2dvIHRvIGFsaWduIGluIHRoZSBjZW50ZXIgb2YgdGhlIGhlYWRlclxuICoganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0OyB3aWxsIGFsaWduIGl0IHRvIHRoZSBsZWZ0XG4gKi9cbiBcbi5lY2wtc2l0ZS1oZWFkZXJfX2Jhbm5lciB7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1zdGFydDtcbn1cbiJdfQ== */
