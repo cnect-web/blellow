@@ -331,6 +331,9 @@ function blellow_preprocess_pager(array &$variables): void {
 
 /**
  * Implements hook_preprocess_links().
+ *
+ * @param array $variables
+ *   The params.
  */
 function blellow_preprocess_links__language_block(array &$variables): void {
   $current_language = \Drupal::languageManager()
@@ -361,6 +364,9 @@ function blellow_preprocess_links__language_block(array &$variables): void {
  *
  * Adds extra variables regarding the current and the unavailable languages,
  * and prepares the links for rendering.
+ *
+ * @param array $variables
+ *   The params.
  */
 function blellow_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
   $entity = \Drupal::service('oe_multilingual.helper')->getEntityFromCurrentRoute();
@@ -394,6 +400,8 @@ function blellow_preprocess_links__oe_multilingual_content_language_block(array 
 
 /**
  * Implements hook_preprocess_HOOK().
+ * @param array $variables
+ *   The params.
  */
 function blellow_preprocess_pattern_dialog(array &$variables): void {
   // Make sure it has default values.
@@ -421,6 +429,8 @@ function blellow_preprocess_pattern_dialog(array &$variables): void {
 
 /**
  * Implements hook_preprocess_HOOK().
+ * @param array $variables
+ *   The params.
  */
 function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
   foreach ($variables['items'] as &$item) {
@@ -445,8 +455,7 @@ function blellow_preprocess_pattern_page_header(array &$variables): void {
  */
 function blellow_preprocess_page_header_block(array &$variables): void {
 
-  $variables['#attached']['library'][] =  'blellow/group_header';
-
+  $variables['#attached']['library'][] = 'blellow/group_header';
 
   $title = $variables['title'];
   $title = _blellow_title_reduce($title);
@@ -459,12 +468,11 @@ function blellow_preprocess_page_header_block(array &$variables): void {
     ];
   }, $variables['breadcrumb']);
 
-
   // Null Safe Array.
   $variables['group_operations'] = $variables['group_operations'] ? $variables['group_operations'] : [];
 
   array_walk($variables['group_operations'], function (&$item, $key) {
-    $item['key'] =  $key;
+    $item['key'] = $key;
   });
 
   $variables['operation_links'] = array_map(function ($item) {
@@ -477,8 +485,8 @@ function blellow_preprocess_page_header_block(array &$variables): void {
   }, $variables['group_operations']);
 
   $variables['operation_links'] = array_values($variables['operation_links']);
-  // Uncomment to simulate cases with one action only.
-  // $variables['operation_links'] = array_slice($variables['operation_links'],0,1);
+  /* Uncomment to simulate cases with one action only.
+  $variables['operation_links'] = array_slice($variables['operation_links'],0,1);*/
 }
 
 /**
