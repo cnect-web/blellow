@@ -444,6 +444,10 @@ function blellow_preprocess_pattern_page_header(array &$variables): void {
  * TODO: prefix the block eg fut_group_page_header.
  */
 function blellow_preprocess_page_header_block(array &$variables): void {
+
+  $variables['#attached']['library'][] =  'blellow/group_header';
+
+
   $title = $variables['title'];
   $title = _blellow_title_reduce($title);
   $variables['title'] = $title;
@@ -455,13 +459,9 @@ function blellow_preprocess_page_header_block(array &$variables): void {
     ];
   }, $variables['breadcrumb']);
 
-  // TODO: attach and handle all the available operaters.
-  $operations = $variables['group_operations'];
-  $group_join = [
-    'modifier' => 'call',
-    'href' => $operations['group-join']['url'],
-    'label' => $operations['group-join']['title'],
-  ];
+
+  // Null Safe Array.
+  $variables['group_operations'] = $variables['group_operations'] ? $variables['group_operations'] : [];
 
   array_walk($variables['group_operations'], function (&$item, $key) {
     $item['key'] =  $key;
@@ -477,7 +477,8 @@ function blellow_preprocess_page_header_block(array &$variables): void {
   }, $variables['group_operations']);
 
   $variables['operation_links'] = array_values($variables['operation_links']);
-  $variables['group_join'] = $group_join;
+  // Uncomment to simulate cases with one action only.
+  // $variables['operation_links'] = array_slice($variables['operation_links'],0,1);
 }
 
 /**

@@ -94,36 +94,41 @@
           </div>
         {% endif %}
         
-        {% if _group_join is not empty %}
           <div class="bl-page-header__join">
-            {% include '@ecl/generic-component-button' with {
-              'modifier': group_join.modifier,
-              'href': group_join.href,
-              'label': group_join.label,
-              'extra_attributes': group_join.extra_attributes,
-            } only %}
-            <p>Select button</p>
-            {% include '@ecl/ec-component-button' with {
-              'label': 'Create',
-              'type_attribute': 'button',
-              'extra_classes': 'ecl-expandable__button',
-              'extra_attributes': [
-                { 'name': 'aria-controls', 'value': 'example-button-dropdown1'},
-                { 'name': 'aria-expanded', 'value': 'false'},
-                { 'name': 'id', 'value': 'example-expandable-button1' },
-              ]
-            } %}
-            {% include '@ecl/ec-component-link-block' with {
-              'extra_classes': 'ecl-dropdown__body',
-              'extra_attributes': [
-                { 'name': 'id', 'value': 'example-button-dropdown1'},
-                { 'name': 'aria-labelledby', 'value': 'example-expandable-button1'},
-                { 'name': 'aria-hidden', 'value': 'true'},
-              ],
-              'links': _operation_links,
-            } %}
-          </div>
-        {% endif %}
+            {% if _operation_links | length == 1 %}
+              {% include '@ecl/generic-component-button' with {
+                'modifier': 'call',
+                'href': _operation_links[0].href,
+                'label': _operation_links[0].label,
+                'extra_attributes': group_join.extra_attributes,
+              } only %}
+            {% elseif _operation_links | length > 1 %}
+            <div class="ecl-dropdown" id="cnect-dropdown-groupheader-actions">
+              {% include '@ecl/ec-component-button' with {
+                'modifier': 'call',
+                'label': 'Group Actions',
+                'type_attribute': 'button',
+                'extra_classes': 'ecl-expandable__button',
+                'extra_attributes': [
+                  { 'name': 'aria-controls', 'value': 'cnect-button-dropdown-groupheader-actions-body'},
+                  { 'name': 'aria-expanded', 'value': 'false'},
+                  { 'name': 'id', 'value': 'cnect-button-dropdown-groupheader-actions' },
+                ]
+              } %}
+              {% include '@ecl/ec-component-link-block' with {
+                'title': null,
+                'extra_classes': 'ecl-dropdown__body',
+                'extra_attributes': [
+                  { 'name': 'id', 'value': 'cnect-button-dropdown-groupheader-actions-body' },
+                  { 'name': 'aria-labelledby', 'value': 'cnect-button-dropdown-groupheader-actions'},
+                  { 'name': 'aria-hidden', 'value': 'true'},
+                ],
+                'links': _operation_links,
+              } %}
+            </div>
+            {% endif %}
+        </div>
+        
       </div>
     {% endif %}
   </div>
