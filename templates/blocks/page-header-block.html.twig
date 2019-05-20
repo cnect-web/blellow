@@ -29,6 +29,7 @@
 {% set _group_image = visual_identity|default('') %}
 {% set _group_url = group_url|default('') %}
 {% set _group_join = group_join|default('') %}
+{% set _operation_links = operation_links|default([]) %}
 {% set _metas = metas|default([]) %}
 {% set _css_class = 'ecl-page-header' %}
 
@@ -45,5 +46,6 @@
   'group_image': _group_image,
   'group_url': 'https://ec.europa.eu/futurium/en/urban-agenda',
   'group_join': _group_join,
+  'operation_links': _operation_links,
   'metas': ['news article', '17 September 2014'],
 } %}
