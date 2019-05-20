@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - fut_blocks
+  theme:
+    - blellow
+id: futurium_page_header
+theme: blellow
+region: page_header
+weight: 0
+provider: null
+plugin: fut_page_header_block
+settings:
+  id: fut_page_header_block
+  label: 'Futurium Page Header'
+  provider: fut_blocks
+  label_display: '0'
+visibility: {  }
