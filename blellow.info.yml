@@ -1,6 +1,6 @@
-name: blellow
+name: Blellow 8.x
 type: theme
-description: 'blellow theme'
+description: 'The default theme of DG-Connect for the Futurium D8 website.'
 package: Cnect
 core: 8.x
 libraries:
