@@ -1,6 +1,6 @@
 @import '@ecl/generic-base/generic-base';
 
-.bl-node--fut-teaser {
+.teaser--fut-teaser {
   padding-bottom: map-get($ecl-spacing, 's');
   padding-top: map-get($ecl-spacing, 's');
 
@@ -20,33 +20,29 @@
     margin-top: map-get($ecl-spacing, 's');
   }
 
-  .teaser_header {
+  .teaser__header {
+    align-items: center;
     display: flex;
-    flex-direction: row;
+    margin-bottom: map-get($ecl-spacing, 's');
   }
 
-  .bl-node__side {
+  .teaser__body-side {
     margin-right: map-get($ecl-spacing, 'm');
   }
 
-  .bl-contentmeta {
-    display: flex;
-    flex-direction: row;
-  }
-
   /* TODO: needs to be adadpted when template provide for field  */
-  .bl-content div:first-child {
+  .teaser__content div:first-child {
     color: #404040;
     font-size: map-get($ecl-font-size, 's');
     line-height: 1.66;
     margin-bottom: map-get($ecl-spacing, 's');
   }
 
-  .content-type-name {
-    color: map-get($ecl-colors, 'grey-75');
-    flex-grow: 1;
-    font-size: map-get($ecl-font-size, 'xs');
-    text-transform: uppercase;
+  /* component contentmeta */
+
+  .bl-contentmeta {
+    display: flex;
+    flex-direction: row;
   }
 
   .bl-contentmeta__header {
@@ -74,11 +70,19 @@
 
 /* needs to move to component */
 
+.content-type-name {
+  color: map-get($ecl-colors, 'grey-75');
+  font-size: map-get($ecl-font-size, 'xs');
+  text-transform: uppercase;
+}
+
 .group-info {
   align-self: flex-end;
   background: #fff;
   border: 1px solid #e2e2e2;
-  margin-left: map-get($ecl-spacing, 's');
+
+  /* margin-left: map-get($ecl-spacing, 's'); */
+  margin-left: auto;
   span {
     display: inline-block;
   }
@@ -87,7 +91,7 @@
   }
   span img {
     height: 30px;
-    vertical-align: middle;
+    vertical-align: middle; 
     width: 30px;
   }
   .name {
@@ -100,15 +104,14 @@
     text-transform: uppercase;
   }
   .name a {
-    vertical-align: middle;
+    vertical-align: middle; 
   }
+
 }
 
-
-.bl-node--fut-teaser__fut-event {
-  .teaser_body {
+.teaser--fut-teaser__fut-event {
+  .teaser__body {
     display: flex;
-    flex-direction: row;
   }
 }
 

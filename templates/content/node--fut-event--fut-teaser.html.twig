@@ -7,59 +7,46 @@
  */
 #}
 
+{# {% embed '@blellow/content/node--fut-teaser.html.twig' %}
+{% endembed %}
+#}
+
 {%
   set classes = [
-    'bl-node',
-    'bl-node--' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'bl-node--promoted',
-    node.isSticky() ? 'bl-node--sticky',
-    not node.isPublished() ? 'node--unpublished newsfeed__item--unpublished',
-    view_mode ? 'bl-node--' ~ view_mode|clean_class,
-    view_mode ? 'bl-node--' ~ view_mode|clean_class ~ '__' ~ node.bundle|clean_class,
+    'teaser',
+    'teaser--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'teaser--promoted',
+    node.isSticky() ? 'teaser--sticky',
+    not node.isPublished() ? 'node--unpublished teaser--unpublished',
+    view_mode ? 'teaser--' ~ view_mode|clean_class,
+    view_mode ? 'teaser--' ~ view_mode|clean_class ~ '__' ~ node.bundle|clean_class,
   ]
 %}
 
-
-
-{% embed '@blellow/content/node--fut-teaser.html.twig' %}
-{% endembed %}
-
-<article {{ attributes.addClass(classes) }}>
-  
+<article {{ attributes.addClass(classes) }}>  
   {% block teaser_header %}
-    <div class="teaser_header">
-      <div class="content-type-name content-type-blog">Blog post</div>
-      <div class="group-info ">
-        <span class="picture"><a href="https://ec.europa.eu/futurium/en/europass">
-            <img typeof="foaf:Image" src="https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/european_union.jpg?itok=hsC9IQNy" alt="Europass" title="Europass"></a>
-        </span><span class="name"><a href="https://ec.europa.eu/futurium/en/europass">europass</a></span>
-      </div>
-    </div>
+    {% include '@cnectlib/cnect-group-info/cnect-group-info.html.twig' with {
+      'group_short_name': 'Europass',
+      'group_image': 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/european_union.jpg',
+      'group_url': 'https://ec.europa.eu/futurium/en/europass',
+    } %}
   {% endblock teaser_header %}
 
-
   {% block teaser_body %}
-    <div class="teaser_body">
-      {% block teaser_side %} 
-        <div class="bl-node__side">
-          {{ content.fut_event_date }}
+    <div class="teaser__body">
+      <div class="teaser__body-side">
+        {{ content.fut_event_date }}
+      </div>  
+      <div class="teaser__content">
+        {% if not page %}
+          <h3{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+          </h3>
+        {% endif %}
+        <div {{ content_attributes }}>
+          {{ content|without('fut_event_date') }}
         </div>
-      {% endblock teaser_side %}
-    
-      {% block node_content %}  
-        <div class="bl-node__content">
-          <div class="bl-content">
-            {% if not page %}
-              <h3{{ title_attributes }}>
-                <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-              </h3>
-            {% endif %}
-            <div {{ content_attributes }}>
-              {{ content|without('fut_event_date') }}
-            </div>
-          </div>
-        </div>
-      {% endblock node_content %}
+      </div>
     </div>
   {% endblock teaser_body %}
 </article>
