@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see ./core/themes/stable/templates/content/node.html.twig
+ */
+#}
+
+{# {% embed '@blellow/content/node--fut-teaser.html.twig' %}
+{% endembed %}
+#}
+
+{%
+  set classes = [
+    'teaser',
+    'teaser--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'teaser--promoted',
+    node.isSticky() ? 'teaser--sticky',
+    not node.isPublished() ? 'node--unpublished teaser--unpublished',
+    view_mode ? 'teaser--' ~ view_mode|clean_class,
+  ]
+%}
+
+<article {{ attributes.addClass(classes) }}>  
+  {% block teaser_header %}
+    {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
+      'group_short_name': 'Europass',
+      'group_image': 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/european_union.jpg',
+      'group_url': 'https://ec.europa.eu/futurium/en/europass',
+    } %}
+  {% endblock teaser_header %}
+
+  {% block teaser_body %}
+    <div class="teaser__body">
+      {{ content.fut_event_date }} 
+      <div class="teaser__content">
+        {% if not page %}
+          <h3{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+          </h3>
+        {% endif %}
+        <div {{ content_attributes }}>
+          {{ content|without('fut_event_date') }}
+        </div>
+      </div>
+    </div>
+  {% endblock teaser_body %}
+</article>

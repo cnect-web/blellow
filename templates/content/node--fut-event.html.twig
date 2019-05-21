@@ -46,9 +46,9 @@
   <div class="bl-node__content">
     <div class="bl-content">
       {% if not page %}
-        <h2{{ title_attributes }}>
+        <h3{{ title_attributes }}>
           <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        </h2>
+        </h3>
       {% endif %}
       <div {{ content_attributes }}>
         {{ content|without('fut_event_date') }}

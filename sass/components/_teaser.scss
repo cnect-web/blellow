@@ -1,0 +1,119 @@
+@import '@ecl/generic-base/generic-base';
+
+.teaser {
+  padding-bottom: map-get($ecl-spacing, 's');
+  padding-top: map-get($ecl-spacing, 's');
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $ecl-color-shade;
+    text-decoration: underline;
+  }
+
+  h3 {
+    color: $ecl-color-primary;
+    font-size: map-get($ecl-font-size, 'm');
+    margin-bottom: map-get($ecl-spacing, 's');
+    margin-top: map-get($ecl-spacing, 's');
+  }
+
+  .teaser__header {
+    align-items: center;
+    display: flex;
+    margin-bottom: map-get($ecl-spacing, 's');
+  }
+
+  /* TODO: needs to be adadpted when template provide for field  */
+  .teaser__content div:first-child {
+    color: #404040;
+    font-size: map-get($ecl-font-size, 's');
+    line-height: 1.66;
+    margin-bottom: map-get($ecl-spacing, 's');
+  }
+
+  /* component contentmeta */
+
+  .bl-contentmeta {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .bl-contentmeta__header {
+    flex-shrink: 0;
+    height: auto;
+    margin-right: map-get($ecl-spacing, 's');
+    max-height: 5.55rem;
+    max-width: 5.55rem;
+    width: auto;
+  }
+
+  .bl-contentmeta__date-time {
+    color: map-get($ecl-colors, 'grey-75');
+    margin-bottom: map-get($ecl-spacing, 's');
+  }
+
+  .bl-contentmeta__author-name {
+    margin-bottom: map-get($ecl-spacing, 'xxs');
+  }
+
+  .cnect-date-widget {
+    margin-bottom: 0;
+    margin-right: map-get($ecl-spacing, 'm');
+  }
+}
+
+/* needs to move to component? */
+
+.teaser__content-type-name {
+  color: map-get($ecl-colors, 'grey-75');
+  font-size: map-get($ecl-font-size, 'xs');
+  text-transform: uppercase;
+}
+
+.teaser__group-info {
+  align-self: flex-end;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  margin-left: auto;
+  span {
+    display: inline-block;
+  }
+}
+
+.teaser__group-image img {
+  height: 30px;
+  vertical-align: middle; 
+  width: 30px;
+}
+
+.teaser__group-name {
+  display: inline-block;
+  font-size: map-get($ecl-font-size, 'xxs');
+  font-weight: bold;
+  padding: 0;
+  padding-left: map-get($ecl-spacing, 'xxs');
+  padding-right: map-get($ecl-spacing, 'xxs');
+  text-transform: uppercase;
+  a {
+    vertical-align: middle;
+  }
+}
+
+/* Teaser event */
+
+.teaser--fut-event {
+  .teaser__body {
+    display: flex;
+  }
+}
+
+/* sticky teaser */
+
+.teaser--sticky {
+  background-color: map-get($ecl-colors, 'grey-10');
+  padding-left: map-get($ecl-spacing, 's');
+  padding-right: map-get($ecl-spacing, 's');
+}
