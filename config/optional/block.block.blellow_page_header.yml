@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - ctools
     - oe_theme_helper
     - system
   theme:
@@ -25,3 +26,11 @@ visibility:
     pages: '<front>'
     negate: true
     context_mapping: {  }
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      fut_event: fut_event
+      fut_post: fut_post
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

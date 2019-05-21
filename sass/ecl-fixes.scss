@@ -1,3 +1,5 @@
+@import '@ecl/ec-base/variables/index';
+
 /* In this file we can put overrides to fix ecl styling issues */
 
 /**
@@ -8,4 +10,8 @@
  
 .ecl-site-header__banner {
   justify-content: flex-start;
+}
+
+.ecl-message {
+  margin: 0 0 map-get($ecl-spacing, 'm');
 }

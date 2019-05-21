@@ -69,6 +69,13 @@ language_switcher:
     - core/drupal
     - blellow/base
 
+group_header:
+  js:
+    js/group-header.js: {}
+  dependencies:
+    - core/drupal
+    - blellow/base
+
 login_register:
   css:
     theme:
@@ -100,6 +107,9 @@ date_widget:
   dependencies:
     - core/drupal
     - blellow/base
+
+
+
 
 global-fonts:
   css:
