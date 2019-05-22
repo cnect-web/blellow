@@ -11,6 +11,7 @@ libraries:
   - blellow/date_widget
   - blellow/meta_data
   - blellow/global-fonts
+  - blellow/video
   
 base theme: stable
 regions:
