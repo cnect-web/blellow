@@ -8,6 +8,8 @@ core: 8.x
 default_content:
   node:
     - c433aa9c-d0ac-42a5-928c-11e83852529f
+    - bd946950-45d7-46b7-ac8b-17555a060b03
+    - 58d9af00-cdcc-4999-9e92-0a6790e2c73d
 #    - 4136f52a-8255-4de7-bc24-86c8440cb255
 #    - e33d8fbe-88ce-490d-8e4e-4001693c8841
 #    - b9992039-ca41-4611-9075-aadd33bb83e1
@@ -27,6 +29,8 @@ default_content:
     - ca98cca6-b684-4e04-ac3d-6c738e97c856
     - 917b3505-4608-496b-8f2d-b7bbcf462afb
     - deab8181-4bf3-4490-a134-d120828caf09
+    - d6c50cde-4b30-477c-b3f0-2dc84fbcceed
+    - 61f7fa15-4891-40cd-9d90-c56997067308
 #    - e7118d45-a80c-4134-b2aa-bbb22d7067d1
 #    - 51ba1783-7f4f-465a-a9d0-739bda8bfe26
 #    - 4ec21b50-3175-4f6d-aeb3-a1d08af6df58
@@ -42,7 +46,11 @@ default_content:
     - 94411786-ec3f-432b-9b5c-f718436b8c19
     - c6582ba1-ed58-447c-80ea-cb9a556e3999
     - 498917d5-f8d0-493c-a388-893f676c10a6
+    - edee1a37-8dd1-492a-88ff-0099fca6b186
+    - 9c8fddbd-8702-40ff-b2b6-9817a7c03ba9
   media:
     - 4854e505-6f10-49f9-8bef-e443cded4731
     - 074929cd-e5c3-45b3-bede-98d0c595a5ab
     - 635782bc-1a32-47e2-bedc-f01674174c5d
+    - bab155cd-c070-4d1e-96cc-d0f308ef4775
+    - 1d542789-7f9b-40c5-bcb8-33d8681afcfa
