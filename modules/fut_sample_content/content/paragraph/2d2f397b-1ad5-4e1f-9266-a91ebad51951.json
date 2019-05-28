@@ -1,0 +1,82 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/fut_text"
+        }
+    },
+    "id": [
+        {
+            "value": 1
+        }
+    ],
+    "uuid": [
+        {
+            "value": "2d2f397b-1ad5-4e1f-9266-a91ebad51951"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 6
+        }
+    ],
+    "langcode": [
+        {
+            "value": "und",
+            "lang": "und"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "fut_text"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-05-27T14:59:12+00:00",
+            "lang": "und",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "1"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "fut_content"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": []
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ],
+    "fut_text": [
+        {
+            "value": "<p>Praesent vel augue sed erat ultricies pretium non cursus lorem. Vivamus tortor velit, semper at vulputate id, consectetur ac massa. Nunc vitae mauris metus. Maecenas risus lacus, volutpat eget diam id, posuere mattis urna. Etiam ante dui, convallis eget justo in, feugiat cursus nibh. Integer libero enim, fringilla eget sem non, feugiat lobortis ex. Vestibulum ut sem nec dui lacinia semper. Ut viverra rhoncus ipsum ac pellentesque. Nam placerat, sapien imperdiet tempus aliquam, libero tellus porttitor enim, non vestibulum lorem ante sit amet dolor. Fusce porttitor purus elit, quis aliquet elit sollicitudin ut. Integer accumsan sollicitudin velit vel mattis. Praesent fermentum massa a odio ultricies, quis congue augue sagittis. Sed eu nibh interdum, gravida nisl vitae, finibus erat. Cras vitae nisl ac eros convallis sodales ut nec sem.<\/p>\r\n",
+            "format": "fut_basic_html",
+            "processed": "<p>Praesent vel augue sed erat ultricies pretium non cursus lorem. Vivamus tortor velit, semper at vulputate id, consectetur ac massa. Nunc vitae mauris metus. Maecenas risus lacus, volutpat eget diam id, posuere mattis urna. Etiam ante dui, convallis eget justo in, feugiat cursus nibh. Integer libero enim, fringilla eget sem non, feugiat lobortis ex. Vestibulum ut sem nec dui lacinia semper. Ut viverra rhoncus ipsum ac pellentesque. Nam placerat, sapien imperdiet tempus aliquam, libero tellus porttitor enim, non vestibulum lorem ante sit amet dolor. Fusce porttitor purus elit, quis aliquet elit sollicitudin ut. Integer accumsan sollicitudin velit vel mattis. Praesent fermentum massa a odio ultricies, quis congue augue sagittis. Sed eu nibh interdum, gravida nisl vitae, finibus erat. Cras vitae nisl ac eros convallis sodales ut nec sem.<\/p>"
+        }
+    ]
+}
