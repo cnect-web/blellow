@@ -1,0 +1,134 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/comment\/1?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/comment\/comment"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/entity_id": [
+            {
+                "href": "http:\/\/default\/ut-viverra-rhoncus-ipsum-ac-pellentesque?_format=hal_json"
+            }
+        ]
+    },
+    "cid": [
+        {
+            "value": 1
+        }
+    ],
+    "uuid": [
+        {
+            "value": "a3486646-a5a0-49a8-a408-187fb43d9ee0"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "comment_type": [
+        {
+            "target_id": "comment"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0d79d26c-29c8-4c71-bb6b-53344c1cad8b"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/entity_id": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/ut-viverra-rhoncus-ipsum-ac-pellentesque?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/fut_post"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c433aa9c-d0ac-42a5-928c-11e83852529f"
+                    }
+                ]
+            }
+        ]
+    },
+    "subject": [
+        {
+            "value": "Nunc mollis erat quis sapien pulvinar, quis dignissim nunc fring",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-05-28T08:29:59+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-05-28T08:29:59+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "thread": [
+        {
+            "value": "01\/"
+        }
+    ],
+    "entity_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "field_name": [
+        {
+            "value": "fut_comments"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "comment_body": [
+        {
+            "value": "<p>Vestibulum leo erat, hendrerit eu lacinia in, aliquam a metus. Fusce auctor, dolor sed interdum accumsan, nibh turpis feugiat turpis, blandit luctus nisl metus in orci. Donec vitae velit ac enim vulputate aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque posuere dui nulla, in pellentesque libero bibendum in. Morbi bibendum, nunc in ullamcorper iaculis, tellus metus commodo orci, ac pellentesque sapien nibh eget ligula. Donec id magna eu risus maximus semper.<\/p>\r\n",
+            "format": "fut_basic_html",
+            "processed": "<p>Vestibulum leo erat, hendrerit eu lacinia in, aliquam a metus. Fusce auctor, dolor sed interdum accumsan, nibh turpis feugiat turpis, blandit luctus nisl metus in orci. Donec vitae velit ac enim vulputate aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque posuere dui nulla, in pellentesque libero bibendum in. Morbi bibendum, nunc in ullamcorper iaculis, tellus metus commodo orci, ac pellentesque sapien nibh eget ligula. Donec id magna eu risus maximus semper.<\/p>",
+            "lang": "en"
+        }
+    ]
+}

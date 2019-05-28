@@ -250,11 +250,11 @@
     "fut_comments": [
         {
             "status": 2,
-            "cid": 0,
-            "last_comment_timestamp": 1558969152,
-            "last_comment_name": null,
+            "cid": 3,
+            "last_comment_timestamp": 1559032260,
+            "last_comment_name": "",
             "last_comment_uid": 1,
-            "comment_count": 0
+            "comment_count": 3
         }
     ]
 }

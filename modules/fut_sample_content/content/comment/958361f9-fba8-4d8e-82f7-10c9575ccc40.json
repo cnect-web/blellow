@@ -1,0 +1,156 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/comment\/3?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/comment\/comment"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/pid": [
+            {
+                "href": "http:\/\/default\/comment\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/entity_id": [
+            {
+                "href": "http:\/\/default\/ut-viverra-rhoncus-ipsum-ac-pellentesque?_format=hal_json"
+            }
+        ]
+    },
+    "cid": [
+        {
+            "value": 3
+        }
+    ],
+    "uuid": [
+        {
+            "value": "958361f9-fba8-4d8e-82f7-10c9575ccc40"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "comment_type": [
+        {
+            "target_id": "comment"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0d79d26c-29c8-4c71-bb6b-53344c1cad8b"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/pid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/comment\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/comment\/comment"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "a3486646-a5a0-49a8-a408-187fb43d9ee0"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/comment\/comment\/entity_id": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/ut-viverra-rhoncus-ipsum-ac-pellentesque?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/fut_post"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c433aa9c-d0ac-42a5-928c-11e83852529f"
+                    }
+                ]
+            }
+        ]
+    },
+    "subject": [
+        {
+            "value": "Donec vitae velit ac enim vulputate aliquam",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-05-28T08:31:00+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-05-28T08:31:00+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "thread": [
+        {
+            "value": "01.00\/"
+        }
+    ],
+    "entity_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "field_name": [
+        {
+            "value": "fut_comments"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "comment_body": [
+        {
+            "value": "<p>Nam in ultrices dolor. Vestibulum leo erat, hendrerit eu lacinia in, aliquam a metus. Fusce auctor, dolor sed interdum accumsan, nibh turpis feugiat turpis, blandit luctus nisl metus in orci. Donec vitae velit ac enim vulputate aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus<\/p>\r\n",
+            "format": "fut_basic_html",
+            "processed": "<p>Nam in ultrices dolor. Vestibulum leo erat, hendrerit eu lacinia in, aliquam a metus. Fusce auctor, dolor sed interdum accumsan, nibh turpis feugiat turpis, blandit luctus nisl metus in orci. Donec vitae velit ac enim vulputate aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus<\/p>",
+            "lang": "en"
+        }
+    ]
+}
