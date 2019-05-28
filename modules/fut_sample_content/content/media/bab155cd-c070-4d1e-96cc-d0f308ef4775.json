@@ -1,0 +1,152 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/media\/5?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/media\/fut_image"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "und"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/thumbnail": [
+            {
+                "href": "http:\/\/default\/sites\/default\/files\/2019-05\/post-3.jpg",
+                "lang": "und"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/field_media_image": [
+            {
+                "href": "http:\/\/default\/sites\/default\/files\/2019-05\/post-3.jpg"
+            }
+        ]
+    },
+    "mid": [
+        {
+            "value": 5
+        }
+    ],
+    "uuid": [
+        {
+            "value": "bab155cd-c070-4d1e-96cc-d0f308ef4775"
+        }
+    ],
+    "vid": [
+        {
+            "value": 5
+        }
+    ],
+    "langcode": [
+        {
+            "value": "und",
+            "lang": "und"
+        }
+    ],
+    "bundle": [
+        {
+            "target_id": "fut_image"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "2019-05-28T08:49:27+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0d79d26c-29c8-4c71-bb6b-53344c1cad8b"
+                    }
+                ],
+                "lang": "und"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/thumbnail": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/sites\/default\/files\/2019-05\/post-3.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "61f7fa15-4891-40cd-9d90-c56997067308"
+                    }
+                ],
+                "lang": "und"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/fut_image\/field_media_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/sites\/default\/files\/2019-05\/post-3.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "61f7fa15-4891-40cd-9d90-c56997067308"
+                    }
+                ]
+            }
+        ]
+    },
+    "name": [
+        {
+            "value": "Post 3",
+            "lang": "und"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-05-28T08:49:14+00:00",
+            "lang": "und",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-05-28T08:49:27+00:00",
+            "lang": "und",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ]
+}
