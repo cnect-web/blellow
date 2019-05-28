@@ -23,6 +23,7 @@ default_content:
   file:
     - ca98cca6-b684-4e04-ac3d-6c738e97c856
     - 917b3505-4608-496b-8f2d-b7bbcf462afb
+    - deab8181-4bf3-4490-a134-d120828caf09
 #    - e7118d45-a80c-4134-b2aa-bbb22d7067d1
 #    - 51ba1783-7f4f-465a-a9d0-739bda8bfe26
 #    - 4ec21b50-3175-4f6d-aeb3-a1d08af6df58
@@ -37,6 +38,8 @@ default_content:
     - 2d2f397b-1ad5-4e1f-9266-a91ebad51951
     - 94411786-ec3f-432b-9b5c-f718436b8c19
     - c6582ba1-ed58-447c-80ea-cb9a556e3999
+    - 498917d5-f8d0-493c-a388-893f676c10a6
   media:
     - 4854e505-6f10-49f9-8bef-e443cded4731
     - 074929cd-e5c3-45b3-bede-98d0c595a5ab
+    - 635782bc-1a32-47e2-bedc-f01674174c5d
