@@ -10,6 +10,7 @@ default_content:
     - c433aa9c-d0ac-42a5-928c-11e83852529f
     - bd946950-45d7-46b7-ac8b-17555a060b03
     - 58d9af00-cdcc-4999-9e92-0a6790e2c73d
+    - 738d09d4-e4af-4560-b550-cd955a97ba6e
 #    - 4136f52a-8255-4de7-bc24-86c8440cb255
 #    - e33d8fbe-88ce-490d-8e4e-4001693c8841
 #    - b9992039-ca41-4611-9075-aadd33bb83e1
@@ -31,6 +32,7 @@ default_content:
     - deab8181-4bf3-4490-a134-d120828caf09
     - d6c50cde-4b30-477c-b3f0-2dc84fbcceed
     - 61f7fa15-4891-40cd-9d90-c56997067308
+    - 06989607-910a-4315-b0d1-b1fc55e9acd9
 #    - e7118d45-a80c-4134-b2aa-bbb22d7067d1
 #    - 51ba1783-7f4f-465a-a9d0-739bda8bfe26
 #    - 4ec21b50-3175-4f6d-aeb3-a1d08af6df58
@@ -48,9 +50,12 @@ default_content:
     - 498917d5-f8d0-493c-a388-893f676c10a6
     - edee1a37-8dd1-492a-88ff-0099fca6b186
     - 9c8fddbd-8702-40ff-b2b6-9817a7c03ba9
+    - 32d7b0a0-e439-43c5-af00-16e4fc5e5c3e
+    - 640920f4-b43e-407d-a8f5-6f515963498f
   media:
     - 4854e505-6f10-49f9-8bef-e443cded4731
     - 074929cd-e5c3-45b3-bede-98d0c595a5ab
     - 635782bc-1a32-47e2-bedc-f01674174c5d
     - bab155cd-c070-4d1e-96cc-d0f308ef4775
     - 1d542789-7f9b-40c5-bcb8-33d8681afcfa
+    - 5427d8a1-4e0b-40e9-a853-7873121734d5
