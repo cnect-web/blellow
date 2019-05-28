@@ -4,27 +4,27 @@
             "href": ""
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/fut_image"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/fut_video"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/fut_image\/fut_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/fut_video\/fut_video": [
             {
-                "href": "http:\/\/default\/media\/2?_format=hal_json"
+                "href": "http:\/\/default\/media\/3?_format=hal_json"
             }
         ]
     },
     "id": [
         {
-            "value": 3
+            "value": 4
         }
     ],
     "uuid": [
         {
-            "value": "c6582ba1-ed58-447c-80ea-cb9a556e3999"
+            "value": "498917d5-f8d0-493c-a388-893f676c10a6"
         }
     ],
     "revision_id": [
         {
-            "value": 10
+            "value": 12
         }
     ],
     "langcode": [
@@ -35,7 +35,7 @@
     ],
     "type": [
         {
-            "target_id": "fut_image"
+            "target_id": "fut_video"
         }
     ],
     "status": [
@@ -46,7 +46,7 @@
     ],
     "created": [
         {
-            "value": "2019-05-28T06:56:42+00:00",
+            "value": "2019-05-28T08:00:58+00:00",
             "lang": "und",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -77,20 +77,26 @@
             "lang": "und"
         }
     ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "und"
+        }
+    ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/fut_image\/fut_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/fut_video\/fut_video": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/media\/2?_format=hal_json"
+                        "href": "http:\/\/default\/media\/3?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/media\/fut_image"
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/fut_video"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "074929cd-e5c3-45b3-bede-98d0c595a5ab"
+                        "value": "635782bc-1a32-47e2-bedc-f01674174c5d"
                     }
                 ]
             }

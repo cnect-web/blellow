@@ -26,6 +26,9 @@
             },
             {
                 "href": ""
+            },
+            {
+                "href": ""
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/fut_post\/fut_post_image": [
@@ -46,7 +49,7 @@
     ],
     "vid": [
         {
-            "value": 4
+            "value": 5
         }
     ],
     "langcode": [
@@ -62,7 +65,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-05-28T06:57:13+00:00",
+            "value": "2019-05-28T08:01:20+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -117,7 +120,7 @@
                         "value": "2d2f397b-1ad5-4e1f-9266-a91ebad51951"
                     }
                 ],
-                "target_revision_id": "6"
+                "target_revision_id": "9"
             },
             {
                 "_links": {
@@ -133,7 +136,7 @@
                         "value": "c6582ba1-ed58-447c-80ea-cb9a556e3999"
                     }
                 ],
-                "target_revision_id": "7"
+                "target_revision_id": "10"
             },
             {
                 "_links": {
@@ -149,7 +152,23 @@
                         "value": "94411786-ec3f-432b-9b5c-f718436b8c19"
                     }
                 ],
-                "target_revision_id": "8"
+                "target_revision_id": "11"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/fut_video"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "498917d5-f8d0-493c-a388-893f676c10a6"
+                    }
+                ],
+                "target_revision_id": "12"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/fut_post\/fut_post_image": [
@@ -191,7 +210,7 @@
     ],
     "changed": [
         {
-            "value": "2019-05-28T06:57:13+00:00",
+            "value": "2019-05-28T08:01:20+00:00",
             "lang": "und",
             "format": "Y-m-d\\TH:i:sP"
         }
