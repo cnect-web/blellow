@@ -11,19 +11,10 @@ default_content:
     - bd946950-45d7-46b7-ac8b-17555a060b03
     - 58d9af00-cdcc-4999-9e92-0a6790e2c73d
     - 738d09d4-e4af-4560-b550-cd955a97ba6e
-#    - 4136f52a-8255-4de7-bc24-86c8440cb255
-#    - e33d8fbe-88ce-490d-8e4e-4001693c8841
-#    - b9992039-ca41-4611-9075-aadd33bb83e1
-#    - 729e14a5-2a48-4da8-b924-8c19169d53ef
   comment:
     - 958361f9-fba8-4d8e-82f7-10c9575ccc40
     - 3535c8b5-7ee9-4f40-a2b1-2a76d78dc2bf
     - a3486646-a5a0-49a8-a408-187fb43d9ee0
-#    - 1314017f-ceac-4df8-aefc-acf2f4e0fc97
-#    - 0234bd1d-5603-4039-a53a-5eb7ea15410d
-#    - 26adc388-be23-4903-8ee7-f017d02d7f7f
-#    - b845d7ff-902b-44a6-afad-f49267c4c556
-#    - 760d59be-fa28-48da-a77c-1b7f70875e11
 #  user:
 #    - e6190487-2c15-4bd5-a219-7f0f88479afb
   file:
@@ -33,16 +24,8 @@ default_content:
     - d6c50cde-4b30-477c-b3f0-2dc84fbcceed
     - 61f7fa15-4891-40cd-9d90-c56997067308
     - 06989607-910a-4315-b0d1-b1fc55e9acd9
-#    - e7118d45-a80c-4134-b2aa-bbb22d7067d1
-#    - 51ba1783-7f4f-465a-a9d0-739bda8bfe26
-#    - 4ec21b50-3175-4f6d-aeb3-a1d08af6df58
-#    - a7a92f08-0fdb-4072-bbb8-434d24be3eb5
-#    - 2c9b1312-9a75-41cc-b030-2179e37b9882
-#    - 23731741-7291-4fa9-8586-177664c9003d
-#    - d420e5ac-aa51-46f5-b9b1-f174564ca016
-#    - 05a4613b-a360-404d-a418-3bb1866a25be
-#  group:
-#    - 15843ff1-5b24-4621-8652-f5e4d940d0f8
+  group:
+    - 5aae6242-97b2-4edd-b87d-02190849ce8d
   paragraph:
     - 2d2f397b-1ad5-4e1f-9266-a91ebad51951
     - 94411786-ec3f-432b-9b5c-f718436b8c19
@@ -52,6 +35,8 @@ default_content:
     - 9c8fddbd-8702-40ff-b2b6-9817a7c03ba9
     - 32d7b0a0-e439-43c5-af00-16e4fc5e5c3e
     - 640920f4-b43e-407d-a8f5-6f515963498f
+    - edea43f6-beb6-46be-8bda-6bebf8e70353
+    - e95960e6-4dc4-4e32-8714-d92b59b1a5db
   media:
     - 4854e505-6f10-49f9-8bef-e443cded4731
     - 074929cd-e5c3-45b3-bede-98d0c595a5ab
@@ -59,3 +44,5 @@ default_content:
     - bab155cd-c070-4d1e-96cc-d0f308ef4775
     - 1d542789-7f9b-40c5-bcb8-33d8681afcfa
     - 5427d8a1-4e0b-40e9-a853-7873121734d5
+  taxonomy_term:
+    - 86941396-8c14-42e7-a44e-3e30588dd2b0
