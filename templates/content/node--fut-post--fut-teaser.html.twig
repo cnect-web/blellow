@@ -65,4 +65,18 @@
       } %}
     </div>
   {% endblock teaser_footer %}
+
+  {% set comments_count = node.fut_comments.comment_count %}
+  {% set comments_url = '' %}
+
+  {% if comments_count is not empty and comments_count > 0 %}
+    <div class="comments_count">
+      {% trans %}
+        {{ comments_count }} <span>comment</span>
+      {% plural comments_count %}
+        {{ comments_count }} <span>comments</span>
+      {% endtrans %}
+    </div>
+  {% endif %}
+
 </article>
