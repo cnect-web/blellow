@@ -63,20 +63,18 @@
         'author_name': author_name,
         'date': date,
       } %}
+
+      {% set comments_count = node.fut_comments.comment_count %}
+      {% if comments_count is not empty and comments_count > 0 %}
+      <div class="bl-comments-count">
+        {% trans %}
+          <a href="{{ url }}#comment-1">{{ comments_count }} <span>comment</span></a>
+        {% plural comments_count %}
+          <a href="{{ url }}#comment-1">{{ comments_count }} <span>comments</span></a>
+        {% endtrans %}
+      </div>
+      {% endif %}
+
     </div>
   {% endblock teaser_footer %}
-
-  {% set comments_count = node.fut_comments.comment_count %}
-  {% set comments_url = '' %}
-
-  {% if comments_count is not empty and comments_count > 0 %}
-    <div class="comments_count">
-      {% trans %}
-        {{ comments_count }} <span>comment</span>
-      {% plural comments_count %}
-        {{ comments_count }} <span>comments</span>
-      {% endtrans %}
-    </div>
-  {% endif %}
-
 </article>
