@@ -13,7 +13,7 @@ build:
     - tar --exclude="node_modules" --exclude=".git" --exclude=".gitlab-ci.yml" -zcvf dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
     - cp dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
   only:
-    - tags
+    # - tags
     - develop
   artifacts:
     paths:
@@ -49,8 +49,8 @@ packagist:
     - git add .
     - git commit -m "Release ${CI_BUILD_TAG}"
     - git push -u origin master
-    - git tag -a $CI_BUILD_TAG -m "Release ${CI_BUILD_TAG}"
-    - git push --tags
+    # - git tag -a $CI_BUILD_TAG -m "Release ${CI_BUILD_TAG}"
+    # - git push --tags
   only:
-    - tags
+    # - tags
     - develop
