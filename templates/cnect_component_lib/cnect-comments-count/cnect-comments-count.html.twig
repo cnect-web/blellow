@@ -13,7 +13,8 @@
 {% if _comments_url is not empty and _comments_url_target is not empty %}
   {% set _comments_url = _comments_url ~ _comments_url_target %} 
 {% endif %}
-{% if _comments_count is not empty and _comments_count > 0 %}
+
+{% if _comments_count is not empty and _comments_count > 0 and _comments_url is not empty %}
   <div class="{{ _css_class }}">
     {% trans %}
       <a href="{{ _comments_url }}" class="bl-comments-count__url">{{ _comments_count }} <span class="bl-comments-count__link-text">comment</span></a>
