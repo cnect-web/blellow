@@ -10,7 +10,7 @@ build:
     - npm install
     - npm run build
     - cd ..
-    - tar --exclude="node_modules" --exclude=".git" -zcvf dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
+    - tar --exclude="node_modules" --exclude=".git" --exclude=".gitlab-ci.yml" -zcvf dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
     - cp dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
   only:
     - tags
