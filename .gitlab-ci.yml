@@ -40,7 +40,7 @@ packagist:
     - rm -rf ${PACKAGIST_NAME}/*
     # - tar xvzf ${CI_PROJECT_NAME}-${CI_BUILD_TAG}.tgz
     - tar xvzf dist-${CI_COMMIT_SHORT_SHA}.tgz
-    - sed 's/cnect-web/skounis/g'
+    - sed 's/cnect-web/skounis/g' composer.json
     - rsync -av ${CI_PROJECT_NAME}/ ${PACKAGIST_NAME}/ --delete
     - mv .git ${PACKAGIST_NAME}/.git
     - cd ${PACKAGIST_NAME}
