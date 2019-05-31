@@ -1,5 +1,4 @@
 
-
 stages:
   - package
   - packagist
@@ -23,8 +22,8 @@ build:
 
 packagist:
   stage: packagist
-  dependencies:
-    - release
+#   dependencies:
+#     - release
   image: ubuntu:18.04
   before_script:
     - apt-get update -y && apt-get install ssh git rsync -y
