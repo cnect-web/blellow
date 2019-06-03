@@ -49,4 +49,3 @@ button:
       label: "Block status"
       description: "Whether the button needs to be treated as a block or not."
       preview: false
-      
