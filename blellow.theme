@@ -1021,7 +1021,7 @@ function blellow_preprocess_group_navigation(array &$variables): void {
 /**
  * Implements hook_form_comment_form_alter().
  */
-function blellow_form_comment_form_alter(array &$form, array &$form_state) {
+function blellow_form_comment_form_alter(&$form, &$form_state) {
   // We could also  hide($form['subject']);.
   $form['subject']['#access'] = FALSE;
 }
