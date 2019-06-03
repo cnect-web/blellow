@@ -1017,3 +1017,15 @@ function blellow_preprocess_group_navigation(array &$variables): void {
     ];
   }, $variables['links']);
 }
+
+/**
+ * Implements hook_form_comment_form_alter().
+ * @param $form
+ *   A reference to the form
+ * @param $form_state
+ *   A reference to the state of the form
+ */
+function blellow_form_comment_form_alter(&$form, &$form_state) {
+  // we could also  hide($form['subject']);
+  $form['subject']['#access'] = FALSE;
+}
