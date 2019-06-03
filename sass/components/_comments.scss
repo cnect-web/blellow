@@ -51,3 +51,15 @@
 .indented {
   margin-left: 80px;
 }
+
+.comment-form {
+  .field--name-comment-body {
+    label {
+      display: none;
+    }
+  }
+
+  .filter-wrapper.ecl-form-group {
+    margin-top: 0;
+  }
+}
