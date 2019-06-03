@@ -24,7 +24,7 @@
     align-items: center;
     display: flex;
     margin-bottom: map-get($ecl-spacing, 's');
-  }
+  } 
 
   /* TODO: needs to be adadpted when template provide for field  */
   .teaser__content div:first-child {
@@ -63,6 +63,19 @@
     margin-bottom: 0;
     margin-right: map-get($ecl-spacing, 'm');
   }
+
+  /* comments count */ 
+
+  .bl-comments-count {
+    margin-left: auto;
+  }
+
+  .teaser__footer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 
 /* needs to move to component? */

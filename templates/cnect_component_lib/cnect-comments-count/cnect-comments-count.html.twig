@@ -1,0 +1,25 @@
+
+{% set _comments_count = comments_count|default('') %}
+{% set _comments_url = comments_url|default('') %}
+{% set _comments_url_target = comments_url_target|default('') %}
+{% set _css_class = 'bl-comments-count' %}
+
+{# Internal logic - Process properties #}
+
+{% if _variant is not empty %}
+  {% set _css_class = _css_class ~ ' bl-comments-count--' ~ _variant %}}
+{% endif %} 
+
+{% if _comments_url is not empty and _comments_url_target is not empty %}
+  {% set _comments_url = _comments_url ~ _comments_url_target %} 
+{% endif %}
+
+{% if _comments_count is not empty and _comments_count > 0 and _comments_url is not empty %}
+  <div class="{{ _css_class }}">
+    {% trans %}
+      <a href="{{ _comments_url }}" class="bl-comments-count__url">{{ _comments_count }} <span class="bl-comments-count__link-text">comment</span></a>
+    {% plural _comments_count %}
+      <a href="{{ _comments_url }}" class="bl-comments-count__url">{{ _comments_count }} <span class="bl-comments-count__link-text">comments</span></a>
+    {% endtrans %}
+  </div>
+{% endif %}

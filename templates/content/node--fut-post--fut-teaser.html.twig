@@ -63,6 +63,14 @@
         'author_name': author_name,
         'date': date,
       } %}
+
+      {% set comments_count = node.fut_comments.comment_count %}
+      {% include '@cnectlib/cnect-comments-count/cnect-comments-count.html.twig' with {
+        'comments_url': url,
+        'comments_url_target': '#comment-1',
+        'comments_count': comments_count,
+      } %}
+
     </div>
   {% endblock teaser_footer %}
 </article>
