@@ -1,7 +1,6 @@
 
 {% set _author_name = author_name|default('') %}
-{% set _author_link = author_link|default('') %}
-{% set _avatar_url = avatar_url|default('') %}
+{% set _avatar = avatar|default([]) %}
 {% set _date = date|default('') %}
 {% set _css_class = 'bl-contentmeta' %}
 
@@ -15,18 +14,7 @@
   {% if avatar is not empty %}
     <div class="bl-contentmeta__header">
       <div class="bl-contentmeta__avatar">
-      {# {% if _author_link is not empty %}               
-        <a href="{{ _author_link }}">
-          <img src="{{ _avatar_url }}">
-        </a>
-      {% else %}
-        <img src="{{ _avatar_url }}">
-      {% endif %}
-      #}
-
-      {{ avatar }}
-
-
+        {{ avatar }}
       </div>
     </div>
   {% endif %}
