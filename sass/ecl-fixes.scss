@@ -15,3 +15,9 @@
 .ecl-message {
   margin: 0 0 map-get($ecl-spacing, 'm');
 }
+
+/* Let tabs wrap on multiple lines  */
+
+.ecl-navigation-list {
+  flex-wrap: wrap;
+}
