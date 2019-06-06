@@ -12,16 +12,21 @@
 {% endif %} 
 
 <div class="{{ _css_class }}"> 
-  {% if _avatar_url is not empty %}
+  {% if avatar is not empty %}
     <div class="bl-contentmeta__header">
       <div class="bl-contentmeta__avatar">
-      {% if _author_link is not empty %}               
+      {# {% if _author_link is not empty %}               
         <a href="{{ _author_link }}">
           <img src="{{ _avatar_url }}">
         </a>
       {% else %}
         <img src="{{ _avatar_url }}">
       {% endif %}
+      #}
+
+      {{ avatar }}
+
+
       </div>
     </div>
   {% endif %}
