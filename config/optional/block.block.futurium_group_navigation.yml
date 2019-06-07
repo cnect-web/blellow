@@ -1,0 +1,20 @@
+uuid: 2bde872b-d059-44e1-9925-7dec08586aec
+langcode: en
+status: true
+dependencies:
+  module:
+    - fut_blocks
+  theme:
+    - blellow
+id: futurium_group_navigation
+theme: blellow
+region: navigation
+weight: 0
+provider: null
+plugin: fut_page_header_block
+settings:
+  id: fut_page_header_block
+  label: 'Futurium group navigation'
+  provider: fut_blocks
+  label_display: '0'
+visibility: {  }
