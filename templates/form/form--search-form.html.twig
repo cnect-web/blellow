@@ -9,6 +9,7 @@
  * In order to avoid usage of not secure form template in ecl we have to partically copy code from @ecl/generic-component-search-form.twig
  */
 #}
+{% set _input = input|default([]) %}
 
 <form {{ attributes.addClass(['ecl-search-form', 'ecl-search-form--']) }}>
   <label class="ecl-search-form__textfield-wrapper">
@@ -17,7 +18,7 @@
       'id': 'search',
       'type': 'search',
       'extra_classes': 'ecl-search-form__textfield'
-    }|merge(input) only %}
+    }|merge(_input) only %}
   </label>
   {% include '@ecl/generic-component-button' with {
     'label': 'Search',
