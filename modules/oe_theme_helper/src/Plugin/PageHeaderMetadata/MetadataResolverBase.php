@@ -3,7 +3,6 @@
 
 namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
 
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Class MetadataResolverBase
@@ -14,15 +13,15 @@ use Drupal\Core\Entity\EntityInterface;
  */
 abstract class MetadataResolverBase {
 
-  /**
-   * The current entity to resolve.
-   *
-   * @var Drupal\Core\Entity\EntityInterface;
-   */
-  protected $entity;
+  protected $entities;
 
-  function __construct(EntityInterface $entity) {
-    $this->entity = $entity;
+  /**
+   * MetadataResolverBase constructor.
+   *
+   * @param \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\FutCurrentEntities $entities
+   */
+  function __construct(FutCurrentEntities $entities) {
+    $this->entities = $entities;
   }
 
   /**
@@ -32,8 +31,8 @@ abstract class MetadataResolverBase {
   public function getMetadata() {
     $metadata = [
       '_resolverClass' => get_class($this),
-      '_entityClass' => get_class($this->entity),
-      'title' => $this->entity->label()
+      '_entityClass' => get_class($this->entities->getPrimary()),
+      'title' => $this->entities->getPrimary()->label()
     ];
 
     $extra = $this->_getMetadata();

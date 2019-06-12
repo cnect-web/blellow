@@ -8,6 +8,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\fut_group\RequestEntityExtractor;
 use Drupal\oe_theme_helper\PageHeaderMetadataPluginBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,6 +30,14 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
   protected $currentRouteMatch;
 
   /**
+   * The request entity extractor. Gets access to the active or related Group
+   * in the context.
+   *
+   * @var \Drupal\fut_group\RequestEntityExtractor
+   */
+  protected $requestEntityExtractor;
+
+  /**
    * Creates a new EntityPageHeaderMetadata object.
    *
    * @param array $configuration
@@ -39,11 +48,14 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
    *   The plugin implementation definition.
    * @param \Drupal\Core\Routing\RouteMatchInterface $current_route_match
    *   The current route match.
+   * @param \Drupal\fut_group\RequestEntityExtractor $request_entity_extractor
+   *   The request entity extractor.
    */
-  public function __construct(array $configuration, string $plugin_id, $plugin_definition, RouteMatchInterface $current_route_match) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, RouteMatchInterface $current_route_match, RequestEntityExtractor $request_entity_extractor) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->currentRouteMatch = $current_route_match;
+    $this->requestEntityExtractor = $request_entity_extractor;
   }
 
   /**
@@ -54,7 +66,8 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('fut_group.request_entity_extractor')
     );
   }
 
@@ -72,9 +85,11 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
    */
   public function getMetadata(): array {
     $entity = $this->getEntityFromCurrentRoute();
+    $extractedEntities[] = $this->requestEntityExtractor->getGroup();
+    $entities = $this->getEntities();
 
     // Create a resolver
-    $resolver = MetadataResolverFactory::create($entity);
+    $resolver = MetadataResolverFactory::create($entities);
     $typedMetadata = $resolver->getMetadata();
     // TODO: Use the resolver
 
@@ -110,4 +125,18 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
     return NULL;
   }
 
+  /**
+   * @return \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\FutCurrentEntities
+   */
+  public function getEntities(): FutCurrentEntities {
+    // Currently we care only for Groups and Nodes. If both exist
+    $arr = array();
+    $arr [] = $this->requestEntityExtractor->getGroup();
+    $arr [] = $this->requestEntityExtractor->getNode();
+    $arr = array_filter($arr);
+
+    $entities = new FutCurrentEntities($arr);
+
+    return $entities;
+  }
 }
