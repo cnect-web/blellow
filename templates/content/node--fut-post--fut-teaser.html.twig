@@ -19,6 +19,10 @@
   ]
 %}
 
+
+{# {% set _group_short_name = group_short_name|group_label %} #}
+{# {% set _group_short_name = _group_short_name|default('') %} #}
+
 {# avatar_url #}
 {% if node.uid.entity.user_picture.entity.uri.value is empty %}
   {% set avatar_url = file_url(directory ~ '/images/default_user.jpg') %}
@@ -31,12 +35,26 @@
   {% set author_link = path('entity.user.canonical', {'user': node.getOwnerId()}) %}
 {% endif %}
 
+{# use group_short_name or group_name #}
+
+{% set group_short_name = drupal_field('fut_short_name', 'group', group_id) %}
+
+
+{{ group_label }}
+{{ _group_short_name }}
+
+
+
+{{ drupal_field('fut_logo', 'group', group_id) }}
+
+{{ group_name }}
+
 <article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
-      'group_short_name': 'Europass',
+      'group_name': 'abc',
       'group_image': 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/european_union.jpg',
-      'group_url': 'https://ec.europa.eu/futurium/en/europass',
+      'group_url': group_url,
       'content_type_name': 'my content type',
   } %}
   {% endblock teaser_header %}
