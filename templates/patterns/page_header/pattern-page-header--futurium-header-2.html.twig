@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default implementation for the page header component.
+ */
+#}
+
+{#
+
+'group_join_url': 'https://ec.europa.eu/futurium/en/urban-agenda/membership',
+  'group_join_label': 'Join Urban Agenda for the EU',
+  'group_privacy': 'open',
+
+#}
+{# TODO: Clean up and put the twing in place. Remove `-2` from the filename#}
+{# TODO: remove this debug line #}
+{#{{ kint(_context  ) }}#}
+
+{% include '@cnectlib/cnect-component-header/cnect-component-header-2.html.twig' with {
+  'breadcrumb': breadcrumb,
+  'identity': identity,
+  'group_name': title,
+  'group_image': image,
+  'group_url': url,
+  'operation_links': actions,
+  'group_join': {
+  	'modifier': 'call',
+  	'href': 'https://ec.europa.eu/futurium/en/urban-agenda/membership',
+  	'label': 'Join my group',
+  	'extra_attributes': [
+      { 'name': 'role', 'value': 'button'},
+      { 'name': 'id', 'value': 'JoinGroupButton' },
+      { 'name': 'aria-label', 'value': 'Join my group' },
+  	],
+  },
+  'metas': ['news article', '17 September 2014'],
+} %}

@@ -17,7 +17,10 @@ class MetadataResolverFactory {
 
 
   public static function create(FutCurrentEntities $entities): MetadataResolverBase {
-    $className = get_class($entities->getPrimary());
+
+    $entity = $entities->getPrimary();
+    // TODO: Handle routes with no entity
+    $className = $entity ? get_class($entity) : 'NULL';
 
     $instance = NULL;
 

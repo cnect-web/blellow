@@ -109,8 +109,14 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
       '#identity' => $metadata['identity'] ?? $this->configFactory->get('system.site')->get('name'),
       '#title' => $title,
       '#introduction' => $metadata['introduction'] ?? '',
+      '#image' => $metadata['image'] ?? [],
+      '#url' => $metadata['url'] ?? '',
+      '#actions' => $metadata['actions'] ?? [],
       '#metas' => $metadata['metas'] ?? [],
     ];
+
+    // TODO: We should also consider the breacrumb builder availabe in
+    //       web/modules/custom/fut_blocks/src/Plugin/Block/FutPageHeaderBlock.php
     return $this->addBreadcrumbSegments($build, $title);
   }
 

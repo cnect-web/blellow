@@ -85,7 +85,7 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
    */
   public function getMetadata(): array {
     $entity = $this->getEntityFromCurrentRoute();
-    $extractedEntities[] = $this->requestEntityExtractor->getGroup();
+//    $extractedEntities[] = $this->requestEntityExtractor->getGroup();
     $entities = $this->getEntities();
 
     // Create a resolver
@@ -93,9 +93,11 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
     $typedMetadata = $resolver->getMetadata();
     // TODO: Use the resolver
 
-    $metadata = [
-      'title' => $entity->label(),
-    ];
+    $metadata = $typedMetadata;
+
+//    $metadata = [
+//      'title' => $entity->label(),
+//    ];
 
     $cacheability = new CacheableMetadata();
     $cacheability
@@ -134,6 +136,12 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
     $arr [] = $this->requestEntityExtractor->getGroup();
     $arr [] = $this->requestEntityExtractor->getNode();
     $arr = array_filter($arr);
+
+    // If Group Extractor fails try to capture the entity from the route
+    // TODO: Fix the reducers in `FutCurrentEntities` when
+    if (empty($arr)) {
+      $arr [] = $this->getEntityFromCurrentRoute();
+    }
 
     $entities = new FutCurrentEntities($arr);
 

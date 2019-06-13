@@ -70,4 +70,39 @@ class FutGroupHelper {
     return $image;
   }
 
+  /**
+   *
+   * @param $actions
+   */
+
+
+  /**
+   * Converts the group_operations to an ECL friendly array
+   *
+   * @param $actions
+   *  The Group Operations array
+   *
+   * @return array
+   *  An array of [href, label, weight, key]
+   */
+  public static function groupActionsToECLArray($actions) {
+    $actions = $actions ?? [];
+
+    array_walk($actions, function (&$item, $key) {
+      $item['key'] = $key;
+    });
+
+    $links = array_map(function ($item) {
+      return [
+        'href' => $item['url'],
+        'label' => $item['title'],
+        'weight' => $item['weight'],
+        'key' => $item['key'],
+      ];
+    }, $actions);
+
+    $links = array_values($links);
+
+    return $links;
+  }
 }

@@ -89,4 +89,6 @@ class FutCurrentEntities {
   private function reduce($array, $reducer){
     return array_reduce($array, $reducer);
   }
+
+
 }

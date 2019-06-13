@@ -16,14 +16,20 @@ class GroupMetadataResolver extends MetadataResolverBase {
     $node = $this->entities->getRelated();
     $visual_identity = FutGroupHelper::getVisualIdentity($group);
     $group_operations = FutGroupHelper::getGroupOperations($group);
-    //
-    // $breadcrumb = $this->breadcrumbBuilder->build($this->requestEntityExtractor->getRouteMatch());
 
+    $groupUrl = $group->toUrl();
+    $url = [];
+    if (!empty($groupUrl)) {
+      $url =  $groupUrl->getInternalPath();
+    }
+
+    $actions = FutGroupHelper::groupActionsToECLArray($group_operations);
     $metadata = [
-      'group' => $group,
-      'node' => $node,
-      'visual_identity' => $visual_identity,
-      'group_operations' => $group_operations,
+      'image' => $visual_identity,
+      'actions' => $actions,
+      'url' => $url,
+      '_group' => $group,
+      '_node' => $node,
       '_extra' => GroupMetadataResolver::class
     ];
 
