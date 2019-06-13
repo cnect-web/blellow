@@ -963,6 +963,10 @@ function blellow_preprocess_node(&$variables) {
       $variables['group_id'] = $group_content->getGroup()->id();
       $variables['group_label'] = $group_content->getGroup()->label();
       $variables['group_url'] = $group_content->getGroup()->url();
+      $group_short_name = $group_content->getGroup()->get('fut_short_name')->getValue();
+      $variables['group_short_name'] = reset($group_short_name);
+      $logo = $group_content->getGroup()->get('fut_logo')->getValue();
+      $variables['group_logo'] = reset($logo);
     }
   }
 }

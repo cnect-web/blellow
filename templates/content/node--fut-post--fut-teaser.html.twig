@@ -19,10 +19,6 @@
   ]
 %}
 
-
-{# {% set _group_short_name = group_short_name|group_label %} #}
-{# {% set _group_short_name = _group_short_name|default('') %} #}
-
 {# avatar_url #}
 {% if node.uid.entity.user_picture.entity.uri.value is empty %}
   {% set avatar_url = file_url(directory ~ '/images/default_user.jpg') %}
@@ -36,24 +32,23 @@
 {% endif %}
 
 {# use group_short_name or group_name #}
+{% set _group_short_name = group_short_name|default([]) %}
+{% set _group_short_name = group_short_name.value %}
+{% set _group_label = group_label|default('') %} 
+{% set _group_name = _group_short_name|default(_group_label) %}
 
-{% set group_short_name = drupal_field('fut_short_name', 'group', group_id) %}
+{# render group_image field #}
+{% set _group_logo = group_logo|default([]) %}
+{# TODO: replace null by the image style #} 
+{% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %}
 
-
-{{ group_label }}
-{{ _group_short_name }}
-
-
-
-{{ drupal_field('fut_logo', 'group', group_id) }}
-
-{{ group_name }}
 
 <article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
-      'group_name': 'abc',
-      'group_image': 'https://ec.europa.eu/futurium/sites/futurium/files/styles/thumbnail/public/european_union.jpg',
+      'group_label': _group_label,
+      'group_name': _group_name,
+      'group_image': group_image,
       'group_url': group_url,
       'content_type_name': 'my content type',
   } %}
