@@ -19,13 +19,6 @@
   ]
 %}
 
-{# avatar_url #}
-{% if node.uid.entity.user_picture.entity.uri.value is empty %}
-  {% set avatar_url = file_url(directory ~ '/images/default_user.jpg') %}
-{% else %}
-  {% set avatar_url = file_url(node.uid.entity.user_picture.entity.uri.value|image_style('thumbnail')) %}
-{% endif %}
-
 {# Link to Author profile if users is logged in #}
 {% if logged_in %}
   {% set author_link = path('entity.user.canonical', {'user': node.getOwnerId()}) %}
@@ -45,6 +38,7 @@
 
 <article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
+
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
       'group_label': _group_label,
       'group_name': _group_name,
@@ -71,8 +65,7 @@
     <div class="teaser__footer">
       {{ content.fut_event_date }}
       {% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
-        'avatar_url': avatar_url,
-        'author_link': author_link,
+        'avatar': author_picture,
         'author_name': author_name,
         'date': date,
       } %}
