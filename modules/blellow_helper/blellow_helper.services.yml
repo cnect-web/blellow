@@ -1,0 +1,10 @@
+parameters:
+  blellow_helper.twig_loader.namespaces: ['ec-europa', 'ecl']
+  blellow_helper.twig_loader.theme: 'blellow'
+  blellow_helper.twig_loader.directory: 'templates/components'
+services:
+  blellow_helper.twig_loader.component_library:
+    class: Drupal\blellow_helper\Loader\ComponentLibraryLoader
+    arguments: ['%blellow_helper.twig_loader.namespaces%', '@app.root', '%blellow_helper.twig_loader.theme%', '%blellow_helper.twig_loader.directory%', '@theme_handler']
+    tags:
+      - { name: twig.loader, priority: -50 }

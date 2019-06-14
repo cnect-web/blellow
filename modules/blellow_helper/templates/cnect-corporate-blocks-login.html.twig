@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks login.
+ *
+ * Available variables:
+ *   - none
+ *
+ * @see template_preprocess_corporate_blocks_login()
+ *
+ * @ingroup themeable
+ */
+ #}
+
+<div class="cnect-login-widget">
+
+    <div class="ecl-dropdown cnect-dropdown" id="cnect-dropdown-login">
+
+        <button type="button"
+                id="cnect-expandable-button-login"
+                class="ecl-button ecl-button--primary ecl-expandable__button"
+                aria-controls="cnect-button-dropdown-login" aria-expanded="false">Login</button>
+
+        <div id="cnect-button-dropdown-login"
+             class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
+             aria-labelledby="cnect-expandable-button-login" aria-hidden="true">
+
+            <p class="cnect-dropdown__title">User Login</p>
+            <button type="button" class="ecl-button ecl-button--call ecl-button--caret-right">Login with EU Login</button>
+            <hr class="cnect-dropdown__separator">
+            <p><a href="#" class="ecl-link">I'm an existing Futurium user without a EU Login</a></p>
+            <p><a href="#" class="ecl-link">No EU Login? Register here</a></p>
+        </div>
+    </div>
+
+</div>

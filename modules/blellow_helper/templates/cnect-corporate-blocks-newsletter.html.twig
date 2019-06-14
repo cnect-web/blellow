@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks newsletter.
+ *
+ * Available variables:
+ *   - none
+ *
+ * @see template_preprocess_corporate_blocks_newsletter()
+ *
+ * @ingroup themeable
+ */
+ #}
+
+<div class="cnect-newletter-widget">
+  <form action="http://ec.europa.eu/information_society/newsroom/cf/urbanagenda/subscription-quick-generic.cfm"
+        method="post" id="nexteuropa-newsroom-newsletter-subscription-form" class="ecl-form" accept-charset="UTF-8">
+    <div>
+      <div class="title">{{ 'Subscribe to the newsletter of'|trans }}</div>
+      <div class="hide"></div>
+      <div class="hide"></div>
+      <div>
+        <div class="form-control__wrapper">
+          <input placeholder="{{ 'Your e-mail'|trans }}" class="ecl-text-input"
+                 id="edit-email" name="email" value="" size="60" maxlength="128" type="text">
+        </div>
+        <span class="input-group">
+          <input class="btn btn-default ecl-button ecl-button--call ajax-processed" id="edit-submit-email" name="op" value="{{ 'Subscribe'|trans }}" type="submit">
+        </span>
+      </div>
+    </div>
+  </form>
+</div>

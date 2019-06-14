@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * OpenEuropa Corporate Blocks module.
+ */
+/**
+ * Implements hook_theme().
+ */
+function blellow_helper_theme() {
+  return [
+    'cnect_corporate_blocks_login' => [
+      'variables' => [
+        'corporate_login' => [],
+      ],
+    ],
+    'cnect_corporate_blocks_register' => [
+      'variables' => [
+        'corporate_register' => [],
+      ],
+    ],
+    'cnect_corporate_blocks_footer' => [
+      'variables' => [
+        'corporate_footer' => [],
+        'custom_footer' => [],
+      ],
+    ],
+    'cnect_corporate_blocks_newsletter' => [
+      'variables' => [
+        'corporate_newsletter' => [],
+      ],
+    ],
+  ];
+}
