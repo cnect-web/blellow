@@ -78,6 +78,18 @@
 
 }
 
+.logged-in {
+  display: none;
+}
+
+.user-logged-in .non-logged-in {
+  display: none;
+}
+
+.user-logged-in .logged-in {
+  display: block;
+}
+
 /* needs to move to component? */
 
 .teaser__content-type-name {
