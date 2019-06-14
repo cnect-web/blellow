@@ -1,0 +1,14 @@
+login_register:
+  version: 1.x
+  css:
+    theme:
+      css/components/login-register.css: {}
+  js:
+    js/components/login-register.js: {}
+  dependencies:
+    - core/jquery
+newsletter:
+  version: 1.x
+  css:
+    theme:
+      css/components/newsletter.css: {}
