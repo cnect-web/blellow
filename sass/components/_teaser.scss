@@ -114,12 +114,6 @@
   width: 30px;
 }
 
-/* override .bl-image-wrapper img */ 
-.teaser__group-info .bl-image-wrapper img {
-  display: inline-block;
-  margin-bottom: 0;
-}
-
 .teaser__group-name {
   display: inline-block;
   font-size: map-get($ecl-font-size, 'xxs');
