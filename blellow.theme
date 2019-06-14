@@ -14,6 +14,7 @@ use Drupal\Component\Utility\Random;
 use Drupal\blellow\ValueObject\FileValueObject;
 use Drupal\blellow\ValueObject\DateValueObject;
 use Drupal\blellow\ValueObject\GalleryItemValueObject;
+use Drupal\group\Entity\GroupContent;
 
 /**
  * Implements hook_preprocess_breadcrumb().
@@ -951,6 +952,23 @@ function blellow_preprocess_node(&$variables) {
   /* todo: can be removed as not used now */
   $node = $variables['node'];
   $variables['avatar'] = user_view($node->getOwner(), 'fut_default_thumbnail');
+
+  /* Bring group info to the nodes */
+  $group_content_entity = GroupContent::loadByEntity($variables['node']);
+  $node_type = $variables['node']->getType();
+  $view_mode = $variables['view_mode'];
+
+  if (($node_type == 'fut_post' || $node_type == 'fut_event') && ($view_mode == 'fut_teaser')) {
+    foreach ($group_content_entity as $group_content) {
+      $variables['group_id'] = $group_content->getGroup()->id();
+      $variables['group_label'] = $group_content->getGroup()->label();
+      $variables['group_url'] = $group_content->getGroup()->url();
+      $group_short_name = $group_content->getGroup()->get('fut_short_name')->getValue();
+      $variables['group_short_name'] = reset($group_short_name);
+      $logo = $group_content->getGroup()->get('fut_logo')->getValue();
+      $variables['group_logo'] = reset($logo);
+    }
+  }
 }
 
 /**
