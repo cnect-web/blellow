@@ -33,8 +33,9 @@
 {# render group_image field #}
 {% set _group_logo = group_logo|default([]) %}
 {# TODO: replace null by the image style #} 
-{% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %}
-
+{% if _group_logo is not empty %}
+  {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
+{% endif %}
 
 <article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
