@@ -22,7 +22,6 @@
 
   .teaser__header {
     align-items: center;
-    display: flex;
     margin-bottom: map-get($ecl-spacing, 's');
   } 
 
@@ -78,22 +77,36 @@
 
 }
 
+.logged-in {
+  display: none;
+}
+
+.user-logged-in .non-logged-in {
+  display: none;
+}
+
+.user-logged-in .logged-in {
+  display: block;
+}
+
 /* needs to move to component? */
 
 .teaser__content-type-name {
   color: map-get($ecl-colors, 'grey-75');
   font-size: map-get($ecl-font-size, 'xs');
+  margin-bottom: map-get($ecl-spacing, 's');
+  text-align: right;
   text-transform: uppercase;
 }
 
 .teaser__group-info {
-  align-self: flex-end;
-  background: #fff;
-  border: 1px solid #e2e2e2;
-  margin-left: auto;
   span {
     display: inline-block;
   }
+}
+
+.teaser__group-image {
+  margin-right: map-get($ecl-spacing, 'xxs');
 }
 
 .teaser__group-image img {
@@ -102,18 +115,22 @@
   width: 30px;
 }
 
-.teaser__group-name {
+/* override .bl-image-wrapper img */ 
+.teaser__group-info .bl-image-wrapper img {
   display: inline-block;
-  font-size: map-get($ecl-font-size, 'xxs');
+  margin-bottom: 0;
+}
+
+/* stylelint-disable */
+.teaser__group-name {
   font-weight: bold;
   padding: 0;
-  padding-left: map-get($ecl-spacing, 'xxs');
   padding-right: map-get($ecl-spacing, 'xxs');
-  text-transform: uppercase;
   a {
     vertical-align: middle;
   }
 }
+/* stylelint-enable */
 
 /* Teaser event */
 
