@@ -1,7 +1,8 @@
 <?php
 
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver;
 
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
+use Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Helper\FutGroupHelper;
 
 /**
  * Class GroupMetadataResolver

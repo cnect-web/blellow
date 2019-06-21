@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver;
 
 /**
  * Class GroupMetadataResolver
  *
- * @package Drupal\oe_theme_helper\Plugin\PageHeaderMetadata
+ * @package Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver
  */
 class DefaultMetadataResolver extends MetadataResolverBase {
 

@@ -1,7 +1,6 @@
 <?php
 
-
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver;
 
 /**
  * Class NodeMetadataResolver

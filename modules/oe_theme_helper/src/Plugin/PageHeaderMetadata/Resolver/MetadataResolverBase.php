@@ -1,8 +1,9 @@
 <?php
 
 
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver;
 
+use Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model\FutCurrentEntities;
 
 /**
  * Class MetadataResolverBase
@@ -18,7 +19,7 @@ abstract class MetadataResolverBase {
   /**
    * MetadataResolverBase constructor.
    *
-   * @param \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\FutCurrentEntities $entities
+   * @param \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model\FutCurrentEntities $entities
    */
   function __construct(FutCurrentEntities $entities) {
     $this->entities = $entities;

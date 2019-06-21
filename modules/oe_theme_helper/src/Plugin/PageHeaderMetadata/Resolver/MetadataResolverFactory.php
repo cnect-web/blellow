@@ -1,10 +1,8 @@
 <?php
 
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver;
 
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
-
-
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model\FutCurrentEntities;
 use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 

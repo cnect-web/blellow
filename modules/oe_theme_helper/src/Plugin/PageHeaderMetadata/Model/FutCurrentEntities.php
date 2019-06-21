@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata;
-
+namespace Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model;
 
 use Drupal\group\Entity\Group;
 

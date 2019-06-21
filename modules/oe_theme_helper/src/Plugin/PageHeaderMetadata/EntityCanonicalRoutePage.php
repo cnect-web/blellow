@@ -10,6 +10,8 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\fut_group\RequestEntityExtractor;
 use Drupal\oe_theme_helper\PageHeaderMetadataPluginBase;
+use Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model\FutCurrentEntities;
+use Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Resolver\MetadataResolverFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -119,7 +121,7 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
   }
 
   /**
-   * @return \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\FutCurrentEntities
+   * @return \Drupal\oe_theme_helper\Plugin\PageHeaderMetadata\Model\FutCurrentEntities
    */
   public function getEntities(): FutCurrentEntities {
     // Currently we care only for Groups and Nodes. If both exist
