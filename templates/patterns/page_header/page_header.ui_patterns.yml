@@ -34,3 +34,24 @@ page_header:
           label: "European Commission"
         - href: "#"
           label: "Announcements"
+    image:
+      type: "array"
+      label: "Image"
+      description: "Header Image"
+      preview:
+        - src: "https://placeimg.com/1000/1000/arch"
+        - alt: "Alternative text for header image"
+    url:
+      type: "text"
+      label: "URL"
+      description: "URL to the Group"
+      preview: "https://demo.com"
+    actions:
+      type: "array"
+      label: "Group actions"
+      description: "Group of actions related to the context"
+      preview:
+        - href: ""
+        - label: ""
+        - weight: ""
+        - key: ""
