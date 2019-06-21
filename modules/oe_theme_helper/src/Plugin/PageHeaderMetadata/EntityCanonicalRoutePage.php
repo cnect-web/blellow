@@ -84,24 +84,15 @@ class EntityCanonicalRoutePage extends PageHeaderMetadataPluginBase implements C
    * {@inheritdoc}
    */
   public function getMetadata(): array {
-    $entity = $this->getEntityFromCurrentRoute();
-//    $extractedEntities[] = $this->requestEntityExtractor->getGroup();
     $entities = $this->getEntities();
 
     // Create a resolver
     $resolver = MetadataResolverFactory::create($entities);
-    $typedMetadata = $resolver->getMetadata();
-    // TODO: Use the resolver
-
-    $metadata = $typedMetadata;
-
-//    $metadata = [
-//      'title' => $entity->label(),
-//    ];
+    $metadata = $resolver->getMetadata();
 
     $cacheability = new CacheableMetadata();
     $cacheability
-      ->addCacheableDependency($entity)
+      ->addCacheableDependency($entities->getPrimary())
       ->addCacheContexts(['route'])
       ->applyTo($metadata);
 
