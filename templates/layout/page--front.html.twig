@@ -37,49 +37,30 @@
   <div class="ecl-container">
     <div class="ecl-row">
 
-      {# Sidebar First #}
-{#       {% if page.sidebar_first %}
-        {% block sidebar_first %}
-          <aside class="ecl-col-sm-3" role="complementary">
-            {{ page.sidebar_first }}
-          </aside>
-        {% endblock %}
-      {% endif %} #}
+      {#
+      /**      
+       *Check if the view has results and print the block (check is not needed is no result behaviour is filled in)
+       *https://www.drupal.org/docs/8/modules/twig-tweak/twig-tweak-and-views
 
-      {# Content #}
-      {# {% set content_classes = [
-        page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
-        page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
-        page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
-        page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
-        ]
-      %} #}
-      
-      {# <section {{ content_attributes.addClass(content_classes) }}>
-        {{ page.content }}
-      </section> #}
-
-      {# Sidebar Second #}
-      {# {% if page.sidebar_second %}
-        {% block sidebar_second %}
-          <aside class="ecl-col-sm-3" role="complementary">
-            {{ page.sidebar_second }}
-          </aside>
-        {% endblock %}
-      {% endif %} #}
-
-
-      {# The following Drush command will list all available block entities. #}
-      {# drush ev 'print_r(\Drupal::configFactory()->listAll("block.block."));' #}
+       *The following Drush command will list all available block entities. 
+       * drush ev 'print_r(\Drupal::configFactory()->listAll("block.block."));
+       */ 
+      #}
 
       <div class="ecl-col-sm-8">
         {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
       </div>
-      <div class="ecl-col-sm-4">
+    
+      <aside class="ecl-col-sm-4" role="complementary">
         {{ drupal_block('views_block:fut_my_contributions-block_my_contributions') }}
+        {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
+      </aside>
+
+    </div>
+    <div class="ecl-row">
+      <div class="ecl-col-sm-12">
+         {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
       </div>
-
-
     </div>
   </div>
 </div>
