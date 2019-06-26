@@ -31,31 +31,19 @@
   {{ page.navigation }}
 {% endblock %}
 
-
 {% block main %}
 <div class="main-content ecl-u-mv-l" >
   <div class="ecl-container">
-    <div class="ecl-row">
-
-      {#
-      /**      
-       *Check if the view has results and print the block (check is not needed is no result behaviour is filled in)
-       *https://www.drupal.org/docs/8/modules/twig-tweak/twig-tweak-and-views
-
-       *The following Drush command will list all available block entities. 
-       * drush ev 'print_r(\Drupal::configFactory()->listAll("block.block."));
-       */ 
-      #}
-
-      <div class="ecl-col-sm-8">
-        {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
-      </div>
-    
-      <aside class="ecl-col-sm-4" role="complementary">
-        {{ drupal_block('views_block:fut_my_contributions-block_my_contributions') }}
-        {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
-      </aside>
-
+    <div class="ecl-row">      
+      {% if logged_in %}
+        <div class="ecl-col-sm-8">
+          {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
+        </div>
+        <aside class="ecl-col-sm-4" role="complementary">
+          {{ drupal_block('views_block:fut_my_contributions-block_my_contributions') }}
+          {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
+        </aside>
+      {% endif %}
     </div>
     <div class="ecl-row">
       <div class="ecl-col-sm-12">
