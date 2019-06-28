@@ -1,6 +1,0 @@
-name: 'PageHeaderMetadata test'
-type: module
-description: 'PageHeaderMetadata test module.'
-package: Testing
-version: VERSION
-core: 8.x
