@@ -25,18 +25,17 @@
 {% set _variant = variant|default('') %}
 {% set _identity = identity|default('') %}
 {% set _breadcrumb = breadcrumb|default([]) %}
-{% set _group_name = group_name|default('') %}
-{% set _group_image = group_image|default('') %}
-{% set _group_url = group_url|default('') %}
-{% set _group_join = group_join|default('') %}
-{% set _operation_links = operation_links|default([]) %}
+{% set _title = group_name|default('') %}
+{% set _image = group_image|default('') %}
+{% set _url = group_url|default('') %}
+{% set _actions = operation_links|default([]) %}
 {% set _metas = metas|default([]) %}
 {% set _css_class = 'ecl-page-header' %}
 
-{% set _primary_image = primary_image|default({}) %}
 
 {# Internal logic - Process properties #}
-
+<h1>cnect-component-header-2.html</h1>
+{{ kint(_actions) }}
 {% if _variant is not empty %}
   {% set _css_class = _css_class ~ ' ecl-page-header--' ~ _variant %}
 {% endif %}
@@ -55,31 +54,31 @@
     {% endif %}
 
   
-    {% if _group_image is not empty or _identity is not empty or _metas is not empty or _group_name is not empty %}
+    {% if _image is not empty or _identity is not empty or _metas is not empty or _title is not empty %}
       <div class="ecl-page-header__body">
-        {% if _group_image is not empty %}
+        {% if _image is not empty %}
           <div class="bl-page-header__group-image">
-            <a href="{{ group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
+            <a href="{{ _url }}" title="{% trans %} Go to the {{ _title }} landing page {% endtrans %}">
               {% include '@ecl/generic-style-image' with {
-                'src': _group_image.src,
-                'srcs': _group_image.srcs,
-                'alt': _group_image.alt,
+                'src': _image.src,
+                'srcs': _image.srcs,
+                'alt': _image.alt,
               } only %}
             </a>
           </div>
         {% endif %}
         
-        {% if _identity is not empty or _group_name is not empty or _metas is not empty %}
+        {% if _identity is not empty or _title is not empty or _metas is not empty %}
           <div class="bl-page-header__group-info">
             {% if _identity is not empty %}
               <div class="ecl-page-header__identity">
                 {{ _identity }}
               </div>
             {% endif %}
-            {% if _group_name is not empty %}
+            {% if _title is not empty %}
               <div class="ecl-page-header__title">
-                <a href="{{ _group_url }}" title="{% trans %} Go to the {{ _group_name }} landing page {% endtrans %}">
-                  <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _group_name | raw }}</h1>
+                <a href="{{ _url }}" title="{% trans %} Go to the {{ _title }} landing page {% endtrans %}">
+                  <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _title | raw }}</h1>
                 </a>
               </div>
             {% endif %}
@@ -95,14 +94,14 @@
         {% endif %}
         
           <div class="bl-page-header__join">
-            {% if _operation_links | length == 1 %}
+            {% if _actions | length == 1 %}
               {% include '@ecl/generic-component-button' with {
                 'modifier': 'call',
-                'href': _operation_links[0].href,
-                'label': _operation_links[0].label,
-                'extra_attributes': group_join.extra_attributes,
+                'href': _actions[0].href,
+                'label': _actions[0].label,
+                'extra_attributes': _actions[0].extra_attributes,
               } only %}
-            {% elseif _operation_links | length > 1 %}
+            {% elseif _actions | length > 1 %}
             <div class="ecl-dropdown" id="cnect-dropdown-groupheader-actions">
               {% include '@ecl/ec-component-button' with {
                 'modifier': 'call',
@@ -123,7 +122,7 @@
                   { 'name': 'aria-labelledby', 'value': 'cnect-button-dropdown-groupheader-actions'},
                   { 'name': 'aria-hidden', 'value': 'true'},
                 ],
-                'links': _operation_links,
+                'links': _actions,
               } %}
             </div>
             {% endif %}
