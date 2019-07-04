@@ -6,6 +6,10 @@
     margin-bottom:  map-get($ecl-spacing, 'xxs');
   }
 
+  .teaser__group-name a {
+    font-weight: bold;
+  }
+
   h3 {
     line-height: 1.3;
     margin-bottom: map-get($ecl-spacing, 'xxs');
@@ -24,5 +28,6 @@
   .teaser__footer {
     font-size: map-get($ecl-font-size, 'xs');;
   }
-  
+
+
 }

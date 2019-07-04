@@ -35,31 +35,45 @@
 {% if _group_logo is not empty %}
   {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
 {% endif %}
-
-<pre>[lite]</pre>
 <article {{ attributes.addClass(classes) }}>  
   {% block teaser_header %}
+
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
       'group_label': _group_label,
       'group_name': _group_name,
       'group_image': group_image,
       'group_url': group_url,
+      'content_type_name': NULL,
     } %}
   {% endblock teaser_header %}
 
   {% block teaser_body %}
     <div class="teaser__body">
-      {{ content.fut_event_date }} 
       <div class="teaser__content">
         {% if not page %}
           <h3{{ title_attributes }}>
             <a href="{{ url }}" rel="bookmark">{{ label }}</a>
           </h3>
         {% endif %}
-        <div {{ content_attributes }}>
-          {{ content|without('fut_event_date') }}
-        </div>
       </div>
     </div>
   {% endblock teaser_body %}
+  {% block teaser_footer %}
+    <div class="teaser__footer">
+      {% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
+        'avatar': NULL,
+        'author_name': NULL,
+        'date_prefix': 'posted the ',
+        'date': date,
+      } %}
+
+      {% set comments_count = node.fut_comments.comment_count %}
+      {% include '@cnectlib/cnect-comments-count/cnect-comments-count.html.twig' with {
+        'comments_url': url,
+        'comments_url_target': '#comment-1',
+        'comments_count': comments_count,
+      } %}
+
+    </div>
+  {% endblock teaser_footer %}
 </article>
