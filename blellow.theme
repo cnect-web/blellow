@@ -964,7 +964,7 @@ function blellow_preprocess_node(&$variables) {
   $node_type = $variables['node']->getType();
   $view_mode = $variables['view_mode'];
 
-  if (($node_type == 'fut_post' || $node_type == 'fut_event') && ($view_mode == 'fut_teaser')) {
+  if (($node_type == 'fut_post' || $node_type == 'fut_event') && (($view_mode == 'fut_teaser') || ($view_mode == 'fut_teaser_lite'))) {
     foreach ($group_content_entity as $group_content) {
       $variables['group_id'] = $group_content->getGroup()->id();
       $variables['group_label'] = $group_content->getGroup()->label();
