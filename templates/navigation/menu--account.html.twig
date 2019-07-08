@@ -42,10 +42,11 @@
                 <p class="cnect-dropdown__title">User Login</p>
                 <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">Login with EU Login</a>
                 <hr class="cnect-dropdown__separator">
-                <p><a href="#" class="ecl-link">I'm an existing Futurium user without a EU Login</a></p>
-                <p><a href="#" class="ecl-link">No EU Login? Register here</a></p>
+                <p><a href="{{ item.url }}" class="ecl-link">I'm an existing Futurium user without a EU Login</a></p>
+                <p><a href="https://ec.europa.eu/futurium/en/user/register" class="ecl-link" target="_blank">No EU Login? Register here</a></p>
             </div>
         </div>
+
     </div>
 {% endmacro ecl_button_login%}
 
