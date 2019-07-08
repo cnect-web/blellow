@@ -40,12 +40,14 @@
                  aria-labelledby="cnect-expandable-button-{{ key }}" aria-hidden="true">
 
                 <p class="cnect-dropdown__title">User Login</p>
-                <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">Login with EU Login</a>
+                <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">{{ "Login with EU Login"|t }}</a>
                 <hr class="cnect-dropdown__separator">
-                <p><a href="#" class="ecl-link">I'm an existing Futurium user without a EU Login</a></p>
-                <p><a href="#" class="ecl-link">No EU Login? Register here</a></p>
+
+                <p><a href="{{ item.url }}" class="ecl-link">{{ "I'm an existing Futurium user without a EU Login"|t }}</a></p>
+                <p><a href="https://ec.europa.eu/futurium/en/user/register" class="ecl-link">{{ "No EU Login? Register here"|t }}</a></p>
             </div>
         </div>
+
     </div>
 {% endmacro ecl_button_login%}
 
@@ -63,12 +65,12 @@
                  class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
                  aria-labelledby="cnect-expandable-button-{{ key }}" aria-hidden="true">
 
-                <p class="cnect-dropdown__title">Register to Futurium</p>
+                <p class="cnect-dropdown__title">{{ "Register to Futurium"|t }}</p>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="privacy-policy">
-                    <label class="form-check-label" for="privacy-policy">Accept the European Commission's <a href="#" class="ecl-link">privacy policy.</a></label>
+                    <label class="form-check-label" for="privacy-policy">{{ "Accept the European Commission's"|t }} <a href="#" class="ecl-link">{{ "privacy policy"|t }}.</a></label>
                 </div>
-                <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">Register with EU Login</a>
+                <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">{{ "Register with EU Login"|t }}</a>
             </div>
         </div>
 
@@ -83,7 +85,7 @@
             <a type="button"
                     id="cnect-expandable-button-{{ key }}"
                     href="{{ item.url }}"
-                    class="ecl-button ecl-button--primary ecl-expandable__button"
+                    class="ecl-button ecl-button--primary"
                     aria-controls="cnect-button-dropdown-register" aria-expanded="false">{{ item.title }}</a>
         </div>
 
