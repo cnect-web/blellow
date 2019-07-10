@@ -40,9 +40,7 @@
  */
 #}
 <div{{ attributes }}>
-
     <div{{ content_attributes }}>
-        {{ content }}
+        {{ content |without('fut_navigation_menu')  }}
     </div>
-
 </div>
