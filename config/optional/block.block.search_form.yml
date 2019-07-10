@@ -1,0 +1,20 @@
+uuid: 0f1c58c9-8b75-473c-a0b8-a89281231aa7
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - blellow
+id: search_form
+theme: blellow
+region: site_header
+weight: 1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  provider: search
+  label_display: '0'
+visibility: {  }
