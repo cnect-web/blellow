@@ -14,7 +14,6 @@
 {% endif %}
 
 {% if variant is not empty and variant == 'external' %}
-{#	{% set _target = [] %}#}
 	{% set _target = { "name": "target", "value": "_blank" } %}
 	{% set _extra_attributes = _extra_attributes | merge ([_target]) %}
 {% endif %}
