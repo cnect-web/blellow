@@ -80,6 +80,11 @@ function blellow_theme_suggestions_field_alter(array &$suggestions, array $varia
     // fields, while keeping all the rest markup-free.
     array_unshift($suggestions, 'field__bare');
   }
+
+  // Prepare field suggestions related to the display mode
+  $suggestions[] = 'field__' .
+    $variables['element']['#field_name'] . '__' .
+    $variables['element']['#view_mode'];
 }
 
 /**
