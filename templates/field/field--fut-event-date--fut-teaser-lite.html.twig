@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for the time field template.
+ *
+ * @see ./core/themes/stable/templates/field/field.html.twig
+
+  Parameters:
+    - "variant" (string) (default: ''): display variant
+    - "week_day" (string) (default: ''): day(s) of the week of the event
+    - "day" (string) (default: ''): day number(s) of the event
+    - "month" (string) (default: ''): month(s) of the event
+    - "year" (string) (default: ''): year(s) of the event
+    - "extra_classes" (string) (default: '')
+    - "extra_attributes" (array) (default: []): format: [
+        {
+          "name" (string) (default: ''),
+          "value" (string) (default: '')
+        },
+        ...
+      ]
+#}
+<span>{{ date.day }} {{ date.month_name }} {{ date.year }}</span>
