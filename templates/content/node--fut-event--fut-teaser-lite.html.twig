@@ -35,7 +35,7 @@
 {% if _group_logo is not empty %}
   {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
 {% endif %}
-<article {{ attributes.addClass(classes) }}>  
+<article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
 
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
@@ -52,7 +52,10 @@
       <div class="teaser__content">
         {% if not page %}
           <h3{{ title_attributes }}>
-            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+            <span style="display: inline" class="ecl-tag ecl-tag--facet">
+              <span class="ecl-tag__item" style="margin-right: 10px">{{ content.fut_event_date  }}</span>
+            </span>
+           <a href="{{ url }}" rel="bookmark">{{ label }}</a>
           </h3>
         {% endif %}
       </div>
