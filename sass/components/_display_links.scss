@@ -1,0 +1,17 @@
+/**
+ * Styles the Links field in the display modes
+ */
+article .links.inline {
+  list-style-type: none;
+  padding: 0;
+}
+
+article .links.inline .comment-add {
+  a {
+    @extend .ecl-button;
+    @extend .ecl-button--default;
+  }
+
+}
+
+
