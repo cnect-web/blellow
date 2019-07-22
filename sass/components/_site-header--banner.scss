@@ -1,3 +1,10 @@
 .ecl-container.ecl-site-header__banner {
-  justify-content: space-between;
+
+  .block-cnect-languages {
+    flex-grow: 1;
+  }
+
+  .block-search-form-block {
+    flex-grow: 1;
+  }
 }
