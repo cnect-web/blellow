@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+  theme:
+    - blellow
+id: select_langulages_block
+theme: blellow
+region: site_header
+weight: -4
+provider: null
+plugin: cnect_select_languages
+settings:
+  id: cnect_select_languages
+  label: 'Select Langulages block'
+  provider: blellow_helper
+  label_display: '0'
+visibility: {  }

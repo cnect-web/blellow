@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Default theme implementation for rendering corporate blocks select languages.
+ *
+ * Available variables:
+ *   - languages
+ *
+ * @see template_preprocess_corporate_blocks_select_languages()
+ *
+ * @ingroup themeable
+ */
+ #}
+
+{{ attach_library('blellow/dialogs') }}
+{#{{ kint(languages_local) }}#}
+<div class="cnect-register-widget">
+    {% include '@ecl/ec-component-language-list' with {
+        languages: languages,
+        variant: 'overlay',
+        messages: {
+            dismiss: 'Close'|t,
+            heading: 'Select your language'|t,
+        },
+        extra_classes: 'ecl-site-header__language-list'
+    } %}
+</div>
+
+
+
