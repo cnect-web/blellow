@@ -8,7 +8,7 @@ dependencies:
 id: blellow_site_branding
 theme: blellow
 region: site_header
-weight: 0
+weight: -5
 provider: null
 plugin: system_branding_block
 settings:
