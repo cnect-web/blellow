@@ -1,8 +1,8 @@
 @import '@ecl/generic-base/generic-base';
 
 .teaser {
-  padding-bottom: map-get($ecl-spacing, 's');
-  padding-top: map-get($ecl-spacing, 's');
+  padding-bottom: map-get($ecl-spacing, 'm');
+  padding-top: map-get($ecl-spacing, 'm');
 
   a {
     text-decoration: none;
@@ -44,14 +44,13 @@
     flex-shrink: 0;
     height: auto;
     margin-right: map-get($ecl-spacing, 's');
-    max-height: 5.55rem;
-    max-width: 5.55rem;
+    max-height: 3.1rem;  
+    max-width: 5.55rem; 
     width: auto;
   }
 
   .bl-contentmeta__date-time {
     color: map-get($ecl-colors, 'grey-75');
-    margin-bottom: map-get($ecl-spacing, 's');
   }
 
   .bl-contentmeta__author-name {
