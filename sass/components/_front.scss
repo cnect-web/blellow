@@ -1,0 +1,8 @@
+.path-frontpage {
+  .block__title {
+    @include heading-2();
+  }
+  aside .block__title {
+    @include heading-3();
+  }
+}

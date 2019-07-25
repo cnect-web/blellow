@@ -34,10 +34,17 @@
   ]
 %}
 
+{%
+  set title_classes = [
+    'block__title',
+  ]
+%}
+
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
-    <h3{{ title_attributes }}>{{ label }}</h3>
+    <h3{{ title_attributes.addClass(title_classes) }}>{{ label }}</h3>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
