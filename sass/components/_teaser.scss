@@ -2,7 +2,8 @@
 
 .teaser {
   padding-bottom: map-get($ecl-spacing, 'm');
-  padding-top: map-get($ecl-spacing, 'm');
+
+  /* padding-top: map-get($ecl-spacing, 'm'); */
 
   a {
     text-decoration: none;
@@ -24,6 +25,7 @@
   .teaser__header {
     align-items: center;
     margin-bottom: map-get($ecl-spacing, 's');
+    margin-top: map-get($ecl-spacing, 'm');
   } 
 
   /* TODO: needs to be adadpted when template provide for field  */
@@ -76,6 +78,10 @@
     margin-top: 1rem;
   }
 
+}
+
+.ecl-list-item:first-child {
+  background-color: #f00;
 }
 
 .logged-in {
