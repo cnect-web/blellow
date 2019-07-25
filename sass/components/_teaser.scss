@@ -15,7 +15,8 @@
 
   h3 {
     color: $ecl-color-primary;
-    font-size: map-get($ecl-font-size, 'm');
+    font-size: map-get($ecl-font-size, 'l');
+    line-height: 1.25;
     margin-bottom: map-get($ecl-spacing, 's');
     margin-top: map-get($ecl-spacing, 's');
   }
@@ -30,7 +31,7 @@
     color: #404040;
     font-size: map-get($ecl-font-size, 's');
     line-height: 1.66;
-    margin-bottom: map-get($ecl-spacing, 's');
+    margin-bottom: 0;
   }
 
   /* component contentmeta */
@@ -72,6 +73,7 @@
     align-items: flex-start;
     display: flex;
     flex-direction: row;
+    margin-top: 1rem;
   }
 
 }
