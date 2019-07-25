@@ -6,7 +6,6 @@
  * @see ./core/themes/stable/templates/content/node.html.twig
  */
 #}
-
 {%
   set classes = [
     'teaser',
@@ -38,6 +37,8 @@
 {% endif %}
 
 <article {{ attributes.addClass(classes) }}>
+  {% set _node_name = node.type.entity.label | default('') %}
+  {% set _collection = content.fut_collection.0['#plain_text'] |default(_node_name) %}
   {% block teaser_header %}
 
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
@@ -45,7 +46,7 @@
       'group_name': _group_name,
       'group_image': group_image,
       'group_url': group_url,
-      'content_type_name': 'my content type',
+      'content_type_name': _collection,
   } %}
   {% endblock teaser_header %}
   {% block teaser_body %}
@@ -57,7 +58,7 @@
           </h3>
         {% endif %}
         <div {{ content_attributes }}>
-          {{ content }}
+          {{ content |without('fut_collection') }}
         </div>
       </div>
     </div>
