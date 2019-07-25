@@ -37,13 +37,16 @@
 {% endif %}
 
 
-<article {{ attributes.addClass(classes) }}>  
+<article {{ attributes.addClass(classes) }}>
+  {% set _node_name = node.type.entity.label | default('') %}
+  {% set _collection = content.fut_collection.0['#plain_text'] |default(_node_name) %}
   {% block teaser_header %}
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
       'group_label': _group_label,
       'group_name': _group_name,
       'group_image': group_image,
       'group_url': group_url,
+      'content_type_name': _collection,
     } %}
   {% endblock teaser_header %}
 
@@ -57,7 +60,7 @@
           </h3>
         {% endif %}
         <div {{ content_attributes }}>
-          {{ content|without('fut_event_date') }}
+          {{ content|without('fut_event_date', 'fut_collection') }}
         </div>
       </div>
     </div>
