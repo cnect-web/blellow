@@ -1,6 +1,35 @@
 .block-views-blockfut-featured-groups-block-featured-groups {
+  .views-element-container > div {
+    /* flex */
+  }
   .ecl-list-item {
     width: 50%;
     float: left;
   }
+}
+
+
+
+.group-info {
+  display: flex;
+  flex-direction: row;
+  .fut_logo {
+    flex-shrink: 0;
+    height: auto;
+    margin-right: 1rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+  .label {
+    @include heading-3();
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.discover-groups__header {
+  min-height: 8rem;
 }

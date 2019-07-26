@@ -40,20 +40,28 @@
  */
 #}
 
+{%
+  set wrapper_classes = [
+    discover-groups,
+  ]
+%}
 
-
-<div{{ attributes }}>
-  <div class="wrapper" style="background:yellow;">
-    {{ content.fut_logo }}
-    {{ content.label }}
-    {{ content.fut_description }}
+<div{{ attributes.addClass(wrapper_classes) }}>
+  <div class="discover-groups__header">
+    <div class="group-info">
+      {{ content.fut_logo }}
+      {{ content.label }}
+    </div>
+    <div class="test2">
+      {{ content.fut_description }}
+    </div>
   </div>
 
-  <div class="wrapper" style="background:red;">
+  <div class="discover-groups__content">
     {{ content.extra_field_featured_group_featured_content }}
   </div>
 
-  <div class="wrapper" style="background:green;">
+  <div class="discover-groups__footer">
     {{ content.extra_field_join_group }}
   </div>
 </div>
