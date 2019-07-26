@@ -11,7 +11,7 @@
   }
 
   h3 {
-    line-height: 1.3;
+    line-height: initial;
     margin-bottom: map-get($ecl-spacing, 'xxs');
     margin-top: map-get($ecl-spacing, 'xxs');
   }
@@ -19,6 +19,7 @@
   a {
     font-size: map-get($ecl-font-size, 's');
     font-weight: normal;
+    line-height: 1.5;
   }
 
   .teaser__group-name {
