@@ -28,14 +28,6 @@
     margin-top: map-get($ecl-spacing, 'm');
   } 
 
-  /* TODO: needs to be adadpted when template provide for field  */
-  .teaser__content div:first-child {
-    color: #404040;
-    font-size: map-get($ecl-font-size, 's');
-    line-height: 1.5;
-    margin-bottom: 0;
-  }
-
   /* component contentmeta */
 
   .bl-contentmeta {
@@ -78,6 +70,13 @@
     margin-top: 1rem;
   }
 
+}
+
+.fut-paragraph-summary {
+  color: #404040;
+  font-size: map-get($ecl-font-size, 's');
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 .logged-in {

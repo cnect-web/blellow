@@ -1,0 +1,40 @@
+.block-views-blockfut-featured-groups-block-featured-groups {
+  .views-element-container > div {
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-row-gap:    2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .ecl-list-item {
+    border-bottom-style: none;
+  }
+}
+
+.group-info {
+  display: flex;
+  flex-direction: row;
+  .fut_logo {
+    flex-shrink: 0;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    width: auto;
+  }
+  .label {
+    @include heading-3();
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.discover-groups__header {
+  min-height: 8rem;
+}
+
+.extra-field--join-group a {
+  @extend .ecl-button;
+  @extend .ecl-button--default;
+}
