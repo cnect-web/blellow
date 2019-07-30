@@ -51,14 +51,10 @@
 
   {% block teaser_body %}
     <div class="teaser__body">
-      {{ content.fut_event_date }}
       <div class="teaser__content">
         {% if not page %}
           <h3{{ title_attributes }}>
-{#            <span style="display: inline" class="ecl-tag ecl-tag--facet">#}
-{#              <span class="ecl-tag__item" style="margin-right: 10px">{{ content.fut_event_date  }}</span>#}
-{#            </span>#}
-           <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+           <a href="{{ url }}" rel="bookmark">{{ content.fut_event_date }} - {{ label }}</a>
           </h3>
         {% endif %}
       </div>
