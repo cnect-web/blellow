@@ -30,11 +30,15 @@
   }
 }
 
+.discover-groups h3 {
+  @include heading-4();
+}
+
 .discover-groups__header {
   min-height: 8rem;
 }
 
-/* remove teaser header and teser footer from discover groups on hp */
+/* remove teaser header and teser footer from discover new groups on hp */
 
 .discover-groups__content .teaser__header,
 .discover-groups__content .teaser__footer {
