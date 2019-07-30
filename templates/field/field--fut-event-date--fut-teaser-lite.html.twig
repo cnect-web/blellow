@@ -20,13 +20,4 @@
         ...
       ]
 #}
-{#<span>{{ date.day }} {{ date.month_name }} {{ date.year }}</span>#}
-<div class="cnect-date-widget">
-    {% include '@ecl/generic-component-date-block' with {
-        'variant': variant,
-        'day': date.day,
-        'month': date.month_name,
-        'week_day': date.week_day,
-        'year': date.year
-    } only %}
-</div>
+<span class="fut-date-medium">{{ date.day }} {{ date.month_name }} {{ date.year }}</span>
