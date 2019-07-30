@@ -34,6 +34,13 @@
   min-height: 8rem;
 }
 
+/* remove teaser header and teser footer from discover groups on hp */
+
+.discover-groups__content .teaser__header,
+.discover-groups__content .teaser__footer {
+  display: none;
+}
+
 .extra-field--join-group a {
   @extend .ecl-button;
   @extend .ecl-button--default;
