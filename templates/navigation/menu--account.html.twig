@@ -29,11 +29,17 @@
 
     <div {{ attributes }} class="cnect-{{ key }}-widget">
         <div class="ecl-dropdown cnect-dropdown" id="cnect-dropdown-{{ key }}" {{ item.attributes }}>
-
+            <!-- See https://gitlab.dgcnect.eu/web-team/blellow-d8-theme/issues/165
             <button type="button"
                     id="cnect-expandable-button-{{ key }}"
                     class="ecl-button ecl-button--primary ecl-expandable__button"
                     aria-controls="cnect-button-dropdown-{{ key }}" aria-expanded="false">{{ item.title }}</button>
+            -->
+
+            <a type="button" href="#"
+                    id="cnect-expandable-button-{{ key }}"
+                    class="ecl-button ecl-button--primary ecl-expandable__button"
+                    aria-controls="cnect-button-dropdown-{{ key }}" aria-expanded="false">{{ item.title }}</a>
 
             <div id="cnect-button-dropdown-login"
                  class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
@@ -56,11 +62,16 @@
     <div {{ attributes }} class="cnect-{{ key }}-widget">
         <div class="ecl-dropdown cnect-dropdown" id="cnect-dropdown-{{ key }}">
 
+            <!-- See https://gitlab.dgcnect.eu/web-team/blellow-d8-theme/issues/165
             <button type="button"
                     id="cnect-expandable-button-{{ key }}"
                     class="ecl-button ecl-button--primary ecl-expandable__button"
                     aria-controls="cnect-button-dropdown-register" aria-expanded="false">{{ item.title }}</button>
-
+            -->
+            <a type="button" href="#"
+                    id="cnect-expandable-button-{{ key }}"
+                    class="ecl-button ecl-button--primary ecl-expandable__button"
+                    aria-controls="cnect-button-dropdown-register" aria-expanded="false">{{ item.title }}</a>
             <div id="cnect-button-dropdown-{{ key }}"
                  class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
                  aria-labelledby="cnect-expandable-button-{{ key }}" aria-hidden="true">

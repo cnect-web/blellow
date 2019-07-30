@@ -54,4 +54,6 @@
     border-color: map-get($ecl-colors, 'grey-100');
   }
 }
-
+a.ecl-button:focus {
+  text-decoration: underline;
+}
