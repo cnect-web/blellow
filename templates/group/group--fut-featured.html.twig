@@ -42,17 +42,17 @@
 
 {%
   set wrapper_classes = [
-    discover-groups,
+    'discover-groups',
   ]
 %}
 
-<div{{ attributes.addClass(wrapper_classes) }}>
+<div{{ attributes.addClass(wrapper_classes) }} >
   <div class="discover-groups__header">
-    <div class="group-info">
+    <div class="discover-groups__group-info">
       {{ content.fut_logo }}
       {{ content.label }}
     </div>
-    <div class="test2">
+    <div class="discover-groups__group-description">
       {{ content.fut_description }}
     </div>
   </div>

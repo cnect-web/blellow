@@ -10,7 +10,7 @@
   }
 }
 
-.group-info {
+.discover-groups__group-info {
   display: flex;
   flex-direction: row;
   .fut_logo {
@@ -30,8 +30,26 @@
   }
 }
 
+.discover-groups__group-description {
+  margin-bottom: map-get($ecl-spacing, 'm');
+}
+
+.discover-groups {
+  h3 {
+    @include heading-4();
+    margin: 0;
+  }
+}
+
 .discover-groups__header {
   min-height: 8rem;
+}
+
+/* Remove teaser group name and teser footer from discover new groups on hp */
+
+.discover-groups__content .teaser__header,
+.discover-groups__content .teaser__footer {
+  display: none;
 }
 
 .extra-field--join-group a {
