@@ -57,6 +57,7 @@
            <a href="{{ url }}" rel="bookmark">{{ content.fut_event_date }} - {{ label }}</a>
           </h3>
         {% endif %}
+        {{ content | without('fut_event_date') }}
       </div>
     </div>
   {% endblock teaser_body %}
