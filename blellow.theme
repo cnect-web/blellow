@@ -189,8 +189,10 @@ function _oe_theme_preprocess_input_label_wrapper(array &$variables): void {
   $element = &$variables['element'];
   $variables['has_error'] = !empty($element['#errors']);
 
-  if (isset($element['#title']) && $element['#title'] !== '') {
-    $variables['title'] = ['#markup' => $element['#title']];
+  if (!in_array($element['#title_display'], ['none', 'invisible'])) {
+    if (isset($element['#title']) && $element['#title'] !== '') {
+      $variables['title'] = ['#markup' => $element['#title']];
+    }
   }
 
   // Generate the extra attributes array from the general attributes.
