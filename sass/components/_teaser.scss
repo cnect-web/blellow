@@ -26,6 +26,10 @@
     align-items: center;
     margin-bottom: map-get($ecl-spacing, 's');
     margin-top: map-get($ecl-spacing, 'm');
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   } 
 
   /* component contentmeta */
@@ -96,14 +100,18 @@
 .teaser__content-type-name {
   color: map-get($ecl-colors, 'grey-75');
   font-size: map-get($ecl-font-size, 'xs');
-  margin-bottom: map-get($ecl-spacing, 's');
   text-align: right;
   text-transform: uppercase;
+  padding: map-get($ecl-spacing, 'xxs');
+  padding-right: 0;
+  background: #fff;
 }
 
 .teaser__group-info {
+  white-space: nowrap;
   span {
     display: inline-block;
+    white-space: nowrap;
   }
 }
 
