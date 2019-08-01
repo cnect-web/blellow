@@ -14,6 +14,10 @@ label{
   display: block;
 }
 
-.bl-field p {
+
+/* remove margin for address field */
+
+p.address {
   margin: map-get($ecl-spacing, 'none');
+  line-height: 1.5rem;
 }
