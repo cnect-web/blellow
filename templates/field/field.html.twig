@@ -46,14 +46,15 @@
 {%
   set wrapper_classes = [
     field_name,
+    'bl-field',
   ]
 %}
 
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(wrapper_classes) }}>
+    <div {{ attributes.addClass(wrapper_classes) }}>
       {% for item in items %}
-        <div{{ item.attributes }}>{{ item.content }}</div>
+        <div {{ item.attributes }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}
@@ -63,15 +64,15 @@
   {% endif %}
 {% else %}
   <div{{ attributes.addClass(wrapper_classes) }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    <div {{ title_attributes.addClass(title_classes) }}><label>{{ label }}</label></div>
     {% if multiple %}
-      <div>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
+    <div class="bl-field-multi">
+      {% endif %}
+      {% for item in items %}
+        <div {{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+    </div>
     {% endif %}
   </div>
 {% endif %}
