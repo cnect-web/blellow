@@ -15,9 +15,6 @@
   }
 
   h3 {
-    color: $ecl-color-primary;
-    font-size: map-get($ecl-font-size, 'l');
-    line-height: 1.25;
     margin-bottom: map-get($ecl-spacing, 's');
     margin-top: map-get($ecl-spacing, 's');
   }

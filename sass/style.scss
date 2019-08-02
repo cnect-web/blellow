@@ -1,10 +1,11 @@
 @import '@ecl/ec-preset-website/ec-preset-website';
-@import './components/_basic-elements';
+@import './components/fut_mixins';
+@import './components/basic-elements';
 @import './components/form';
 @import './components/toolbar';
 @import './components/splash-page';
 @import './components/pattern-page-header--futurium-header';
-@import './components/_site-header--banner';
+@import './components/site-header--banner';
 @import './components/site-header--top-bar';
 @import './components/contentmeta';
 @import './components/display_links';
