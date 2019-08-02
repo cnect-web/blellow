@@ -16,7 +16,7 @@
   }
 
   .ecl-listing h3 {
-    @include heading-4();
+    @include fut-header-4();
 
     margin: 0;
   }
@@ -102,7 +102,7 @@
     width: auto;
   }
   .label {
-    @include heading-3();
+    @include fut-header-3();
     align-self: center;
   }
   a {

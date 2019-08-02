@@ -15,34 +15,31 @@ a {
   }
 
   &:visited {
-    color: map-get($ecl-colors, 'purple-100');
+    color: map-get($ecl-colors, 'blue-100');
   }
 }
 
 .main-content {
 
   h1 {
-    @include heading-1();
+    @include fut-header-1();
   }
 
   h2 {
-    @include heading-2();
+    @include fut-header-2();
   }
 
   h3 {
-    @include heading-3(); 
+    @include fut-header-3(); 
   }
 
   h4 {
-    @include heading-4(); 
-  }
-
-  h5 {
-    @include heading-5();
+    @include fut-header-4(); 
   }
 
   h1, h2, h3, h4, h5, h6 {
     @include heading();
+    
     max-width: none;
   }
 
