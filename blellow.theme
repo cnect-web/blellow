@@ -81,7 +81,7 @@ function blellow_theme_suggestions_field_alter(array &$suggestions, array $varia
     array_unshift($suggestions, 'field__bare');
   }
 
-  // Prepare field suggestions related to the display mode
+  // Prepare field suggestions related to the display mode.
   $suggestions[] = 'field__' .
     $variables['element']['#field_name'] . '__' .
     $variables['element']['#view_mode'];
@@ -165,10 +165,6 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
   }
 }
 
-
-function blellow_preprocess_menu_local_task(array &$variables): void {
-  $v = $variables;
-}
 /**
  * Implements hook_preprocess_input__radio().
  */
@@ -495,8 +491,6 @@ function blellow_preprocess_page_header_block(array &$variables): void {
   /* Uncomment to simulate cases with one action only.
   $variables['operation_links'] = array_slice($variables['operation_links'],0,1);*/
 }
-
-
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -944,7 +938,6 @@ function blellow_form_comment_form_alter(&$form, &$form_state) {
   $form['subject']['#access'] = FALSE;
 }
 
-
 /**
  * Implements hook_preprocess_node().
  */
@@ -1070,13 +1063,17 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
 }
 
 /**
- * Compares two objects based on their '#weight' property
+ * Compares two objects based on their '#weight' property.
  *
- * @param $item1
- * @param $item2
+ * @param array $item1
+ *   The first item.
+ * @param array $item2
+ *   The second item.
+ *
  * @return bool|void
+ *   Returns the result of the comparison -1, 0, 1.
  */
-function _blellow_weight_comparator($item1, $item2) {
+function _blellow_weight_comparator(array $item1, array $item2) {
   if (!isset($item1, $item2)) {
     return 0;
   }
@@ -1089,11 +1086,15 @@ function _blellow_weight_comparator($item1, $item2) {
 /**
  * Sorts an array of objects without mutating the array.
  *
- * @param $array
- * @param $comparator
+ * @param array $array
+ *   The array to sort.
+ * @param string $comparator
+ *   The comparator used for sorting.
+ *
  * @return mixed
+ *   The array sorted
  */
-function _blellow_sort($array, $comparator) {
+function _blellow_sort(array $array, $comparator) {
   usort($array, $comparator);
   return $array;
 }
