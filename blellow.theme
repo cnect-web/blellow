@@ -81,7 +81,7 @@ function blellow_theme_suggestions_field_alter(array &$suggestions, array $varia
     array_unshift($suggestions, 'field__bare');
   }
 
-  // Prepare field suggestions related to the display mode
+  // Prepare field suggestions related to the display mode.
   $suggestions[] = 'field__' .
     $variables['element']['#field_name'] . '__' .
     $variables['element']['#view_mode'];
@@ -137,7 +137,9 @@ function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
  * Implements hook_preprocess_menu_local_tasks().
  */
 function blellow_preprocess_menu_local_tasks(array &$variables): void {
-  foreach ($variables['primary'] as $link) {
+
+  $sorted = _blellow_sort($variables['primary'], '_blellow_weight_comparator');
+  foreach ($sorted as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
     if ($url->access($variables['user'])) {
@@ -149,7 +151,8 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
     }
   }
 
-  foreach ($variables['secondary'] as $link) {
+  $sorted = _blellow_sort($variables['secondary'], '_blellow_weight_comparator');
+  foreach ($sorted as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
     if ($url->access($variables['user'])) {
@@ -487,30 +490,6 @@ function blellow_preprocess_page_header_block(array &$variables): void {
   $variables['operation_links'] = array_values($variables['operation_links']);
   /* Uncomment to simulate cases with one action only.
   $variables['operation_links'] = array_slice($variables['operation_links'],0,1);*/
-}
-
-/**
- * Reduces the title into a string if it is needed.
- *
- * There are cases where the title of the page is an array.
- *
- * Our ECL component expects a string for title.
- *
- * @param mixed $title
- *   The title.
- *
- * @return mixed|string
- *   Reduced Title.
- */
-function _blellow_title_reduce($title) {
-  if (is_scalar($title)) {
-    return $title;
-  }
-  $rendered = render($title);
-  if (is_scalar($rendered)) {
-    return $rendered;
-  }
-  return $rendered->__toString();
 }
 
 /**
@@ -920,42 +899,43 @@ function blellow_preprocess_field(&$variables, $hook) {
 }
 
 /**
- * Prepares the tags array the @ecl/generic-component-tag needs.
+ * Prepare the varialbles the ecl-style-component needs.
  *
  * @param array $variables
  *   Twig variables.
  * @param string $hook
  *   Hook name.
  */
-function _blellow_preprocess_field__fut_tags(array &$variables, $hook): void {
-  // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
-  $variable_name = 'cnect_tag_items';
-  $variables[$variable_name] = [];
-  foreach ($variables['items'] as $key => $value) {
-    if (is_numeric($key)) {
-      $variables[$variable_name][] = [
-        'href' => $value['content']['#url'],
-        'value' => $value['content']['#title'],
-      ];
-    }
+function blellow_preprocess_image(array &$variables, $hook): void {
+  $capture = ['src', 'alt', 'typeof'];
+  $attributes = $variables['attributes'];
+
+  foreach ($capture as &$key) {
+    $variables[$key] = _blellow_capture_and_unset($attributes, $key);
   }
+  $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
+  $variables['extra_attributes'] = $namevalue;
 }
 
 /**
- * Prepares the date variable for the Date widget of ECL.
- *
- * @param array $variables
- *   Twig variables.
- * @param string $hook
- *   Hook name.
+ * Implements hook_preprocess_menu__main().
  */
-function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void {
-  $element = $variables['element'];
+function blellow_preprocess_group_navigation(array &$variables): void {
 
-  $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
-  $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
-  $date = DateValueObject::fromArray($data);
-  $variables['date'] = $date->getArray();
+  $variables['links'] = array_map(function ($item) {
+    return [
+      'href' => $item->url,
+      'label' => $item->title,
+    ];
+  }, $variables['links']);
+}
+
+/**
+ * Implements hook_form_comment_form_alter().
+ */
+function blellow_form_comment_form_alter(&$form, &$form_state) {
+  // We could also  hide($form['subject']);.
+  $form['subject']['#access'] = FALSE;
 }
 
 /**
@@ -1020,41 +1000,101 @@ function _blellow_capture_and_unset(array &$array, $key) {
 }
 
 /**
- * Prepare the varialbles the ecl-style-component needs.
+ * Reduces the title into a string if it is needed.
+ *
+ * There are cases where the title of the page is an array.
+ *
+ * Our ECL component expects a string for title.
+ *
+ * @param mixed $title
+ *   The title.
+ *
+ * @return mixed|string
+ *   Reduced Title.
+ */
+function _blellow_title_reduce($title) {
+  if (is_scalar($title)) {
+    return $title;
+  }
+  $rendered = render($title);
+  if (is_scalar($rendered)) {
+    return $rendered;
+  }
+  return $rendered->__toString();
+}
+
+/**
+ * Prepares the tags array the @ecl/generic-component-tag needs.
  *
  * @param array $variables
  *   Twig variables.
  * @param string $hook
  *   Hook name.
  */
-function blellow_preprocess_image(array &$variables, $hook): void {
-  $capture = ['src', 'alt', 'typeof'];
-  $attributes = $variables['attributes'];
-
-  foreach ($capture as &$key) {
-    $variables[$key] = _blellow_capture_and_unset($attributes, $key);
+function _blellow_preprocess_field__fut_tags(array &$variables, $hook): void {
+  // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
+  $variable_name = 'cnect_tag_items';
+  $variables[$variable_name] = [];
+  foreach ($variables['items'] as $key => $value) {
+    if (is_numeric($key)) {
+      $variables[$variable_name][] = [
+        'href' => $value['content']['#url'],
+        'value' => $value['content']['#title'],
+      ];
+    }
   }
-  $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
-  $variables['extra_attributes'] = $namevalue;
 }
 
 /**
- * Implements hook_preprocess_menu__main().
+ * Prepares the date variable for the Date widget of ECL.
+ *
+ * @param array $variables
+ *   Twig variables.
+ * @param string $hook
+ *   Hook name.
  */
-function blellow_preprocess_group_navigation(array &$variables): void {
+function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void {
+  $element = $variables['element'];
 
-  $variables['links'] = array_map(function ($item) {
-    return [
-      'href' => $item->url,
-      'label' => $item->title,
-    ];
-  }, $variables['links']);
+  $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
+  $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
+  $date = DateValueObject::fromArray($data);
+  $variables['date'] = $date->getArray();
 }
 
 /**
- * Implements hook_form_comment_form_alter().
+ * Compares two objects based on their '#weight' property.
+ *
+ * @param array $item1
+ *   The first item.
+ * @param array $item2
+ *   The second item.
+ *
+ * @return bool|void
+ *   Returns the result of the comparison -1, 0, 1.
  */
-function blellow_form_comment_form_alter(&$form, &$form_state) {
-  // We could also  hide($form['subject']);.
-  $form['subject']['#access'] = FALSE;
+function _blellow_weight_comparator(array $item1, array $item2) {
+  if (!isset($item1, $item2)) {
+    return 0;
+  }
+  if (!isset($item1['#weight'], $item2['#weight'])) {
+    return 0;
+  }
+  return $item1['#weight'] > $item2['#weight'];
+}
+
+/**
+ * Sorts an array of objects without mutating the array.
+ *
+ * @param array $array
+ *   The array to sort.
+ * @param string $comparator
+ *   The comparator used for sorting.
+ *
+ * @return mixed
+ *   The array sorted
+ */
+function _blellow_sort(array $array, $comparator) {
+  usort($array, $comparator);
+  return $array;
 }
