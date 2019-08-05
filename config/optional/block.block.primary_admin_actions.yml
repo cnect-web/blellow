@@ -6,7 +6,7 @@ dependencies:
 id: primary_admin_actions
 theme: blellow
 region: content
-weight: -4
+weight: 2
 provider: null
 plugin: local_actions_block
 settings:
