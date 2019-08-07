@@ -31,6 +31,33 @@
   {{ page.navigation }}
 {% endblock %}
 
+
+{% if page.content_top or page.content_side %}
+  {% block hero %}
+    <div class="hero-content ecl-u-mv-l ecl-u-mb-xxl" >
+      <div class="ecl-container">
+        <div class="ecl-row">
+          <div class="ecl-col-sm-7">
+            {% if page.content_top %}
+              {% block content_top %}
+                {{ page.content_top }}
+              {% endblock %}
+            {% endif %}
+          </div>
+          <aside class="ecl-col-sm-5">
+            {% if page.content_side %}
+              {% block content_side %}
+                {{ page.content_side }}
+              {% endblock %}
+            {% endif %}
+          </aside>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endif %}
+
+
 {% block main %}
 <div class="main-content ecl-u-mv-l" >
   <div class="ecl-container">
