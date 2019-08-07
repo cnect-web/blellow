@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+    - user
+  theme:
+    - blellow
+id: welcome_anon_block
+theme: blellow
+region: content_top
+weight: 0
+provider: null
+plugin: cnect_welcome
+settings:
+  id: cnect_welcome
+  label: 'Welcome block'
+  provider: blellow_helper
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
