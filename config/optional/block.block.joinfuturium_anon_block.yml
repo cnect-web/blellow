@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+    - user
+  theme:
+    - blellow
+id: joinfuturium_anon_block
+theme: blellow
+region: content_side
+weight: 0
+provider: null
+plugin: cnect_join_futurium
+settings:
+  id: cnect_join_futurium
+  label: 'Join Futurium block'
+  provider: blellow_helper
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -19,6 +19,8 @@ regions:
   site_header: "Site header"
   page_header: "Page header"
   navigation: "Navigation"
+  content_top: "Content top (front)"
+  content_side: "Content top sidebar (front)"
   content: "Content"
   footer: "Footer"
   sidebar_first: 'Sidebar first'
