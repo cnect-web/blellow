@@ -1,6 +1,10 @@
+.discover-groups__footer {
+  margin-bottom: 2rem;
+}
+
 .block-views-blockfut-featured-groups-block-featured-groups {
 
-  h3.block__title {
+  .block__title {
     margin-bottom: 3rem;
   }
 
@@ -18,7 +22,7 @@
   .ecl-listing h3 {
     @include fut-header-4();
 
-    margin: 0;
+    margin: 0 0 0 2rem;
   }
 
   .ecl-list-item {
@@ -86,7 +90,31 @@
     grid-column: 2;
     grid-row: 6;
   }
+
+  /* remove flex on teaser_body */ 
+
+  .teaser__body {
+    display: initial;
+  }
+
+  .teaser--fut-teaser-lite::before {
+    @extend %fa-icon;
+    @extend .fas;
+      
+    color: map-get($ecl-colors, 'grey-100');
+    float: left;
+    margin-top: 0.3rem;
+  }
+
+  .teaser--fut-event::before {
+    content: fa-content($fa-var-calendar-alt);
+  }
+
+  .teaser--fut-post::before {
+    content: fa-content($fa-var-paste);
+  }
 }
+
 
 .discover-groups__group-info {
   display: flex;
@@ -103,6 +131,7 @@
   }
   .label {
     @include fut-header-3();
+    
     align-self: center;
   }
   a {
@@ -110,9 +139,6 @@
   }
 }
 
-.discover-groups__footer {
-  margin-bottom: 2rem;
-}
 
 /* Remove teaser group name and teser footer from discover new groups on hp */
 
