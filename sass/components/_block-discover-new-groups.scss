@@ -91,6 +91,17 @@
     grid-row: 6;
   }
 
+  .ecl-listing .contextual{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+  }
+
+  .ecl-listing .more-link {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+  }
   /* remove flex on teaser_body */ 
 
   .teaser__body {
@@ -114,6 +125,73 @@
     content: fa-content($fa-var-paste);
   }
 }
+
+
+.block-views-blockfut-featured-groups-block-featured-groups .contextual-region {
+
+  .ecl-list-item:nth-child(2) .discover-groups__header {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 1rem;
+  }
+
+  .ecl-list-item:nth-child(3) .discover-groups__header {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ecl-list-item:nth-child(4) .discover-groups__header {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .ecl-list-item:nth-child(5) .discover-groups__header {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .ecl-list-item:nth-child(2) .discover-groups__content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .ecl-list-item:nth-child(3) .discover-groups__content {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .ecl-list-item:nth-child(4) .discover-groups__content {
+    grid-column: 1;
+    grid-row: 5;
+  }
+
+  .ecl-list-item:nth-child(5) .discover-groups__content {
+    grid-column: 2;
+    grid-row: 5;
+  }
+
+  .ecl-list-item:nth-child(2) .discover-groups__footer {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .ecl-list-item:nth-child(3) .discover-groups__footer {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .ecl-list-item:nth-child(4) .discover-groups__footer {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  .ecl-list-item:nth-child(5) .discover-groups__footer {
+    grid-column: 2;
+    grid-row: 6;
+  }
+
+}
+
 
 
 .discover-groups__group-info {
