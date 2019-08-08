@@ -101,7 +101,16 @@
     grid-column-start: 1;
     grid-column-end: 3;
     text-align: center;
+
+    //ecl-button ecl-button--call ecl-button--caret-right
   }
+
+  .ecl-listing .more-link a{
+    @extend .ecl-button;
+    @extend .ecl-button--call;
+    @extend .ecl-button--caret-right;
+  }
+
   /* remove flex on teaser_body */ 
 
   .teaser__body {
