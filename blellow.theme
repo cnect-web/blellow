@@ -973,6 +973,20 @@ function blellow_preprocess_menu_local_action(&$variables) {
 }
 
 /**
+ * Implements hook_theme_suggestions_user_alter().
+ *
+ *   An array of alternate, more specific names for template files or theme
+ *   functions.
+ */
+function blellow_theme_suggestions_user_alter(&$suggestions, $vars, $hook) {
+
+  // Define the view mode.
+  $mode = $vars['elements']['#view_mode'];
+  // Create a theme hook suggestion which has the view mode name in it.
+  $suggestions[] = 'user__' . $mode;
+}
+
+/**
  * Maps an array element into a name/value pair.
  *
  * @param string $value
