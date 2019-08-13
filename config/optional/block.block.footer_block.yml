@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+  theme:
+    - blellow
+id: footer_block
+theme: blellow
+region: footer
+weight: 0
+provider: null
+plugin: cnect_footer
+settings:
+  id: cnect_footer
+  label: 'Footer block'
+  provider: blellow_helper
+  label_display: '0'
+visibility: {  }

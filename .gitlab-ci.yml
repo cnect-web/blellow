@@ -1,0 +1,57 @@
+stages:
+  - package
+  - packagist
+
+build:
+  stage: package
+  image:
+    node:8.15.1-jessie
+  script:
+    - npm install
+    - npm run build
+    - cd ..
+    - tar --exclude="node_modules" --exclude=".git" --exclude=".gitlab-ci.yml" -zcvf dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
+    - cp dist-${CI_COMMIT_SHORT_SHA}.tgz ${CI_PROJECT_NAME}
+  only:
+    # - tags
+    - develop
+  artifacts:
+    paths:
+    - dist-${CI_COMMIT_SHORT_SHA}.tgz
+
+packagist:
+  stage: packagist
+#   dependencies:
+#     - release
+  image: ubuntu:18.04
+  before_script:
+    - apt-get update -y && apt-get install ssh git rsync -y
+    - eval `ssh-agent -s`
+    - ssh-add - <<<"${PACKAGIST_REPO_KEY}"
+    - export GITLAB_DOMAIN=$(echo ${PACKAGIST_REPO} | awk -F[@] '{print $2}' | awk -F[:] '{print $1}')
+    - mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
+    - ssh-keyscan ${GITLAB_DOMAIN} >> ~/.ssh/known_hosts
+  script:
+    # - cp ${CI_PROJECT_NAME}-${CI_BUILD_TAG}.tgz /tmp
+    - cp dist-${CI_COMMIT_SHORT_SHA}.tgz /tmp
+    - cd /tmp
+    - git clone ${PACKAGIST_REPO} ${PACKAGIST_NAME}
+    - mv ${PACKAGIST_NAME}/.git .git
+    - rm -rf ${PACKAGIST_NAME}/*
+    # - tar xvzf ${CI_PROJECT_NAME}-${CI_BUILD_TAG}.tgz
+    - tar xvzf dist-${CI_COMMIT_SHORT_SHA}.tgz
+    - sed -i 's/cnect-web/skounis/g' blellow/composer.json
+    - rsync -av ${CI_PROJECT_NAME}/ ${PACKAGIST_NAME}/ --delete
+    - mv .git ${PACKAGIST_NAME}/.git
+    - cd ${PACKAGIST_NAME}
+    - git config --global user.name "${PACKAGIST_REPO_USERNAME}"
+    - git config --global user.email "${PACKAGIST_REPO_EMAIL}"
+    - git status
+    - git add .
+    - git commit -m "Release ${CI_BUILD_TAG}"
+    - git push -u origin master
+    # - git tag -a $CI_BUILD_TAG -m "Release ${CI_BUILD_TAG}"
+    # - git push --tags
+  only:
+    # - tags
+    - develop

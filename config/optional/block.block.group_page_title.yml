@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blellow_helper
+  theme:
+    - blellow
+id: group_page_title
+theme: blellow
+region: content
+weight: 0
+provider: null
+plugin: blellow_helper_group_page_title
+settings:
+  id: blellow_helper_group_page_title
+  label: 'Page title'
+  provider: blellow_helper
+  label_display: '0'
+  context_mapping:
+    page_header: '@blellow_helper.page_header_context:page_header'
+visibility: {  }

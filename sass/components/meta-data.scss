@@ -1,0 +1,13 @@
+@import '@ecl/ec-base/variables/index';
+
+.cnect-event-meta {
+  background: map-get($ecl-colors, 'grey-5');
+  border: 1px solid map-get($ecl-colors, 'grey-15');
+  border-radius: 3px;
+  margin: 0 0 0 map-get($ecl-spacing, 'm') 0;
+  padding: map-get($ecl-spacing, 'm');
+}
+
+.cnect-event-meta > legend {
+  display: none;
+}

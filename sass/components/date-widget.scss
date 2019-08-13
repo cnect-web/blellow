@@ -1,0 +1,5 @@
+@import '@ecl/ec-base/variables/index';
+
+.cnect-date-widget {
+  margin-bottom: map-get($ecl-spacing, 's');
+}

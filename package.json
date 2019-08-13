@@ -1,0 +1,34 @@
+{
+    "name": "blellow",
+    "license": "EUPL-1.1",
+    "version": "0.0.1",
+    "description": "OpenEuropa base theme.",
+    "private": true,
+    "scripts": {
+        "build:copy": "ecl-builder copy",
+        "build:scripts": "ecl-builder scripts",
+        "build:styles": "ecl-builder styles",
+        "build": "npm-run-all --parallel build:* -ln",
+        "watch:scripts": "chokidar \"./sass/**/*.js\" -i \"/node_modules/\" -c \"eslint {path} & npm run build:scripts\"",
+        "watch:styles": "chokidar \"./sass/**/*.scss\" -i \"/node_modules/\" -c \"stylelint {path} & npm run build:styles\"",
+        "watch": "npm-run-all --parallel watch:* -ln",
+        "prepare": "patch-package"
+    },
+    "dependencies": {
+        "@dgcnect/builder": "^0.2.1",
+        "@ecl/ec-preset-website": "1.2.0",
+        "@ecl/stylelint-config": "0.2.0",
+        "chokidar-cli": "1.2.0",
+        "glob": "^7.1.4",
+        "glob-base": "^0.3.0",
+        "npm-run-all": "4.0.2",
+        "patch-package": "^5.1.1",
+        "stylelint": "9.1.1",
+        "stylelint-config-prettier": "2.1.0",
+        "stylelint-no-browser-hacks": "^1.1.0"
+    },
+    "engines": {
+        "node": ">=8",
+        "yarn": ">=0.27.5"
+    }
+}

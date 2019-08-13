@@ -1,0 +1,67 @@
+drupal:
+  root: "build"
+  base_url: "http://web:8080/build"
+  database:
+    host: "mysql"
+    port: "3306"
+    name: "drupal"
+    user: "root"
+    password: ""
+  site:
+    profile: "minimal"
+    name: "OpenEuropa"
+  post_install:
+    - "./vendor/bin/drush en oe_theme_helper -y"
+    - "./vendor/bin/drush en oe_multilingual -y"
+    - "./vendor/bin/drush en oe_search -y"
+    - "./vendor/bin/drush en oe_corporate_blocks -y"
+    - "./vendor/bin/drush en config_devel -y"
+    - "./vendor/bin/drush en toolbar -y"
+    - "./vendor/bin/drush en styleguide -y"
+    - "./vendor/bin/drush theme:enable blellow -y"
+    - "./vendor/bin/drush theme:enable seven -y"
+    - "./vendor/bin/drush config-set system.theme default blellow -y"
+    - "./vendor/bin/drush config-set system.theme admin seven -y"
+    - "./vendor/bin/drush config-set node.settings use_admin_theme 1 -y"
+    - "./vendor/bin/drush cr"
+  settings:
+    settings:
+      file_scan_ignore_directories:
+        - "node_modules"
+        - "bower_components"
+        - "vendor"
+        - "${drupal.root}"
+selenium:
+  host: "http://selenium"
+  port: "4444"
+
+commands:
+  drupal:site-setup:
+    - { task: "symlink", from: "../../..", to: "${drupal.root}/themes/custom/blellow" }
+    - { task: "symlink", from: "${drupal.root}/core/.stylelintrc.json", to: ".stylelintrc.json" }
+    - { task: "run", command: "drupal:drush-setup" }
+    - { task: "run", command: "drupal:settings-setup" }
+    - { task: "run", command: "setup:phpunit" }
+    - { task: "run", command: "setup:behat" }
+  setup:phpunit:
+    - { task: "process", source: "phpunit.xml.dist", destination: "phpunit.xml" }
+  setup:behat:
+    - { task: "process", source: "behat.yml.dist", destination: "behat.yml" }
+
+release:
+  tasks:
+    - { task: "remove", file: "blellow/js" }
+    - { task: "remove", file: "blellow/templates" }
+    - { task: "copy", from: "css", to: "blellow/css" }
+    - { task: "copy", from: "fonts", to: "blellow/fonts" }
+    - { task: "copy", from: "images", to: "blellow/images" }
+    - { task: "copy", from: "js", to: "blellow/js" }
+    - { task: "copy", from: "templates", to: "blellow/templates" }
+    - task: "append"
+      file: "blellow/blellow.info.yml"
+      text: |
+
+        # Information added by OpenEuropa packaging script on ${release.date} at ${release.time}.
+        project: blellow
+        version: ${release.version}
+        datestamp: ${release.timestamp}

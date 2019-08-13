@@ -1,0 +1,65 @@
+@import '@ecl/generic-base/generic-base';
+
+.ecl-comment {
+  margin-bottom: map-get($ecl-spacing, 'm');
+
+  .ecl-comment__body {
+    background: #fff;
+    border: 1px solid map-get($ecl-colors, 'grey-25');
+    position: relative;
+  }
+
+  .ecl-comment__body::after, 
+  .ecl-comment__body::before {
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 100%;
+    top: 36px;
+    width: 0;
+  }
+
+  .ecl-comment__body::after {
+    border-right-color: #fff;
+    border-width: 10px;
+    margin-top: -10px;
+  }
+
+  .ecl-comment__body::before {
+    border-right-color: map-get($ecl-colors, 'grey-25');
+    border-width: 11px;
+    margin-top: -11px;
+  }
+
+  .ecl-comment__image-wrapper {
+    margin-top: 10px;
+    width: 80px;
+  }
+
+  .ecl-comment__meta {
+    line-height: map-get($ecl-spacing, 'm');
+  }
+
+  .ecl-comment__operations {
+    margin-bottom: 0;
+  }
+
+}
+
+.indented {
+  margin-left: 80px;
+}
+
+.comment-form {
+  .field--name-comment-body {
+    label {
+      display: none;
+    }
+  }
+
+  .filter-wrapper.ecl-form-group {
+    margin-top: 0;
+  }
+}

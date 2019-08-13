@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see ./core/themes/stable/templates/content/node.html.twig
+ */
+#}
+
+{# {% embed '@blellow/content/node--fut-teaser.html.twig' %}
+{% endembed %}
+#}
+
+{%
+  set classes = [
+    'teaser',
+    'teaser--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'teaser--promoted',
+    node.isSticky() ? 'teaser--sticky',
+    not node.isPublished() ? 'node--unpublished teaser--unpublished',
+    view_mode ? 'teaser--' ~ view_mode|clean_class,
+  ]
+%}
+
+
+{# use group_short_name or group_name #}
+{% set _group_short_name = group_short_name|default([]) %}
+{% set _group_short_name = group_short_name.value %}
+{% set _group_label = group_label|default('') %} 
+{% set _group_name = _group_short_name|default(_group_label) %}
+
+{# render group_image field #}
+{% set _group_logo = group_logo|default([]) %}
+{# TODO: replace null by the image style #} 
+{% if _group_logo is not empty %}
+  {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
+{% endif %}
+
+
+<article {{ attributes.addClass(classes) }}>
+  {% set _node_name = node.type.entity.label | default('') %}
+  {% set _collection = content.fut_collection.0['#plain_text'] |default(_node_name) %}
+  {% block teaser_header %}
+    {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
+      'group_label': _group_label,
+      'group_name': _group_name,
+      'group_image': group_image,
+      'group_url': group_url,
+      'content_type_name': _collection,
+    } %}
+  {% endblock teaser_header %}
+
+  {% block teaser_body %}
+    <div class="teaser__body">
+      {{ content.fut_event_date }} 
+      <div class="teaser__content">
+        {% if not page %}
+          <h3{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+          </h3>
+        {% endif %}
+        <div {{ content_attributes }}>
+          {{ content|without('fut_event_date', 'fut_collection') }}
+        </div>
+      </div>
+    </div>
+  {% endblock teaser_body %}
+</article>

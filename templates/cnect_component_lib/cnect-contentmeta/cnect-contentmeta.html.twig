@@ -1,0 +1,52 @@
+
+{% set _author_name = author_name|default('') %}
+{% set _avatar = avatar|default([]) %}
+{% set _date = date|default('') %}
+{% set _date_prefix = date_prefix|default('') %}
+{% set _css_class = 'bl-contentmeta' %}
+
+{# Internal logic - Process properties #}
+
+{% if _variant is not empty %}
+  {% set _css_class = _css_class ~ ' bl-contentmeta--' ~ _variant %}
+{% endif %}
+
+<div class="{{ _css_class }}"> 
+  {% if avatar is not empty %}
+    <div class="bl-contentmeta__header">
+      <div class="bl-contentmeta__avatar">
+        {{ avatar }}
+      </div>
+    </div>
+  {% endif %}
+  <div class="bl-contentmeta__body">
+    {% if _author_name is not empty %}
+      <div class="bl-contentmeta__author-name">
+        {{ _author_name }}
+      </div>
+    {% endif %} 
+    {% if _date is not empty %}
+      <div class="bl-contentmeta__date-time">
+        {% if _date_prefix is not empty %}
+          <span class="bl-contentmeta__post-date-prefix">{{ _date_prefix }}</span>
+        {% endif %}
+        <span class="bl-contentmeta__post-date">{{ _date }}</span>
+        {#
+          /**
+          * TODO: Reading Time
+          * <span class="bl-contentmeta__reading-time">{{ reading_time }}</span>
+          */
+        #}
+      </div>
+    {% endif %}
+  </div>
+  <div class="bl-contentmeta__footer">
+    <div class="bl-contentmeta__comments">
+    {#
+    /**
+     * TODO: Comments
+     */
+    #}
+    </div>
+  </div>
+</div>

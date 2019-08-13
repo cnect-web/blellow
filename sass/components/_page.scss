@@ -1,0 +1,21 @@
+.bl-node--full {
+  width: 100%;
+
+  .bl-node__side {
+    align-items: center;
+    display: flex;
+    flex-direction: column;   
+    float: left;
+    padding: 0 10px 10px;
+    width: 150px;
+  }
+
+  .bl-node__content {
+    margin-bottom: map-get($ecl-spacing, 'xs');
+    margin-left: 180px;
+  }
+
+  .bl-contentmeta {
+    text-align: center;
+  }
+}

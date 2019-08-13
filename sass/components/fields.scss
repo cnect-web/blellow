@@ -1,0 +1,28 @@
+@import '@ecl/ec-base/variables/index';
+
+.bl-field {
+  margin-bottom: map-get($ecl-spacing, 'm');
+}
+
+.bl-field:last-child {
+  margin-bottom: map-get($ecl-spacing, 'none');
+}
+
+label{
+  font-weight: bold;
+  margin-bottom: map-get($ecl-spacing, 'xxs');
+  display: block;
+}
+
+
+/* remove margin for address field */
+
+p.address {
+  margin: map-get($ecl-spacing, 'none');
+  line-height: 1.5rem;
+}
+
+.cnect-event-meta .bl-field__content-wrapper {
+  color: #404040;
+  font-size: 1.125rem;
+}

@@ -1,0 +1,12 @@
+.path-frontpage {
+  
+  .block__title {
+    @include fut-header-2();
+  }
+
+  aside .block__title {
+    @include fut-header-3();
+
+    margin-bottom: map-get($ecl-spacing, 's');
+  }
+}

@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * @see ./core/themes/stable/templates/layout/page.html.twig
+ */
+#}
+
+{% block site_header %}
+<header class="ecl-site-header" role="banner">
+  {# TODO: Where this verbose markup belongs to? here or withing the login widget? #}
+  <div class="bl-site-header__top-bar">
+    <div class="ecl-container ">
+      {{ page.site_top_bar }}
+    </div>
+  </div>
+  <div class="ecl-container ecl-site-header__banner">
+    {{ page.site_header }}
+  </div>
+</header>
+{% endblock %}
+
+{% block page_header %}
+  {% if page.page_header %}
+    {{ page.page_header }}
+  {% endif %}
+{% endblock %}
+
+{% block navigation %}
+  {{ page.navigation }}
+{% endblock %}
+
+
+{% if page.content_top or page.content_side %}
+  {% block hero %}
+    <div class="hero-content ecl-u-mv-l ecl-u-mb-xxl" >
+      <div class="ecl-container">
+        <div class="ecl-row">
+          <div class="ecl-col-sm-7">
+            {% if page.content_top %}
+              {% block content_top %}
+                {{ page.content_top }}
+              {% endblock %}
+            {% endif %}
+          </div>
+          <aside class="ecl-col-sm-5">
+            {% if page.content_side %}
+              {% block content_side %}
+                {{ page.content_side }}
+              {% endblock %}
+            {% endif %}
+          </aside>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endif %}
+
+
+{% block main %}
+<div class="main-content ecl-u-mv-l" >
+  <div class="ecl-container">
+    <div class="ecl-row">      
+      {% if logged_in %}
+        <div class="ecl-col-sm-7">
+          {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
+        </div>
+        <aside class="ecl-col-sm-5" role="complementary">
+          {{ drupal_block('views_block:fut_my_contributions-block_my_contributions') }}
+          {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
+        </aside>
+      {% endif %}
+    </div>
+    <div class="ecl-row">
+      <div class="ecl-col-sm-12">
+         {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% if page.footer %}
+  {% block footer %}
+    {{ page.footer }}
+  {% endblock %}
+{% endif %}

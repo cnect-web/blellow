@@ -1,0 +1,51 @@
+name: Blellow 8.x
+type: theme
+description: 'The default theme of DG-Connect for the Futurium D8 website.'
+package: Cnect
+core: 8.x
+libraries:
+  - blellow/style
+  - blellow/base
+  - blellow/login_register
+  - blellow/fields
+  - blellow/date_widget
+  - blellow/meta_data
+  - blellow/global-fonts
+  - blellow/video
+  
+base theme: stable
+regions:
+  site_top_bar: "Site top bar"
+  site_header: "Site header"
+  page_header: "Page header"
+  navigation: "Navigation"
+  content_top: "Content top (front)"
+  content_side: "Content top sidebar (front)"
+  content: "Content"
+  footer: "Footer"
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+
+config_devel:
+  optional:
+    - block.block.oe_multilingual_content_language_switcher
+    - block.block.oe_multilingual_language_switcher
+    - block.block.blellow_main_page_content
+    - block.block.blellow_page_header
+    - block.block.blellow_site_branding
+    - block.block.blellow_tabs
+    - block.block.blellow_search_form
+    - block.block.blellow_corporate_footer
+
+# components module needs to be installed to use
+# {% include "@myLib/box/box.twig" %}
+component-libraries:
+  patterns:
+    paths:
+      - templates/patterns
+  # ecl:
+  #   paths:
+  #     - templates/components
+  cnectlib:
+    paths:
+      - templates/cnect_component_lib

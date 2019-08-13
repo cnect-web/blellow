@@ -1,0 +1,17 @@
+@import '@ecl/ec-base/variables/index';
+
+/* In this file we can put overrides to fix ecl styling issues */
+
+.ecl-message {
+  margin: 0 0 map-get($ecl-spacing, 'm');
+}
+
+/* Let tabs wrap on multiple lines  */
+
+.ecl-navigation-list {
+  flex-wrap: wrap;
+}
+
+.ecl-button {
+  white-space: nowrap;
+}

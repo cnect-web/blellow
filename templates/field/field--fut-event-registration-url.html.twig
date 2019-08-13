@@ -1,0 +1,33 @@
+{% set href = '' %}
+{% set lbl = '' %}
+{% set variant = '' %}
+{% set _extra_attributes = [] %}
+
+{% for item in items %}
+  {% set href = item.content['#url'] %}
+  {% set lbl =  item.content['#title'] %}
+  {% set variant = item.content['#options'].external %}
+{% endfor %}
+
+{% if variant is not empty and variant == '1' %}
+  {% set variant = 'external' %}
+{% endif %}
+
+{% if variant is not empty and variant == 'external' %}
+	{% set _target = { "name": "target", "value": "_blank" } %}
+	{% set _extra_attributes = _extra_attributes | merge ([_target]) %}
+{% endif %}
+
+{% if href is not empty %}
+	<div class="bl-field bl-group-registration-link">
+		<label>{{ label }}</label>
+    <div class="bl-field__content-wrapper">
+  	  {% include '@ecl/ec-component-link' with {
+  		'variant': variant,
+  		'href': href,
+  		'label': lbl,
+  		'extra_attributes': _extra_attributes
+  	  } only %}
+    </div>
+	</div>
+{% endif %}

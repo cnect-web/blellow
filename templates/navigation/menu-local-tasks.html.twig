@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display primary and secondary local tasks.
+ *
+ * @see ./core/themes/stable/templates/navigation/menu-local-tasks.html.twig
+ */
+#}
+{% if primary %}
+  {% include '@ecl/ec-component-navigation-list' with {
+    'title': 'Primary tabs'|t,
+    'display': 'tabs',
+    'links': primary_links,
+    'extra_classes': 'ecl-u-mb-l',
+  } %}
+{% endif %}
+{% if secondary %}
+  {% include '@ecl/ec-component-navigation-list' with {
+    'title': 'Secondary tabs'|t,
+    'display': 'small',
+    'links': secondary_links,
+    'extra_classes': 'ecl-u-mb-l',
+  } %}
+{% endif %}

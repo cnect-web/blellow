@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see ./core/themes/stable/templates/content/node.html.twig
+ */
+#}
+
+{%
+  set classes = [
+    'bl-node',
+    'bl-node--' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'bl-node--promoted',
+    node.isSticky() ? 'bl-node--sticky',
+    not node.isPublished() ? 'node--unpublished newsfeed__item--unpublished',
+    view_mode ? 'bl-node--' ~ view_mode|clean_class,
+    view_mode ? 'bl-node--' ~ view_mode|clean_class ~ '__' ~ node.bundle|clean_class,
+  ]
+%}

@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default implementation for the page header component.
+ */
+#}
+
+{# TODO: remove this debug line #}
+{#{{ kint(_context  ) }}#}
+
+{% include '@cnectlib/cnect-component-header/cnect-component-header.html.twig' with {
+  'breadcrumb': breadcrumb,
+  'identity': identity,
+  'group_name': title,
+  'group_image': image,
+  'group_url': url,
+  'operation_links': actions
+} %}

@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * @see ./core/themes/stable/templates/form/form.html.twig
+ */
+#}
+{% set _input = input|default([]) %}
+<form{{ attributes.addClass('ecl-search-form ecl-site-header__search') }}>
+  <label class="ecl-search-form__textfield-wrapper">
+    <span class="ecl-u-sr-only">{{ "Search this website" }}</span>
+    {% include '@ecl/generic-component-form-text-input' with {
+      'id': 'search',
+      'type': 'search',
+      'name': 'keys',
+      'extra_classes': 'ecl-search-form__textfield'
+    }|merge(_input) only %}
+  </label>
+  {% include '@ecl/generic-component-button' with {
+    'label': 'Search',
+    'modifier': 'form',
+    'extra_classes': 'ecl-search-form__button'
+  } %}
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+
+{#  Default form #}
+{#  {{ children }} #}
+</form>

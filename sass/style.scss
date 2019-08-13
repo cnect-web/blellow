@@ -1,0 +1,51 @@
+@import '@ecl/ec-preset-website/ec-preset-website';
+@import './variables';
+@import 'fontawesome/fontawesome';
+@import 'fontawesome/solid'; 
+@import './components/fut_mixins';
+@import './components/basic-elements';
+@import './components/form';
+@import './components/toolbar';
+@import './components/splash-page';
+@import './components/pattern-page-header--futurium-header';
+@import './components/site-header--banner';
+@import './components/site-header--top-bar';
+@import './components/contentmeta';
+@import './components/display_links';
+@import './components/page';
+@import './ecl-fixes';
+@import './components/teaser';
+@import './components/teaser-lite';
+@import './components/comments';
+@import './components/block-my-contributions';
+@import './components/front';
+@import './components/block-discover-new-groups';
+
+
+
+.main-content {
+  .block {
+    margin-bottom: map-get($ecl-spacing, 'm');
+  }
+}
+
+/**
+ * Required field
+ */
+.form-required::after {
+  background-image: url('../images/required.svg');
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  content: '';
+  display: inline-block;
+  height: 6px;
+  margin: 0 0.3em;
+  vertical-align: super;
+  width: 6px;
+}
+
+// Remove top margin from text formats containers.
+.form-item-text-format-value + .ecl-form-group {
+  margin-top: 0;
+}
+
