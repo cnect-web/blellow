@@ -11,6 +11,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Component\Utility\Random;
+use Drupal\Component\Utility\SortArray;
 use Drupal\blellow\ValueObject\FileValueObject;
 use Drupal\blellow\ValueObject\DateValueObject;
 use Drupal\blellow\ValueObject\GalleryItemValueObject;
@@ -138,7 +139,7 @@ function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
  */
 function blellow_preprocess_menu_local_tasks(array &$variables): void {
 
-  uasort($variables['primary'], '_blellow_weight_comparator');
+  uasort($variables['primary'],[SortArray::class, 'sortByWeightProperty']);
   foreach ($variables['primary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
@@ -151,7 +152,7 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
     }
   }
 
-  uasort($variables['secondary'], '_blellow_weight_comparator');
+  uasort($variables['secondary'], [SortArray::class, 'sortByWeightProperty']);
   foreach ($variables['secondary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
@@ -1082,25 +1083,4 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
-}
-
-/**
- * Compares two objects based on their '#weight' property.
- *
- * @param array $item1
- *   The first item.
- * @param array $item2
- *   The second item.
- *
- * @return bool|void
- *   Returns the result of the comparison -1, 0, 1.
- */
-function _blellow_weight_comparator(array $item1, array $item2) {
-  if (!isset($item1, $item2)) {
-    return 0;
-  }
-  if (!isset($item1['#weight'], $item2['#weight'])) {
-    return 0;
-  }
-  return $item1['#weight'] > $item2['#weight'];
 }
