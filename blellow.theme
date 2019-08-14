@@ -987,6 +987,18 @@ function blellow_theme_suggestions_user_alter(&$suggestions, $vars, $hook) {
   $suggestions[] = 'user__' . $mode;
 }
 
+
+/**
+ * Implements hook_preprocess_pattern_file_link__preview().
+ */
+function blellow_preprocess_media(array &$variables): void {
+  foreach ($variables['content']['field_media_file'] as $key => $value){
+    if (is_numeric($key)) {
+      $variables['content']['field_media_file'][$key]['#parent_media'] = $variables['elements']['#media']->name->value; // $variables['elements']['#media'];
+    }
+  }
+}
+
 /**
  * Maps an array element into a name/value pair.
  *
