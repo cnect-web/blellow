@@ -139,7 +139,7 @@ function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
  */
 function blellow_preprocess_menu_local_tasks(array &$variables): void {
 
-  uasort($variables['primary'],[SortArray::class, 'sortByWeightProperty']);
+  uasort($variables['primary'], [SortArray::class, 'sortByWeightProperty']);
   foreach ($variables['primary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
