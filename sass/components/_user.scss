@@ -1,0 +1,22 @@
+.user-full {
+  display: flex;
+  flex-direction: row;
+
+  .ecl-form-group {
+    margin-bottom: 1.66rem;
+    margin-top: 0;
+  }
+}
+
+.user-full__image-wrapper {
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.user-full__form-wrapper {
+  h4.label {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
