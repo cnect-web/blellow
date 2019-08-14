@@ -138,7 +138,7 @@ function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
  */
 function blellow_preprocess_menu_local_tasks(array &$variables): void {
 
-  uasort ($variables['primary'], '_blellow_weight_comparator');
+  uasort($variables['primary'], '_blellow_weight_comparator');
   foreach ($variables['primary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
@@ -151,7 +151,7 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
     }
   }
 
-  uasort ($variables['secondary'], '_blellow_weight_comparator');
+  uasort($variables['secondary'], '_blellow_weight_comparator');
   foreach ($variables['secondary'] as $link) {
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
