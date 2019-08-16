@@ -52,8 +52,8 @@
 <div{{ attributes.addClass(classes) }}>
    
   <div class="pre-featured">
-    <article class="cta cta-image">
-      <div class="bl-image-wrapper">
+    <article class="cta">
+      <div class="cta__media">
         {# <img class="ecl-image ecl-image--fluid" alt="" src="/sites/default/files/styles/fut_image_medium/public/2019-05/beverage-breakfast-caffeine-2102818.jpg?itok=5ySUuIpc" width="800" height="533"> #}
         <img src="/{{ directory }}/images/bl_demo_image.jpg">
       </div>
@@ -73,7 +73,7 @@
   </div>
 
   <div class="content">
-    {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
+    {{ drupal_block('views_block:fut_group_latest_publications-block_group_latest_posts') }}
   </div>
   <aside class="sidebar" role="complementary">
     {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
