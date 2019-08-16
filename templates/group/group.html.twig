@@ -50,6 +50,7 @@
 
 
 <div{{ attributes.addClass(classes) }}>
+   
   <div class="pre-featured">
     <article class="cta cta-image">
       <div class="bl-image-wrapper">
@@ -67,6 +68,7 @@
   <div class="featured">
     <div class="view view-block-subgroups">
       <p>Group listing view will come here</p>
+       {{ drupal_block('views_block:fut_group_subgroups_list-block_group_subgroups') }}
     </div>
   </div>
 
