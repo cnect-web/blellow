@@ -78,7 +78,7 @@ a {
   }
 }
 
-.bl-image-wrapper {
+.field_media_image .bl-image-wrapper {
   img {
     display: block;
     margin-bottom: map-get($ecl-spacing, 'm');

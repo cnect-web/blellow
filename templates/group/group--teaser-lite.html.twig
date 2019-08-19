@@ -39,8 +39,8 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes }}>
-    <div{{ content_attributes }}>
-        {{ content |without('fut_navigation_menu')  }}
-    </div>
-</div>
+
+<a href="{{ url }}" class="group-teaser-lite__link"> 
+  {{ content |without('fut_navigation_menu')  }}
+</a>
+
