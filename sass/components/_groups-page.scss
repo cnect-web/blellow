@@ -1,0 +1,112 @@
+.pre-featured {
+  grid-area: pre-featured;
+}
+
+.featured {
+  grid-area: featured;
+}
+
+.content {
+  grid-area: content;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.group-landing-page {
+  display: grid;
+  grid-gap: 2rem;
+  grid-row-gap: 1rem;
+  grid-template-areas:
+    'pre-featured'
+    'featured'
+    'content'
+    'sidebar';
+}
+
+@media only screen and (min-width: 600px) {
+  .group-landing-page {
+    grid-gap: 2rem;
+    grid-template-areas:
+      'pre-featured pre-featured'
+      'featured featured'
+      'content sidebar';
+    grid-template-columns: 4fr 3fr;
+  }
+}
+
+/* Call to action article */
+
+.cta__body {
+  grid-area: cta__body;
+}
+
+.cta__media {
+  grid-area: cta__media;
+  img {
+    border: 3px solid $ecl-color-shade;
+  }
+}
+
+.cta {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-areas:
+    'cta__body cta__media';
+  grid-template-columns: 4fr 3fr;
+}
+
+/* when there is a vidoe, it should align left */
+
+.cta--video {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-areas:
+    'cta__media cta__body';
+  grid-template-columns: 3fr 4fr;
+}
+
+/* *************** */
+/* subgroups block */
+/* **************  */
+
+.view-block-subgroups {
+
+  /* remove default borders on list items */
+  .ecl-list-item {
+    border: initial;
+  }
+  .ecl-list-item:first-child {
+    border: initial;
+  }
+  /* define grid for subgroups block */
+  .views-row-wrapper {
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.group-teaser-lite__link {
+  background-color: map-get($ecl-colors, 'blue-25');
+  color: $ecl-color-shade;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  text-decoration: none;
+  .fut_logo {
+    margin-right: 1rem;
+    order: 0;
+  }
+  .label {
+    color: $ecl-color-shade;
+    font-size: map-get($ecl-font-size, 'm');
+    font-weight: bold;
+    order: 1;
+  }
+  .fut_logo img {
+    border: 3px solid #fff;
+    max-width: 50px;
+  }
+}

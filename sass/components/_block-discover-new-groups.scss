@@ -2,13 +2,41 @@
   margin-bottom: 2rem;
 }
 
+.discover-groups__group-info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  .fut_logo {
+    flex-shrink: 0;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    max-height: 2rem;
+    max-width: 3rem;
+    width: auto;
+  }
+  .label {
+    @include fut-header-3();
+    
+    align-self: center;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.extra-field--join-group a {
+  @extend .ecl-button;
+  @extend .ecl-button--default;
+}
+
 .block-views-blockfut-featured-groups-block-featured-groups {
 
   .block__title {
     margin-bottom: 3rem;
   }
 
-  .ecl-listing {
+  .views-row-wrapper {
     display: grid;
     grid-column-gap: 2rem;
     grid-row-gap: 1rem;
@@ -25,7 +53,7 @@
     margin: 0 0 0 2rem;
   }
 
-  .ecl-list-item {
+  .views-row-wrapper .ecl-list-item {
     border-bottom-style: none;
     display: contents;
   }
@@ -91,15 +119,9 @@
     grid-row: 6;
   }
 
-  .ecl-listing .contextual{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    text-align: center;
-  }
-
   .ecl-listing .more-link {
-    grid-column-start: 1;
     grid-column-end: 3;
+    grid-column-start: 1;
     text-align: center;
 
     //ecl-button ecl-button--call ecl-button--caret-right
@@ -136,95 +158,6 @@
 }
 
 
-.block-views-blockfut-featured-groups-block-featured-groups .contextual-region {
-
-  .ecl-list-item:nth-child(2) .discover-groups__header {
-    grid-column: 1;
-    grid-row: 1;
-    margin-bottom: 1rem;
-  }
-
-  .ecl-list-item:nth-child(3) .discover-groups__header {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .ecl-list-item:nth-child(4) .discover-groups__header {
-    grid-column: 1;
-    grid-row: 4;
-  }
-
-  .ecl-list-item:nth-child(5) .discover-groups__header {
-    grid-column: 2;
-    grid-row: 4;
-  }
-
-  .ecl-list-item:nth-child(2) .discover-groups__content {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .ecl-list-item:nth-child(3) .discover-groups__content {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .ecl-list-item:nth-child(4) .discover-groups__content {
-    grid-column: 1;
-    grid-row: 5;
-  }
-
-  .ecl-list-item:nth-child(5) .discover-groups__content {
-    grid-column: 2;
-    grid-row: 5;
-  }
-
-  .ecl-list-item:nth-child(2) .discover-groups__footer {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .ecl-list-item:nth-child(3) .discover-groups__footer {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  .ecl-list-item:nth-child(4) .discover-groups__footer {
-    grid-column: 1;
-    grid-row: 6;
-  }
-
-  .ecl-list-item:nth-child(5) .discover-groups__footer {
-    grid-column: 2;
-    grid-row: 6;
-  }
-
-}
-
-
-
-.discover-groups__group-info {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1.5rem;
-  .fut_logo {
-    flex-shrink: 0;
-    height: auto;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-    max-height: 2rem;
-    max-width: 3rem;
-    width: auto;
-  }
-  .label {
-    @include fut-header-3();
-    
-    align-self: center;
-  }
-  a {
-    text-decoration: none;
-  }
-}
 
 
 /* Remove teaser group name and teser footer from discover new groups on hp */
@@ -234,7 +167,3 @@
   display: none;
 }
 
-.extra-field--join-group a {
-  @extend .ecl-button;
-  @extend .ecl-button--default;
-}
