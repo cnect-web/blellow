@@ -76,6 +76,13 @@ a {
   hr {
     border-top: 1px solid $ecl-color-shade; 
   }
+
+  a.ecl-button--primary {
+    color: #fff;
+    &:hover {
+      color: $ecl-color-primary;
+    }
+  }
 }
 
 .field_media_image .bl-image-wrapper {
