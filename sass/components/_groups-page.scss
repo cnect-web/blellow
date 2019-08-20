@@ -44,6 +44,9 @@
 
 .cta__media {
   grid-area: cta__media;
+  img {
+    border: 3px solid $ecl-color-shade;
+  }
 }
 
 .cta {
@@ -64,21 +67,25 @@
   grid-template-columns: 3fr 4fr;
 }
 
-/* subgroups list block */
+/* *************** */
+/* subgroups block */
+/* **************  */
 
-.block-views-blockfut-group-subgroups-list-block-group-subgroups {
+.view-block-subgroups {
+
+  /* remove default borders on list items */
   .ecl-list-item {
     border: initial;
   }
   .ecl-list-item:first-child {
     border: initial;
   }
-}
-
-.block-views-blockfut-group-subgroups-list-block-group-subgroups .views-row-wrapper {
-  display: grid;
-  grid-column-gap: 2rem;
-  grid-template-columns: repeat(4, 1fr);
+  /* define grid for subgroups block */
+  .views-row-wrapper {
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .group-teaser-lite__link {
@@ -94,7 +101,7 @@
   }
   .label {
     color: $ecl-color-shade;
-    font-size: map-get($ecl-font-size, 'l');
+    font-size: map-get($ecl-font-size, 'm');
     font-weight: bold;
     order: 1;
   }
@@ -103,4 +110,3 @@
     max-width: 50px;
   }
 }
- 
