@@ -70,30 +70,27 @@
           </div>
         {% endif %}
         
-        {% if _identity is not empty or _title is not empty or _metas is not empty %}
-          <div class="bl-page-header__group-info">
-            {% if _identity is not empty %}
-              <div class="ecl-page-header__identity">
-                {{ _identity }}
-              </div>
-            {% endif %}
-            {% if _title is not empty %}
-              <div class="ecl-page-header__title">
-                <a href="{{ _url }}" title="{% trans %} Go to the {{ _title }} landing page {% endtrans %}">
-                  <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _title | raw }}</h1>
-                </a>
-              </div>
-            {% endif %}
-            {% if _metas is not empty %}
-              <div class="ecl-page-header__meta">
-                {% include '@ecl/generic-component-meta' with {
-                  'variant': 'header',
-                  'metas': _metas
-                } only %}
-              </div>
-            {% endif %}
+     
+        {% if _identity is not empty %}
+          <div class="ecl-page-header__identity">
+            {{ _identity }}
           </div>
         {% endif %}
+        {% if _title is not empty %}
+          <div class="ecl-page-header__title">
+            <a href="{{ _url }}" title="{% trans %} Go to the {{ _title }} landing page {% endtrans %}">
+              <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _title | raw }}</h1>
+             </a>
+           </div>
+         {% endif %}
+         {% if _metas is not empty %}
+           <div class="ecl-page-header__meta">
+             {% include '@ecl/generic-component-meta' with {
+               'variant': 'header',
+               'metas': _metas
+             } only %}
+           </div>
+          {% endif %}
         
           <div class="bl-page-header__join">
             {% if _actions | length == 1 %}
