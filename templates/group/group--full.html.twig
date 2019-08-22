@@ -53,7 +53,7 @@
 
 <div{{ attributes.addClass(classes) }}>
    
-  <div class="pre-featured">
+  <div class="group-area pre-featured">
     <article class="cta">
       <div class="cta__media">
         <img src="/{{ directory }}/images/bl_demo_image.jpg" class="ecl-image--fluid">
@@ -61,21 +61,23 @@
       <div class="cta__body">
         <h2>Lorem ipsum dollar set amet</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacinia urna. Nulla venenatis vestibulum velit, ut pellentesque lacus faucibus at. Sed ut maximus nunc, a elementum leo. Donec eleifend tortor turpis, vitae convallis tortor aliquet sit amet. In vitae ante volutpat, eleifend nisl ac, malesuada urna. Quisque dapibus metus nec turpis pulvinar aliquet. Aliquam iaculis sapien nisl, eget elementum ligula convallis sed. Morbi vel quam ut enim ultricies varius. Praesent viverra aliquet sem id fringilla. Vestibulum in orci gravida, porta elit eu, hendrerit quam. Praesent non erat lectus. In cursus lorem nisi. Proin pellentesque vitae erat iaculis commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras at ante vel urna iaculis rutrum eu vitae felis.</p>
+      </div>
+      <div class="cta__link">
         <a href="#" class="ecl-button ecl-button--call ecl-button--caret-right">Lorem ipsum sit dolor amet nunc</a>
       </div>
     </article>
   </div>
 
-  <div class="featured">
+  <div class="group-area featured">
     <div class="view view-block-subgroups">
        {{ drupal_block('views_block:fut_group_subgroups_list-block_group_subgroups', wrapper=false) }}
     </div>
   </div>
 
-  <div class="content">
+  <div class="group-area content">
     {{ drupal_block('views_block:fut_group_latest_publications-block_group_latest_posts') }}
   </div>
-  <aside class="sidebar" role="complementary">
+  <aside class="group-area sidebar" role="complementary">
     {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
   </aside>
 

@@ -1,9 +1,18 @@
+////////////////////////////////
+// group landing page structure
+////////////////////////////////
+
+/* Define grid areas */
+
 .pre-featured {
   grid-area: pre-featured;
+  margin-bottom: map-get($ecl-spacing, 'm');
 }
 
 .featured {
   grid-area: featured;
+  padding-bottom: map-get($ecl-spacing, 'm');
+  overflow-y: hidden;
 }
 
 .content {
@@ -15,6 +24,8 @@
 }
 
 .group-landing-page {
+  
+  // One column grid layout 
   display: grid;
   grid-gap: 2rem;
   grid-row-gap: 1rem;
@@ -23,11 +34,11 @@
     'featured'
     'content'
     'sidebar';
-}
 
-@media only screen and (min-width: 600px) {
-  .group-landing-page {
-    grid-gap: 2rem;
+  // Two column grid layout   
+
+  /* stylelint-disable-next-line order/order */
+  @include ecl-media-breakpoint-up(md) {
     grid-template-areas:
       'pre-featured pre-featured'
       'featured featured'
@@ -36,7 +47,9 @@
   }
 }
 
-/* Call to action article */
+////////////////////////
+// call to action area
+///////////////////////
 
 .cta__body {
   grid-area: cta__body;
@@ -44,47 +57,81 @@
 
 .cta__media {
   grid-area: cta__media;
+  padding-bottom: map-get($ecl-spacing, 's');
   img {
     border: 3px solid $ecl-color-shade;
   }
 }
 
+/* Call to action for small screens */
+
 .cta {
   display: grid;
-  grid-gap: 2rem;
   grid-template-areas:
-    'cta__body cta__media';
-  grid-template-columns: 4fr 3fr;
+    'cta__body'
+    'cta__media'
+    'cta__link';
+
+  // Two columns
+
+  /* stylelint-disable-next-line order/order */
+  @include ecl-media-breakpoint-up(md) {
+    grid-column-gap: 2rem;
+    grid-template-areas:
+      'cta__body cta__media'
+      'cta__link cta__media';
+    grid-template-columns: 4fr 3fr;
+    .ecl-button {
+      width: auto;
+    }
+  }
+
+  @include ecl-media-breakpoint-down(sm) {
+    .ecl-button {
+      text-align: center;
+      width: 100%;
+    }
+  }
 }
 
-/* when there is a vidoe, it should align left */
+// when there is a video, it should align left 
 
 .cta--video {
   display: grid;
   grid-gap: 2rem;
   grid-template-areas:
-    'cta__media cta__body';
-  grid-template-columns: 3fr 4fr;
+    'cta__media cta__body'
+    'cta__media cta__link';
+  grid-template-columns: 4fr 3fr;
 }
 
-/* *************** */
-/* subgroups block */
-/* **************  */
+/////////////////////
+// subgroups block 
+/////////////////////
 
 .view-block-subgroups {
 
-  /* remove default borders on list items */
+  // remove default borders on list items 
   .ecl-list-item {
     border: initial;
   }
   .ecl-list-item:first-child {
     border: initial;
   }
-  /* define grid for subgroups block */
+
+  // define grid for subgroups block 
   .views-row-wrapper {
     display: grid;
-    grid-column-gap: 2rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1rem;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    grid-auto-columns: calc(100% - 5rem);
+    scroll-snap-type: x proximity;
+    
+    @include ecl-media-breakpoint-up(sm) {
+      grid-column-gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 
@@ -95,6 +142,8 @@
   flex-direction: row;
   padding: 1rem;
   text-decoration: none;
+  // scroll-snap-align is a required property for a scroll-snapping element within a scroll-snapping container
+  scroll-snap-align: center;
   .fut_logo {
     margin-right: 1rem;
     order: 0;
@@ -103,6 +152,7 @@
     color: $ecl-color-shade;
     font-size: map-get($ecl-font-size, 'm');
     font-weight: bold;
+    margin: 0;
     order: 1;
   }
   .fut_logo img {
