@@ -30,6 +30,9 @@
   .block {
     margin-bottom: map-get($ecl-spacing, 'm');
   }
+  .block:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /**
