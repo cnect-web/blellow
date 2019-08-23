@@ -62,5 +62,14 @@
   }
 }
 
+// out of group context 
 
-
+.ecl-page-header--no-group-image {
+  .ecl-page-header__body {
+    display: grid;
+    grid-template-areas:
+      'identity'
+      'group-title'
+      'group-meta';
+  }
+}
