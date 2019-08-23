@@ -11,9 +11,12 @@
   }
   .ecl-heading--h1 {
     @include fut-header-2();
+    
     color: #fff;
+
     @include ecl-media-breakpoint-up(md) {
       @include fut-header-1();
+      
       color: #fff;
     }
   }	
@@ -71,5 +74,6 @@
       'identity'
       'group-title'
       'group-meta';
+    grid-template-columns: 1fr;
   }
 }
