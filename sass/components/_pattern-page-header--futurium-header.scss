@@ -1,20 +1,29 @@
+.ecl-page-header__identity {
+  grid-area: identity;
+  margin-top: 0;
+}
+
 .ecl-page-header__title {
   grid-area: group-title;
   margin-top: 0;
   a {
     text-decoration: none;
+  }
+  .ecl-heading--h1 {
+    @include fut-header-2();
+    color: #fff;
+    @include ecl-media-breakpoint-up(md) {
+      @include fut-header-1();
+      color: #fff;
+    }
   }	
-}
-
-.ecl-page-header__identity {
-  grid-area: identity;
 }
 
 .bl-page-header__group-image {
   grid-area: group-image;
   margin-bottom: map-get($ecl-spacing, 'xs');
   margin-right: map-get($ecl-spacing, 'xs');
-  margin-top: map-get($ecl-spacing, 'xxs');
+  // margin-top: map-get($ecl-spacing, 'xxs');
   img {
     height: auto;
     width: 100px;
@@ -29,7 +38,6 @@
 .bl-page-header__join {
   grid-area: group-join;
   margin-bottom: map-get($ecl-spacing, 'xxs');
-  margin-top: map-get($ecl-spacing, 'xxs');
 }
 
 .ecl-page-header__body {
@@ -38,10 +46,11 @@
   grid-template-areas:
     'identity identity'
     'group-image group-title'
-    'group-join group-join'
+    'group-image group-join'
     'group-meta group-meta';
   grid-template-columns: 100px 1fr;
-  
+  margin-top: map-get($ecl-spacing, 's');
+
   @include ecl-media-breakpoint-up(md) {
     display: grid;
     grid-column-gap: 1rem;
