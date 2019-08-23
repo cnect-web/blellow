@@ -60,6 +60,8 @@
     {{ content.extra_field_featured_group_featured_content }}
   </div>
 
-  <div class="discover-groups__footer">
-    {{ content.extra_field_join_group }}    
-  </div>
+  {% if content.extra_field_join_group %}
+    <div class="discover-groups__footer">
+      {{ content.extra_field_join_group }}    
+    </div>
+  {% endif %}
