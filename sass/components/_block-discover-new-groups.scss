@@ -1,5 +1,9 @@
 .discover-groups__footer {
-  margin-bottom: 2rem;
+    margin-top: map-get($ecl-spacing, 'xs');
+  @include ecl-media-breakpoint-up(md) {
+    margin-top: 0;
+    margin-bottom: map-get($ecl-spacing, 'm');
+  }
 }
 
 .discover-groups__group-info {
