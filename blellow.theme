@@ -987,14 +987,22 @@ function blellow_theme_suggestions_user_alter(&$suggestions, $vars, $hook) {
   $suggestions[] = 'user__' . $mode;
 }
 
-
 /**
- * Implements hook_preprocess_pattern_file_link__preview().
+ * Implements hook_preprocess_media().
  */
 function blellow_preprocess_media(array &$variables): void {
-  foreach ($variables['content']['field_media_file'] as $key => $value){
+  if (array_key_exists('field_media_file', $variables['content'])) {
+    _blellow_preprocess_media__field_media_file($variables);
+  };
+}
+
+/**
+ * Implements hook_preprocess_media() for media_file field.
+ */
+function _blellow_preprocess_media__field_media_file(array &$variables): void {
+  foreach ($variables['content']['field_media_file'] as $key => $value) {
     if (is_numeric($key)) {
-      $variables['content']['field_media_file'][$key]['#parent_media'] = $variables['elements']['#media']->name->value; // $variables['elements']['#media'];
+      $variables['content']['field_media_file'][$key]['#parent_media'] = $variables['elements']['#media']->name->value;
     }
   }
 }
