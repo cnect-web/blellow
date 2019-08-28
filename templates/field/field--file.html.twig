@@ -43,24 +43,22 @@
 %}
 <div>
   {% for item in items %}
-    <pre style="padding: 4px; border: 1px solid red">Peter: this is still progress ...</pre>
     {% set _file_title = item.content['#parent_media']|default('File nitle') %}
     {% set _file_name = item.content['#file'].filename.value|default('File name') %}
-    {% set _file_uri = item.content['#file'].uri.value|default('') %}
+    {% set _file_uri = item.content['#file_url']|default('') %}
+
     {% include '@ecl/ec-component-file' with {
       'title': _file_title,
       'button_label': 'Download',
       'icon': 'file ',
       'language': NULL,
       'meta': _file_name,
-      'links': [{
-        'title': _file_name,
-        'href': _file_uri
-      }]
+      'href': _file_uri,
     } only %}
 
-  {#  {{ _file_uri }}#}
-    <div class="the-content">{{ item.content }}</div>
+    {#  Do not render the default download link  #}
+    {#  <div class="the-content">{{ item.content }}</div>#}
+
   {% endfor %}
 </div>
 
