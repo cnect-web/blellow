@@ -62,7 +62,10 @@ a {
   p {
     @include paragraph();
 
-    max-width: none;    
+    max-width: none;
+    &:first-child {
+      margin-top: 0;
+    }    
   }
 
   ul:not(.ecl-navigation-list), ol {
@@ -88,8 +91,15 @@ a {
 .field_media_image .bl-image-wrapper {
   img {
     display: block;
-    margin-bottom: map-get($ecl-spacing, 'm');
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+// remove border from last list item
+
+@include ecl-media-breakpoint-down(sm) {
+  .ecl-list-item:last-child {
+    border-bottom: none;
   }
 }

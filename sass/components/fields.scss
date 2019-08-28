@@ -2,24 +2,25 @@
 
 .bl-field {
   margin-bottom: map-get($ecl-spacing, 'm');
-}
-
-.bl-field:last-child {
-  margin-bottom: map-get($ecl-spacing, 'none');
+  &:last-child {
+    margin-bottom: 0;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 label{
+  display: block;
   font-weight: bold;
   margin-bottom: map-get($ecl-spacing, 'xxs');
-  display: block;
 }
-
 
 /* remove margin for address field */
 
 p.address {
-  margin: map-get($ecl-spacing, 'none');
   line-height: 1.5rem;
+  margin: map-get($ecl-spacing, 'none');
 }
 
 .cnect-event-meta .bl-field__content-wrapper {
