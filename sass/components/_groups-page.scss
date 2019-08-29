@@ -51,12 +51,6 @@
 // call to action area
 ///////////////////////
 
-.fut_banner_media {
-  img {
-    border: 3px solid $ecl-color-shade;
-  }
-}
-
 /* Call to action for small screens */
 
 .cta {
@@ -70,7 +64,7 @@
 
   .fut_banner_media {
     grid-area: cta__media;
-    margin-bottom: 0;
+    border: 3px solid $ecl-color-shade;
   }
 
   .fut_label {
@@ -119,6 +113,11 @@
 // when there is a video, it should align left 
 
 .cta--video {
+  .fut_banner_media {
+    border: none;
+    margin-bottom: 0;
+  }
+
   @include ecl-media-breakpoint-up(md) {
     grid-template-areas:
       'cta__media cta__title'
