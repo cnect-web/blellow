@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - blellow_helper
+    - node
   theme:
     - blellow
 id: newsletter_block
@@ -16,4 +17,12 @@ settings:
   label: 'Newsletter block'
   provider: blellow_helper
   label_display: '0'
-visibility: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      fut_event: fut_event
+      fut_post: fut_post
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
