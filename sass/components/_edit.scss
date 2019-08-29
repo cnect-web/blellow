@@ -1,0 +1,8 @@
+.ecl-button {
+  margin-right: map-get($ecl-spacing, 'xs');
+  margin-top: map-get($ecl-spacing, 'xxs');
+}
+
+.ecl-button:first-child {
+  margin-left: 0;
+}
