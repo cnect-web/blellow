@@ -65,7 +65,7 @@ a {
     max-width: none;    
   }
 
-  ul:not(.ecl-navigation-list), ol {
+  ul:not(.ecl-navigation-list):not(.vertical-tabs__menu), ol {
     @include list();
 
     color: $ecl-color-shade;
