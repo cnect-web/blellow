@@ -48,27 +48,32 @@
   ]
 %}
 
-{# <img class="ecl-image ecl-image--fluid" alt="" src="/sites/default/files/styles/fut_image_medium/public/2019-05/beverage-breakfast-caffeine-2102818.jpg?itok=5ySUuIpc" width="800" height="533"> #}
-
+{% set group_id = group.id.value %}
 
 <div{{ attributes.addClass(classes) }}>
-  
-  <div class="group-area pre-featured">
-    {{ content|without('fut_navigation_menu') }}
-  </div>
 
-  <div class="group-area featured">
-    <div class="view view-block-subgroups">
-       {{ drupal_block('views_block:fut_group_subgroups_list-block_group_subgroups', wrapper=false) }}
+  {# // PRINT CONTENT (INCLUDES fut_banner paragraph) #}
+
+  {{ content|without('fut_navigation_menu') }}
+
+  {# // PRINT SUBGROUPS LIST (CHECK IF VIEW RESULT IS EMPTY DID NOT WORK) #} 
+
+  {{ drupal_block('views_block:fut_group_subgroups_list-block_group_subgroups') }}
+
+  {# // PRINT GROUP LATEST PUBLICATIONS  #}
+
+  {% if drupal_view_result('fut_group_latest_publications', 'block_group_latest_posts', 'group_id') is not null %}
+    <div class="group-area content">
+      {{ drupal_block('views_block:fut_group_latest_publications-block_group_latest_posts') }}
     </div>
-  </div>
+  {% endif %}
+
+  {# // PRINT MOST POPULAR PUBLICATIONS IN GROUP  #}
   
-  <div class="group-area content">
-    {{ drupal_block('views_block:fut_group_latest_publications-block_group_latest_posts') }}
-  </div>
-  
-  <aside class="group-area sidebar" role="complementary">
-    {{ drupal_block('views_block:fut_user_popular_posts-block_user_popular_posts') }}
-  </aside>
+  {% if drupal_view_result('fut_group_most_popular_publications', 'block_group_latest_posts', 'group_id') is not null %}
+    <aside class="group-area sidebar" role="complementary">
+      {{ drupal_block('views_block:fut_group_most_popular_publications-block_group_latest_posts') }}
+    </aside>
+  {% endif %}
 
 </div>

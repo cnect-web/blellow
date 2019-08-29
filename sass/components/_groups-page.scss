@@ -4,12 +4,12 @@
 
 /* Define grid areas */
 
-.pre-featured {
+.fut_banner {
   grid-area: pre-featured;
   margin-bottom: map-get($ecl-spacing, 'm');
 }
 
-.featured {
+.block-views-blockfut-group-subgroups-list-block-group-subgroups {
   grid-area: featured;
   overflow-y: hidden;
   padding-bottom: map-get($ecl-spacing, 'm');
@@ -60,6 +60,7 @@
 /* Call to action for small screens */
 
 .cta {
+  grid-template-rows: auto;
   display: grid;
   grid-template-areas:
     'cta__title'
@@ -74,7 +75,6 @@
 
   .fut_label {
     grid-area: cta__title;
-
     @include fut-header-2();
   }
 
@@ -101,7 +101,8 @@
       'cta__title cta__media'
       'cta__body cta__media'
       'cta__link cta__media';
-    grid-template-columns: 4fr 3fr;
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: min-content min-content 1fr; 
     .ecl-button {
       width: auto;
     }
@@ -131,7 +132,7 @@
 // subgroups block 
 /////////////////////
 
-.view-block-subgroups {
+.block-views-blockfut-group-subgroups-list-block-group-subgroups {
 
   // remove default borders on list items 
   .ecl-list-item {
@@ -153,6 +154,7 @@
     @include ecl-media-breakpoint-up(sm) {
       grid-column-gap: 2rem;
       grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr; 
     }
   }
 }
