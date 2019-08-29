@@ -8,6 +8,10 @@
     margin-left: 0;
   }
 
+  .ecl-button:last-child {
+    margin-right: 0;
+  }
+
   .vertical-tabs,
   .vertical-tabs__menu,
   .vertical-tabs .vertical-tabs__panes {
@@ -42,5 +46,14 @@
 
   .form-autocomplete {
     background-position-x: 99%;
+  }
+
+  /* Draggable area for paragraphs */
+  .draggable .ecl-table__group-label {
+    vertical-align: top;
+  }
+
+  .draggable .paragraphs-subform.ecl-form-group{
+    margin-top: map-get($ecl-spacing, 'xxs');
   }
 }
