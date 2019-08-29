@@ -34,3 +34,7 @@
 .vertical-tabs__menu-item a {
   padding: map-get($ecl-spacing, 'xs');
 }
+
+.js-form-type-textarea ~ .ecl-form-group {
+  margin-top: 0;
+}
