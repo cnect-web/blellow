@@ -10,9 +10,4 @@
     margin-bottom: map-get($ecl-spacing, 's');
   }
 
-  @include ecl-media-breakpoint-down(sm) {
-    .ecl-list-item:last-child {
-      border-bottom: none;
-    }
-  }
 }
