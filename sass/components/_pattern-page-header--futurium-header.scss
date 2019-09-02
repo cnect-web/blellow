@@ -61,7 +61,7 @@
       'group-image identity group-join'
       'group-image group-title group-join'
       'group-image group-meta group-join';
-    grid-template-columns: 100px auto 1fr;
+    grid-template-columns: 100px 1fr min-content;
   }
 }
 
