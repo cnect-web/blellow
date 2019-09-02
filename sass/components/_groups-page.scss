@@ -163,6 +163,7 @@
   color: $ecl-color-shade;
   display: flex;
   flex-direction: row;
+  height: 100%;
   padding: 1rem;
   // scroll-snap-align is a required property for a scroll-snapping element within a scroll-snapping container
   scroll-snap-align: center;
