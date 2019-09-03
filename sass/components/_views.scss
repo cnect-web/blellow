@@ -1,21 +1,22 @@
 footer {
-    text-align: right;
-  }
+  text-align: right;
+}
 
-  footer a.views-display-link {
-    @extend .ecl-button;
-    @extend .ecl-button--call;
-    @extend .ecl-button--caret-right;
+footer a.views-display-link {
+  @extend .ecl-button;
+  @extend .ecl-button--call;
+  @extend .ecl-button--caret-right;
 
-    margin-bottom: map-get($ecl-spacing, 's');
-    margin-top: map-get($ecl-spacing, 'm');
-  }
+  margin-bottom: 0;
+  margin-top: map-get($ecl-spacing, 'm');
+}
 
-////////////
-// sidebar 
-///////////
+//////////////////////////////////////////
+// blocks in sidebar width grey background
+//////////////////////////////////////////
 
-aside .block-views {
+.block-views-blockfut-my-contributions-block-my-contributions,
+.block-views-blockfut-group-most-popular-publications-block-group-latest-posts {
   @include block-background;
   .ecl-list-item {
     border-bottom: 1px solid map-get($ecl-colors, 'grey-25');
