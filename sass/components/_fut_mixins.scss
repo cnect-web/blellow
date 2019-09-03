@@ -26,3 +26,11 @@
   line-height: 1.5rem;
 }
 
+@mixin block-background() {
+  background: map-get($ecl-colors, 'grey-5');
+  border: 1px solid map-get($ecl-colors, 'grey-15');
+  border-radius: 3px;
+  margin: 0 0 0 map-get($ecl-spacing, 'm') 0;
+  padding: map-get($ecl-spacing, 'm');
+}
+
