@@ -64,6 +64,21 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     text-decoration: underline;
   }
 
+  .chosen-container {
+    padding-left: 0;
+    padding-right: 0;
+
+    a.chosen-single {
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    a.chosen-single span ~ div {
+      display: none;
+    }
+  }
+
   .delta-order select {
     float: right;
     width: auto;
