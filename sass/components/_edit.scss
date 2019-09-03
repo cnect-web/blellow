@@ -1,3 +1,14 @@
+
+$bl-form-border: map-get($ecl-colors, 'grey-25') !default;
+$bl-form-border-strong: map-get($ecl-colors, 'grey-50') !default;
+$bl-form-background: map-get($ecl-colors, 'grey-5') !default;
+$bl-form-background-dragged: map-get($ecl-colors, 'yellow-25') !default;
+$bl-form-background-hover: map-get($ecl-colors, 'grey-10') !default;
+$bl-form-background-header: map-get($ecl-colors, 'grey-15') !default;
+$bl-fieldset-margin-v: map-get($ecl-spacing, 's');
+$bl-fieldset-padding: map-get($ecl-spacing, 'm');
+$bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
+
 .node-form.ecl-form {
   .ecl-button {
     margin-right: map-get($ecl-spacing, 'xs');
@@ -12,14 +23,65 @@
     margin-right: 0;
   }
 
+  .ecl-table tr {
+    border-bottom: 1px solid $bl-form-border;
+  }
+
+  .ecl-table tr.drag-previous {
+    background-color: $bl-form-background-dragged;
+  }
+
+ .ecl-table tbody tr:hover {
+    background-color: $bl-form-background-hover; //#ebebeb;
+  }
+
+  .ecl-table tr:nth-of-type(2n):not(:hover):not(.drag-previous) {
+    background-color: unset;
+  }
+
+  .ecl-table th {
+    background-color: $bl-form-background-header;
+    border: solid 1px $bl-form-border-strong;
+    border-width: 1px 0;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  button.link {
+    background: transparent;
+    border: 0;
+    color: $ecl-color-primary;
+    cursor: pointer;
+    font-size: 0.89em;
+    line-height: 2;
+    margin: 0;
+    padding: 0;
+  }
+
+  button.link:hover {
+    text-decoration: underline;
+  }
+
+  .delta-order select {
+    float: right;
+    width: auto;
+  }
+
   .vertical-tabs,
   .vertical-tabs__menu,
   .vertical-tabs .vertical-tabs__panes {
     font-size: 1em;
 
-    .ecl-checkbox {
-      font-size: 1em;
-    }
+  }
+
+  .vertical-tabs .vertical-tabs__panes .ecl-checkbox {
+    font-size: 1em;
+  }
+
+  .vertical-tabs .vertical-tabs__menu-item {
+    background-color: $bl-form-background;
   }
 
   .vertical-tabs .vertical-tabs__menu-item-summary,
@@ -56,4 +118,44 @@
   .draggable .paragraphs-subform.ecl-form-group{
     margin-top: map-get($ecl-spacing, 'xxs');
   }
+
+  fieldset:not(.fieldgroup) {
+    background-color: $bl-form-background;
+    border: 1px solid $bl-form-border;
+    border-radius: 0;
+    margin: $bl-fieldset-margin-v 0;
+    min-width: 0;
+    padding: $bl-fieldset-padding-t $bl-fieldset-padding  $bl-fieldset-padding;
+    position: relative;
+  }
+
+  fieldset:not(.fieldgroup) > legend {
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    position: absolute;
+    text-transform: uppercase;
+    top: 10px;
+  }
+
+  fieldset details {
+    background-color: $bl-form-background;
+    border: 1px solid $bl-form-border;
+    border-radius: 0;
+    margin-bottom: $bl-fieldset-margin-v;
+    margin-top: $bl-fieldset-margin-v;
+
+    summary {
+      color: $ecl-color-primary;
+      cursor: pointer;
+      font-weight: bold;
+      padding: $bl-fieldset-padding  $bl-fieldset-padding;
+      text-transform: uppercase;
+    }
+  }
+
+  summary ~ div {
+    padding: 0 $bl-fieldset-padding $bl-fieldset-padding;
+  }
+
 }
