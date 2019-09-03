@@ -1,0 +1,36 @@
+.group-teaser {
+  display: grid;
+  grid-column-gap: map-get($ecl-spacing, 'm');
+  grid-template-areas:
+    'group-logo group-label'
+    'group-logo group-description'
+    'group-logo group-join';
+  grid-template-columns: 100px 1fr;
+  padding: map-get($ecl-spacing, 'm') 0;
+
+  .fut_logo {
+    grid-area: group-logo;
+  }
+
+  h3 {
+    grid-area: group-label;
+    margin-top: 0;
+    
+    @include fut-header-3;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: $ecl-color-shade;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .fut_description {
+    grid-area: group-description;
+  }
+
+  .extra-field--join-group {
+    grid-area: group-join;
+  }
+}
