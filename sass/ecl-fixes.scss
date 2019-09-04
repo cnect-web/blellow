@@ -15,3 +15,8 @@
 .ecl-button {
   white-space: nowrap;
 }
+
+/* Active input border for input doesn't match form border */
+.ecl-search-form__textfield-wrapper {
+  margin: 0;
+}
