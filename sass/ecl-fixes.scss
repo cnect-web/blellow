@@ -1,5 +1,8 @@
 @import '@ecl/ec-base/variables/index';
 
+/* stylelint-disable  scss/at-extend-no-missing-placeholder */
+/* stylelint-disable   selector-no-qualifying-type */
+
 /* In this file we can put overrides to fix ecl styling issues */
 
 .ecl-message {
@@ -20,3 +23,41 @@
 .ecl-search-form__textfield-wrapper {
   margin: 0;
 }
+
+
+
+/* Implement messages classes
+ *
+ * .ecl-message
+ * .ecl-message--success
+ * .ecl-message--warning
+ * .ecl-message--error
+ * .ecl-message--live
+ */
+
+.messages {
+  @extend .ecl-message;
+
+  align-items: center;
+  grid-column-gap: 0.3em;
+  grid-template-columns: min-content 1fr;
+  min-height: calc(36px + 0.66rem);
+}
+
+.messages--status {
+  background-image: url($ecl-assets-path+'images/messages-success.svg');
+  border-color: $ecl-color-success;
+}
+.messages--warning {
+  background-image: url($ecl-assets-path+'images/messages-warning.svg');
+  border-color: map-get($ecl-colors, 'yellow-110');
+}
+.messages--error {
+  background-image: url($ecl-assets-path+'images/messages-error.svg');
+  border-color: $ecl-color-error;
+}
+
+body div.tabledrag-changed-warning {
+  margin-bottom: 0.5em;
+}
+
