@@ -1,4 +1,3 @@
-
 $bl-form-border: map-get($ecl-colors, 'grey-25') !default;
 $bl-form-border-strong: map-get($ecl-colors, 'grey-50') !default;
 $bl-form-background: map-get($ecl-colors, 'grey-5') !default;
@@ -9,6 +8,10 @@ $bl-fieldset-margin-v: map-get($ecl-spacing, 's');
 $bl-fieldset-padding: map-get($ecl-spacing, 'm');
 $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
 
+/* stylelint-disable  selector-max-compound-selectors */
+/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable no-descending-specificity */
 .ecl-form {
   .ecl-button {
     margin-right: map-get($ecl-spacing, 'xs');
@@ -26,20 +29,17 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
   .ecl-table tr {
     border-bottom: 1px solid $bl-form-border;
   }
-
+  
   .ecl-table tr.drag-previous {
     background-color: $bl-form-background-dragged;
   }
 
- .ecl-table tr:hover {
+  .ecl-table tr:hover {
     background-color: $bl-form-background-hover;
   }
 
-  .ecl-table tr:hover {
-    .ecl-checkbox__label::before {
-      background-color: $bl-form-background-hover;
-    }
-
+  tr:hover .ecl-checkbox__label::before {
+    background-color: $bl-form-background-hover;
   }
 
   .ecl-table tr:nth-of-type(2n):not(:hover):not(.drag-previous) {
@@ -54,14 +54,10 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     background-color: $bl-form-background-header;
     border: solid 1px $bl-form-border-strong;
     border-width: 1px 0;
-
-    h4 {
-      margin: 0;
-    }
   }
 
-  .ecl-table thead tr:first-child th {
-    border-bottom: solid 1px $bl-form-border-strong;
+  th h4 {
+    margin: 0;
   }
 
   table.sticky-header {
@@ -76,15 +72,17 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     text-align: left;
   }
 
-  .ecl-table td {
-    .description {
-      font-size: 0.89em;
-      margin-top: map-get($ecl-spacing, 'xxxs');
-      line-height: 1.4;
-    }
+  .ecl-table thead tr:first-child th {
+    border-bottom: solid 1px $bl-form-border-strong;
   }
 
-  button.link {
+  td .description {
+    font-size: 0.89em;
+    line-height: 1.4;
+    margin-top: map-get($ecl-spacing, 'xxxs');
+  }
+
+  %button.link {
     background: transparent;
     border: 0;
     color: $ecl-color-primary;
@@ -96,27 +94,39 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     text-decoration: none;
   }
 
+  button.link {
+    @extend %button.link;
+  }
+
   button.link:hover {
     text-decoration: underline;
   }
 
+  summary ~ div {
+    padding: 0 $bl-fieldset-padding $bl-fieldset-padding;
+  }
+
   .compact-link a {
-    @extend button.link;
+    @extend %button.link;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .chosen-container {
     padding-left: 0;
     padding-right: 0;
+  }
 
-    a.chosen-single {
-      background: none;
-      border: none;
-      box-shadow: none;
-    }
+  .chosen-single {
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
 
-    a.chosen-single span ~ div {
-      display: none;
-    }
+  .chosen-single span ~ div {
+    display: none;
   }
 
   .delta-order select {
@@ -207,10 +217,6 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
       padding: $bl-fieldset-padding  $bl-fieldset-padding;
       text-transform: uppercase;
     }
-  }
-
-  summary ~ div {
-    padding: 0 $bl-fieldset-padding $bl-fieldset-padding;
   }
 
 }
