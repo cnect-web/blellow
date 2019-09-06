@@ -50,7 +50,7 @@ function blellow_preprocess_menu__main(array &$variables): void {
     return [
       'href' => $item['url'],
       'label' => $item['title'],
-      'is_active' => $item['in_active_trail'],
+      'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
     ];
   }, $variables['items']);
 
@@ -60,12 +60,30 @@ function blellow_preprocess_menu__main(array &$variables): void {
         'links' => [[
           'href' => $item['url'],
           'label' => $item['title'],
-          'is_active' => $item['in_active_trail'],
+          'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
         ],
         ],
       ];
     }, $variables['items'][$name]['below']);
   }
+}
+
+/**
+ * Matches the menu item with the current path.
+ *
+ * @param array $item
+ *   Menu item.
+ *
+ * @return bool
+ *   The item matches the current path
+ */
+function _blellow_match_path(array $item) {
+  if ($item['in_active_trail']) {
+    return FALSE;
+  }
+  $current_path = \Drupal::request()->getRequestUri();
+
+  return $item['url']->toString() == $current_path;
 }
 
 /**
