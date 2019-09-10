@@ -26,60 +26,8 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     margin-right: 0;
   }
 
-  .ecl-table tr {
-    border-bottom: 1px solid $bl-form-border;
-  }
-  
-  .ecl-table tr.drag-previous {
-    background-color: $bl-form-background-dragged;
-  }
-
-  .ecl-table tr:hover {
-    background-color: $bl-form-background-hover;
-  }
-
-  tr:hover .ecl-checkbox__label::before {
-    background-color: $bl-form-background-hover;
-  }
-
-  .ecl-table tr:nth-of-type(2n):not(:hover):not(.drag-previous) {
-    background-color: unset;
-  }
-
   .permissions .ecl-form-label.ecl-checkbox {
     text-align: center;
-  }
-
-  .ecl-table th {
-    background-color: $bl-form-background-header;
-    border: solid 1px $bl-form-border-strong;
-    border-width: 1px 0;
-  }
-
-  th h4 {
-    margin: 0;
-  }
-
-  table.sticky-header {
-    border-spacing: 0;
-  }
-
-  table.sticky-header th{
-    background-color: $bl-form-background-header;
-    border: solid 1px $bl-form-border-strong;
-    border-width: 1px 0;
-    padding: 0.89rem;
-    text-align: left;
-  }
-
-  .ecl-table thead tr:first-child th {
-    border-bottom: solid 1px $bl-form-border-strong;
-  }
-
-  td .description {
-    font-size: 0.89em;
-    line-height: 1.4;
-    margin-top: map-get($ecl-spacing, 'xxxs');
   }
 
   %button.link {
@@ -219,4 +167,72 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     }
   }
 
+}
+
+.block-local-actions-block {
+
+  .ecl-button {
+    margin-right: map-get($ecl-spacing, 'xs');
+    margin-top: map-get($ecl-spacing, 'xxs');
+  }
+
+  span:first-child .ecl-button {
+    margin-left: 0;
+  }
+
+  span:last-child .ecl-button{
+    margin-right: 0;
+  }
+}
+
+.ecl-table tr {
+  border-bottom: 1px solid $bl-form-border;
+}
+
+.ecl-table tr.drag-previous {
+  background-color: $bl-form-background-dragged;
+}
+
+.ecl-table tr:hover {
+  background-color: $bl-form-background-hover;
+}
+
+tr:hover .ecl-checkbox__label::before {
+  background-color: $bl-form-background-hover;
+}
+
+.ecl-table tr:nth-of-type(2n):not(:hover):not(.drag-previous) {
+  background-color: unset;
+}
+
+.ecl-table th {
+  background-color: $bl-form-background-header;
+  border: solid 1px $bl-form-border-strong;
+  border-width: 1px 0;
+}
+
+th h4 {
+  margin: 0;
+}
+
+table.sticky-header {
+  border-spacing: 0;
+}
+
+table.sticky-header th{
+  background-color: $bl-form-background-header;
+  border: solid 1px $bl-form-border-strong;
+  border-width: 1px 0;
+  padding: 0.89rem;
+  text-align: left;
+}
+
+.ecl-table thead tr:first-child th {
+  border-bottom: solid 1px $bl-form-border-strong;
+}
+
+td .description {
+  font-size: 0.89em;
+  line-height: 1.4;
+  margin-top: map-get($ecl-spacing, 'xxxs');
 }
