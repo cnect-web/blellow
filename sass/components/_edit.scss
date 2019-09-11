@@ -230,3 +230,62 @@ td .description {
   line-height: 1.4;
   margin-top: map-get($ecl-spacing, 'xxxs');
 }
+
+/* button group */
+.js td .dropbutton-multiple .dropbutton-action a,
+.js td .dropbutton-multiple .dropbutton-action input,
+.js td .dropbutton-multiple .dropbutton-action button {
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+
+.js td .dropbutton-multiple .dropbutton-action a:hover {
+  text-decoration: underline;
+}
+
+.js .dropbutton-multiple .dropbutton-widget {
+  @extend .ecl-button;
+  @extend .ecl-button--primary;
+  padding: 0 2em 0 0;
+  margin: 0;
+
+  a {
+    color: #fff;
+    padding: 4px 1.5em;
+    //text-decoration: none;
+  }
+}
+
+.dropbutton-multiple.open .dropbutton-widget{
+  @extend .ecl-button--default:hover;
+  @extend .ecl-button:focus;
+
+  a {
+    //text-decoration: none;
+    //text-decoration-color: transparent;
+  }
+}
+
+.ecl-button--primary:hover,
+.js .dropbutton-multiple .dropbutton-widget:hover,
+.ecl-button--primary:focus,
+.js .dropbutton-multiple .dropbutton-widget:focus,
+.ecl-button--primary:active,
+.js .dropbutton-multiple .dropbutton-widget:active {
+  background: #fff;
+
+  a {
+    color: #004494;
+    //text-decoration: none;
+    //text-decoration-color: transparent;
+  }
+
+}
+
+.dropbutton-toggle button {
+  color: #fff;
+}
+
+.dropbutton-widget:hover .dropbutton-toggle button {
+  color: #004494;
+}
