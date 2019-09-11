@@ -6,7 +6,7 @@ article .links.inline {
   padding: 0;
 }
 
-article .links.inline .comment-add {
+.comment-add {
   a {
     @extend .ecl-button;
     @extend .ecl-button--default;

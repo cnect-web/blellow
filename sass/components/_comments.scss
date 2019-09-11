@@ -53,6 +53,8 @@
 }
 
 .comment-form {
+  margin-bottom: map-get($ecl-spacing, 'l');
+
   .field--name-comment-body {
     label {
       display: none;
@@ -62,4 +64,10 @@
   .filter-wrapper.ecl-form-group {
     margin-top: 0;
   }
+}
+
+// hide add new comment button
+
+.comment-add a {
+  display: none;
 }
