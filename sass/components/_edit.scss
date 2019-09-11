@@ -12,24 +12,27 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
 /* stylelint-disable selector-no-qualifying-type */
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable no-descending-specificity */
+
+/* edit forms */
 .ecl-form {
+  /* action buttons */
   .ecl-button {
     margin-right: map-get($ecl-spacing, 'xs');
     margin-top: map-get($ecl-spacing, 'xxs');
   }
-
   .ecl-button:first-child {
     margin-left: 0;
   }
-
   .ecl-button:last-child {
     margin-right: 0;
   }
 
+  /* checkbox in the permissions table */
   .permissions .ecl-form-label.ecl-checkbox {
     text-align: center;
   }
 
+  /* show description and show/hide button link */
   %button.link {
     background: transparent;
     border: 0;
@@ -41,19 +44,12 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     padding: 0;
     text-decoration: none;
   }
-
   button.link {
     @extend %button.link;
   }
-
   button.link:hover {
     text-decoration: underline;
   }
-
-  summary ~ div {
-    padding: 0 $bl-fieldset-padding $bl-fieldset-padding;
-  }
-
   .compact-link a {
     @extend %button.link;
 
@@ -62,76 +58,45 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     }
   }
 
+  /* inner fieldset */
+  summary ~ div {
+    padding: 0 $bl-fieldset-padding $bl-fieldset-padding;
+  }
+
+  /* chosen select replacment */
   .chosen-container {
     padding-left: 0;
     padding-right: 0;
   }
-
   .chosen-single {
     background: none;
     border: 0;
     box-shadow: none;
   }
-
   .chosen-single span ~ div {
     display: none;
   }
 
+  /* weight select for ordering */
   .delta-order select {
     float: right;
     width: auto;
   }
 
-  .vertical-tabs,
-  .vertical-tabs__menu,
-  .vertical-tabs .vertical-tabs__panes {
-    font-size: 1em;
-
-  }
-
-  .vertical-tabs .vertical-tabs__panes .ecl-checkbox {
-    font-size: 1em;
-  }
-
-  .vertical-tabs .vertical-tabs__menu-item {
-    background-color: $bl-form-background;
-  }
-
-  .vertical-tabs .vertical-tabs__menu-item-summary,
-  .vertical-tabs .vertical-tabs__panes .ecl-help-block.description {
-    font-size: 0.89em;
-    line-height: 1.2;
-  }
-
-  .vertical-tabs .vertical-tabs__panes {
-    padding: map-get($ecl-spacing, 'xs');
-
-    .ecl-help-block {
-      margin-top: map-get($ecl-spacing, 'xxxs');
-    }
-  }
-
-  .vertical-tabs__menu-item a {
-    padding: map-get($ecl-spacing, 'xs');
-  }
-
+  /* text format after text area */
   .js-form-type-textarea ~ .ecl-form-group {
     margin-top: 0;
-  }
-
-  .form-autocomplete {
-    background-position-x: 99%;
   }
 
   /* Draggable area for paragraphs */
   .draggable .ecl-table__group-label {
     vertical-align: top;
   }
-
   .draggable .paragraphs-subform.ecl-form-group{
     margin-top: map-get($ecl-spacing, 'xxs');
   }
 
+  /* fieldsets */
   fieldset:not(.fieldgroup) {
     background-color: $bl-form-background;
     border: 1px solid $bl-form-border;
@@ -141,7 +106,6 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     padding: $bl-fieldset-padding-t $bl-fieldset-padding  $bl-fieldset-padding;
     position: relative;
   }
-
   fieldset:not(.fieldgroup) > legend {
     font-size: 1em;
     font-weight: bold;
@@ -150,14 +114,12 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     text-transform: uppercase;
     top: 10px;
   }
-
   fieldset details {
     background-color: $bl-form-background;
     border: 1px solid $bl-form-border;
     border-radius: 0;
     margin-bottom: $bl-fieldset-margin-v;
     margin-top: $bl-fieldset-margin-v;
-
     summary {
       color: $ecl-color-primary;
       cursor: pointer;
@@ -166,9 +128,42 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
       text-transform: uppercase;
     }
   }
-
 }
 
+/* autocomplete indicator */
+.js input.form-autocomplete {
+  background-position-x: 99%;
+}
+
+/* vertical tabs */
+.vertical-tabs,
+.vertical-tabs__menu,
+.vertical-tabs .vertical-tabs__panes {
+  font-size: 1em;
+}
+.vertical-tabs .vertical-tabs__panes .ecl-checkbox {
+  font-size: 1em;
+}
+.vertical-tabs .vertical-tabs__menu-item {
+  background-color: $bl-form-background;
+}
+.vertical-tabs .vertical-tabs__menu-item-summary,
+.vertical-tabs .vertical-tabs__panes .ecl-help-block.description {
+  font-size: 0.89em;
+  line-height: 1.2;
+}
+.vertical-tabs .vertical-tabs__panes {
+  padding: map-get($ecl-spacing, 'xs');
+
+  .ecl-help-block {
+    margin-top: map-get($ecl-spacing, 'xxxs');
+  }
+}
+.vertical-tabs__menu-item a {
+  padding: map-get($ecl-spacing, 'xs');
+}
+
+/* local actions */
 .block-local-actions-block {
 
   .ecl-button {
@@ -185,40 +180,41 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
   }
 }
 
+/* tables */
 .ecl-table tr {
   border-bottom: 1px solid $bl-form-border;
 }
-
 .ecl-table tr.drag-previous {
   background-color: $bl-form-background-dragged;
 }
-
 .ecl-table tr:hover {
   background-color: $bl-form-background-hover;
 }
-
 tr:hover .ecl-checkbox__label::before {
   background-color: $bl-form-background-hover;
 }
-
 .ecl-table tr:nth-of-type(2n):not(:hover):not(.drag-previous) {
   background-color: unset;
 }
-
 .ecl-table th {
   background-color: $bl-form-background-header;
   border: solid 1px $bl-form-border-strong;
   border-width: 1px 0;
 }
-
 th h4 {
   margin: 0;
 }
-
+td > a,
+th > a {
+  text-decoration: none;
+}
+td > a:hover,
+th > a:hover {
+  text-decoration: underline;
+}
 table.sticky-header {
   border-spacing: 0;
 }
-
 table.sticky-header th{
   background-color: $bl-form-background-header;
   border: solid 1px $bl-form-border-strong;
@@ -226,11 +222,9 @@ table.sticky-header th{
   padding: 0.89rem;
   text-align: left;
 }
-
 .ecl-table thead tr:first-child th {
   border-bottom: solid 1px $bl-form-border-strong;
 }
-
 td .description {
   font-size: 0.89em;
   line-height: 1.4;
