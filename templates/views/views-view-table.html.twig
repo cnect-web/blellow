@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Theme override to display a table.
+ *
+ * @see ./core/themes/stable/templates/views/views-view-table.html.twig
+ */
+#}
+{{ attach_library('blellow/tables') }}
+{% set attributes = attributes.addClass(['ecl-table', 'ecl-table--responsive']) %}
+{% include "@stable/views/views-view-table.html.twig" %}
