@@ -10,6 +10,13 @@
   }
 }
 
+.bl-field__content-wrapper {
+  margin-bottom: map-get($ecl-spacing, 'l');
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 label{
   display: block;
   font-weight: bold;
