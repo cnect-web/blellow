@@ -148,6 +148,10 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     margin-top: 0.4rem;
   }
 
+  .description {
+    @extend .ecl-help-block;
+  }
+
 }
 
 /* autocomplete indicator */
