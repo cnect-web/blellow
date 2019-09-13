@@ -148,8 +148,16 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     margin-top: 0.4rem;
   }
 
+  // help text
+
   .description {
     @extend .ecl-help-block;
+  }
+
+  // form actions
+
+  .form-actions {
+    margin: map-get($ecl-spacing, 'xs') 0 map-get($ecl-spacing, 'l') 0;
   }
 
 }
@@ -255,4 +263,47 @@ td .description {
   margin-top: map-get($ecl-spacing, 'xxxs');
 }
 
+// SPECEFIC EDIT FORMS
+
+// group post management
+// TODO: NEEDS WORK
+
+.group-post-management {
+  background: #f7f7f7;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  display: grid;
+  grid-column-gap: map-get($ecl-spacing, 'm');
+  grid-template-areas: 
+    'publish-status collection'
+    'form-submit form-submit';
+  margin-bottom: map-get($ecl-spacing, 'm');
+  padding: map-get($ecl-spacing, 'm');
+  width: 100%;
+  .ecl-form-group {
+    grid-area: publish-status;
+  }
+  .ecl-fieldset.form-wrapper {
+    border: initial;
+    grid-area: collection;
+    margin: 0;
+    padding: 0;
+    .ecl-form-legend {
+      letter-spacing: initial;
+      line-height: initial;
+      margin: 0;
+      position: relative;
+      text-transform: initial;
+      top: 0;
+    }
+    .fieldset-wrapper {
+      margin-top: map-get($ecl-spacing, 'xs'); 
+    }
+
+  }
+  .form-actions {
+    grid-area: form-submit;
+    margin: 0;
+  }
+}
 
