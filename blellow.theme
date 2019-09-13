@@ -7,6 +7,7 @@
 
 declare(strict_types = 1);
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\Element;
@@ -1014,15 +1015,12 @@ function blellow_preprocess_media(array &$variables): void {
   };
 }
 
- /**
+/**
  * Implements hook_form_FORM_ID_alter().
- * @param $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param $form_id
  */
-function blellow_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
-  if ($form['#id']=='views-exposed-form-fut-group-posts-management-default') {
+  if ($form['#id'] == 'views-exposed-form-fut-group-posts-management-default') {
     $form['#attributes']['class'][] = 'group-post-management';
   }
 }
@@ -1138,4 +1136,3 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
 }
-
