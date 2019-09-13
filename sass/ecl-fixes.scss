@@ -24,8 +24,25 @@
   margin: 0;
 }
 
+// change the color of the visited link
 
+.ecl-link:visited {
+  color: map-get($ecl-colors, 'blue-100');
+}
 
+// override '.ecl-link:visited' 
+
+.ecl-link--inverted:visited {
+  color: #fff;
+}
+
+// override '.ecl-link:visited' to make active class work
+
+.ecl-link.ecl-navigation-list__link--active, 
+.ecl-link.ecl-navigation-list__link[aria-selected='true'] {
+  color: map-get($ecl-colors, 'grey-100');
+}
+ 
 /* Implement messages classes
  *
  * .ecl-message
