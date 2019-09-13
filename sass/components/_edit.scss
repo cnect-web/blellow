@@ -157,7 +157,7 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
   // form actions
 
   .form-actions {
-    margin-bottom: map-get($ecl-spacing, 'l');
+    margin: map-get($ecl-spacing, 'xs') 0 map-get($ecl-spacing, 'l') 0;
   }
 
 }

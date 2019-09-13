@@ -1014,9 +1014,6 @@ function blellow_preprocess_media(array &$variables): void {
   };
 }
 
-
-
-
  /**
  * Implements hook_form_FORM_ID_alter().
  * @param $form
@@ -1029,7 +1026,6 @@ function blellow_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormSta
     $form['#attributes']['class'][] = 'group-post-management';
   }
 }
-
 
 /**
  * Implements hook_preprocess_media() for media_file field.
