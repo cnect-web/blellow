@@ -307,3 +307,8 @@ td .description {
   }
 }
 
+// put a background on the active navigation list link.
+
+.ecl-navigation-list--small .ecl-link.ecl-navigation-list__link--active {
+  background: $ecl-color-secondary;
+}
