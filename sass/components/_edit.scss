@@ -303,9 +303,8 @@ td .description {
   background: #fff;
 
   input, a, button {
-    color: #004494;
+    color: $ecl-color-primary;
   }
-
   input:hover, button:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -315,9 +314,8 @@ td .description {
   color: #fff;
 }
 .dropbutton-widget:hover .dropbutton-toggle button {
-  color: #004494;
+  color: $ecl-color-primary;
 }
-
 .js .dropbutton-widget .button,
 .js .dropbutton-widget button{
   border: 0;
@@ -325,14 +323,12 @@ td .description {
   background: transparent;
   box-shadow: none;
 }
-
 .js .dropbutton .dropbutton-action > input,
 .js .dropbutton .dropbutton-action > a,
 .js .dropbutton .dropbutton-action > button {
   margin: 0;
   padding: 0;
   padding: 4px 1.5em;
-  padding: 0.89rem 1rem;
   text-align: left;
   text-decoration: none;
   color: #fff;
