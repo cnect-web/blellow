@@ -29,7 +29,6 @@
   </div>
   <div class="user-full__form-wrapper">
     {{ content|without('user_picture') }}
-    <a href="{{ path('entity.user.canonical', {'user': user.id}) }}/contact" class="ecl-button ecl-button--primary">{% trans %}Contact this user{% endtrans %}</a>
   </div>
 </article>
 
