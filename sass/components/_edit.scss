@@ -128,6 +128,38 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
       text-transform: uppercase;
     }
   }
+
+  /* image widget */
+
+  .image-widget {
+    margin-top: $bl-fieldset-margin-v;
+  }
+
+  .image-widget .image-preview {
+    float: left;
+    margin-right: $bl-fieldset-margin-v;
+  }
+
+  .image-widget .image-widget-data {
+    float: left;
+  }
+
+  * + .ecl-help-block {
+    margin-top: 0.4rem;
+  }
+
+  // help text
+
+  .description {
+    @extend .ecl-help-block;
+  }
+
+  // form actions
+
+  .form-actions {
+    margin: map-get($ecl-spacing, 'xs') 0 map-get($ecl-spacing, 'l') 0;
+  }
+
 }
 
 /* autocomplete indicator */
@@ -238,11 +270,9 @@ td .description {
   text-decoration: none;
   text-decoration-color: transparent;
 }
-
 .js td .dropbutton-multiple .dropbutton-action a:hover {
   text-decoration: underline;
 }
-
 .js .dropbutton-multiple .dropbutton-widget {
   @extend .ecl-button;
   @extend .ecl-button--primary;
@@ -255,7 +285,6 @@ td .description {
     //text-decoration: none;
   }
 }
-
 .dropbutton-multiple.open .dropbutton-widget{
   @extend .ecl-button--default:hover;
   @extend .ecl-button:focus;
@@ -265,7 +294,6 @@ td .description {
     //text-decoration-color: transparent;
   }
 }
-
 .ecl-button--primary:hover,
 .js .dropbutton-multiple .dropbutton-widget:hover,
 .ecl-button--primary:focus,
@@ -274,18 +302,112 @@ td .description {
 .js .dropbutton-multiple .dropbutton-widget:active {
   background: #fff;
 
-  a {
+  input, a, button {
     color: #004494;
-    //text-decoration: none;
-    //text-decoration-color: transparent;
   }
 
+  input:hover, button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
-
 .dropbutton-toggle button {
   color: #fff;
 }
-
 .dropbutton-widget:hover .dropbutton-toggle button {
   color: #004494;
+}
+
+.js .dropbutton-widget .button,
+.js .dropbutton-widget button{
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.js .dropbutton .dropbutton-action > input,
+.js .dropbutton .dropbutton-action > a,
+.js .dropbutton .dropbutton-action > button {
+  margin: 0;
+  padding: 0;
+  padding: 4px 1.5em;
+  padding: 0.89rem 1rem;
+  text-align: left;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+}
+.js .dropbutton-widget .dropbutton-action a,
+.js .dropbutton-widget .dropbutton-action input,
+.js .dropbutton-widget .dropbutton-action button {
+
+}
+// Dropdown in paragraphs
+.form-wrapper  .paragraphs-actions {
+  .button, button, input {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.form-wrapper .paragraphs-dropdown-actions  {
+  .button, button, input {
+    margin-top: 0;
+    border: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .button:hover, button:hover, input:hover {
+    cursor: pointer;
+  }
+}
+
+
+// SPECEFIC EDIT FORMS
+
+// group post management
+// TODO: NEEDS WORK
+.group-post-management {
+  background: #f7f7f7;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  display: grid;
+  grid-column-gap: map-get($ecl-spacing, 'm');
+  grid-template-areas: 
+    'publish-status collection'
+    'form-submit form-submit';
+  margin-bottom: map-get($ecl-spacing, 'm');
+  padding: map-get($ecl-spacing, 'm');
+  width: 100%;
+  .ecl-form-group {
+    grid-area: publish-status;
+  }
+  .ecl-fieldset.form-wrapper {
+    border: initial;
+    grid-area: collection;
+    margin: 0;
+    padding: 0;
+    .ecl-form-legend {
+      letter-spacing: initial;
+      line-height: initial;
+      margin: 0;
+      position: relative;
+      text-transform: initial;
+      top: 0;
+    }
+    .fieldset-wrapper {
+      margin-top: map-get($ecl-spacing, 'xs'); 
+    }
+
+  }
+  .form-actions {
+    grid-area: form-submit;
+    margin: 0;
+  }
+}
+// put a background on the active navigation list link.
+.ecl-navigation-list--small .ecl-link.ecl-navigation-list__link--active {
+  background: $ecl-color-secondary;
 }
