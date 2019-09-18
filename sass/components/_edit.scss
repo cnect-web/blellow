@@ -244,6 +244,9 @@ td > a:hover,
 th > a:hover {
   text-decoration: underline;
 }
+td > ul > li {
+  font-size: 1rem;
+}
 table.sticky-header {
   border-spacing: 0;
 }
