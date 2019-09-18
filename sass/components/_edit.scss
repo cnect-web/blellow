@@ -244,7 +244,7 @@ td > a:hover,
 th > a:hover {
   text-decoration: underline;
 }
-td  ul > li {
+td ul > li {
   font-size: 1rem;
 }
 table.sticky-header {
@@ -276,17 +276,22 @@ td .description {
 .js td .dropbutton-multiple .dropbutton-action a:hover {
   text-decoration: underline;
 }
+.js .dropbutton-single .dropbutton-widget,
 .js .dropbutton-multiple .dropbutton-widget {
   @extend .ecl-button;
   @extend .ecl-button--primary;
-  padding: 0 2em 0 0;
-  margin: 0;
 
+  margin: 0;
+  padding: 0 2em 0 0;
   a {
     color: #fff;
     padding: 4px 1.5em;
     //text-decoration: none;
   }
+}
+.js .dropbutton-single .dropbutton-widget {
+  padding: 0;
+  position: relative;
 }
 .dropbutton-multiple.open .dropbutton-widget{
   @extend .ecl-button--default:hover;
@@ -320,43 +325,43 @@ td .description {
   color: $ecl-color-primary;
 }
 .js .dropbutton-widget .button,
-.js .dropbutton-widget button{
+.js .dropbutton-widget button {
+  background: transparent;
   border: 0;
   border-radius: 0;
-  background: transparent;
   box-shadow: none;
 }
 .js .dropbutton .dropbutton-action > input,
 .js .dropbutton .dropbutton-action > a,
 .js .dropbutton .dropbutton-action > button {
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1.66;
   margin: 0;
   padding: 0;
   padding: 4px 1.5em;
   text-align: left;
   text-decoration: none;
-  color: #fff;
-  font-weight: 600;
-  line-height: 1.66;
-  -webkit-font-smoothing: antialiased;
 }
-.js .dropbutton-widget .dropbutton-action a,
-.js .dropbutton-widget .dropbutton-action input,
-.js .dropbutton-widget .dropbutton-action button {
-
-}
+//.js .dropbutton-widget .dropbutton-action a,
+//.js .dropbutton-widget .dropbutton-action input,
+//.js .dropbutton-widget .dropbutton-action button {
+//
+//}
 // Dropdown in paragraphs
-.form-wrapper  .paragraphs-actions {
+.form-wrapper .paragraphs-actions {
   .button, button, input {
-    margin-top: 0;
     margin-bottom: 0;
+    margin-top: 0;
   }
 }
 .form-wrapper .paragraphs-dropdown-actions  {
   .button, button, input {
-    margin-top: 0;
     border: 0;
-    width: 100%;
+    margin-top: 0;
     text-align: left;
+    width: 100%;
   }
   .button:hover, button:hover, input:hover {
     cursor: pointer;
