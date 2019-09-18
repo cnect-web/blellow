@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * @see ./core/themes/stable/templates/layout/page.html.twig
+ */
+#}
+
+{% extends "page.html.twig" %}
+
+{% block main %}
+
+{# Content #}
+{% set content_classes = [
+  'ecl-col-sm-9',
+  ]
+%}
+
+<div class="main-content ecl-u-mv-l" >
+  <div class="ecl-container">
+    <div class="ecl-row">
+      
+      <section {{ content_attributes.addClass(content_classes) }}>
+        {{ page.content }}
+      </section>
+
+      {# Sidebar Second #}
+      {# Show always sidebar second (no check if it is empty) #}
+      {% block sidebar_second %}
+        <aside class="ecl-col-sm-3" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endblock %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

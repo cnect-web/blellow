@@ -32,41 +32,52 @@
 {% endblock %}
 
 
+
+{# Content #}
+{% set content_classes = [
+  page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
+  page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
+  page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
+  page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
+  ]
+%}
+
 {% block main %}
-<div class="main-content ecl-u-mv-l" >
+
+{# Content #}
+{% set content_classes = [
+  page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
+  page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
+  page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
+  page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
+  ]
+%}
+
+<div class="main-content ecl-u-mv-l">
   <div class="ecl-container">
     <div class="ecl-row">
 
       {# Sidebar First #}
-      {% if page.sidebar_first %}
-        {% block sidebar_first %}
+      {% block sidebar_first %}
+        {% if page.sidebar_first %}
           <aside class="ecl-col-sm-3" role="complementary">
             {{ page.sidebar_first }}
           </aside>
-        {% endblock %}
-      {% endif %}
+        {% endif %}
+      {% endblock %}
 
-      {# Content #}
-      {% set content_classes = [
-        page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
-        page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
-        page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
-        page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
-        ]
-      %}
-      
       <section {{ content_attributes.addClass(content_classes) }}>
         {{ page.content }}
       </section>
 
       {# Sidebar Second #}
-      {% if page.sidebar_second %}
-        {% block sidebar_second %}
+      {% block sidebar_second %}
+        {% if page.sidebar_second %}
           <aside class="ecl-col-sm-3" role="complementary">
             {{ page.sidebar_second }}
           </aside>
-        {% endblock %}
-      {% endif %}
+        {% endif %}
+      {% endblock %}
     
     </div>
   </div>
