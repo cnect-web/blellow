@@ -31,17 +31,6 @@
   {{ page.navigation }}
 {% endblock %}
 
-
-
-{# Content #}
-{% set content_classes = [
-  page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
-  page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
-  page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
-  page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
-  ]
-%}
-
 {% block main %}
 
 {# Content #}
