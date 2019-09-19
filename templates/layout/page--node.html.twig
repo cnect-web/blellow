@@ -11,9 +11,9 @@
 
 {% block main %}
 
-{# Content #}
 {% set content_classes = [
-  'ecl-col-sm-9',
+  page.sidebar_first ? 'ecl-col-sm-6',
+  page.sidebar_first is empty ? 'ecl-col-sm-9',
   ]
 %}
 
@@ -21,9 +21,14 @@
   <div class="ecl-container">
     <div class="ecl-row">
       
-      <section {{ content_attributes.addClass(content_classes) }}>
-        {{ page.content }}
-      </section>
+      {# Sidebar First #}
+      {% block sidebar_first %}
+        {{ parent() }}
+      {% endblock %}
+
+      {% block page_content %}
+        {{ parent() }}
+      {% endblock %}
 
       {# Sidebar Second #}
       {# Show always sidebar second (no check if it is empty) #}
