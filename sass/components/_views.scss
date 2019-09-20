@@ -16,9 +16,10 @@ footer a.views-display-link {
 //////////////////////////////////////////
 
 .block-views-blockfut-my-contributions-block-my-contributions,
-.block-views-blockfut-group-most-popular-publications-block-group-latest-posts {
+.block-views-blockfut-group-posts-block-group-most-popular-posts{
   @include block-background;
   .ecl-list-item {
     border-bottom: 1px solid map-get($ecl-colors, 'grey-25');
   }
 }
+
