@@ -4,38 +4,36 @@
   padding-bottom: map-get($ecl-spacing, 'm');
 
   /* padding-top: map-get($ecl-spacing, 'm'); */
-
   a {
     text-decoration: none;
-  }
-
-  a:hover {
-    color: $ecl-color-shade;
-    text-decoration: underline;
   }
 
   h3 {
     margin-bottom: map-get($ecl-spacing, 's');
     margin-top: map-get($ecl-spacing, 's');
-  }
 
+    a {
+      display: inline-block;
+    }
+  }
+  a:hover {
+    color: $ecl-color-shade;
+    text-decoration: underline;
+  }
   .teaser__header {
     align-items: center;
-    margin-bottom: map-get($ecl-spacing, 's');
-    margin-top: map-get($ecl-spacing, 'm');
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: map-get($ecl-spacing, 's');
+    margin-top: map-get($ecl-spacing, 'm');
   } 
 
   /* component contentmeta */
-
   .bl-contentmeta {
     display: flex;
     flex-direction: row;
   }
-
   .bl-contentmeta__header {
     flex-shrink: 0;
     height: auto;
@@ -44,66 +42,60 @@
     max-width: 5.55rem; 
     width: auto;
   }
-
   .bl-contentmeta__date-time {
     color: map-get($ecl-colors, 'grey-75');
   }
-
   .bl-contentmeta__author-name {
     margin-bottom: map-get($ecl-spacing, 'xxs');
   }
-
   .cnect-date-widget {
     margin-bottom: 0;
     margin-right: map-get($ecl-spacing, 'm');
   }
 
-  /* comments count */ 
-
+  /* comments count */
   .bl-comments-count {
     margin-left: auto;
   }
-
   .teaser__footer {
     align-items: flex-start;
     display: flex;
     flex-direction: row;
     margin-top: 1rem;
   }
-
 }
-
 .fut-paragraph-summary {
   color: #404040;
   font-size: map-get($ecl-font-size, 's');
   line-height: 1.5;
   margin-bottom: 0;
 }
-
 .logged-in {
   display: none;
 }
-
 .user-logged-in .non-logged-in {
   display: none;
 }
-
 .user-logged-in .logged-in {
   display: block;
 }
-
-/* needs to move to component? */
-
-.teaser__content-type-name {
-  color: map-get($ecl-colors, 'grey-75');
-  font-size: map-get($ecl-font-size, 'xs');
-  text-align: right;
-  text-transform: uppercase;
-  padding: map-get($ecl-spacing, 'xxs');
-  padding-right: 0;
-  background: #fff;
+.logged-in a {
+  display: block;
+  .bl-image-wrapper img {
+    vertical-align: bottom;
+  }
 }
 
+/* needs to move to component? */
+.teaser__content-type-name {
+  background: #fff;
+  color: map-get($ecl-colors, 'grey-75');
+  font-size: map-get($ecl-font-size, 'xs');
+  padding: map-get($ecl-spacing, 'xxs');
+  padding-right: 0;
+  text-align: right;
+  text-transform: uppercase;
+}
 .teaser__group-info {
   white-space: nowrap;
   span {
@@ -111,11 +103,9 @@
     white-space: nowrap;
   }
 }
-
 .teaser__group-image {
   margin-right: map-get($ecl-spacing, 'xxs');
 }
-
 .teaser__group-image img {
   height: 30px;
   vertical-align: middle; 
@@ -159,7 +149,6 @@
 
 /* Teaser within the Next Events in your group block */
 .block-views-blockfut-group-user-events-block-user-events {
-
   .teaser__content-type-name,
   .fut-paragraph-summary-fut_event {
     display: none;
@@ -171,7 +160,6 @@
   .ecl-date-block {
     background: #fff;
   }
-
   .ecl-date-block::before {
     border-top: 1.2em solid #f5f5f5;
   }
