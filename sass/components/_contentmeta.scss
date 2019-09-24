@@ -9,8 +9,3 @@
 .bl-contentmeta__author-name {
 	margin-bottom: map-get($ecl-spacing, 'xxxs');
 }
-
-.bl-contentmeta__date-time {
-	color: map-get($ecl-colors, 'grey-75');
-	font-size: map-get($ecl-font-size, 'xs');
-}
