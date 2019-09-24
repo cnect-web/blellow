@@ -19,5 +19,7 @@
     color: map-get($ecl-colors, 'grey-75');
     font-size: map-get($ecl-font-size, 'xs');
     text-align: center;
+
+    a > * { display: inline-block}
   }
 }

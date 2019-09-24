@@ -8,6 +8,10 @@
   margin-top: 0;
   a {
     text-decoration: none;
+
+    * {
+      display: inline-block;
+    }
   }
   .ecl-heading--h1 {
     @include fut-header-2();
@@ -16,7 +20,6 @@
 
     @include ecl-media-breakpoint-up(md) {
       @include fut-header-1();
-      
       color: #fff;
     }
   }	
@@ -28,6 +31,7 @@
   margin-right: map-get($ecl-spacing, 'xs');
   // margin-top: map-get($ecl-spacing, 'xxs');
   img {
+    vertical-align: bottom;
     height: auto;
     width: 100px;
   }
