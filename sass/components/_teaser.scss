@@ -45,9 +45,9 @@
     width: auto;
   }
 
-  .bl-contentmeta__date-time {
-    color: map-get($ecl-colors, 'grey-75');
-  }
+  // .bl-contentmeta__date-time {
+  //   color: map-get($ecl-colors, 'grey-75');
+  // }
 
   .bl-contentmeta__author-name {
     margin-bottom: map-get($ecl-spacing, 'xxs');
@@ -68,7 +68,9 @@
     align-items: flex-start;
     display: flex;
     flex-direction: row;
+    font-size: map-get($ecl-font-size, 'xs');
     margin-top: 1rem;
+    color: map-get($ecl-colors, 'grey-75');
   }
 
 }
