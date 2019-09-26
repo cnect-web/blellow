@@ -9,12 +9,11 @@
   // sidebar with content meta post or event
 
   .bl-node__side {
-    margin-bottom: map-get($ecl-spacing, 'xs');
+    margin-bottom: map-get($ecl-spacing, 'm');
     
     @include ecl-media-breakpoint-up(lg) {
-      // align-items: center;
       flex: 1 0 150px;
-      padding: 0 10px 10px;
+      padding: 0 map-get($ecl-spacing, 'm');
     }
   }
 

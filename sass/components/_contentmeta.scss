@@ -1,12 +1,9 @@
 .bl-contentmeta {
-  align-content: center;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  align-items: center;
   color: map-get($ecl-colors, 'grey-75');
   display: flex;
   flex-direction: row;
   font-size: map-get($ecl-font-size, 'xs');
-  padding: map-get($ecl-font-size, 'xs') 0;
 
   .bl-contentmeta__header {
     margin-right: map-get($ecl-spacing, 'xs');
