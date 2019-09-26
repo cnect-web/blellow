@@ -7,20 +7,26 @@
 
   .bl-contentmeta__header {
     margin-right: map-get($ecl-spacing, 'xs');
-  } 
+  }
 
   @include ecl-media-breakpoint-up(lg) {
     border: initial;
     flex-direction: column;
-    text-align: center;
     
     .bl-contentmeta__header {
       margin: 0;
     }
+
   }
 
   a > * { 
     display: inline-block;
+  }
+}
+
+@include ecl-media-breakpoint-up(lg) {
+  .bl-node__side .bl-contentmeta {
+    text-align: center;
   }
 }
 
