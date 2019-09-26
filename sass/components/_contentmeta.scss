@@ -1,9 +1,44 @@
+.bl-contentmeta {
+  align-items: center;
+  color: map-get($ecl-colors, 'grey-75');
+  display: flex;
+  flex-direction: row;
+  font-size: map-get($ecl-font-size, 'xs');
+
+  .bl-contentmeta__header {
+    margin-right: map-get($ecl-spacing, 'xs');
+  }
+
+  @include ecl-media-breakpoint-up(lg) {
+    border: initial;
+    flex-direction: column;
+    
+    .bl-contentmeta__header {
+      margin: 0;
+    }
+
+  }
+
+  a > * { 
+    display: inline-block;
+  }
+}
+
+@include ecl-media-breakpoint-up(lg) {
+  .bl-node__side .bl-contentmeta {
+    text-align: center;
+  }
+}
+
 /* todo: needs to be removed. just for demo */
+
 .bl-contentmeta__avatar img {
 	border-radius: 50%;
 	height: 3rem;
-	margin-bottom: map-get($ecl-spacing, 'xxs');
 	width: 3rem;
+  @include ecl-media-breakpoint-up(lg) {
+    margin-bottom: map-get($ecl-spacing, 'xxs');
+  }
 }
 
 .bl-contentmeta__author-name {

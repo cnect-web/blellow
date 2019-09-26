@@ -1,25 +1,25 @@
 .bl-node--full {
   width: 100%;
+  
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  // sidebar with content meta post or event
 
   .bl-node__side {
-    align-items: center;
-    display: flex;
-    flex-direction: column;   
-    float: left;
-    padding: 0 10px 10px;
-    width: 150px;
+    margin-bottom: map-get($ecl-spacing, 'm');
+    
+    @include ecl-media-breakpoint-up(lg) {
+      flex: 1 0 150px;
+      padding: 0 map-get($ecl-spacing, 'm');
+    }
   }
+
+  // content area
 
   .bl-node__content {
     margin-bottom: map-get($ecl-spacing, 'xs');
-    margin-left: 180px;
-  }
-
-  .bl-contentmeta {
-    color: map-get($ecl-colors, 'grey-75');
-    font-size: map-get($ecl-font-size, 'xs');
-    text-align: center;
-
-    a > * { display: inline-block}
   }
 }
