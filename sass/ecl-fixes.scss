@@ -78,3 +78,9 @@ body div.tabledrag-changed-warning {
   margin-bottom: 0.5em;
 }
 
+.ecl-row {
+  margin-bottom: map-get($ecl-spacing, 'l');
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
