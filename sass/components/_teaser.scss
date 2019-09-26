@@ -57,7 +57,9 @@
 
   /* comments count */
   .bl-comments-count {
-    margin-left: auto;
+    margin-left: map-get($ecl-spacing, 'xs');
+    flex: 1 0 auto;
+    text-align: right;
   }
   .teaser__footer {
     align-items: flex-start;
