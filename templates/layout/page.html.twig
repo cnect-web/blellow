@@ -36,9 +36,9 @@
 {# Content #}
 {% set content_classes = [
   page.sidebar_first and page.sidebar_second ? 'ecl-col-sm-6',
-  page.sidebar_first and page.sidebar_second is empty ? 'ecl-col-sm-9',
-  page.sidebar_second and page.sidebar_first is empty ? 'ecl-col-sm-9',
-  page.sidebar_first is empty and page.sidebar_second is empty ? 'ecl-col-sm-12'
+  page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-sm-9',
+  page.sidebar_second|render and page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-sm-9',
+  page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-sm-12'
   ]
 %}
 
@@ -48,7 +48,7 @@
 
       {# Sidebar First #}
       {% block sidebar_first %}
-        {% if page.sidebar_first %}
+        {% if page.sidebar_first|render|striptags|trim %}
           <aside class="ecl-col-sm-3" role="complementary">
             {{ page.sidebar_first }}
           </aside>
@@ -63,7 +63,7 @@
 
       {# Sidebar Second #}
       {% block sidebar_second %}
-        {% if page.sidebar_second %}
+        {% if page.sidebar_second|render|striptags|trim %}
           <aside class="ecl-col-sm-3" role="complementary">
             {{ page.sidebar_second }}
           </aside>

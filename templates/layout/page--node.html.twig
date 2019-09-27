@@ -13,7 +13,7 @@
 
 {% set content_classes = [
   page.sidebar_first ? 'ecl-col-sm-6',
-  page.sidebar_first is empty ? 'ecl-col-sm-9',
+  page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-sm-9',
   ]
 %}
 
