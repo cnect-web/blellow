@@ -1,0 +1,20 @@
+uuid: 5304e1bb-4887-44e5-a1b2-f46a8cf368e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - fut_blocks
+  theme:
+    - blellow
+id: futuriumcreatecontentlink
+theme: blellow
+region: sidebar_second
+weight: 0
+provider: null
+plugin: fut_create_content_link_block
+settings:
+  id: fut_create_content_link_block
+  label: 'Futurium Create Content Link'
+  provider: fut_blocks
+  label_display: '0'
+visibility: {  }

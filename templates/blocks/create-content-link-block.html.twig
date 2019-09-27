@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override for create content link block.
+ *
+ * @see ./modules/custom/fut_blocks/templates/create-content-link-block.html.twig
+ */
+#}
+
+{%
+  set classes = [
+    'ecl-button',
+    'ecl-button--call',
+    'ecl-button--caret-right',
+    'btn-full-width'
+  ]
+%}
+
+<a {{ attributes.addClass(classes) }} href="{{ link.url }}">{{ link.title }}</a>

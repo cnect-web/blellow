@@ -92,6 +92,14 @@ a {
   }
 }
 
+// helper for button
+
+.btn-full-width {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
 // remove border from last list item
 
 @include ecl-media-breakpoint-down(sm) {
