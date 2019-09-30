@@ -12,8 +12,8 @@
 {% block main %}
 
 {% set content_classes = [
-  page.sidebar_first ? 'ecl-col-sm-6',
-  page.sidebar_first is empty ? 'ecl-col-sm-9',
+  page.sidebar_first ? 'ecl-col-md-6',
+  page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-9',
   ]
 %}
 
@@ -33,7 +33,7 @@
       {# Sidebar Second #}
       {# Show always sidebar second (no check if it is empty) #}
       {% block sidebar_second %}
-        <aside class="ecl-col-sm-3" role="complementary">
+        <aside class="ecl-col-md-3" role="complementary">
           {{ page.sidebar_second }}
         </aside>
       {% endblock %}
