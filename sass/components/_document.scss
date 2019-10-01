@@ -1,13 +1,15 @@
-.path-frontpage {
-  
-  .block__title {
-    @include fut-header-2();
+.media--type-fut-document {
+  background: #ebebeb;
+
+  .fut_author.bl-field{
+    @extend .ecl-file__info;
+
+    margin-top: - map-get($ecl-spacing, 's');
+    padding: 0 map-get($ecl-spacing, 'm') map-get($ecl-spacing, 'm');
+
+    * {
+      display: inline;
+    }
   }
-
-  aside .block__title {
-    @include fut-header-3();
-
-    margin-bottom: map-get($ecl-spacing, 's');
-  }
-
 }
+
