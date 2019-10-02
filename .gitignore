@@ -17,7 +17,7 @@ docker-compose.*.yml
 # /css/ # TODO: Put this back
 /fonts/europa-icons/
 /js/base.js
-/templates/components/
+# /templates/components/
 /oe_theme/
 *.tar.gz
 
