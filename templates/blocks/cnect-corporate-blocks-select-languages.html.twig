@@ -9,11 +9,163 @@
  * @see template_preprocess_corporate_blocks_select_languages()
  *
  * @ingroup themeable
+ *
+ * Use the following array for scaffolding and testing
+ *
+ {% set _languages = [
+    {
+        "href": "#",
+        "hreflang": "bg",
+        "label": "български",
+        "lang": "bg"
+    },
+    {
+        "href": "#",
+        "hreflang": "cs",
+        "label": "čeština",
+        "lang": "cs"
+    },
+    {
+        "href": "#",
+        "hreflang": "da",
+        "label": "dansk",
+        "lang": "da"
+    },
+    {
+        "href": "#",
+        "hreflang": "de",
+        "label": "Deutsch",
+        "lang": "de"
+    },
+    {
+        "href": "#",
+        "hreflang": "et",
+        "label": "eesti",
+        "lang": "et"
+    },
+    {
+        "href": "#",
+        "hreflang": "el",
+        "label": "ελληνικά",
+        "lang": "el"
+    },
+    {
+        "href": "#",
+        "hreflang": "en",
+        "label": "English",
+        "lang": "en"
+    },
+    {
+        "href": "#",
+        "hreflang": "es",
+        "label": "español",
+        "lang": "es"
+    },
+    {
+        "href": "#",
+        "hreflang": "fr",
+        "label": "français",
+        "lang": "fr"
+    },
+    {
+        "href": "#",
+        "hreflang": "ga",
+        "label": "Gaeilge",
+        "lang": "ga"
+    },
+    {
+        "href": "#",
+        "hreflang": "hr",
+        "label": "hrvatski",
+        "lang": "hr"
+    },
+
+
+    {
+        "href": "#",
+        "hreflang": "it",
+        "label": "italiano",
+        "lang": "it"
+    },
+    {
+        "href": "#",
+        "hreflang": "lv",
+        "label": "latviešu",
+        "lang": "lv"
+    },
+    {
+        "href": "#",
+        "hreflang": "lt",
+        "label": "lietuvių",
+        "lang": "lt"
+    },
+    {
+        "href": "#",
+        "hreflang": "hu",
+        "label": "magyar",
+        "lang": "hu"
+    },
+
+
+    {
+        "href": "#",
+        "hreflang": "mt",
+        "label": "Malti",
+        "lang": "mt"
+    },
+    {
+        "href": "#",
+        "hreflang": "nl",
+        "label": "Nederlands",
+        "lang": "nl"
+    },
+    {
+        "href": "#",
+        "hreflang": "pl",
+        "label": "polski",
+        "lang": "pl"
+    },
+    {
+        "href": "#",
+        "hreflang": "pt-pt",
+        "label": "português",
+        "lang": "pt-pt"
+    },
+    {
+        "href": "#",
+        "hreflang": "ro",
+        "label": "română",
+        "lang": "ro"
+    },
+    {
+        "href": "#",
+        "hreflang": "sk",
+        "label": "slovenčina",
+        "lang": "sk"
+    },
+    {
+        "href": "#",
+        "hreflang": "sl",
+        "label": "slovenščina",
+        "lang": "sl"
+    },
+    {
+        "href": "#",
+        "hreflang": "fi",
+        "label": "suomi",
+        "lang": "fi"
+    },
+    {
+        "href": "#",
+        "hreflang": "sv",
+        "label": "svenska",
+        "lang": "sv"
+    }]
+%}
  */
  #}
 
 {{ attach_library('blellow/dialogs') }}
-{#{{ kint(languages_local) }}#}
 <div class="cnect-register-widget">
     {% include '@ecl/ec-component-language-list' with {
         languages: languages,
