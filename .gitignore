@@ -23,5 +23,5 @@ docker-compose.*.yml
 
 # Ignore all files in the images folder other than the required icon.
 
-/images/*
-!/images/required.svg
+# /images/*
+# !/images/required.svg
