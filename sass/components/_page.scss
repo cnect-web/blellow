@@ -24,3 +24,9 @@
     margin-bottom: map-get($ecl-spacing, 'xs');
   }
 }
+
+  // node unpublished
+
+.node--unpublished {
+  background-color: #fff4f4;
+}
