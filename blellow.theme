@@ -307,7 +307,7 @@ function blellow_preprocess_pager(array &$variables): void {
       'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] - 1),
     ];
     $variables['items']['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
-    $variables['items']['previous']['text'] = t('� Previous');
+    $variables['items']['previous']['text'] = t('‹ Previous');
     $variables['items']['previous']['title'] = t('Go to previous page');
   }
 
@@ -347,7 +347,7 @@ function blellow_preprocess_pager(array &$variables): void {
       'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] + 1),
     ];
     $variables['items']['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
-    $variables['items']['next']['text'] = t('Next �');
+    $variables['items']['next']['text'] = t('Next ›');
     $variables['items']['next']['title'] = t('Go to next page');
 
     // Setting up the variables for the last page link.
