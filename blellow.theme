@@ -19,6 +19,7 @@ use Drupal\blellow\ValueObject\GalleryItemValueObject;
 use Drupal\group\Entity\GroupContent;
 
 //
+// TODO: Remove this part when we confirm that breacrumb works the way it should.
 // Note: Breadcrumb is handled in the Page Header block.
 //
 ///**
