@@ -1,22 +1,97 @@
 .user-full {
   display: flex;
   flex-direction: row;
-
-  .ecl-form-group {
-    margin-bottom: 1.66rem;
-    margin-top: 0;
-  }
 }
 
-.user-full__image-wrapper {
-  margin-right: 1rem;
+/* SIDEBAR WITH USER PICTURE */
+
+.user-full__side {
   flex-shrink: 0;
+  margin-right: map-get($ecl-spacing, 'm');
 }
 
-.user-full__form-wrapper {
+/* CONTENT */
+
+.fut_bio {
+  max-width: 32em;
+}
+
+.user-full__content {
+  // max-width: 32em;
   h4.label {
     display: inline-block;
     margin: 0;
   }
+
+  .ecl-form-group {
+    color: map-get($ecl-colors, 'grey-75');
+    margin-bottom: map-get($ecl-spacing, 'm');
+    margin-top: 0;
+  }
+
+  .ecl-form-group h4 {
+    color: map-get($ecl-colors, 'grey-75');
+    font-weight: normal;
+  }
 }
 
+.user-real-name h2 {
+  margin-bottom: map-get($ecl-spacing, 'xs');
+}
+
+.contact-user {
+  @extend .ecl-button;
+  @extend .ecl-button--primary;
+  
+  margin-bottom: map-get($ecl-spacing, 'l');
+}
+
+/* GRID */
+
+.user-full__content {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
+  grid-template-areas:
+    'user-profile user-profile'
+    'user-posts user-groups'
+    'user-posts user-comments'
+    'user-posts user-events';
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-full-profile {
+  grid-area: user-profile;
+}
+
+.a {
+  grid-area: user-posts;
+}
+
+.b {
+  grid-area: user-comments;
+}
+
+.c {
+  grid-area: user-groups;
+}
+
+.d {
+  grid-area: user-events;
+}
+
+// .block-views-blockfut-user-latest-activity-block-latest-posts {
+//   grid-area: user-posts;
+// }
+
+// .block-views-blockfut-user-joined-groups-block-user-joined-groups {
+//   grid-area: user-groups;
+// }
+
+// .block-views-blockfut-user-latest-activity-block-latest-events {
+//   grid-area: user-events;
+// }
+
+// .block-views-blockfut-user-latest-comments-block-user-latest-comments {
+//   grid-area: user-comments;
+// }
