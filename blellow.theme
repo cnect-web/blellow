@@ -1111,7 +1111,7 @@ function _blellow_title_reduce($title) {
  * @param string $hook
  *   Hook name.
  */
-function _blellow_preprocess_field__fut_tags(array &$variables, $hook): void {
+function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hook): void {
   // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
   $variable_name = 'cnect_tag_items';
   $variables[$variable_name] = [];
@@ -1121,6 +1121,18 @@ function _blellow_preprocess_field__fut_tags(array &$variables, $hook): void {
         'href' => $value['content']['#url'],
         'value' => $value['content']['#title'],
       ];
+    }
+  }
+}
+
+function blellow_theme_extra_field_info_alter(&$info) {
+
+  // Force node title to always be at the top of the list by default.
+  foreach (NodeType::loadMultiple() as $bundle) {
+    if (isset($info['node'][$bundle
+      ->id()]['form']['title'])) {
+      $info['node'][$bundle
+        ->id()]['form']['title']['weight'] = -20;
     }
   }
 }
