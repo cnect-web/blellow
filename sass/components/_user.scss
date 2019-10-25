@@ -48,50 +48,11 @@
 
 /* GRID */
 
-.user-full__content {
+.test {
   display: grid;
   grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
-  grid-template-areas:
-    'user-profile user-profile'
-    'user-posts user-groups'
-    'user-posts user-comments'
-    'user-posts user-events';
+  grid-row-gap: 2rem;
   grid-template-columns: 1fr 1fr;
 }
 
-.user-full-profile {
-  grid-area: user-profile;
-}
 
-.a {
-  grid-area: user-posts;
-}
-
-.b {
-  grid-area: user-comments;
-}
-
-.c {
-  grid-area: user-groups;
-}
-
-.d {
-  grid-area: user-events;
-}
-
-// .block-views-blockfut-user-latest-activity-block-latest-posts {
-//   grid-area: user-posts;
-// }
-
-// .block-views-blockfut-user-joined-groups-block-user-joined-groups {
-//   grid-area: user-groups;
-// }
-
-// .block-views-blockfut-user-latest-activity-block-latest-events {
-//   grid-area: user-events;
-// }
-
-// .block-views-blockfut-user-latest-comments-block-user-latest-comments {
-//   grid-area: user-comments;
-// }

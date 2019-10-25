@@ -32,32 +32,18 @@
       {{ content|without('user_picture') }}
     </div>
 
-    {# Latest activity (Posts) #}
-    <div class="a">
-    {% if drupal_view_result('fut_user_latest_activity', 'block_latest_posts', 'user') is not null %}
+    <div class="test">
+      {# Latest posts #}
       {{ drupal_block('views_block:fut_user_latest_activity-block_latest_posts') }}
-    {% endif %}
-    </div>
-
-    <div class="b">
-    {# Latest comments #}
-    {% if drupal_view_result('fut_user_latest_comments', 'block_user_latest_comments', 'user') is not null %}
+  
+      {# Latest comments #}
       {{ drupal_block('views_block:fut_user_latest_comments-block_user_latest_comments') }}
-    {% endif %}
-    </div>
-
-    <div class="c">
-    {# Joined groups #}
-    {% if drupal_view_result('fut_user_joined_groups', 'block_user_joined_groups', 'user') is not null %}
+      
+      {# Joined groups #}
       {{ drupal_block('views_block:fut_user_joined_groups-block_user_joined_groups') }}
-    {% endif %}
-    </div>
-
-    <div class="d">
-    {# Latest activity (Events) #}
-    {% if drupal_view_result('fut_user_latest_activity', 'block_latest_events', 'user') is not null %}
+      
+      {# Latest activity (Events) #}
       {{ drupal_block('views_block:fut_user_latest_activity-block_latest_events') }}
-    {% endif %}
     </div>
   </div>
 </div>
