@@ -2,6 +2,12 @@
   display: flex;
   padding-bottom: map-get($ecl-spacing, 's');
   padding-top: map-get($ecl-spacing, 's');
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .fut-group-tags .views-field-name {
