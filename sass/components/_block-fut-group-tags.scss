@@ -1,0 +1,9 @@
+.fut-group-tags .ecl-list-item {
+  display: flex;
+  padding-bottom: map-get($ecl-spacing, 's');
+  padding-top: map-get($ecl-spacing, 's');
+}
+
+.fut-group-tags .views-field-name {
+  margin-right: map-get($ecl-spacing, 'xxs');
+}
