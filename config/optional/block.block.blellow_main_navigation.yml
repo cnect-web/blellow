@@ -1,3 +1,4 @@
+uuid: b8988bf2-b8df-4eae-aa4d-a3fcf3825b90
 langcode: en
 status: true
 dependencies:
@@ -7,6 +8,8 @@ dependencies:
     - system
   theme:
     - blellow
+_core:
+  default_config_hash: jcJG_gPwgcAlyxQp1FgmSfopSUMgdtm6IuKBmmUfEjg
 id: blellow_main_navigation
 theme: blellow
 region: navigation
@@ -24,6 +27,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/group\r\n/group/*\r\n/node/*/edit"
-    negate: true
+    pages: "<front>\r\n/groups\r\n/contact\r\n/content/about-futurium"
+    negate: false
     context_mapping: {  }
