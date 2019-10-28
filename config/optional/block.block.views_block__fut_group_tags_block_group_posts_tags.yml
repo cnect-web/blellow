@@ -1,0 +1,32 @@
+uuid: 7022edd5-0052-4815-a4e7-a4ee2578ec16
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.fut_group_tags
+  module:
+    - system
+    - views
+  theme:
+    - blellow
+id: views_block__fut_group_tags_block_group_posts_tags
+theme: blellow
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:fut_group_tags-block_group_posts_tags'
+settings:
+  id: 'views_block:fut_group_tags-block_group_posts_tags'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping:
+    id: '@group.group_route_context:group'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/group/*/posts/*'
+    negate: false
+    context_mapping: {  }
