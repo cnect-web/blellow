@@ -1,23 +1,18 @@
 .user-full {
-  display: flex;
-  flex-direction: row;
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
-/* SIDEBAR WITH USER PICTURE */
 
-.user-full__side {
-  flex-shrink: 0;
-  margin-right: map-get($ecl-spacing, 'm');
-}
+/* MAIN */
 
-/* CONTENT */
+.user-full__main {
+  @include ecl-media-breakpoint-up(lg) {
+    // width: 80%;
+  }
 
-.fut_bio {
-  max-width: 32em;
-}
-
-.user-full__content {
-  // max-width: 32em;
   h4.label {
     display: inline-block;
     margin: 0;
@@ -35,24 +30,80 @@
   }
 }
 
+.user-full__profile {
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+  }
+
+  @include block-background;
+  margin-bottom: map-get($ecl-spacing, 'xl');
+
+  .user_picture {
+    text-align: center;
+    
+    @include ecl-media-breakpoint-up(lg) {
+      flex-shrink: 0;
+      margin-right: map-get($ecl-spacing, 'm');
+      margin-bottom: map-get($ecl-spacing, 'm');
+    }
+  }
+
+  .ecl-image {
+    background: #fff;
+    border: 1px solid map-get($ecl-colors, 'grey-25');
+    border-radius: 3px;
+    padding: 5px;
+  }
+}
+
+
+
+.fut_bio {
+  max-width: 32em;
+}
+
 .user-real-name h2 {
   margin-bottom: map-get($ecl-spacing, 'xs');
 }
+
+/* CONTACT USER BUTTON */
 
 .contact-user {
   @extend .ecl-button;
   @extend .ecl-button--primary;
   
-  margin-bottom: map-get($ecl-spacing, 'l');
+  // margin-bottom: map-get($ecl-spacing, 'l');
 }
 
-/* GRID */
+/* USER ACTIVITY */
 
-.test {
-  display: grid;
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
-  grid-template-columns: 1fr 1fr;
+
+.user-full__activity {
+
+  .col {
+    margin-bottom: map-get($ecl-spacing, 'xl');
+  }
+  
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+
+    .col {
+      width: 50%;
+      max-width: 32em;
+    }
+    .col + .col {
+      margin-left: map-get($ecl-spacing, 'xl');
+    }
+  }
+
+  .col .block {
+    margin-bottom: map-get($ecl-spacing, 'xl');
+  }
 }
 
-
+.no-result {
+  border-bottom: 1px solid map-get($ecl-colors, 'grey-10');
+  border-top: 1px solid map-get($ecl-colors, 'grey-10');
+  padding: map-get($ecl-spacing, 'm') 0;
+  color: $ecl-color-shade;
+}
