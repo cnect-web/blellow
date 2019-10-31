@@ -1065,6 +1065,7 @@ function _blellow_capture_and_unset(array &$array, $key) {
  *   Reduced Title.
  */
 function _blellow_title_reduce($title) {
+  $title = $title ?? '';
   if (is_scalar($title)) {
     return $title;
   }
