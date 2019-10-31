@@ -30,3 +30,12 @@
 .node--unpublished {
   background-color: #fff4f4;
 }
+
+/* Page title */
+.main-content * + h1 {
+  margin-top: 0;
+}
+.path-group-home .main-content * + h1 {
+  display: none;
+}
+
