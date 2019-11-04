@@ -31,8 +31,9 @@
   margin-right: map-get($ecl-spacing, 'xs');
   // margin-top: map-get($ecl-spacing, 'xxs');
   img {
-    vertical-align: bottom;
+    border: 5px solid #fff;
     height: auto;
+    vertical-align: bottom;
     width: 100px;
   }
 }
@@ -55,7 +56,7 @@
     'group-image group-title'
     'group-image group-join'
     'group-meta group-meta';
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 110px 1fr;
   margin-top: map-get($ecl-spacing, 's');
 
   @include ecl-media-breakpoint-up(md) {
@@ -65,7 +66,7 @@
       'group-image identity group-join'
       'group-image group-title group-join'
       'group-image group-meta group-join';
-    grid-template-columns: 100px 1fr min-content;
+    grid-template-columns: 110px 1fr min-content;
   }
 }
 
