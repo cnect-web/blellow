@@ -23,12 +23,35 @@
   ]
 %}
 
-<article{{ attributes.addClass(classes) }}>
-  <div class="user-full__image-wrapper">
+<div {{ attributes.addClass(classes) }}>
+ {#  <div class="user-full__side">
     {{ content.user_picture }}
-  </div>
-  <div class="user-full__form-wrapper">
-    {{ content|without('user_picture') }}
-  </div>
-</article>
+  </div> #}
+  <div class="user-full__main">
+    <div class="user-full__profile">
+      {{ content.user_picture }}
+      <div class="user-profile__data">
+        {{ content|without('user_picture') }}
+      </div>
+    </div>
 
+    <div class="user-full__activity">
+      {# Latest posts #}
+      <div class="col col__one">
+        {{ drupal_block('views_block:fut_user_latest_activity-block_latest_posts') }}
+
+        {# Latest activity (Events) #}
+        {{ drupal_block('views_block:fut_user_latest_activity-block_latest_events') }}
+      </div>
+
+      <div class="col col__two">
+        {# Latest comments #}
+        {{ drupal_block('views_block:fut_user_latest_comments-block_user_latest_comments') }}
+        
+        {# Joined groups #}
+        {{ drupal_block('views_block:fut_user_joined_groups-block_user_joined_groups') }}
+      </div>
+      
+    </div>
+  </div>
+</div>

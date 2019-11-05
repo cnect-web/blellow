@@ -84,3 +84,11 @@ body div.tabledrag-changed-warning {
     margin-bottom: 0;
   }
 }
+
+/* Breadcrumb: hide the current segment */
+.ecl-breadcrumb__segment:nth-last-child(2) *::after{
+  display: none;
+}
+.ecl-breadcrumb__segment--last {
+  display: none;
+}
