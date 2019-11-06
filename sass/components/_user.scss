@@ -10,7 +10,7 @@
 
 .user-full__main {
   @include ecl-media-breakpoint-up(lg) {
-    // width: 80%;
+    width: 100%;
   }
 
   h4.label {
@@ -31,25 +31,25 @@
 }
 
 .user-full__profile {
+  @include block-background;  
   @include ecl-media-breakpoint-up(lg) {
     display: flex;
   }
 
-  @include block-background;
-  margin-bottom: map-get($ecl-spacing, 'xl');
+  margin-bottom: map-get($ecl-spacing, 'xl'); 
 
   .user_picture {
     text-align: center;
     
     @include ecl-media-breakpoint-up(lg) {
       flex-shrink: 0;
-      margin-right: map-get($ecl-spacing, 'm');
       margin-bottom: map-get($ecl-spacing, 'm');
+      margin-right: map-get($ecl-spacing, 'm');
     }
   }
 
   .ecl-image {
-    background: map-get($ecl-colors, 'grey-25');;
+    background: map-get($ecl-colors, 'grey-25');
     border: 1px solid #fff;
     border-radius: 50%;
   }
@@ -86,7 +86,6 @@
 
     .col {
       width: 50%;
-      max-width: 32em;
     }
     .col + .col {
       margin-left: map-get($ecl-spacing, 'xl');
@@ -101,6 +100,6 @@
 .no-result {
   border-bottom: 1px solid map-get($ecl-colors, 'grey-10');
   border-top: 1px solid map-get($ecl-colors, 'grey-10');
-  padding: map-get($ecl-spacing, 'm') 0;
   color: $ecl-color-shade;
+  padding: map-get($ecl-spacing, 'm') 0;
 }
