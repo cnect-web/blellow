@@ -33,3 +33,13 @@
   margin: 0 0 0 map-get($ecl-spacing, 'm') 0;
   padding: map-get($ecl-spacing, 'm');
 }
+
+@mixin hide() {
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;  
+  overflow: hidden;
+  position: absolute !important;
+  white-space: nowrap; /* added line */
+  width: 1px;
+}
