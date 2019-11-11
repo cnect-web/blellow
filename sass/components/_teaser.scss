@@ -107,13 +107,23 @@
     display: inline-block;
   }
 }
+
 .teaser__group-image {
   margin-right: map-get($ecl-spacing, 'xxs');
 }
+
 .teaser__group-image img {
   height: 30px;
   vertical-align: middle; 
   width: 30px;
+}
+
+// hide group name & group image in subgroups
+
+.is-subgroup .teaser__group-info {
+  span {
+    display: none;
+  }
 }
 
 /* override .bl-image-wrapper img */ 
