@@ -71,3 +71,48 @@
 .comment-add a {
   display: none;
 }
+
+//////////////////////////////
+// user profile comments list
+//////////////////////////////
+
+.views-field-comment-body p {
+  color: $ecl-color-primary;
+  display: inline-block;
+  font-size: map-get($ecl-font-size, 's');
+  margin-top: map-get($ecl-font-size, 'xl');
+  // override main-content p
+  &:first-child {
+    margin-top: map-get($ecl-font-size, 'xl');
+  }
+}
+
+.views-field-comment-body a {
+  font-style: italic;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.views-field-comment-body a:last-child::before,
+.views-field-comment-body a:last-child::after {
+  @extend %fa-icon;
+  @extend .fas;
+}
+
+.views-field-comment-body a:last-child::before {
+  content: fa-content($fa-var-quote-left);  
+  padding-right: 10px;
+}
+
+.views-field-comment-body a:last-child::after {
+  content: fa-content($fa-var-quote-right);    
+  padding-left: 10px;
+}
+
+.views-field-created {
+  color: map-get($ecl-colors, 'grey-75');
+  font-size: map-get($ecl-font-size, 'xs');
+  margin-bottom: map-get($ecl-font-size, 'xl');
+}
