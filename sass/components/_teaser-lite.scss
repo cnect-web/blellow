@@ -15,7 +15,6 @@
     font-weight: normal;
     line-height: 1.5rem;
     margin-bottom: 0;
-    margin-top: map-get($ecl-spacing, 'xxs');
   }
 
   .teaser__group-name {
@@ -24,5 +23,16 @@
 
   .teaser__footer {
     font-size: map-get($ecl-font-size, 'xs');
+  }
+}
+
+/* Remove teaser header in subgroups */
+
+.is-subgroup .teaser--fut-teaser-lite {
+  .teaser__header {
+    display: none;
+  }
+  .teaser__body {
+    margin-top: map-get($ecl-spacing, 'm');
   }
 }

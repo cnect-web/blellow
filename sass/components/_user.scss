@@ -39,11 +39,12 @@
   margin-bottom: map-get($ecl-spacing, 'xl'); 
 
   .user_picture {
+    margin-bottom: map-get($ecl-spacing, 'm');
     text-align: center;
     
     @include ecl-media-breakpoint-up(lg) {
       flex-shrink: 0;
-      margin-bottom: map-get($ecl-spacing, 'm');
+      margin-bottom: 0;
       margin-right: map-get($ecl-spacing, 'm');
     }
   }
@@ -53,6 +54,11 @@
     border: 1px solid #fff;
     border-radius: 50%;
   }
+
+  .user-profile__data div:last-child {
+    margin-bottom: 0;
+  }
+
 }
 
 .fut_bio {

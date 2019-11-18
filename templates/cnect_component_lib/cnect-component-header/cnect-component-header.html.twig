@@ -34,9 +34,6 @@
 {% set _css_class = 'ecl-page-header' %}
 
 {# Internal logic - Process properties #}
-{% if _url is not empty %}
-    {% set _url = url('<front>')|render ~ _url %}
-{% endif %}
 
 {% if _variant is not empty %}
   {% set _css_class = _css_class ~ ' ecl-page-header--' ~ _variant %}
