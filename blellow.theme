@@ -1005,6 +1005,19 @@ function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_
 }
 
 /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds twig template suggestion for the group homepage.
+ */
+
+function blellow_theme_suggestions_page_alter(&$suggestions, &$vars) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getPath();
+  if ($request == '/group/{group}') {
+    $suggestions[] = 'page--group--front';
+  }
+}
+
+/**
  * Implements hook_preprocess_media() for media_file field.
  */
 function _blellow_preprocess_media__field_media_file(array &$variables): void {
