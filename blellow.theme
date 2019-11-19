@@ -918,10 +918,12 @@ function blellow_preprocess_image(array &$variables, $hook): void {
  */
 function blellow_preprocess_group_navigation(array &$variables): void {
 
-  $variables['links'] = array_map(function ($item) {
-    return [
-      'href' => $item->url,
+  $current_path = \Drupal::request()->getRequestUri();
+
+  $variables['links'] = array_map(function ($item) use ($current_path) {
+    return ['href' => $item->url,
       'label' => $item->title,
+      'is_active' => $item->url == $current_path,
     ];
   }, $variables['links']);
 }
