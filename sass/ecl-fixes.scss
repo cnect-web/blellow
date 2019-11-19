@@ -89,6 +89,6 @@ body div.tabledrag-changed-warning {
 .ecl-breadcrumb__segment:nth-last-child(2) *::after{
   display: none;
 }
-.ecl-breadcrumb__segment--last {
+.ecl-breadcrumb__segment--last:not(.ecl-breadcrumb__segment--first) {
   display: none;
 }
