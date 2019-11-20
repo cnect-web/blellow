@@ -1013,7 +1013,7 @@ function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_
 function blellow_theme_suggestions_page_alter(&$suggestions, &$vars) {
   $request = \Drupal::routeMatch()->getRouteObject()->getPath();
   if ($request == '/group/{group}') {
-    $suggestions[] = 'page--group--front';
+    $suggestions[] = 'page__group__front';
   }
 }
 
