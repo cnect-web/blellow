@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * @see ./core/themes/stable/templates/layout/page.html.twig
+ */
+#}
+
+{% extends "page.html.twig" %}
+
+{% block main %}
+
+{% set content_classes = [
+  page.sidebar_first ? 'ecl-col-md-5',
+  page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-8',
+  ]
+%}
+
+<div class="main-content ecl-u-mv-l" >
+  <div class="ecl-container">
+    <div class="ecl-row">
+      
+      {# Sidebar First #}
+      {% block sidebar_first %}
+        {{ parent() }}
+      {% endblock %}
+
+      {% block page_content %}
+        {{ parent() }}
+      {% endblock %}
+
+      {# Sidebar Second #}
+      {# Show always sidebar second (no check if it is empty) #}
+      {% block sidebar_second %}
+        <aside class="ecl-col-md-4" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endblock %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}
