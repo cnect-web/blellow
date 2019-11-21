@@ -1,0 +1,35 @@
+uuid: 6949de27-8ad8-4ca9-ba71-77a7854f7dd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.fut_groups_list
+  module:
+    - fut_group
+    - system
+    - views
+  theme:
+    - blellow
+id: exposedformfut_groups_listpage_groups_list
+theme: blellow
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:fut_groups_list-page_groups_list'
+settings:
+  id: 'views_exposed_filter_block:fut_groups_list-page_groups_list'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: Filter
+visibility:
+  in_group:
+    id: in_group
+    in_group: 0
+    negate: false
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: /groups
+    negate: false
+    context_mapping: {  }
