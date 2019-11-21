@@ -422,6 +422,14 @@ td .description {
     margin: 0;
   }
 }
+
+// not all exposed filters should have display: flex property 
+// Remove display flex property for exposed filters on /groups page
+
+.block-views-exposed-filter-blockfut-groups-list-page-groups-list {
+  display: block;
+}
+
 // put a background on the active navigation list link.
 .ecl-navigation-list--small .ecl-link.ecl-navigation-list__link--active {
   background: $ecl-color-secondary;
