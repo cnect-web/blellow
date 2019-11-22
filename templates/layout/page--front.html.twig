@@ -31,7 +31,6 @@
   {{ page.navigation }}
 {% endblock %}
 
-
 {% if page.content_top or page.content_side %}
   {% block hero %}
     <div class="hero-content ecl-u-mv-l ecl-u-mb-xxl" >
@@ -57,21 +56,39 @@
   {% endblock %}
 {% endif %}
 
+{# Content #}
+{% set messages = drupal_block('system_messages_block') %}
+{% set popular_posts = drupal_block('views_block:fut_group_posts-block_user_popular_posts') %}
+{% set my_contributions = drupal_block('views_block:fut_my_contributions-block_my_contributions') %}
+{% set my_events = drupal_block('views_block:fut_group_user_events-block_user_events') %}
 
 {% block main %}
 <div class="main-content ecl-u-mv-l" >
-  <div class="ecl-container">
-    <div class="ecl-row">      
-      {% if logged_in %}
-        <div class="ecl-col-md-7">
-          {{ drupal_block('views_block:fut_group_posts-block_user_popular_posts') }}
+
+  {% if messages %}
+    <div class="ecl-container">
+      <div class="ecl-row">
+        <div class="ecl-col-md-12">
+          {{ messages }}
         </div>
-        <aside class="ecl-col-md-5" role="complementary">
-          {{ drupal_block('views_block:fut_my_contributions-block_my_contributions') }}
-          {{ drupal_block('views_block:fut_group_user_events-block_user_events') }}
-        </aside>
-      {% endif %}
+      </div>
     </div>
+  {% endif %}
+
+  <div class="ecl-container">
+    {% if popular_posts.content|length > 1 or my_contributions.content|length > 1 or my_events.content|length > 1 %}
+      <div class="ecl-row">
+        {% if logged_in %}
+          <div class="ecl-col-md-7">
+            {{ popular_posts }}
+          </div>
+          <aside class="ecl-col-md-5" role="complementary">
+            {{ my_contributions }}
+            {{ my_events }}
+          </aside>
+        {% endif %}
+      </div>
+    {% endif %}
     <div class="ecl-row">
       <div class="ecl-col-md-12">
          {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
