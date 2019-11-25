@@ -369,29 +369,34 @@ td .description {
 }
 
 
-// SPECEFIC EDIT FORMS
+// EXPOSED FORMS
 
-// group post management
-// TODO: Test and Remove the .group-post-management class
-.group-post-management,
 .views-exposed-form {
   background: #f7f7f7;
   border: 1px solid #333;
   box-sizing: border-box;
+  margin-bottom: map-get($ecl-spacing, 'm');
+  padding: map-get($ecl-spacing, 'm');
+  width: 100%;
+  .form-actions {
+    margin-bottom: 0;
+  }
+
+  &> .ecl-form-group,
+  &> * + .ecl-form-group {
+    margin: 0;
+  }
+}
+
+// EXPOSED FORMS for Group page-group-manage (backend)
+
+.page-group-manage .views-exposed-form {
   display: grid;
   grid-column-gap: map-get($ecl-spacing, 'm');
   grid-row-gap: map-get($ecl-spacing, 'm');
   grid-template-areas: 
     'publish-status collection'
     'form-submit form-submit';
-  margin-bottom: map-get($ecl-spacing, 'm');
-  padding: map-get($ecl-spacing, 'm');
-  width: 100%;
-  .ecl-form-group {
-    // TODO: Test and remove this commented out code.
-    // We do not need(?) this rule. We just let them flow.
-    // grid-area: publish-status;
-  }
   .ecl-fieldset.form-wrapper {
     border: initial;
     grid-area: collection;
@@ -414,20 +419,7 @@ td .description {
     // We always force the action to start in a new row.
     // grid-area: form-submit;
     grid-column-start: 1;
-    margin: 0;
   }
-
-  &> .ecl-form-group,
-  &> * + .ecl-form-group {
-    margin: 0;
-  }
-}
-
-// not all exposed filters should have display: flex property 
-// Remove display flex property for exposed filters on /groups page
-
-.block-views-exposed-filter-blockfut-groups-list-page-groups-list {
-  display: block;
 }
 
 // put a background on the active navigation list link.
