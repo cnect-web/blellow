@@ -35,21 +35,21 @@
 
 {# Content #}
 {% set content_classes = [
-  page.sidebar_first and page.sidebar_second ? 'ecl-col-md-6',
-  page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-9',
+  page.sidebar_first and page.sidebar_second ? 'ecl-col-md-5',
+  page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-8',
   page.sidebar_second|render and page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-9',
   page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-12'
   ]
 %}
 
-<div class="main-content ecl-u-mv-l">
+<div class="main-content ecl-u-mv-l {% block containerclass %}{% endblock %}"> 
   <div class="ecl-container">
     <div class="ecl-row">
 
       {# Sidebar First #}
       {% block sidebar_first %}
         {% if page.sidebar_first|render|striptags|trim %}
-          <aside class="ecl-col-md-3" role="complementary">
+          <aside class="ecl-col-md-4" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endif %}
