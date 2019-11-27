@@ -1,4 +1,4 @@
-body:not(.path-group) {
+body:not(.path-group):not(.has-group-parent) {
   .ecl-breadcrumb {
     display: none;
   }
@@ -7,4 +7,3 @@ body:not(.path-group) {
     margin-top: 0.66rem;
   }
 }
-
