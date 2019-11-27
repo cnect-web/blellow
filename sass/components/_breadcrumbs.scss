@@ -1,0 +1,10 @@
+body:not(.path-group) {
+  .ecl-breadcrumb {
+    display: none;
+  }
+
+  .ecl-page-header__identity {
+    margin-top: 0.66rem;
+  }
+}
+
