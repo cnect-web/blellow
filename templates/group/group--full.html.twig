@@ -73,6 +73,7 @@
   {% if drupal_view_result('fut_group_most_popular_publications', 'block_group_latest_posts', 'group_id') is not null %}
     <aside class="group-area sidebar" role="complementary">
       {{ drupal_block('views_block:fut_group_posts-block_group_most_popular_posts') }}
+      {{ drupal_block('views_block:fut_group_block_events-event_block') }}
     </aside>
   {% endif %}
 
