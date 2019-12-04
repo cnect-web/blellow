@@ -52,7 +52,6 @@
   display: grid;
   grid-column-gap: 1rem;
   grid-template-areas:
-    'identity identity'
     'group-image group-title'
     'group-image group-join'
     'group-meta group-meta';
@@ -63,7 +62,6 @@
     display: grid;
     grid-column-gap: 1rem;
     grid-template-areas:
-      'group-image identity group-join'
       'group-image group-title group-join'
       'group-image group-meta group-join';
     grid-template-columns: 110px 1fr min-content;
