@@ -296,3 +296,15 @@ The theme needs the "**OpenEuropa Theme Helper**" module installed.
 ### Style guide
 The development environment will install the Styleguide module. The test page is available in the URL:
 - http://localhost:8080/build/admin/appearance/styleguide
+
+## Build for production
+Currently the `install` branch is used in production. We need to build and capture all the derived files. 
+
+1. Checkout `install-build`
+2. Merge the `develop` into `install-build`
+3. Build the assets `npm install && npm run build`
+4. Commit and Push
+5. Merge `install-build` into `install` 
+6. Commit and Push
+
+> Please note that the `.gitignore` file should not leak from one branch to the other.
