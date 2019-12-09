@@ -45,6 +45,36 @@ function blellow_preprocess_menu__main(array &$variables): void {
   }
 }
 
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function blellow_preprocess_menu(array &$variables): void {
+  if (_blellow_is_group_menu($variables['menu_name'])) {
+    // Massage data to be compliant with ECL navigation menu data structure.
+    $variables['links'] = array_map(function ($item) {
+      return [
+        'href' => $item['url'],
+        'label' => $item['title'],
+        'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+      ];
+    }, $variables['items']);
+
+    foreach ($variables['items'] as $name => $link) {
+      $variables['links'][$name]['children_links'] = array_map(function ($item) {
+        return [
+          'links' => [[
+            'href' => $item['url'],
+            'label' => $item['title'],
+            'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+          ],
+          ],
+        ];
+      }, $variables['items'][$name]['below']);
+    }
+  }
+}
+
 /**
  * Matches the menu item with the current path.
  *
@@ -343,7 +373,6 @@ function blellow_preprocess_links__language_block(array &$variables): void {
   $current_language = \Drupal::languageManager()
     ->getCurrentLanguage()
     ->getId();
-
   $variables['languages'] = [];
   foreach ($variables['links'] as $language_code => $link) {
     /** @var \Drupal\Core\Url $url */
@@ -352,7 +381,6 @@ function blellow_preprocess_links__language_block(array &$variables): void {
       ->setOptions($link['link']['#options'])
       ->setAbsolute(TRUE)
       ->toString();
-
     $variables['languages'][] = [
       'href' => $href,
       'hreflang' => $language_code,
@@ -361,6 +389,13 @@ function blellow_preprocess_links__language_block(array &$variables): void {
       'is_active' => $language_code === $current_language,
     ];
   }
+}
+
+/**
+ * Implements hook_preprocess_links__cnect_corporate_blocks_select_languages().
+ */
+function blellow_preprocess_cnect_corporate_blocks_select_languages(array &$variables): void {
+  blellow_preprocess_links__language_block($variables);
 }
 
 /**
@@ -1128,4 +1163,28 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function blellow_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  // Add theme suggestion for group navigation menus.
+  if (_blellow_is_group_menu($variables['menu_name'])) {
+    $suggestions[] = 'menu__group_navigation';
+  }
+}
+
+/**
+ * Check if given menu_name refers to a group navigation menu.
+ *
+ * @param string $menu_name
+ *   The menu name.
+ *
+ * @return bool
+ *   TRUE if is a group navigation menu.
+ */
+function _blellow_is_group_menu(string $menu_name){
+  $re = '/group_([([0-9]+)_navigation/m';
+  return (bool) preg_match_all($re, $menu_name, $matches, PREG_SET_ORDER, 0);
 }
