@@ -20,12 +20,12 @@
 
 {% if href is not empty %}
 	<div class="bl-field bl-group-registration-link">
-		<label>{{ label }}</label>
+		<label>{{ label|t }}</label>
     <div class="bl-field__content-wrapper">
   	  {% include '@ecl/ec-component-link' with {
   		'variant': variant,
   		'href': href,
-  		'label': lbl,
+  		'label': lbl|t,
   		'extra_attributes': _extra_attributes
   	  } only %}
     </div>
