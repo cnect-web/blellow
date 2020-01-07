@@ -34,6 +34,11 @@
   {% block content %}
     {% set group_id = content['#group'].id.value %}
     {# Twig tweak: Render a single entity field #}
-    {{ drupal_field('fut_navigation_menu', 'group', group_id) }}
+    {# {{ drupal_field('fut_navigation_menu', 'group', group_id) }} #}
+
+    {# Twig tweak: Render a group specific menu #}
+    {% set group_menu_id = 'group_' ~ group_id ~ '_navigation' %}
+    {{ drupal_menu(group_menu_id) }}
+
   {% endblock %}
 </div>
