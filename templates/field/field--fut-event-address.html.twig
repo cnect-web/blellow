@@ -56,7 +56,7 @@
   {% endif %}
 {% else %}
   <div class="bl-field"{{ attributes }}>
-    <div class="bl-field-label" {{ title_attributes.addClass(title_classes) }}><label>{{ label }}</label></div>
+    <div class="bl-field-label" {{ title_attributes.addClass(title_classes) }}><label>{{ label|t }}</label></div>
     {% if multiple %}
     <div class="bl-field-multi">
       {% endif %}
