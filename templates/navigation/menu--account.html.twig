@@ -25,8 +25,6 @@
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
 
-{{ kint(items['blellow.register'].url.routeName) }}
-
 {% macro ecl_button_login(item, key) %}
 
     <div {{ attributes }} class="cnect-{{ key }}-widget">
@@ -72,7 +70,7 @@
             <a type="button" href="#"
                     id="cnect-expandable-button-{{ key }}"
                     class="ecl-button ecl-button--primary ecl-expandable__button"
-                    aria-controls="cnect-button-dropdown-register" aria-expanded="false">{{ item.title }}</a>
+                    aria-controls="cnect-button-dropdown-{{ key}}" aria-expanded="false">{{ item.title }}</a>
             <div id="cnect-button-dropdown-{{ key }}"
                  class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
                  aria-labelledby="cnect-expandable-button-{{ key }}" aria-hidden="true">
@@ -105,7 +103,7 @@
                     id="cnect-expandable-button-{{ key }}"
                     href="{{ item.url }}"
                     class="ecl-button ecl-button--primary"
-                    aria-controls="cnect-button-dropdown-register" aria-expanded="false">{{ item.title }}</a>
+                    aria-controls="cnect-button-dropdown-{{ key }}" aria-expanded="false">{{ item.title }}</a>
         </div>
 
     </div>
@@ -113,12 +111,12 @@
 
 {% macro ecl_button(macro, item) %}
     {# {% set KEY_LOGIN = 'login' %} #}
-    {% set KEY_LOGIN = 'cas.login' %}
+    {% set KEY_LOGIN = 'cas-login' %}
     {# {% set KEY_REGISTER = 'register' %} #}
-    {% set KEY_REGISTER = 'user.register' %}
+    {% set KEY_REGISTER = 'user-register' %}
 
     {# {% set key = item.title %} #} 
-     {% set key = item.url.routeName %}
+     {% set key = item.url.routeName | replace({'.': '-'}) %}
 {#    {{ kint(item) }}#}
 {#    {{ kint(key) }}#}
 {#    {{ kint(KEY_LOGIN) }}#}
@@ -136,7 +134,7 @@
 {{ menus.menu_links(items, attributes, 0) }}
 {{ attach_library('blellow_helper/login_register') }}
 {{ attach_library('blellow_helper/user_account') }}
-
+{{ kint(items) }}
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
