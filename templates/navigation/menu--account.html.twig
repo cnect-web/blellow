@@ -45,7 +45,7 @@
                  class="ecl-link-block ecl-dropdown__body cnect-dropdown__body"
                  aria-labelledby="cnect-expandable-button-{{ key }}" aria-hidden="true">
 
-                <p class="cnect-dropdown__title">User Login</p>
+                <p class="cnect-dropdown__title">{{ "User Login"|t }}</p>
                 <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">{{ "Login with EU Login"|t }}</a>
                 <hr class="cnect-dropdown__separator">
                 <p><a href="{{path('user.login')}}" class="ecl-link">{{ "I'm an existing Futurium user without a EU Login"|t }}</a></p>
