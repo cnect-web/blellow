@@ -17,7 +17,6 @@
     - "meta" (string): additional information concerning the file: size, type, number of page (default: empty)
     - "button_label" (string): label of the download button (default: "Download")
     - "icon" (string): icon corresponding to the file type. Should be one of ecl-icons (default: empty)
-    - "href" (string): target of the link (default: empty)
 
   Translations variant parameters:
     - "title" (string): title of the file (default: empty)
@@ -55,12 +54,9 @@
 
 {# Internal properties #}
 
-{% set _href = href|default('') %}
 {% set _button_label = button_label|default('Download') %}
 {% set _translations_label = translations_label|default('Available languages: 0') %}
 {% set _translations_tooltip = translations_tooltip|default('Click to see translations') %}
-{% set _translations_id = translations_id|default('translations-expand') %}
-{% set _translations_button_id = translations_button_id|default('translations-expand-button') %}
 {% set _css_class = 'ecl-file' %}
 {% set _extra_attributes = '' %}
 
@@ -76,7 +72,7 @@
 
 {% if extra_attributes is defined and extra_attributes is not empty and extra_attributes is iterable %}
   {% for attr in extra_attributes %}
-    {% set _extra_attributes = _extra_attributes ~ ' ' ~ attr.name ~ '="' ~ attr.value ~ '"' %}
+    {% set _extra_attributes = _extra_attributes ~ ' ' ~ attr.name ~ '="' ~ attr.value|e ~ '"' %}
   {% endfor %}
 {% endif %}
 
@@ -114,13 +110,13 @@
           'type_attribute': 'button',
           'extra_classes': 'ecl-file__translations-toggle',
           'extra_attributes': [
-            { 'name': 'aria-controls', 'value': _translations_id },
+            { 'name': 'aria-controls', 'value': 'translations-expand' },
             { 'name': 'aria-expanded', 'value': 'true' },
-            { 'name': 'id', 'value': _translations_button_id },
+            { 'name': 'id', 'value': 'translations-expand-button' },
             { 'name': 'title', 'value': translations_tooltip }
           ]
-        } only %}
-        <div aria-hidden="false" aria-labelledby="{{ _translations_button_id }}" class="ecl-u-aria ecl-file__translations-toggle" id="{{ _translations_id }}">
+        } %}
+        <div aria-hidden="false" aria-labelledby="translations-expand-button" class="ecl-u-aria" id="translations-expand">
           <ul class="ecl-file__translations-list">
             {% if translations is defined %}
               {% for translation in translations %}
@@ -131,7 +127,6 @@
                   </div>
                   {% include '@ecl/' ~ system ~ '-component-button' with {
                     'label': _button_label ~ '<span class="ecl-u-sr-only">(' ~ translation.meta ~ ')',
-                    'href': translation.href,
                     'modifier': 'secondary',
                     'type_attribute': 'button',
                     'extra_classes': 'ecl-file__translations-download'
@@ -149,12 +144,12 @@
         {% for link in links %}
           <div class="ecl-file__link-container">
             <a
-                href="{{ link.href }}"
-                class="ecl-link ecl-file__link {% if link.is_external is defined and link.is_external %}ecl-link--external{% endif %}">
+              href="{{ link.href }}"
+              class="ecl-link ecl-file__link {% if link.is_external is defined and link.is_external %}ecl-link--external{% endif %}">
               <span class="ecl-icon ecl-icon--{{ link.icon }} ecl-file__icon"></span>
               <span class="ecl-file__title">{{ link.title }}</span>
               {% if link.type is defined %}
-                <span class="ecl-file__type">{{ link.type }}</span>
+              <span class="ecl-file__type">{{ link.type }}</span>
               {% endif %}
             </a>
           </div>
@@ -170,13 +165,13 @@
     <section class="{{ _css_class }}"{{ _extra_attributes|raw }}>
       {% if src is defined %}
         {% if is_iframe is defined and is_iframe %}
-          <div {% if ratio is defined %} class="ecl-u-ratio-{{ ratio }}" {% endif %}>
-            <iframe class="ecl-file__video" src="{{ src }}" allowfullscreen="allowfullscreen" scrolling="no"></iframe>
-          </div>
+      <div {% if ratio is defined %} class="ecl-u-ratio-{{ ratio }}" {% endif %}>
+        <iframe class="ecl-file__video" src="{{ src }}" allowfullscreen="allowfullscreen" scrolling="no"></iframe>
+      </div>
         {% else %}
-          <div {% if ratio is defined %} class="ecl-u-ratio-{{ ratio }}" {% endif %}>
-            <video class="ecl-file__video" src="{{ src }}" type="video/mp4" controls="controls"></video>
-          </div>
+      <div {% if ratio is defined %} class="ecl-u-ratio-{{ ratio }}" {% endif %}>
+        <video class="ecl-file__video" src="{{ src }}" type="video/mp4" controls="controls"></video>
+      </div>
         {% endif %}
       {% endif %}
       <div class="ecl-file__caption">{{ caption }}</div>
@@ -197,19 +192,11 @@
           </div>
         </div>
         <div class="ecl-col-12 ecl-col-md-4">
-
-          {% if _href is empty %}
-            {% set _button_extra_attributes = [{ 'name': 'type', 'value': 'button' }] %}
-          {% else %}
-            {% set _button_extra_attributes = [{ 'name': 'download', 'value': 'file' }] %}
-          {% endif %}
-
           {% include '@ecl/' ~ system ~ '-component-button' with {
             'label': _button_label ~ '<span class="ecl-u-sr-only">(' ~ meta ~ ')',
             'is_block': true,
             'extra_classes': 'ecl-file__download',
-            'href': _href,
-            'extra_attributes': _button_extra_attributes
+            'extra_attributes': [{ 'name': 'type', 'value': 'button' }]
           } %}
         </div>
       </div>
