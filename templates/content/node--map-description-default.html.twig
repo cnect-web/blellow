@@ -7,7 +7,19 @@
  */
 #}
 
-{%
+{% extends "node--fut-event.html.twig" %}
+
+<article {{ attributes.addClass(classes) }}>
+  {% block node_side %} 
+  {% endblock node_side %}
+
+  {% block node_content %}
+    {{ parent() }}  
+  {% endblock %}
+</article>
+
+
+{# {%
   set classes = [
     'bl-node',
     'bl-node--' ~ node.bundle|clean_class,
@@ -34,4 +46,4 @@
     </div>
   </div>
   {% endblock %}
-</article>
+</article> #}
