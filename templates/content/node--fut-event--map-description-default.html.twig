@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see ./core/themes/stable/templates/content/node.html.twig
+ */
+#}
+
+{% extends "node--fut-event--fut-teaser.html.twig" %}
+
+{% block teaser_header %}
+{% endblock teaser_header %}
+
+{% block teaser_body %}
+  {{ parent() }}
+{% endblock teaser_body %}
