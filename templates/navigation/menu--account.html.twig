@@ -48,13 +48,15 @@
                 <p class="cnect-dropdown__title">{{ "User Login"|t }}</p>
                 <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">{{ "Login with EU Login"|t }}</a>
                 <hr class="cnect-dropdown__separator">
-                <p><a href="{{path('user.login')}}" class="ecl-link">{{ "I'm an existing Futurium user without a EU Login"|t }}</a></p>
-                <p><a href="https://ec.europa.eu/futurium/en/user/register" class="ecl-link">{{ "No EU Login? Register here"|t }}</a></p>
+                
             </div>
         </div>
-
     </div>
 {% endmacro ecl_button_login%}
+
+{# {% macro ecl_register_link(item, key) %}
+    <div class="register_link" style="display:none;"> <a href="{{ item.url }}" class="ecl-link">{{ "No EU Login? Register here"|t }}</a></div>
+{% endmacro ecl_register_link %} #}
 
 
 {% macro ecl_button_register(item, key) %}
@@ -81,11 +83,6 @@
                     <label class="form-check-label" for="privacy-policy">
                         {{ "Accept the European Commission's <a href=':url' class='ecl-link'>privacy policy</a>"|t({ ':url': url }) }}
                     </label>
-
-
-                    
-
-
                 </div>
                 <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--call ecl-button--caret-right">{{ "Register with EU Login"|t }}</a>
             </div>
@@ -116,15 +113,18 @@
     {% set KEY_REGISTER = 'user-register' %}
 
     {# {% set key = item.title %} #} 
+
      {% set key = item.url.routeName | replace({'.': '-'}) %}
-{#    {{ kint(item) }}#}
-{#    {{ kint(key) }}#}
-{#    {{ kint(KEY_LOGIN) }}#}
+     {% set key_base = item.url %}
+     {#  {{ kint(key_base) }} #}
+     {#  {{ kint(key) }}#}
+     {#  {{ kint(KEY_LOGIN) }}#}
 
     {% if key == KEY_LOGIN %}
         {{ macro.ecl_button_login(item, key) }}
     {% elseif key == KEY_REGISTER %}
         {{ macro.ecl_button_register(item, key) }}
+        {{ macro.ecl_register_link(item, key) }}
     {% else %}
         {{ macro.ecl_button_link(item, key) }}
     {% endif %}
