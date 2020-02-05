@@ -29,26 +29,28 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu') }}>
-    {% else %}
-      <ul class="menu">
-    {% endif %}
-    {% for item in items %}
-      {%
-        set classes = [
-          'menu-item',
-          item.is_expanded ? 'menu-item--expanded',
-          item.is_collapsed ? 'menu-item--collapsed',
-          item.in_active_trail ? 'menu-item--active-trail',
-        ]
-      %}
-      <li{{ item.attributes.addClass(classes) }}>
-        <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--primary">
-          {{ item.title }}
-        </a>
-      </li>
-    {% endfor %}
-    </ul>
+    <div class="cnect-user-account-menu">
+      {% if menu_level == 0 %}
+        <ul{{ attributes.addClass('menu') }}>
+      {% else %}
+        <ul class="menu">
+      {% endif %}
+      {% for item in items %}
+        {%
+          set classes = [
+            'menu-item',
+            item.is_expanded ? 'menu-item--expanded',
+            item.is_collapsed ? 'menu-item--collapsed',
+            item.in_active_trail ? 'menu-item--active-trail',
+          ]
+        %}
+        <li{{ item.attributes.addClass(classes) }}>
+          <a href="{{ item.url }}" type="button" class="ecl-button ecl-button--primary">
+            {{ item.title }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
   {% endif %}
 {% endmacro %}
