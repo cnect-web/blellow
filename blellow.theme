@@ -1062,7 +1062,7 @@ function blellow_views_pre_render(&$view ) {
   $footer = $view->footer;
   if (isset($footer['display_link'])) {
     $link = $view->footer['display_link'];
-    $link->options["label"] = t($link->options["label"]) . ' translated';
+    $link->options["label"] = t($link->options["label"]);
   }
 }
 
