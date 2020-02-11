@@ -1053,20 +1053,6 @@ function blellow_theme_suggestions_page_alter(&$suggestions, &$vars) {
 }
 
 /**
- * Implements hook_views_pre_render().
- *
- * Translates the footer link label in the view
-*/
-
-function blellow_views_pre_render(&$view ) {
-  $footer = $view->footer;
-  if (isset($footer['display_link'])) {
-    $link = $view->footer['display_link'];
-    $link->options["label"] = t($link->options["label"]);
-  }
-}
-
-/**
  * Implements hook_preprocess_media() for media_file field.
  */
 function _blellow_preprocess_media__field_media_file(array &$variables): void {
