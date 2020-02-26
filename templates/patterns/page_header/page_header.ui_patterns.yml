@@ -12,6 +12,11 @@ page_header:
       label: "Title"
       description: "The title of the page."
       preview: "Business, Economy, Euro"
+    parent_title:
+      type: "text"
+      label: "Parent Title"
+      description: "The title of the page."
+      preview: "Business, Economy, Euro"
     introduction:
       type: text
       label: "Introduction"
@@ -42,6 +47,11 @@ page_header:
         - src: "https://placeimg.com/1000/1000/arch"
         - alt: "Alternative text for header image"
     url:
+      type: "text"
+      label: "URL"
+      description: "URL to the Group"
+      preview: "https://demo.com"
+    parent_url:
       type: "text"
       label: "URL"
       description: "URL to the Group"
