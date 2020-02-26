@@ -64,7 +64,7 @@ a {
     }    
   }
 
-  ul:not(.ecl-navigation-list):not(.vertical-tabs__menu), ol {
+  ul:not(.ecl-navigation-list):not(.vertical-tabs__menu):not(.ecl-pager__list), ol {
     @include list();
 
     color: $ecl-color-shade;

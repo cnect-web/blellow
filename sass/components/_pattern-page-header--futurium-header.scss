@@ -31,6 +31,7 @@
   margin-right: map-get($ecl-spacing, 'xs');
   // margin-top: map-get($ecl-spacing, 'xxs');
   img {
+    background: #fff;
     border: 5px solid #fff;
     height: auto;
     vertical-align: bottom;
@@ -41,6 +42,19 @@
 .ecl-page-header__meta {
   grid-area: group-meta;
   margin-bottom: map-get($ecl-spacing, 'xs');
+}
+
+.bl-page-header__parent {
+  .bl-prefix {
+    font-weight: normal;
+  }
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
 .bl-page-header__join {
