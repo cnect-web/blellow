@@ -29,6 +29,9 @@
 {% set _image = group_image|default('') %}
 {% set _url = group_url|default('') %}
 
+{% set _parent_title = parent_name|default('') %}
+{% set _parent_url = parent_url|default('') %}
+
 {% set _actions = operation_links|default([]) %}
 {% set _metas = metas|default([]) %}
 {% set _css_class = 'ecl-page-header' %}
@@ -56,7 +59,7 @@
       } only %}
     {% endif %}
 
-  
+
     {% if _image is not empty or _identity is not empty or _metas is not empty or _title is not empty %}
       <div class="ecl-page-header__body">
         {% if _image is not empty %}
@@ -70,8 +73,8 @@
             </a>
           </div>
         {% endif %}
-        
-     
+
+
         {% if _identity is not empty %}
           <div class="ecl-page-header__identity">
             {{ _identity }}
@@ -84,6 +87,15 @@
               <h1 class="ecl-heading ecl-heading--h1 ecl-u-color-white">{{ _title | raw }}</h1>
              </a>
            </div>
+        {% endif %}
+
+        {% if _parent_title is not empty %}
+          <div class="bl-page-header__parent ecl-heading ecl-heading--h4 ecl-u-color-white">
+            <span class="bl-prefix">Part of </span>
+            <a class="ecl-u-color-white"
+               href="{{ _parent_url }}" title="{% trans %} Go to the {{ _parent_title }} landing page {% endtrans %}">{{ _parent_title | raw }}
+            </a>
+          </div>
         {% endif %}
 
         {% if _metas is not empty %}
