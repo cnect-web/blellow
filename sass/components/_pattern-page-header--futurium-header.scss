@@ -44,6 +44,19 @@
   margin-bottom: map-get($ecl-spacing, 'xs');
 }
 
+.bl-page-header__parent {
+  .bl-prefix {
+    font-weight: normal;
+  }
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
 .bl-page-header__join {
   grid-area: group-join;
   margin-bottom: map-get($ecl-spacing, 'xxs');
