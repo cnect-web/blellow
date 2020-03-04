@@ -22,3 +22,20 @@
     @extend .ecl-help-block;
   }
 }
+
+/* style fields coming from EULogin */
+.eulogin-field-group {
+  .ecl-form-label,
+  .ecl-help-block,
+  .ecl-text-input {
+    color: map-get($ecl-colors, 'grey-25');
+  }
+  .ecl-text-input {
+    border: 1px solid map-get($ecl-colors, 'grey-25');
+  }
+}
+
+/* added margin to cke editor to fix margin for the label */
+.ecl-textarea + .cke {
+  margin-top: map-get($ecl-spacing, 's');
+}
