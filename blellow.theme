@@ -1158,9 +1158,17 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
  */
 function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void {
   $element = $variables['element'];
-
-  $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
-  $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
+  if (isset($element[0]['start_date'])) {
+    $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
+  } else {
+    return;
+  }
+  if (isset($element[0]['end_date'])) {
+    $data['end'] = strtotime($element[0]['end_date']['#attributes']['datetime']);
+  }
+  if (!isset($data)) {
+    return;
+  }
   $date = DateValueObject::fromArray($data);
   $variables['date'] = $date->getArray();
 }
