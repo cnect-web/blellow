@@ -54,3 +54,15 @@
     width: auto;
   }
 }
+
+@mixin required {
+  background-image: url('../images/required.svg');
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  margin: 0 0.3em;
+  vertical-align: super;
+  width: 8px;
+}

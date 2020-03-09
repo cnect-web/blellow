@@ -68,7 +68,8 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
     padding-left: 0;
     padding-right: 0;
   }
-  .chosen-single {
+  .chosen-single,
+  .chosen-container-active.chosen-with-drop .chosen-single {
     background: none;
     border: 0;
     box-shadow: none;
@@ -84,7 +85,7 @@ $bl-fieldset-padding-t: map-get($ecl-spacing, 'xl');
   }
 
   /* text format after text area */
-  .js-form-type-textarea ~ .ecl-form-group {
+  .js-form-type-textarea ~ .filter-wrapper {
     margin-top: 0;
   }
 
