@@ -108,3 +108,8 @@ body div.tabledrag-changed-warning {
 .ecl-breadcrumb__segment--last:not(.ecl-breadcrumb__segment--first) {
   display: none;
 }
+
+.chosen-container-single .chosen-single {
+  height: auto;
+  line-height: inherit;
+}
