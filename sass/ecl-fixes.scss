@@ -36,6 +36,12 @@
   color: #fff;
 }
 
+// override 'make font-size checkbox same as other form elements'
+
+.ecl-checkbox {
+  font-size: 1rem;
+}
+
 // override '.ecl-link:visited' to make active class work
 
 .ecl-link.ecl-navigation-list__link--active, 

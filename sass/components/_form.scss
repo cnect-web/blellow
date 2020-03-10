@@ -39,13 +39,3 @@
 .ecl-textarea + .cke {
   margin-top: map-get($ecl-spacing, 's');
 }
-
-/* show required checkbox asterix */
-
-input[type="checkbox"] {
-    &[required] + .ecl-checkbox__label:after {
-      // @include abc;
-      content: "*";
-      color: red;
-    }
-}
