@@ -113,3 +113,15 @@ body div.tabledrag-changed-warning {
   height: auto;
   line-height: inherit;
 }
+
+/* Fix how documents with long names */
+
+.ecl-file__body .ecl-col-md-8 {
+  display: flex;
+}
+
+.ecl-file__language,
+.ecl-file__properties {
+  display: inherit;
+}
+ 
