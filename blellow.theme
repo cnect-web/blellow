@@ -1140,12 +1140,37 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
   $variables[$variable_name] = [];
   foreach ($variables['items'] as $key => $value) {
     if (is_numeric($key)) {
+      // Endcode the tag parameter if exists.
+      $params = $value['content']['#url']->getRouteParameters();
+      if (isset($params['tag'])) {
+        $encoded = _blellow_encode_tag($params['tag']);
+        $value['content']['#url']->setRouteParameter('tag', $encoded);
+      }
       $variables[$variable_name][] = [
         'href' => $value['content']['#url'],
         'value' => $value['content']['#title'],
       ];
     }
   }
+}
+
+/**
+ * Encode the tag parameters
+ * We need to encode the tags in Futurium D7 during migration
+ * due to their special characters. 
+ * 
+ * @param string $tag
+ *   The tag to be encoded.
+ * 
+ * @return string
+ *   The encoded tag.
+ */
+function _blellow_encode_tag(string $tag): string {
+  if (empty(\Drupal::hasService('fut_collection.url_encoder'))){
+    return $tag;
+  }
+  $encoded = \Drupal::service('fut_collection.url_encoder')->encode($tag);
+  return $encoded;
 }
 
 /**

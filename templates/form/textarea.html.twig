@@ -10,6 +10,4 @@
 {% if attributes.hasClass('error') %}
   {% set attributes = attributes.addClass('ecl-textarea--has-error') %}
 {% endif %}
-<div{{ wrapper_attributes }}>
-  <textarea{{ attributes.addClass('ecl-textarea') }}>{{ value }}</textarea>
-</div>
+<textarea{{ attributes.addClass('ecl-textarea') }}>{{ value }}</textarea>
