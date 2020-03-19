@@ -22,6 +22,10 @@
   .bl-node__content {
     flex: 1 1 auto;
     margin-bottom: map-get($ecl-spacing, 'xs');
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
   }
 }
 

@@ -36,6 +36,22 @@
   color: #fff;
 }
 
+// override 'make font-size checkbox same as other form elements'
+
+.ecl-checkbox {
+  font-size: 1rem;
+}
+
+.ecl-checkbox__label,
+.ecl-radio__label {
+  font-weight: normal;
+}
+
+.ecl-form-legend {
+  color: map-get($ecl-colors, 'grey-100');
+  line-height: inherit;
+}
+
 // override '.ecl-link:visited' to make active class work
 
 .ecl-link.ecl-navigation-list__link--active, 
@@ -92,3 +108,20 @@ body div.tabledrag-changed-warning {
 .ecl-breadcrumb__segment--last:not(.ecl-breadcrumb__segment--first) {
   display: none;
 }
+
+.chosen-container-single .chosen-single {
+  height: auto;
+  line-height: inherit;
+}
+
+/* Fix how documents with long names */
+
+.ecl-file__body .ecl-col-md-8 {
+  display: flex;
+}
+
+.ecl-file__language,
+.ecl-file__properties {
+  display: inherit;
+}
+ 

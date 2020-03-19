@@ -76,22 +76,18 @@
 // user profile comments list
 //////////////////////////////
 
-.views-field-comment-body p {
-  color: $ecl-color-primary;
-  display: inline-block;
+.views-field-comment-body {
   font-size: map-get($ecl-font-size, 's');
-  margin-top: map-get($ecl-font-size, 'xl');
-  // override main-content p
-  &:first-child {
-    margin-top: map-get($ecl-font-size, 'xl');
-  }
-}
-
-.views-field-comment-body a {
-  font-style: italic;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+  line-height: map-get($ecl-spacing, 'm');
+  margin-top: map-get($ecl-spacing, 'm');
+  a {
+    display: block;
+    font-style: italic;
+    margin-bottom: map-get($ecl-spacing, 's');
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
