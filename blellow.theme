@@ -1143,7 +1143,7 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
       // Endcode the tag parameter if exists.
       $params = $value['content']['#url']->getRouteParameters();
       if (isset($params['tag'])) {
-        $encoded = _blellow_encode_tag($params['tag']);
+        $encoded = _blellow_encode_tag($params['tag'], $value['content']['#title']);
         $value['content']['#url']->setRouteParameter('tag', $encoded);
       }
       $variables[$variable_name][] = [
@@ -1165,11 +1165,15 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
  * @return string
  *   The encoded tag.
  */
-function _blellow_encode_tag(string $tag): string {
+function _blellow_encode_tag(string $tag, string $term_name): string {
   if (empty(\Drupal::hasService('fut_collection.url_encoder'))){
     return $tag;
   }
-  $encoded = \Drupal::service('fut_collection.url_encoder')->encode($tag);
+  $encoder = \Drupal::service('fut_collection.url_encoder');
+  $encoded = $encoder->encode($tag);
+  if($encoder->termNameNeedsEncoding($term_name)) {
+    $encoded = $encoder->encode($term_name);
+  }
   return $encoded;
 }
 
