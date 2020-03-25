@@ -35,10 +35,9 @@
 {% if _group_logo is not empty %}
   {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
 {% endif %}
-
 <article {{ attributes.addClass(classes) }}>
   {% set _node_name = node.type.entity.label | default('') %}
-  {% set _collection = content.fut_collection.0['#plain_text'] |default(_node_name) %}
+  {% set _collection = content.fut_collection.0['#title'] |default(_node_name) %}
   {% block teaser_header %}
 
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
