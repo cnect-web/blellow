@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * @see ./core/themes/stable/templates/layout/page.html.twig
+ */
+#}
+
+<header role="banner">
+  <div class="ecl-container ecl-site-header__banner">
+    <div class="ecl-logo ecl-logo--logotype"></div>
+  </div>
+  <div class="ecl-page-header ecl-page-header--no-group-image">
+    <div class="ecl-container">
+      <div class="ecl-page-header__body">  
+        {% if site_name %}
+          <div class="ecl-page-header__identity">{{ site_name }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+
+<main role="main" class="ecl-container">
+  {% if title %}
+    <h1>{{ title }}</h1>
+  {% endif %}
+
+  {{ page.highlighted }}
+
+  {{ page.content }}
+</main>
+
+
+
