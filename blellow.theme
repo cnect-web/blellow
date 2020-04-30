@@ -1190,6 +1190,9 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
   $element = $variables['element'];
   if (isset($element[0]['start_date'])) {
     $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
+  } elseif (isset($element[0]['#attributes']['datetime'])) {
+    // Same start and end date/time gives a single date element
+    $data['start'] = strtotime($element[0]['#attributes']['datetime']);
   } else {
     return;
   }
