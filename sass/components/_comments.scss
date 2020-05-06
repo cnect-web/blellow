@@ -34,7 +34,6 @@
   }
 
   .ecl-comment__image-wrapper {
-    margin-top: 10px;
     width: 80px;
   }
 
@@ -49,7 +48,7 @@
 }
 
 .indented {
-  margin-left: 80px;
+  margin-left: 40px;
 }
 
 .comment-form {
@@ -111,4 +110,29 @@
   color: map-get($ecl-colors, 'grey-75');
   font-size: map-get($ecl-font-size, 'xs');
   margin-bottom: map-get($ecl-font-size, 'xl');
+}
+
+
+//////////////////////////////
+// OPTION 1
+//////////////////////////////
+
+/*
+.comment-header {
+  display: flex;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ffd617;  
+  .ecl-comment__meta {
+    border-bottom: none;
+  }
+}
+*/
+
+//////////////////////////////
+// OPTION 2
+//////////////////////////////
+
+.ecl-comment__body {
+  display: flex;
 }
