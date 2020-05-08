@@ -86,21 +86,6 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('ecl-comment__body') }}>
-    {# 
-    
-    OPTION 1
-    
-    <div class="comment-header">
-      <div class="ecl-comment__image-wrapper">
-      {{ user_picture }} 
-      </div>
-      <div class="ecl-comment__meta">{{ submitted }}</div>
-    </div>
-    {{ content }}
-  </div>
-  
-  #}
-
     <div class="ecl-comment__image-wrapper">
       {{ user_picture }} 
     </div>
@@ -109,7 +94,4 @@
       {{ content }}
     </div>
   </div>
-  
-  
-
 </article>

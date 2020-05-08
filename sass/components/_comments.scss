@@ -6,7 +6,10 @@
   .ecl-comment__body {
     background: #fff;
     border: 1px solid map-get($ecl-colors, 'grey-25');
+    display: flex;
+    padding: map-get($ecl-spacing, 'm');
     position: relative;
+
   }
 
   .ecl-comment__body::after, 
@@ -17,7 +20,7 @@
     pointer-events: none;
     position: absolute;
     right: 100%;
-    top: 36px;
+    top: 50px;
     width: 0;
   }
 
@@ -35,6 +38,7 @@
 
   .ecl-comment__image-wrapper {
     width: 80px;
+    padding-right: map-get($ecl-spacing, 'm');
   }
 
   .ecl-comment__meta {
@@ -48,7 +52,7 @@
 }
 
 .indented {
-  margin-left: 40px;
+  margin-left: map-get($ecl-spacing, 'm');
 }
 
 .comment-form {
@@ -110,29 +114,4 @@
   color: map-get($ecl-colors, 'grey-75');
   font-size: map-get($ecl-font-size, 'xs');
   margin-bottom: map-get($ecl-font-size, 'xl');
-}
-
-
-//////////////////////////////
-// OPTION 1
-//////////////////////////////
-
-/*
-.comment-header {
-  display: flex;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ffd617;  
-  .ecl-comment__meta {
-    border-bottom: none;
-  }
-}
-*/
-
-//////////////////////////////
-// OPTION 2
-//////////////////////////////
-
-.ecl-comment__body {
-  display: flex;
 }
