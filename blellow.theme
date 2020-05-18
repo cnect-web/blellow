@@ -1167,15 +1167,10 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
  *   The encoded tag.
  */
 function _blellow_encode_tag(string $tag, string $term_name): string {
-  if (empty(\Drupal::hasService('fut_collection.url_encoder'))){
+  if (empty(\Drupal::hasService('pathauto.alias_cleaner'))){
     return $tag;
   }
-  $encoder = \Drupal::service('fut_collection.url_encoder');
-  $encoded = $encoder->encode($tag);
-  if($encoder->termNameNeedsEncoding($term_name)) {
-    $encoded = $encoder->encode($term_name);
-  }
-  return $encoded;
+  return \Drupal::service('pathauto.alias_cleaner')->cleanString($tag);
 }
 
 /**
