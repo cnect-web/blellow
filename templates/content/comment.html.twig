@@ -75,10 +75,6 @@
     <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
   #}
    
-  <div class="ecl-comment__image-wrapper">
-      {{ user_picture }}
-  </div>
-
   {#
     Indicate the semantic relationship between parent and child comments for
     accessibility. The list is difficult to navigate in a screen reader
@@ -90,8 +86,12 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('ecl-comment__body') }}>
-    <div class="ecl-comment__meta">{{ submitted }}</div>
-    {{ content }}
+    <div class="ecl-comment__image-wrapper">
+      {{ user_picture }} 
+    </div>
+    <div class="comment-wrapper">
+      <div class="ecl-comment__meta">{{ submitted }}</div>
+      {{ content }}
+    </div>
   </div>
-
 </article>

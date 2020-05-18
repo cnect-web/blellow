@@ -113,6 +113,10 @@
   }
 }
 
+.cta--default {
+  grid-template-columns: 1fr 0fr;
+}
+
 // when there is a video, it should align left 
 
 .cta--video {

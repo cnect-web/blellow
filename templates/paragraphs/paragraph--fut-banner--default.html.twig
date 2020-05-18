@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override to display a paragraph #type.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% block paragraph %}
+  {% block content %}
+  <div class="cta cta--default">
+    {{ content }}
+  </div>
+  {% endblock %}
+{% endblock paragraph %}
