@@ -73,6 +73,7 @@ group_header:
   js:
     js/group-header.js: {}
   dependencies:
+    - core/jquery
     - core/drupal
     - blellow/base
 
