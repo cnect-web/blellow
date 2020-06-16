@@ -195,14 +195,14 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void {
  * Implements hook_preprocess_input__radio().
  */
 function blellow_preprocess_input__radio(array &$variables): void {
-  _oe_theme_preprocess_input_label_wrapper($variables);
+  _blellow_oe_theme_preprocess_input_label_wrapper($variables);
 }
 
 /**
  * Implements hook_preprocess_input__checkbox().
  */
 function blellow_preprocess_input__checkbox(array &$variables): void {
-  _oe_theme_preprocess_input_label_wrapper($variables);
+  _blellow_oe_theme_preprocess_input_label_wrapper($variables);
 }
 
 /**
@@ -214,7 +214,7 @@ function blellow_preprocess_input__checkbox(array &$variables): void {
  * @param array $variables
  *   Set of available variables.
  */
-function _oe_theme_preprocess_input_label_wrapper(array &$variables): void {
+function _blellow_oe_theme_preprocess_input_label_wrapper(array &$variables): void {
   $element = &$variables['element'];
   $variables['has_error'] = !empty($element['#errors']);
 
@@ -585,7 +585,7 @@ function blellow_preprocess_pattern_link_block(array &$variables): void {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function _oe_theme_preprocess_pattern_social_media_links(array &$variables): void {
+function _blellow_oe_theme_preprocess_pattern_social_media_links(array &$variables): void {
   // Format social media links in order to respect ECL expectations.
   foreach ($variables['links'] as $key => $link) {
     $variables['links'][$key]['variant'] = $link['service'];
@@ -600,14 +600,14 @@ function _oe_theme_preprocess_pattern_social_media_links(array &$variables): voi
  * Implements hook_preprocess_HOOK().
  */
 function blellow_preprocess_pattern_social_media_links_vertical(array &$variables): void {
-  _oe_theme_preprocess_pattern_social_media_links($variables);
+  _blellow_oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
 function blellow_preprocess_pattern_social_media_links_horizontal(array &$variables): void {
-  _oe_theme_preprocess_pattern_social_media_links($variables);
+  _blellow_oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
 /**
@@ -828,14 +828,14 @@ function blellow_theme_suggestions_form_alter(array &$suggestions, array $variab
  * Implements hook_preprocess_input().
  */
 function blellow_preprocess_input__search(array &$variables): void {
-  _oe_theme_preprocess_input_text($variables['element']);
+  _blellow_oe_theme_preprocess_input_text($variables['element']);
 }
 
 /**
  * Implements hook_preprocess_form().
  */
 function blellow_preprocess_form__oe_search_search_form(array &$variables): void {
-  _oe_theme_preprocess_input_text($variables['element']['keys']);
+  _blellow_oe_theme_preprocess_input_text($variables['element']['keys']);
   $variables['input'] = $variables['element']['keys']['ecl_array'];
   $variables['label'] = t('Search');
 }
@@ -849,7 +849,7 @@ function blellow_preprocess_form__oe_search_search_form(array &$variables): void
  * @param array $element
  *   Set of element data.
  */
-function _oe_theme_preprocess_input_text(array &$element): void {
+function _blellow_oe_theme_preprocess_input_text(array &$element): void {
   // Generate the extra attributes array from the general attributes.
   $extra_attributes = !empty($element['#attributes']) ? $element['#attributes'] : [];
   $element['ecl_array'] = [
@@ -1158,11 +1158,11 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
 /**
  * Encode the tag parameters
  * We need to encode the tags in Futurium D7 during migration
- * due to their special characters. 
- * 
+ * due to their special characters.
+ *
  * @param string $tag
  *   The tag to be encoded.
- * 
+ *
  * @return string
  *   The encoded tag.
  */
