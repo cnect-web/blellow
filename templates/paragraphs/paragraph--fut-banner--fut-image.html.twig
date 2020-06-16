@@ -9,7 +9,7 @@
 {% extends "@paragraphs/paragraph.html.twig" %}
 {% block paragraph %}
   {% block content %}
-  <div class="cta cta--image">
+  <div class="cta cta--image" {{ attributes }}>
     {{ content }}
   </div>
   {% endblock %}
