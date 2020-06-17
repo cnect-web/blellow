@@ -4,8 +4,10 @@
  */
 (function (ECL, Drupal) {
   Drupal.behaviors.eclNavigationMenu = {
-    attach: function attach() {
-      ECL.megamenu();
+    attach: function attach(context, settings) {
+      if (context == document) {
+        ECL.megamenu();
+      }
     }
   };
 })(ECL, Drupal);
