@@ -69,13 +69,7 @@
   {% else %}
     {% for item in items %}
       <div{{ attributes.addClass(wrapper_classes) }}>
-        {# <h2>Display content</h2>  #}
-        {% if render_link %}
-          <a href="/european-ai-alliance/request-membership-form" 
-            class="ecl-button ecl-button--call">Request membership</a>
-        {% else %}
           {{ item.content }}
-        {% endif %}
       </div>
     {% endfor %}
   {% endif %}
