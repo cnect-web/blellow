@@ -1156,6 +1156,23 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
 }
 
 /**
+ * Show or hide the request membership form.
+ *
+ * @param array $variables
+ *   Twig variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function _blellow_preprocess_field__fut_registration_form(array &$variables, $hook): void {
+  // TODO: Find a better way to prevent a field from get rendered.
+  $group = $variables['element']['#object'];
+  $show = $group->get('fut_registration_form_inhome')->value;
+  if (!(isset($show)) || !($show === '1')) {
+    unset($variables['items']);
+  }
+}
+
+/**
  * Encode the tag parameters
  * We need to encode the tags in Futurium D7 during migration
  * due to their special characters.
