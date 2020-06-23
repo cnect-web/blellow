@@ -1054,6 +1054,14 @@ function blellow_theme_suggestions_page_alter(&$suggestions, &$vars) {
 }
 
 /**
+ * Implements hook_preprocess_swiftmailer().
+*/
+
+function blellow_preprocess_swiftmailer(&$variables) {
+  $variables['base_path'] = \Drupal::request()->getSchemeAndHttpHost() . '/';
+}
+
+/**
  * Implements hook_preprocess_media() for media_file field.
  */
 function _blellow_preprocess_media__field_media_file(array &$variables): void {
