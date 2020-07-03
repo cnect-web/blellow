@@ -1246,6 +1246,6 @@ function blellow_theme_suggestions_menu_alter(array &$suggestions, array $variab
  *   TRUE if is a group navigation menu.
  */
 function _blellow_is_group_menu(string $menu_name){
-  $re = '/group_([([0-9]+)_navigation/m';
+  $re = '/group-([([0-9]+)-navigation/m';
   return (bool) preg_match_all($re, $menu_name, $matches, PREG_SET_ORDER, 0);
 }
