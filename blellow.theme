@@ -23,16 +23,17 @@ use Drupal\group\Entity\GroupContent;
  */
 function blellow_preprocess_menu__main(array &$variables): void {
   // Massage data to be compliant with ECL navigation menu data structure.
-  $variables['links'] = array_map(function ($item) {
-    return [
-      'href' => $item['url'],
-      'label' => $item['title'],
-      'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-    ];
-  }, $variables['items']);
+  // $variables['links_old'] = array_map(function ($item) {
+  //   return [
+  //     'href' => $item['url'],
+  //     'label' => $item['title'],
+  //     'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+  //   ];
+  // }, $variables['items']);
+  $variables['links'] = _blellow_map_links($variables['items']);
 
   foreach ($variables['items'] as $name => $link) {
-    $variables['links'][$name]['children_links'] = array_map(function ($item) {
+    $variables['links'][$name]['children_links'] =array_map(function ($item) {
       return [
         'links' => [[
           'href' => $item['url'],
@@ -42,6 +43,8 @@ function blellow_preprocess_menu__main(array &$variables): void {
         ],
       ];
     }, $variables['items'][$name]['below']);
+    // TODO: Needs work.
+    // $variables['links'][$name]['children_links']['links'][] = _blellow_map_links($variables['items'][$name]['below']);
   }
 }
 
@@ -51,16 +54,19 @@ function blellow_preprocess_menu__main(array &$variables): void {
  */
 function blellow_preprocess_menu(array &$variables): void {
   if (_blellow_is_group_menu($variables['menu_name'])) {
+    // TODO: Remove.
     // Massage data to be compliant with ECL navigation menu data structure.
-    $variables['links'] = array_map(function ($item) {
-      return [
-        'href' => $item['url'],
-        'label' => $item['title'],
-        'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-      ];
-    }, $variables['items']);
+    // $variables['links_old'] = array_map(function ($item) {
+    //   return [
+    //     'href' => $item['url'],
+    //     'label' => $item['title'],
+    //     'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+    //   ];
+    // }, $variables['items']);
+    $variables['links'] = _blellow_map_links($variables['items']);
 
     foreach ($variables['items'] as $name => $link) {
+      // TODO: Replace.
       $variables['links'][$name]['children_links'] = array_map(function ($item) {
         return [
           'links' => [[
@@ -71,9 +77,21 @@ function blellow_preprocess_menu(array &$variables): void {
           ],
         ];
       }, $variables['items'][$name]['below']);
+      // $variables['links'][$name]['children_links'] = _blellow_map_links($variables['items'][$name]['below']);
     }
   }
 }
+
+function _blellow_map_links($items) {
+  return array_map(function ($item) {
+    return [        
+      'href' => $item['url'],
+      'label' => $item['title'],
+      'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+    ];
+  }, $items);
+}
+
 
 /**
  * Matches the menu item with the current path.
