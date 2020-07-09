@@ -19,75 +19,54 @@ use Drupal\blellow\ValueObject\GalleryItemValueObject;
 use Drupal\group\Entity\GroupContent;
 
 /**
- * Implements hook_preprocess_menu__main().
- */
-function blellow_preprocess_menu__main(array &$variables): void {
-  // Massage data to be compliant with ECL navigation menu data structure.
-  // $variables['links_old'] = array_map(function ($item) {
-  //   return [
-  //     'href' => $item['url'],
-  //     'label' => $item['title'],
-  //     'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-  //   ];
-  // }, $variables['items']);
-  $variables['links'] = _blellow_map_links($variables['items']);
-
-  foreach ($variables['items'] as $name => $link) {
-    $variables['links'][$name]['children_links'] =array_map(function ($item) {
-      return [
-        'links' => [[
-          'href' => $item['url'],
-          'label' => $item['title'],
-          'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-        ],
-        ],
-      ];
-    }, $variables['items'][$name]['below']);
-    // TODO: Needs work.
-    // $variables['links'][$name]['children_links']['links'][] = _blellow_map_links($variables['items'][$name]['below']);
-  }
-}
-
-
-/**
  * Implements hook_preprocess_menu().
  */
 function blellow_preprocess_menu(array &$variables): void {
-  if (_blellow_is_group_menu($variables['menu_name'])) {
-    // TODO: Remove.
-    // Massage data to be compliant with ECL navigation menu data structure.
-    // $variables['links_old'] = array_map(function ($item) {
-    //   return [
-    //     'href' => $item['url'],
-    //     'label' => $item['title'],
-    //     'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-    //   ];
-    // }, $variables['items']);
-    $variables['links'] = _blellow_map_links($variables['items']);
-
-    foreach ($variables['items'] as $name => $link) {
-      // TODO: Replace.
-      $variables['links'][$name]['children_links'] = array_map(function ($item) {
-        return [
-          'links' => [[
-            'href' => $item['url'],
-            'label' => $item['title'],
-            'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
-          ],
-          ],
-        ];
-      }, $variables['items'][$name]['below']);
-      // $variables['links'][$name]['children_links'] = _blellow_map_links($variables['items'][$name]['below']);
-    }
+  // Root items
+  $variables['links'] = _blellow_map_links($variables['items']);
+  // Submenus
+  foreach ($variables['items'] as $name => $link) {
+    $variables['links'][$name]['children_links'] = _blellow_map_sublinks($variables['items'][$name]['below']);
   }
 }
 
+/**
+ * Make links compliant with ECL navigation menu data structure.
+ * 
+ * @param array $items
+ *   Menu items.
+ *
+ * @return array
+ *   ECL Menu items.
+ */
 function _blellow_map_links($items) {
   return array_map(function ($item) {
     return [        
       'href' => $item['url'],
       'label' => $item['title'],
       'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+    ];
+  }, $items);
+}
+
+/**
+ * Make sublinks compliant with ECL navigation menu data structure.
+ * 
+ * @param array $items
+ *   Menu items.
+ *
+ * @return array
+ *   ECL Menu items.
+ */
+function _blellow_map_sublinks($items) {
+  return array_map(function ($item) {
+    return [
+      'links' => [[
+        'href' => $item['url'],
+        'label' => $item['title'],
+        'is_active' => $item['in_active_trail'] || _blellow_match_path($item),
+      ],
+      ],
     ];
   }, $items);
 }
