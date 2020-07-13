@@ -22,12 +22,12 @@
 {%
   set _target = content.fut_field_media_image_link.0['#url'].uri
 %}
-<h2>Image media</h2>
+
 {# {{dump(content.fut_field_media_image_link.0)}}
 {{dump(content.fut_field_media_image_link.0['#url'].uri)}}
 <hr>
 {{ content.fut_field_media_image_link }} #}
-<hr>
+
 <a href="{{_target}}" target="_blank">
 <article{{ attributes.addClass(classes) }} style="border: 1px red solid">
   {{ title_suffix.contextual_links }}
