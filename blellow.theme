@@ -1067,6 +1067,10 @@ function blellow_preprocess_media(array &$variables): void
   if (array_key_exists('field_media_file', $variables['content'])) {
     _blellow_preprocess_media__field_media_file($variables);
   };
+
+  if (array_key_exists('fut_field_media_image_link', $variables['content'])) {
+    _blellow_preprocess_media__fut_field_media_image_link($variables);
+  };
 }
 
 /**
@@ -1119,6 +1123,19 @@ function _blellow_preprocess_media__field_media_file(array &$variables): void
   $variables['content']['field_media_file'] = $media_file;
 }
 
+/**
+ * mplements hook_preprocess_media() for media_file field.
+ */
+function _blellow_preprocess_media__fut_field_media_image_link(array &$variables): void
+{
+  $image_link = $variables['content']['fut_field_media_image_link'];
+  if (!isset($image_link['#items'])) { return; };
+  $items = $image_link['#items'];
+  $link = $items->first();
+  if(!isset($link)) { return; };
+  $url_string = $link->getUrl()->toString();
+  $variables['content']['fut_field_media_image_link']['uri_string'] = $url_string;
+}
 /**
  * Maps an array element into a name/value pair.
  *
