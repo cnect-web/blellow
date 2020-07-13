@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+    'media--type-' ~ media.bundle()|clean_class,
+  ]
+%}
+  
+{%
+  set _target = content.fut_field_media_image_link.uri_string|default('')
+%}
+
+{% if _target is empty %}
+  <article{{ attributes.addClass(classes) }}>
+    {{ title_suffix.contextual_links }}
+    {% if content %}
+      {# {{ content }} #}
+      {{ content|without('fut_field_media_image_link') }}
+    {% endif %}
+  </article>
+{% else %}
+  <a href="{{_target}}">
+  <article{{ attributes.addClass(classes) }}>
+    {{ title_suffix.contextual_links }}
+    {% if content %}
+      {# {{ content }} #}
+      {{ content|without('fut_field_media_image_link') }}
+    {% endif %}
+  </article>
+  </a>
+{% endif %}
+
+
