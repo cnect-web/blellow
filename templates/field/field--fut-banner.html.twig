@@ -64,7 +64,6 @@
   {% if label_hidden %}
     {% if multiple %}
       <div {{ attributes.addClass(wrapper_classes) }}>
-        {{kint(has_items)}}
         {% for item in items %}
           <div {{ item.attributes.addClass(content_wrapper) }}>{{ item.content }}</div>
         {% endfor %}
@@ -88,8 +87,4 @@
       {% endif %}
     </div>
   {% endif %}
-
-{% else %}
-  {{kint(items)}}
-  {{kint(has_item)}}
 {% endif %}
