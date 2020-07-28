@@ -41,26 +41,25 @@
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
-<div>
-  {% for item in items %}
-    {% set _file_title = item.content['#parent_media']|default('File nitle') %}
-    {% set _file_name = item.content['#file'].filename.value|default('File name') %}
-    {% set _file_uri = item.content['#file_url']|default('') %}
 
-    {% include '@ecl/ec-component-file' with {
-      'title': _file_title,
-      'button_label': 'Download'|t,
-      'icon': 'file ',
-      'language': NULL,
-      'meta': _file_name,
-      'href': _file_uri,
-    } only %}
+{% for item in items %}
+  {% set _file_title = item.content['#parent_media']|default('File nitle') %}
+  {% set _file_name = item.content['#file'].filename.value|default('File name') %}
+  {% set _file_uri = item.content['#file_url']|default('') %}
 
-    {#  Do not render the default download link  #}
-    {#  <div class="the-content">{{ item.content }}</div>#}
+  {% include '@ecl/ec-component-file' with {
+    'title': _file_title,
+    'button_label': 'Download'|t,
+    'icon': 'file ',
+    'language': NULL,
+    'meta': _file_name,
+    'href': _file_uri,
+  } only %}
 
-  {% endfor %}
-</div>
+  {#  Do not render the default download link  #}
+  {#  <div class="the-content">{{ item.content }}</div>#}
+  
+{% endfor %}
 
 
 
