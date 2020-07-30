@@ -102,14 +102,13 @@
   text-align: right;
   text-transform: uppercase;
 }
-.teaser__group-info {
-  span {
-    display: inline-block;
-  }
+.teaser__group-info a{
+  display: flex;
+  align-items: center;
 }
 
 .teaser__group-image {
-  margin-right: map-get($ecl-spacing, 'xxs');
+  margin-right: map-get($ecl-spacing, 'xs');
 }
 
 .teaser__group-image img {
