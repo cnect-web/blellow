@@ -6,15 +6,17 @@
 {% set _css_class = 'teaser__header' %}
 
 <div class="{{ _css_class }}">
-
-  {% if _group_url is not empty or _group_image is not empty %}
+  
+  {% if _group_url is not empty %}
   <div class="teaser__group-info">
-    {% if _group_image is not empty and _group_url is not empty %}
-      <span class="teaser__group-image"><a href="{{ _group_url }}" title="{{ _group_label }}">{{ _group_image }}</a></span>
-    {% endif %}
-    {% if _group_url is not empty and _group_name is not empty %}
-      <span class="teaser__group-name"><a href="{{ _group_url }}" title="{{_group_label }}">{{ _group_name }}</a></span>
-    {% endif %}
+    <a href="{{ _group_url }}" title="{{ _group_label }}">
+      {% if _group_image is not empty %}
+        <span class="teaser__group-image">{{ _group_image }}</span>
+      {% endif %}
+      {% if _group_name is not empty %}
+        <span class="teaser__group-name">{{ _group_name }}</span>
+      {% endif %}
+    </a>
   </div>
   {% endif %}
 

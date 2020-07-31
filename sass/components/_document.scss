@@ -1,0 +1,27 @@
+.media--type-fut-document {
+  background: #ebebeb;
+  
+  .fut_author.bl-field{
+    @extend .ecl-file__info;
+
+    margin-top: - map-get($ecl-spacing, 's');
+    padding: 0 map-get($ecl-spacing, 'm') map-get($ecl-spacing, 'm');
+
+    * {
+      display: inline;
+    }
+  }
+}
+
+/* Link to external document */
+
+.fut_external_url.bl-field {
+  background: #ebebeb;
+  padding: map-get($ecl-spacing, 'm');
+}
+
+/* Document followed by a link to an external document */
+
+.ecl-file + .fut_external_url.bl-field {
+  padding-top: 0;
+}
