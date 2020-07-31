@@ -10,7 +10,7 @@
   {% if site_logo %}
     {% include '@ecl/generic-component-logo' with {
       'href': url('<front>'),
-      'title': site_name,
+      'title': 'Home'|t,
       'type': 'right',
     } only %}
   {% endif %}
