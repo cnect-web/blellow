@@ -1,0 +1,11 @@
+patch-package 
+--- a/node_modules/@ecl/generic-base/variables/_languages.scss
++++ b/node_modules/@ecl/generic-base/variables/_languages.scss
+@@ -21,6 +21,7 @@ $ecl-languages: (
+   'nl',
+   'pl',
+   'pt',
++  'pt-pt',
+   'ro',
+   'sk',
+   'sl',
