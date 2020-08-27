@@ -7,38 +7,9 @@
  */
 #}
 
-{%
-  set classes = [
-    'teaser',
-    'teaser--' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'teaser--promoted',
-    node.isSticky() ? 'teaser--sticky',
-    not node.isPublished() ? 'node--unpublished teaser--unpublished',
-    view_mode ? 'teaser--' ~ view_mode|clean_class,
-    clean_class,
-  ]
-%}
+{% extends 'node--fut-teaser.html.twig' %}
 
-{# Link to Author profile if users is logged in #}
-{% if logged_in %}
-  {% set author_link = path('entity.user.canonical', {'user': node.getOwnerId()}) %}
-{% endif %}
-
-{# use group_short_name or group_name #}
-{% set _group_short_name = group_short_name|default([]) %}
-{% set _group_short_name = group_short_name.value %}
-{% set _group_label = group_label|default('') %} 
-{% set _group_name = _group_short_name|default(_group_label) %}
-
-{# render group_image field #}
-{% set _group_logo = group_logo|default([]) %}
-{# TODO: replace null by the image style #} 
-{% if _group_logo is not empty %}
-  {% set group_image = drupal_image(_group_logo['target_id'], null, {alt: group_logo['alt']}) %} 
-{% endif %}
-<article {{ attributes.addClass(classes) }}>
   {% block teaser_header %}
-
     {% include '@cnectlib/cnect-teaser-header/cnect-teaser-header.html.twig' with {
       'group_label': _group_label,
       'group_name': _group_name,
@@ -48,36 +19,15 @@
   } %}
   {% endblock teaser_header %}
 
-  {% block teaser_body %}
-    <div class="teaser__body">  
-      <div class="teaser__content">
-        {% if not page %}
-          <h3{{ title_attributes }}>
-            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-          </h3>
-        {% endif %}
-        {{ content }}
-      </div>
-    </div>
-  {% endblock teaser_body %}
-  {% block teaser_footer %} 
-    <div class="teaser__footer">
-      {{ content.fut_event_date }}
+  {% block teaser_body_content %}
+      {{ content }}
+  {% endblock teaser_body_content %}
 
-      {% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
-        'avatar': NULL,
-        'author_name': NULL,
-        'date_prefix': 'posted the ',
-        'date': date,
-      } %}
-
-      {% set comments_count = node.fut_comments.comment_count %}
-      {% include '@cnectlib/cnect-comments-count/cnect-comments-count.html.twig' with {
-        'comments_url': url,
-        'comments_url_target': '#comment-1',
-        'comments_count': comments_count,
-      } %}
-
-    </div>
-  {% endblock teaser_footer %}
-</article>
+  {% block teaser_footer_meta %}
+    {% include '@cnectlib/cnect-contentmeta/cnect-contentmeta.html.twig' with {
+      'avatar': NULL,
+      'author_name': NULL,
+      'date_prefix': 'posted the '|t,
+      'date': date,
+    } %}
+  {% endblock teaser_footer_meta %}
