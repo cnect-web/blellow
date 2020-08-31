@@ -1099,6 +1099,13 @@ function blellow_theme_suggestions_page_alter(&$suggestions, &$vars)
   }
 }
 
+function blellow_theme_suggestions_select_alter(&$suggestions, &$vars) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
+  if (!empty($request)) {
+    $suggestions[] = 'select__' . $request;
+  }
+}
+
 /**
  * Implements hook_preprocess_swiftmailer().
  */
@@ -1245,6 +1252,7 @@ function _blellow_preprocess_field__fut_registration_form(array &$variables, $ho
     unset($variables['items']);
   }
 }
+
 
 /**
  * Encode the tag parameters
