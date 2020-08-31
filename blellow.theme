@@ -1130,12 +1130,12 @@ function blellow_theme_suggestions_form_element_label_alter(&$suggestions, &$var
  * Implements hook_form_alter.
  *
  * hook alter for exposed filters on /groups page
- * done to get the exposed filter ready for Translation Interface (to avoid to translate the views) */ 
+ * done to get the exposed filter ready for Translation Interface (to avoid to translate the views) 
  */
 
 function blellow_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form['#id'] == 'views-exposed-form-fut-groups-list-page-groups-list') {
-    */ Translate submit button exposed filters */
+    /* Translate submit button exposed filters */
     $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
     /* Translate label Sort by - should be handled by form_element_label_alter */
     $form['sort_by']['#title'] = t($form['sort_by']['#title']);
