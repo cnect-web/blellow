@@ -1099,10 +1099,48 @@ function blellow_theme_suggestions_page_alter(&$suggestions, &$vars)
   }
 }
 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds twig template suggestion for select (used in exposed filters)
+ */
+
 function blellow_theme_suggestions_select_alter(&$suggestions, &$vars) {
   $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
   if (!empty($request)) {
     $suggestions[] = 'select__' . $request;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds twig template suggestion for form element label (used in exposed filters)
+ * TODO: CHECK WHY IT DOES NOT PICKUP .TWIG FILE
+ */
+
+function blellow_theme_suggestions_form_element_label_alter(&$suggestions, &$vars) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
+  if (!empty($request)) {
+    $suggestions[] = 'form-element-label__' . $request;
+  }
+}
+
+/**
+ * Implements hook_form_alter.
+ *
+ * hook alter for exposed filters on /groups page
+ * done to get the exposed filter ready for Translation Interface (to avoid to translate the views) */ 
+ */
+
+function blellow_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-fut-groups-list-page-groups-list') {
+    */ Translate submit button exposed filters */
+    $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
+    /* Translate label Sort by - should be handled by form_element_label_alter */
+    $form['sort_by']['#title'] = t($form['sort_by']['#title']);
+    /* Translate label Sort by - should be handled by form_element_label_alter */
+    $form['#info']['filter-label']['label'] = t($form['#info']['filter-label']['label']); 
   }
 }
 
