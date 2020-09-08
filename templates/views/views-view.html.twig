@@ -49,12 +49,18 @@
   {% endif %}
 
   {{ exposed }}
+  
+  {% block events_title %}
+  {% endblock events_title %}
+  
   {{ attachment_before }}
 
   {% if rows -%}
     {{ rows }}
   {% elseif empty -%}
+  <div class="views-noresults">
     {{ empty }}
+  </div>
   {% endif %}
   {{ pager }}
 

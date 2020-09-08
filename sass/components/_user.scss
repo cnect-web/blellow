@@ -1,0 +1,111 @@
+.user-full {
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+/* MAIN */
+
+.user-full__main {
+  @include ecl-media-breakpoint-up(lg) {
+    width: 100%;
+  }
+
+  h4.label {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .ecl-form-group {
+    color: map-get($ecl-colors, 'grey-75');
+    margin-bottom: map-get($ecl-spacing, 'm');
+    margin-top: 0;
+  }
+
+  .ecl-form-group h4 {
+    color: map-get($ecl-colors, 'grey-75');
+    font-weight: normal;
+  }
+}
+
+.user-full__profile {
+  @include block-background;  
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+  }
+
+  margin-bottom: map-get($ecl-spacing, 'xl'); 
+
+  .user_picture {
+    margin-bottom: map-get($ecl-spacing, 'm');
+    text-align: center;
+    
+    @include ecl-media-breakpoint-up(lg) {
+      flex-shrink: 0;
+      margin-bottom: 0;
+      margin-right: map-get($ecl-spacing, 'm');
+    }
+  }
+
+  .ecl-image {
+    background: map-get($ecl-colors, 'grey-25');
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+
+  .user-profile__data div:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.fut_bio {
+  max-width: 32em;
+}
+
+.user-real-name h2 {
+  margin-bottom: map-get($ecl-spacing, 'xs');
+}
+
+/* CONTACT USER BUTTON */
+
+.contact-user {
+  @extend .ecl-button;
+  @extend .ecl-button--primary;
+  
+  // margin-bottom: map-get($ecl-spacing, 'l');
+}
+
+/* USER ACTIVITY */
+
+
+.user-full__activity {
+
+  .col {
+    margin-bottom: map-get($ecl-spacing, 'xl');
+  }
+  
+  @include ecl-media-breakpoint-up(lg) {
+    display: flex;
+
+    .col {
+      width: 50%;
+    }
+    .col + .col {
+      margin-left: map-get($ecl-spacing, 'xl');
+    }
+  }
+
+  .col .block {
+    margin-bottom: map-get($ecl-spacing, 'm');
+  }
+}
+
+.no-result {
+  border-bottom: 1px solid map-get($ecl-colors, 'grey-10');
+  border-top: 1px solid map-get($ecl-colors, 'grey-10');
+  color: $ecl-color-shade;
+  padding: map-get($ecl-spacing, 'm') 0;
+}
