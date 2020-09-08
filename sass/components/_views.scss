@@ -1,0 +1,56 @@
+.views-row-wrapper {
+  margin-bottom: map-get($ecl-spacing, 'm');
+}
+
+/////////////////////////////////////////////
+// added div around no-results behaviour view
+/////////////////////////////////////////////
+
+.views-noresults {
+   margin-bottom: map-get($ecl-spacing, 'm');
+}
+
+footer {
+  text-align: right;
+}
+
+footer a.views-display-link {
+  @extend .ecl-button;
+  @extend .ecl-button--call;
+  @extend .ecl-button--caret-right;
+
+  margin-bottom: 0;
+}
+
+//////////////////////////////////////////
+// blocks in sidebar width grey background
+//////////////////////////////////////////
+
+.block-views-blockfut-my-contributions-block-my-contributions,
+.block-views-blockfut-group-posts-block-group-most-popular-posts{
+  @include block-background;
+  .ecl-list-item {
+    border-bottom: 1px solid map-get($ecl-colors, 'grey-25');
+  }
+}
+
+//////////////////////////////
+// My contributions block view
+//////////////////////////////
+
+.ecl-table {
+  margin-bottom: map-get($ecl-spacing, 'l');
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+caption {
+  margin-bottom: map-get($ecl-spacing, 's');
+  text-align: left;
+  a {    
+    @include fut-header-3();
+    color: $ecl-color-primary;
+    text-decoration: none;
+  }
+}
