@@ -19,19 +19,17 @@
       {{ page.site_header }}
     </div>
   </header>
-{% endblock %}
+{% endblock site_header %}
 
 {% block page_header %}
   {% if page.page_header %}
     {{ page.page_header }}
   {% endif %}
-{% endblock %}
+{% endblock page_header %}
 
 {% block navigation %}
   {{ page.navigation }}
-{% endblock %}
-
-{% block main %}
+{% endblock navigation %}
 
 {# Content #}
 {% set content_classes = [
@@ -44,8 +42,12 @@
 
 <div id="main-content" class="main-content ecl-u-mv-l {% block containerclass %}{% endblock %}"> 
   <div class="ecl-container">
-    <div class="ecl-row">
 
+    {# Used in page--front.html.twig #}
+    {% block messages %}
+    {% endblock messages %}
+
+    <div class="ecl-row">
       {# Sidebar First #}
       {% block sidebar_first %}
         {% if page.sidebar_first|render|striptags|trim %}
@@ -53,13 +55,14 @@
             {{ page.sidebar_first }}
           </aside>
         {% endif %}
-      {% endblock %}
+      {% endblock sidebar_first %}
 
+      {# Content #}
       {% block page_content %}
         <section {{ content_attributes.addClass(content_classes) }}>
           {{ page.content }}
         </section>
-      {% endblock %}
+      {% endblock page_content %}
 
       {# Sidebar Second #}
       {% block sidebar_second %}
@@ -68,15 +71,18 @@
             {{ page.sidebar_second }}
           </aside>
         {% endif %}
-      {% endblock %}
-    
+      {% endblock sidebar_second %}
     </div>
+
+    {# Used in page--front.html.twig #}  
+    {% block featured_groups %}
+    {% endblock featured_groups %}
+
   </div>
 </div>
-{% endblock %}
 
-{% if page.footer %}
-  {% block footer %}
+{% block footer %}
+  {% if page.footer %}
     {{ page.footer }}
-  {% endblock %}
-{% endif %}
+  {% endif %}
+{% endblock footer %}
