@@ -40,6 +40,7 @@
 {% set my_contributions = drupal_block('views_block:fut_my_contributions-block_my_contributions') %}
 {% set my_events = drupal_block('views_block:fut_group_user_events-block_user_events') %}
 
+  {# Block system messages #}
   {% block messages %}
     {% if messages %}
       <div class="ecl-row">
@@ -50,22 +51,26 @@
     {% endif %}
   {% endblock messages %}
 
-  {% block page_content %}
-    {% if popular_posts.content|length > 1 or my_contributions.content|length > 1 or my_events.content|length > 1 %}
-      <div class="ecl-row">
-        {% if logged_in %}
-          <div class="ecl-col-md-7">
-            {{ popular_posts }}
-          </div>
-          <aside class="ecl-col-md-5" role="complementary">
-            {{ my_contributions }}
-            {{ my_events }}
-          </aside>
-        {% endif %}
+  {# Content #}
+  {% block page_content %} 
+    {% if logged_in %}
+      <div class="ecl-col-md-7">
+        {{ popular_posts }}
       </div>
     {% endif %}
-  {% endblock page_content %}
-    
+  {% endblock page_content %} 
+  
+  {# Sidebar Second #}
+  {% block sidebar_second %}
+    {% if logged_in %}
+      <aside class="ecl-col-md-5" role="complementary">
+        {{ my_contributions }}
+        {{ my_events }}
+      </aside>
+    {% endif %}
+  {% endblock sidebar_second %}
+      
+  {# Block featured groups #}
   {% block featured_groups %}
     <div class="ecl-row">
       <div class="ecl-col-md-12">
