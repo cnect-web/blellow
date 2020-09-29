@@ -63,39 +63,35 @@
    {% endif %}
 {% endblock hero %}
 
- 
-
-  {# Content #}
-    {% block page_content %} 
-      {% if logged_in %}
-        <div class="ecl-col-md-7">
-          {{ popular_posts }}
-        </div>
-      {% endif %}
-    {% endblock page_content %} 
-    
-    {# Sidebar Second #}
-    {% block sidebar_second %}
-      {% if logged_in %}
-        <aside class="ecl-col-md-5" role="complementary">
-          {{ my_contributions }}
-          {{ my_events }}
-        </aside>
-      {% endif %}
-    {% endblock sidebar_second %}
-        
-    {# Block featured groups #}
-    {% block featured_groups %}
-      <div class="ecl-row">
-        <div class="ecl-col-md-12">
-           {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
-        </div>
+{# Content #}
+  {% block page_content %} 
+    {% if logged_in %}
+      <div class="ecl-col-md-7">
+        {{ popular_posts }}
       </div>
-    {% endblock featured_groups %}
-  {# End Content #}
-
-
+    {% endif %}
+  {% endblock page_content %} 
   
+  {# Sidebar Second #}
+  {% block sidebar_second %}
+    {% if logged_in %}
+      <aside class="ecl-col-md-5" role="complementary">
+        {{ my_contributions }}
+        {{ my_events }}
+      </aside>
+    {% endif %}
+  {% endblock sidebar_second %}
+      
+  {# Block featured groups #}
+  {% block featured_groups %}
+    <div class="ecl-row">
+      <div class="ecl-col-md-12">
+         {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
+      </div>
+    </div>
+  {% endblock featured_groups %}
+{# End Content #}
+
 {% block footer %}
   {{ parent() }}
 {% endblock footer %}

@@ -7,28 +7,28 @@
  */
 #}
 
-{% extends "page.html.twig" %}
-
 {% set content_classes = [
   page.sidebar_first ? 'ecl-col-md-5',
   page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-8',
   ]
 %}
 
-  {# Sidebar First #}
-  {% block sidebar_first %}
-    {{ parent() }}
-  {% endblock sidebar_first %}
+{% extends "page.html.twig" %}
 
-  {# Content #}
-  {% block page_content %}
-    {{ parent() }}
-  {% endblock page_content %}
+{# Sidebar First #}
+{% block sidebar_first %}
+  {{ parent() }}
+{% endblock sidebar_first %}
 
-  {# Sidebar Second #}
-  {# Show always sidebar second (no check if it is empty) #}
-  {% block sidebar_second %}
-    <aside class="ecl-col-md-4" role="complementary">
-      {{ page.sidebar_second }}
-    </aside>
-  {% endblock sidebar_second %}
+{# Content #}
+{% block page_content %}
+  {{ parent() }}
+{% endblock page_content %}
+
+{# Sidebar Second #}
+{# Show always sidebar second (no check if it is empty) #}
+{% block sidebar_second %}
+  <aside class="ecl-col-md-4" role="complementary">
+    {{ page.sidebar_second }}
+  </aside>
+{% endblock sidebar_second %}

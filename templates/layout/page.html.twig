@@ -7,6 +7,16 @@
  */
 #}
 
+{% block test %}
+{% set content_classes = [
+  page.sidebar_first and page.sidebar_second ? 'ecl-col-md-5',
+  page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-8',
+  page.sidebar_second|render and page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-9',
+  page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-12'
+  ]
+%}
+{% endblock test %}
+
 {% block site_header %}
   <header class="ecl-site-header" role="banner">
     {# TODO: Where this verbose markup belongs to? here or withing the login widget? #}
@@ -31,40 +41,33 @@
   {{ page.navigation }}
 {% endblock %}
 
+{# This will print drupal messages but is only needed on page--front.html.twig #}
 {% block messages %}
 {% endblock messages %}
 
 {% block hero %}
-{% endblock %}
+{% endblock hero %}
 
 {# Content #}
-{% set content_classes = [
-  page.sidebar_first and page.sidebar_second ? 'ecl-col-md-5',
-  page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-8',
-  page.sidebar_second|render and page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-9',
-  page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-12'
-  ]
-%}
-
-{% block main %}
 
 <div id="main-content" class="main-content ecl-u-mv-l {% block containerclass %}{% endblock %}"> 
   <div class="ecl-container">
     <div class="ecl-row">
       {# Sidebar First #}
+
       {% block sidebar_first %}
         {% if page.sidebar_first %}
           <aside class="ecl-col-md-4" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endif %}
-      {% endblock %}
+      {% endblock sidebar_first %}
 
       {% block page_content %}
         <section {{ content_attributes.addClass(content_classes) }}>
           {{ page.content }}
         </section>
-      {% endblock %}
+      {% endblock page_content %}
 
       {# Sidebar Second #}
       {% block sidebar_second %}
@@ -73,7 +76,7 @@
             {{ page.sidebar_firstpage.sidebar_first }}
           </aside>
         {% endif %}
-      {% endblock %}
+      {% endblock sidebar_second %}
     </div>
     
     {# Block featured groups #}
@@ -82,7 +85,6 @@
     
   </div>
 </div>
-{% endblock main %}
 
 {% if page.footer %}
   {% block footer %}
