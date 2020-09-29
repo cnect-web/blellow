@@ -9,8 +9,37 @@
 
 {% extends "page.html.twig" %}
 
-{% if page.content_top or page.content_side %}
-  {% block hero %}
+{% block site_header %}
+  {{ parent() }}
+{% endblock site_header %}
+
+{% block page_header %}
+  {{ parent() }}
+{% endblock page_header %}
+
+{% block navigation %}
+  {{ parent() }}
+{% endblock %}
+
+{# Content #}
+{% set messages = drupal_block('system_messages_block') %}
+{% set popular_posts = drupal_block('views_block:fut_group_posts-block_user_popular_posts') %}
+{% set my_contributions = drupal_block('views_block:fut_my_contributions-block_my_contributions') %}
+{% set my_events = drupal_block('views_block:fut_group_user_events-block_user_events') %}
+
+{# Block system messages (messages is part of page.content but we do not print page.content here. #}
+{% block messages %}
+  {% if messages|striptags|trim %}
+    <div class="ecl-row">
+      <div class="ecl-col-md-12">
+        {{ messages }}
+      </div>
+    </div>
+  {% endif %}
+{% endblock messages %}
+
+{% block hero %}
+  {% if page.content_top or page.content_side %}
     <div class="hero-content ecl-u-mv-l ecl-u-mb-xxl" >
       <div class="ecl-container">
         <div class="ecl-row">
@@ -31,53 +60,41 @@
         </div>
       </div>
     </div>
-  {% endblock %}
-{% endif %}
+   {% endif %}
+{% endblock hero %}
 
-{# Content #}
-{% set messages = drupal_block('system_messages_block') %}
-{% set popular_posts = drupal_block('views_block:fut_group_posts-block_user_popular_posts') %}
-{% set my_contributions = drupal_block('views_block:fut_my_contributions-block_my_contributions') %}
-{% set my_events = drupal_block('views_block:fut_group_user_events-block_user_events') %}
-
-  {# Block system messages #}
-  {% block messages %}
-    {% if messages %}
-      <div class="ecl-row">
-        <div class="ecl-col-md-12">
-          {{ messages }}
-        </div>
-      </div>
-    {% endif %}
-  {% endblock messages %}
+ 
 
   {# Content #}
-  {% block page_content %} 
-    {% if logged_in %}
-      <div class="ecl-col-md-7">
-        {{ popular_posts }}
+    {% block page_content %} 
+      {% if logged_in %}
+        <div class="ecl-col-md-7">
+          {{ popular_posts }}
+        </div>
+      {% endif %}
+    {% endblock page_content %} 
+    
+    {# Sidebar Second #}
+    {% block sidebar_second %}
+      {% if logged_in %}
+        <aside class="ecl-col-md-5" role="complementary">
+          {{ my_contributions }}
+          {{ my_events }}
+        </aside>
+      {% endif %}
+    {% endblock sidebar_second %}
+        
+    {# Block featured groups #}
+    {% block featured_groups %}
+      <div class="ecl-row">
+        <div class="ecl-col-md-12">
+           {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
+        </div>
       </div>
-    {% endif %}
-  {% endblock page_content %} 
-  
-  {# Sidebar Second #}
-  {% block sidebar_second %}
-    {% if logged_in %}
-      <aside class="ecl-col-md-5" role="complementary">
-        {{ my_contributions }}
-        {{ my_events }}
-      </aside>
-    {% endif %}
-  {% endblock sidebar_second %}
-      
-  {# Block featured groups #}
-  {% block featured_groups %}
-    <div class="ecl-row">
-      <div class="ecl-col-md-12">
-         {{ drupal_block('views_block:fut_featured_groups-block_featured_groups') }}
-      </div>
-    </div>
-  {% endblock featured_groups %}
+    {% endblock featured_groups %}
+  {# End Content #}
+
+
   
 {% block footer %}
   {{ parent() }}

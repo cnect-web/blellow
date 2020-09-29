@@ -29,7 +29,13 @@
 
 {% block navigation %}
   {{ page.navigation }}
-{% endblock navigation %}
+{% endblock %}
+
+{% block messages %}
+{% endblock messages %}
+
+{% block hero %}
+{% endblock %}
 
 {# Content #}
 {% set content_classes = [
@@ -40,49 +46,46 @@
   ]
 %}
 
+{% block main %}
+
 <div id="main-content" class="main-content ecl-u-mv-l {% block containerclass %}{% endblock %}"> 
   <div class="ecl-container">
-
-    {# Messages only in page--front.html.twig ???? #}
-    {% block messages %}
-    {% endblock messages %}
-
     <div class="ecl-row">
       {# Sidebar First #}
       {% block sidebar_first %}
-        {% if page.sidebar_first|render|striptags|trim %}
+        {% if page.sidebar_first %}
           <aside class="ecl-col-md-4" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endif %}
-      {% endblock sidebar_first %}
+      {% endblock %}
 
-      {# Content #}
       {% block page_content %}
         <section {{ content_attributes.addClass(content_classes) }}>
           {{ page.content }}
         </section>
-      {% endblock page_content %}
+      {% endblock %}
 
       {# Sidebar Second #}
       {% block sidebar_second %}
-        {% if page.sidebar_second|render|striptags|trim %}
+        {% if page.sidebar_second %}
           <aside class="ecl-col-md-3" role="complementary">
-            {{ page.sidebar_second }}
+            {{ page.sidebar_firstpage.sidebar_first }}
           </aside>
         {% endif %}
-      {% endblock sidebar_second %}
+      {% endblock %}
     </div>
-
-    {# Featured groups only in page--front.html.twig #}  
+    
+    {# Block featured groups #}
     {% block featured_groups %}
     {% endblock featured_groups %}
-
+    
   </div>
 </div>
+{% endblock main %}
 
-{% block footer %}
-  {% if page.footer %}
+{% if page.footer %}
+  {% block footer %}
     {{ page.footer }}
-  {% endif %}
-{% endblock footer %}
+  {% endblock %}
+{% endif %}
