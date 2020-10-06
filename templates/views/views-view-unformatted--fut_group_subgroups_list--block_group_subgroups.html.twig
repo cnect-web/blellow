@@ -26,16 +26,16 @@
   {% set footer = '' %}
   {% for row in rows %}
     {% if loop.index <= 4 %} 
-      <div {{ row.attributes.addClass(['views-row', 'ecl-list-item']) }}>{{ row.content }}</div> 
+      <div {{ row.attributes.addClass('ecl-list-item') }}>{{ row.content }}</div> 
     {% endif %} 
     {% if loop.index > 4 %} 
       {% set footer %}
         <footer>
-          <a href="#" id="show_subgroups" class="views-display-link views-display-link-page_group_subgroups" onclick="show_subgroups()";>See all subgroups</a>
-          <a href="#" id="hide_subgroups" class="views-display-link views-display-link-page_group_subgroups" style="display:none" onclick="hide_subgroups()";>Hide all subgroups</a>
+          <a href="#" id="show_subgroups" class="views-display-link" onclick="show_subgroups()";>{{ 'Show all subgroups'|t }}</a>
+          <a href="#" id="hide_subgroups" class="views-display-link" style="display:none;" onclick="hide_subgroups()";>{{ 'Show less subgroups'|t }}</a>
         </footer>
       {% endset %}
-      <div{{ row.attributes.addClass(['hide']) }} style="display: none;">{{ row.content }}</div>
+      <div{{ row.attributes.addClass(['ecl-list-item', 'hide']) }}>{{ row.content }}</div>
     {% endif %}
   {% endfor %}
 </div>
