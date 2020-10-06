@@ -31,8 +31,8 @@
     {% if loop.index > 4 %} 
       {% set footer %}
         <footer>
-          <a href="#" id="show_subgroups" class="views-display-link" onclick="show_subgroups()";>{{ 'Show all subgroups'|t }}</a>
-          <a href="#" id="hide_subgroups" class="views-display-link" style="display:none;" onclick="hide_subgroups()";>{{ 'Show less subgroups'|t }}</a>
+          <a href="#" id="show_subgroups" class="ecl-button ecl-button--call ecl-button--caret-right">{{ 'Show all subgroups'|t }}</a>
+          <a href="#" id="hide_subgroups" class="ecl-button ecl-button--call ecl-button--caret-up" style="display:none;">{{ 'Show less subgroups'|t }}</a>
         </footer>
       {% endset %}
       <div{{ row.attributes.addClass(['ecl-list-item', 'hide']) }}>{{ row.content }}</div>
