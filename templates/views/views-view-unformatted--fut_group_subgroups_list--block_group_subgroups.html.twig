@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+ 
+#}
+
+{{ attach_library('blellow/show_hide_subgroups') }}
+
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div class="views-row-wrapper">
+  {% set footer = '' %}
+  {% for row in rows %}
+    {% if loop.index <= 4 %} 
+      <div {{ row.attributes.addClass('ecl-list-item') }}>{{ row.content }}</div> 
+    {% endif %} 
+    {% if loop.index > 4 %} 
+      {% set footer %}
+        <footer>
+          <a href="#" id="show_subgroups" class="ecl-button ecl-button--call ecl-button--caret-right">{{ 'Show all subgroups'|t }}</a>
+          <a href="#" id="hide_subgroups" class="ecl-button ecl-button--call ecl-button--caret-up" style="display:none;">{{ 'Show less subgroups'|t }}</a>
+        </footer>
+      {% endset %}
+      <div{{ row.attributes.addClass(['ecl-list-item', 'hide']) }}>{{ row.content }}</div>
+    {% endif %}
+  {% endfor %}
+</div>
+{{ footer }}

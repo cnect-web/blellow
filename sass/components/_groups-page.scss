@@ -158,9 +158,11 @@
     scroll-snap-type: x proximity;
     
     @include ecl-media-breakpoint-up(md) {
+      grid-auto-flow: row;
+      grid-auto-rows: 1fr;
       grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 1fr; 
     }
   }
 }
