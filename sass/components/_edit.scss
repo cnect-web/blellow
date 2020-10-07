@@ -267,6 +267,25 @@ td .description {
   margin-top: map-get($ecl-spacing, 'xxxs');
 }
 
+/* Row counter for sortable table subgroubs list  */
+
+tbody {
+ counter-reset: row-counter;
+}
+
+tbody tr {
+  counter-increment: row-counter;
+}
+
+tbody tr td.views-field-sortable-handle-1 span {
+ color: transparent;
+}
+
+tbody tr td.views-field-sortable-handle-1 span:before {
+  content: counter(row-counter);
+  color: $ecl-color-shade;
+}
+
 /* button group */
 .js td .dropbutton-multiple .dropbutton-action a,
 .js td .dropbutton-multiple .dropbutton-action input,
