@@ -56,7 +56,9 @@
   {{ attachment_before }}
 
   {% if rows -%}
-    {{ rows }}
+    <div class="view-content">  
+      {{ rows }}
+    </div>
   {% elseif empty -%}
   <div class="views-noresults">
     {{ empty }}
