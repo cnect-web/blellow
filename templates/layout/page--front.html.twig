@@ -29,7 +29,7 @@
 
 {# Block system messages (messages is part of page.content but we do not print page.content here. #}
 {% block messages %}
-  {% if messages|striptags|trim %}
+  {% if messages|render|striptags|trim %}
     <div class="ecl-row">
       <div class="ecl-col-md-12">
         {{ messages }}

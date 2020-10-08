@@ -7,15 +7,13 @@
  */
 #}
 
-{% block test %}
 {% set content_classes = [
   page.sidebar_first and page.sidebar_second ? 'ecl-col-md-5',
   page.sidebar_first|render and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-8',
   page.sidebar_second|render and page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-9',
-  page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-12'
+  page.sidebar_first|render|striptags|trim is empty and page.sidebar_second|render|striptags|trim is empty ? 'ecl-col-md-12',
   ]
 %}
-{% endblock test %}
 
 {% block site_header %}
   <header class="ecl-site-header" role="banner">
