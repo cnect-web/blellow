@@ -77,6 +77,14 @@ group_header:
     - core/drupal
     - blellow/base
 
+show_hide_subgroups:
+  js:
+    js/show-hide-subgroups.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - blellow/base
+
 login_register:
   css:
     theme:
