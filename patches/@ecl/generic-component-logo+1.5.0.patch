@@ -1,12 +1,23 @@
-patch-package 
+patch-package
 --- a/node_modules/@ecl/generic-component-logo/generic-component-logo.twig
 +++ b/node_modules/@ecl/generic-component-logo/generic-component-logo.twig
-@@ -49,7 +49,7 @@
+@@ -19,7 +19,8 @@
+ {% set _css_class = 'ecl-logo' %}
+ {% set _extra_attributes = '' %}
+ {% set _type = type|default('') %}
+-{% set _title = title|default('European Commission') %}
++{% set _title = title|default('Home') %}
++{% set _site_name = site_name|default('European Commission') %}
+ {% set _href = href|default('') %}
+ 
+ {# Internal logic - Process properties #}
+@@ -49,7 +50,7 @@
  {# Print the result #}
  
  {% if _href is not empty %}
 -  <a href="{{ _href }}" class="{{ _css_class }}" title="{{ _title }}"{{ _extra_attributes|raw }}><span class="ecl-u-sr-only">{{ _title }}</span></a>
-+  <a href="{{ _href }}" class="{{ _css_class }}" title="{{ _title }}"{{ _extra_attributes|raw }}><span class="ecl-u-sr-only"></span></a>
++  <a href="{{ _href }}" class="{{ _css_class }}" title="{{ _title }}"{{ _extra_attributes|raw }}><span class="ecl-u-sr-only">{{ _site_name }}</span></a>
  {% else %}
    <span class="{{ _css_class }}" role="img" aria-label="{{ _title }}"{{ _extra_attributes|raw }}></span>
  {% endif %}
+\ No newline at end of file
