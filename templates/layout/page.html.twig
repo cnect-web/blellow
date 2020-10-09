@@ -51,30 +51,32 @@
 <div id="main-content" class="main-content ecl-u-mv-l {% block containerclass %}{% endblock %}"> 
   <div class="ecl-container">
     <div class="ecl-row">
-      {# Sidebar First #}
 
+      {# Sidebar First #}
       {% block sidebar_first %}
-        {% if page.sidebar_first %}
+        {% if page.sidebar_first|render|striptags|trim %}
           <aside class="ecl-col-md-4" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endif %}
       {% endblock sidebar_first %}
-
+      
+      {# Content #}
       {% block page_content %}
         <section {{ content_attributes.addClass(content_classes) }}>
           {{ page.content }}
         </section>
       {% endblock page_content %}
-
+      
       {# Sidebar Second #}
       {% block sidebar_second %}
-        {% if page.sidebar_second %}
+        {% if page.sidebar_second|render|striptags|trim %}
           <aside class="ecl-col-md-3" role="complementary">
-            {{ page.sidebar_firstpage.sidebar_first }}
+            {{ page.sidebar_second }}
           </aside>
         {% endif %}
       {% endblock sidebar_second %}
+
     </div>
     
     {# Block featured groups #}
