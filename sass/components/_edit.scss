@@ -284,6 +284,7 @@ tbody tr td.views-field-sortable-handle-1 span {
 tbody tr td.views-field-sortable-handle-1 span:before {
   content: counter(row-counter);
   color: $ecl-color-shade;
+  margin-left: map-get($ecl-spacing, 'xs');
 }
 
 /* button group */
