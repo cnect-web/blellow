@@ -1109,6 +1109,16 @@ function blellow_preprocess_swiftmailer(&$variables)
 }
 
 /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ * Provides twig template suggestion for user picture image-formatter--user--user--user-picture.html.twig
+ */
+function blellow_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+}
+
+/**
  * Implements hook_preprocess_media() for media_file field.
  */
 function _blellow_preprocess_media__field_media_file(array &$variables): void
