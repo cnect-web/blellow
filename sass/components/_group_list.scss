@@ -7,12 +7,17 @@
     'group-logo group-join';
   grid-template-columns: 100px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
-  &--no-image {
+/*  &--no-image {
     grid-template-areas:
       'group-label'
       'group-description'
       'group-join';
     grid-template-columns: 1fr;
+  }*/
+  
+  .img-placeholder {
+    background: #f7f7f7 url($ecl-assets-path+'images/default_group_icon.png');
+    height: 100px;
   }
 
   .fut_logo {
