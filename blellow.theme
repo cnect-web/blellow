@@ -1078,7 +1078,21 @@ function blellow_preprocess_media(array &$variables): void
  */
 function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-
+  /* Translate submit button exposed filters */
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
+  }
+  
+  /* Translate label Sort by - should be handled by form_element_label_alter */
+  if (isset($form['sort_by']['#title'])) {
+    $form['sort_by']['#title'] = t($form['sort_by']['#title']);
+  }
+  
+  /* Translate label Sort by - should be handled by form_element_label_alter */
+  if (isset($form['#info']['filter-label']['label'])) {
+    $form['#info']['filter-label']['label'] = t($form['#info']['filter-label']['label']);
+  }
+  
   // TODO it is not needed any more due to gitlab issue#243.
   if ($form['#id'] == 'views-exposed-form-fut-group-posts-management-default') {
     $form['#attributes']['class'][] = 'group-post-management';
@@ -1123,24 +1137,6 @@ function blellow_theme_suggestions_form_element_label_alter(&$suggestions, &$var
   $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
   if (!empty($request)) {
     $suggestions[] = 'form-element-label__' . $request;
-  }
-}
-
-/**
- * Implements hook_form_alter.
- *
- * hook alter for exposed filters on /groups page
- * done to get the exposed filter ready for Translation Interface (to avoid to translate the views) 
- */
-
-function blellow_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form['#id'] == 'views-exposed-form-fut-groups-list-page-groups-list') {
-    /* Translate submit button exposed filters */
-    $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
-    /* Translate label Sort by - should be handled by form_element_label_alter */
-    $form['sort_by']['#title'] = t($form['sort_by']['#title']);
-    /* Translate label Sort by - should be handled by form_element_label_alter */
-    $form['#info']['filter-label']['label'] = t($form['#info']['filter-label']['label']); 
   }
 }
 
