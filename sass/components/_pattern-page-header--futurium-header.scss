@@ -98,7 +98,9 @@
 // Remove Futurium site name from the page header
 // see https://gitlab.dgcnect.eu/web-team/blellow-d8-theme/issues/321
 body.path-group,
-body.has-group-parent {
+body.has-group-parent,
+body.path-ginvite,
+{
   .ecl-page-header__identity {
     display: none;
   }
