@@ -7,3 +7,11 @@ body:not(.path-group):not(.has-group-parent) {
     margin-top: 0.66rem;
   }
 }
+
+/* we need breadcrumbs while accepting group invitation */
+
+body.path-ginvite .ecl-page-header {
+  .ecl-breadcrumb {
+    display: block;
+  }
+}
