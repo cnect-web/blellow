@@ -1078,7 +1078,21 @@ function blellow_preprocess_media(array &$variables): void
  */
 function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-
+  /* Translate submit button exposed filters */
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
+  }
+  
+  /* Translate label Sort by - should be handled by form_element_label_alter */
+  if (isset($form['sort_by']['#title'])) {
+    $form['sort_by']['#title'] = t($form['sort_by']['#title']);
+  }
+  
+  /* Translate label Sort by - should be handled by form_element_label_alter */
+  if (isset($form['#info']['filter-label']['label'])) {
+    $form['#info']['filter-label']['label'] = t($form['#info']['filter-label']['label']);
+  }
+  
   // TODO it is not needed any more due to gitlab issue#243.
   if ($form['#id'] == 'views-exposed-form-fut-group-posts-management-default') {
     $form['#attributes']['class'][] = 'group-post-management';
@@ -1096,6 +1110,33 @@ function blellow_theme_suggestions_page_alter(&$suggestions, &$vars)
   $request = \Drupal::routeMatch()->getRouteObject()->getPath();
   if ($request == '/group/{group}') {
     $suggestions[] = 'page__group__front';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds twig template suggestion for select (used in exposed filters)
+ */
+
+function blellow_theme_suggestions_select_alter(&$suggestions, &$vars) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
+  if (!empty($request)) {
+    $suggestions[] = 'select__' . $request;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds twig template suggestion for form element label (used in exposed filters)
+ * TODO: CHECK WHY IT DOES NOT PICKUP .TWIG FILE
+ */
+
+function blellow_theme_suggestions_form_element_label_alter(&$suggestions, &$vars) {
+  $request = \Drupal::routeMatch()->getRouteObject()->getDefault('view_id');
+  if (!empty($request)) {
+    $suggestions[] = 'form-element-label__' . $request;
   }
 }
 
@@ -1255,6 +1296,7 @@ function _blellow_preprocess_field__fut_registration_form(array &$variables, $ho
     unset($variables['items']);
   }
 }
+
 
 /**
  * Encode the tag parameters
