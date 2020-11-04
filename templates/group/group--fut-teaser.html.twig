@@ -48,5 +48,12 @@
 %}
 
 <article{{ attributes.addClass(classes) }}>
+  {% if content.fut_logo|render is empty %}
+    <div class="fut_logo bl-field" >
+      <a href="{{ base_path }}{{ url }}">
+        <div class="img-placeholder"></div>
+      </a>
+    </div>
+  {% endif  %}
   {{ content }}
 </article>

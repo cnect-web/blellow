@@ -284,6 +284,7 @@ tbody tr td.views-field-sortable-handle-1 span {
 tbody tr td.views-field-sortable-handle-1 span:before {
   content: counter(row-counter);
   color: $ecl-color-shade;
+  margin-left: map-get($ecl-spacing, 'xs');
 }
 
 /* button group */
@@ -466,4 +467,27 @@ details.form-wrapper {
     color: $ecl-color-primary;
     cursor: pointer;
   }
+}
+
+// blocked users on /manage/group/members
+
+.user-active .views-field-name::before,
+.user-blocked .views-field-name::before {
+  @extend %fa-icon;
+  @extend .fas;
+  @extend .fa-fw;
+	color: $ecl-color-primary;
+}
+
+.user-active .views-field-name a,
+.user-blocked .views-field-name a {
+  padding-left: map-get($ecl-spacing, 'xs');
+}
+
+.user-active .views-field-name::before {
+	content: fa-content($fa-var-user);
+}
+
+.user-blocked .views-field-name::before {
+	content: fa-content($fa-var-user-lock);
 }
