@@ -7,38 +7,30 @@
  */
 #}
 
-{% extends "page.html.twig" %}
-
-{% block main %}
-
-{% set content_classes = [
+{% set content_classes_override = [
   page.sidebar_first ? 'ecl-col-md-5',
   page.sidebar_first|render|striptags|trim is empty ? 'ecl-col-md-8',
   ]
 %}
 
-<div id="main-content" class="main-content ecl-u-mv-l" >
-  <div class="ecl-container">
-    <div class="ecl-row">
-      
-      {# Sidebar First #}
-      {% block sidebar_first %}
-        {{ parent() }}
-      {% endblock %}
+{% extends "page.html.twig" %}
 
-      {% block page_content %}
-        {{ parent() }}
-      {% endblock %}
+{# Sidebar First #}
+{% block sidebar_first %}
+  {{ parent() }}
+{% endblock sidebar_first %}
 
-      {# Sidebar Second #}
-      {# Show always sidebar second (no check if it is empty) #}
-      {% block sidebar_second %}
-        <aside class="ecl-col-md-4" role="complementary">
-          {{ page.sidebar_second }}
-        </aside>
-      {% endblock %}
+{# Content #}
+{% block page_content %}
+  <section {{ content_attributes.addClass(content_classes_override) }}>
+    {{ page.content }}
+  </section>
+{% endblock page_content %}
 
-    </div>
-  </div>
-</div>
-{% endblock %}
+{# Sidebar Second #}
+{# Show always sidebar second (no check if it is empty) #}
+{% block sidebar_second %}
+  <aside class="ecl-col-md-4" role="complementary">
+    {{ page.sidebar_second }}
+  </aside>
+{% endblock sidebar_second %}
