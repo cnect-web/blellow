@@ -936,7 +936,7 @@ function blellow_preprocess_image(array &$variables, $hook): void {
     $variables[$key] = _blellow_capture_and_unset($attributes, $key);
   }
   $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
-  $variables['extra_attributes'] = $namevalue;
+  $element['ecl_array']['extra_attributes'] = $namevalue;
 }
 
 /**

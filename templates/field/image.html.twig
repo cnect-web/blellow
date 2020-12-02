@@ -14,12 +14,13 @@
  * @see template_preprocess_image()
  */
 #}
+{% set ecl_array = element.ecl_array %}
 <div class="bl-image-wrapper">
   {% include '@ecl/ec-style-image' with {
     'src': src,
     'alt': alt,
     'responsive': true,
-    'extra_attributes': extra_attributes
+    'extra_attributes': ecl_array.extra_attributes
   } only %}
 </div>
 
