@@ -1,0 +1,9 @@
+{% if tags is not empty and tags is iterable %}
+  {% for tag in tags %}
+    {% if tag.url is defined and tag.url is not empty %}
+      <a class="ecl-tag__item" href="{{ tag.url }}">{{ tag.label }}<span class="tags-number"> ({{ tag.value }})</span></a>
+    {% else %}
+      <span class="ecl-tag__item">{{ tag.value|default('') }}</span>
+    {% endif %}
+  {% endfor %}
+{% endif %}
