@@ -1,3 +1,12 @@
+{#
+- "tags" (array) (default: []):
+      - "label" (string) (default: ''): label tag
+      - "value" (string) (default: ''): #number tags 
+      - "href" (string) (default: ''): if not provided, a <span> would be printed
+#}
+
+{# Provides almost same as generic-component-tag.twig but span with number is missing there #}
+
 {% if tags is not empty and tags is iterable %}
   {% for tag in tags %}
     {% if tag.url is defined and tag.url is not empty %}
