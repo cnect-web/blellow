@@ -19,9 +19,8 @@
   ]
 %}
   
-{%
-  set _target = content.fut_field_media_image_link.uri_string|default('')
-%}
+{% set _target = content.fut_field_media_image_link.uri_string|default('') %}
+{% set _link_text = content.fut_field_media_image_link[0]['#title'] %}
 
 {% if _target is empty %}
   <article{{ attributes.addClass(classes) }}>
@@ -32,14 +31,14 @@
     {% endif %}
   </article>
 {% else %}
-  <a href="{{_target}}">
-  <article{{ attributes.addClass(classes) }}>
-    {{ title_suffix.contextual_links }}
-    {% if content %}
-      {# {{ content }} #}
-      {{ content|without('fut_field_media_image_link') }}
-    {% endif %}
-  </article>
+  <a href="{{_target}}" title="{{ _link_text }}">
+    <article{{ attributes.addClass(classes) }}>
+      {{ title_suffix.contextual_links }}
+      {% if content %}
+        {# {{ content }} #}
+        {{ content|without('fut_field_media_image_link') }}
+      {% endif %}
+    </article>
   </a>
 {% endif %}
 
