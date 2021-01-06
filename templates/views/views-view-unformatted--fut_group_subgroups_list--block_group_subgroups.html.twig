@@ -22,7 +22,7 @@
 {% if title %}
   <h3>{{ title }}</h3>
 {% endif %}
-<div class="views-row-wrapper">
+<div class="views-row-wrapper" id="up">
   {% set footer = '' %}
   {% for row in rows %}
     {% if loop.index <= 4 %} 
@@ -32,7 +32,7 @@
       {% set footer %}
         <footer>
           <a href="#" id="show_subgroups" class="ecl-button ecl-button--call ecl-button--caret-right">{{ 'Show all subgroups'|t }}</a>
-          <a href="#" id="hide_subgroups" class="ecl-button ecl-button--call ecl-button--caret-up" style="display:none;">{{ 'Show less subgroups'|t }}</a>
+          <a href="#up" id="hide_subgroups" class="ecl-button ecl-button--call ecl-button--caret-up" style="display:none;">{{ 'Show less subgroups'|t }}</a>
         </footer>
       {% endset %}
       <div{{ row.attributes.addClass(['ecl-list-item', 'hide']) }}>{{ row.content }}</div>
