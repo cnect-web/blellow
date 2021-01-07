@@ -1,0 +1,7 @@
+.fut-group-tags .view-content {
+  @extend .ecl-tag;     
+}
+
+.group-editor-tags a {
+  @extend .ecl-tag__item;
+}
