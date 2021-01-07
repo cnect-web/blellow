@@ -15,5 +15,19 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
 
-{% extends "views-view-unformatted--fut_group_tags.html.twig" %}
+{% for row in rows %}
+
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+      'ecl-list-item',
+    ]
+  %}
+
+  {{- row.content -}}
+  
+{% endfor %}

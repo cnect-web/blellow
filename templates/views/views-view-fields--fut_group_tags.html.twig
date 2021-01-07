@@ -29,5 +29,6 @@
  * @see template_preprocess_views_view_fields()
  */
 #}
-
-{% extends "views-view-fields--fut_group_tags.html.twig" %}
+{% for field in fields -%}
+    {{ field.content }}
+{%- endfor %}

@@ -2,6 +2,7 @@
   @extend .ecl-tag;     
 }
 
-.group-editor-tags a {
+.fut-group-tags a {
   @extend .ecl-tag__item;
+  margin-bottom: 1rem;
 }
