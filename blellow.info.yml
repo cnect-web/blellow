@@ -2,7 +2,7 @@ name: Blellow 8.x
 type: theme
 description: 'The default theme of DG-Connect for the Futurium D8 website.'
 package: Cnect
-core: 8.x
+core_version_requirement: ^8 || ^9
 libraries:
   - blellow/style
   - blellow/base
@@ -12,7 +12,7 @@ libraries:
   - blellow/meta_data
   - blellow/global-fonts
   - blellow/video
-  
+
 base theme: stable
 regions:
   site_top_bar: "Site top bar"

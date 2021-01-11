@@ -281,7 +281,13 @@ tbody tr td.views-field-sortable-handle-1 span {
  color: transparent;
 }
 
-tbody tr td.views-field-sortable-handle-1 span:before {
+tbody tr td.views-field-sortable-handle-1 i {
+  color: $ecl-color-shade;
+  margin-right: -20px;
+  width: 0px;
+}
+
+tbody tr td.views-field-sortable-handle-1 span:after {
   content: counter(row-counter);
   color: $ecl-color-shade;
   margin-left: map-get($ecl-spacing, 'xs');
