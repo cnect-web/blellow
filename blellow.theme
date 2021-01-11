@@ -16,16 +16,16 @@ use Drupal\Component\Utility\SortArray;
 use Drupal\blellow\ValueObject\FileValueObject;
 use Drupal\blellow\ValueObject\DateValueObject;
 use Drupal\blellow\ValueObject\GalleryItemValueObject;
+use Drupal\Core\Url;
 use Drupal\group\Entity\GroupContent;
 
 /**
  * Implements hook_preprocess_menu().
  */
-function blellow_preprocess_menu(array &$variables): void
-{
-  // Root items
+function blellow_preprocess_menu(array &$variables): void {
+  // Root items.
   $variables['links'] = array_map('_blellow_link2ecl_mapper', $variables['items']);
-  // Submenus
+  // Submenus.
   foreach ($variables['items'] as $name => $link) {
     $variables['links'][$name]['children_links'] = array_map('_blellow_sublink2ecl_mapper', $variables['items'][$name]['below']);
   }
@@ -33,7 +33,7 @@ function blellow_preprocess_menu(array &$variables): void
 
 /**
  * Make links compliant with ECL navigation menu data structure.
- * 
+ *
  * @param array $item
  *   Menu item.
  *
@@ -50,7 +50,7 @@ function _blellow_link2ecl_mapper($item) {
 
 /**
  * Make sublinks compliant with ECL navigation menu data structure.
- * 
+ *
  * @param array $item
  *   Menu item.
  *
@@ -73,8 +73,7 @@ function _blellow_sublink2ecl_mapper($item) {
  * @return bool
  *   The item matches the current path
  */
-function _blellow_match_path(array $item)
-{
+function _blellow_match_path(array $item) {
   if ($item['in_active_trail']) {
     return FALSE;
   }
@@ -88,8 +87,7 @@ function _blellow_match_path(array $item)
  *
  * Adds a bare, markup-free template suggestion to all paragraph fields.
  */
-function blellow_theme_suggestions_field_alter(array &$suggestions, array $variables): void
-{
+function blellow_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
   // Do not output field labels and wrapping markup for paragraph fields.
   if (isset($variables['element']['#entity_type']) && $variables['element']['#entity_type'] === 'paragraph') {
     // Prepend the new suggestion to the list. This will put it right after the
@@ -107,8 +105,7 @@ function blellow_theme_suggestions_field_alter(array &$suggestions, array $varia
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function blellow_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void
-{
+function blellow_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['elements']['#paragraph'];
 
@@ -121,8 +118,7 @@ function blellow_theme_suggestions_paragraph_alter(array &$suggestions, array $v
 /**
  * Implements hook_preprocess_paragraph().
  */
-function blellow_preprocess_paragraph__oe_links_block(array &$variables): void
-{
+function blellow_preprocess_paragraph__oe_links_block(array &$variables): void {
   // Massage data to be compliant with ECL links block component data structure.
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [
@@ -135,8 +131,7 @@ function blellow_preprocess_paragraph__oe_links_block(array &$variables): void
 /**
  * Implements hook_preprocess_paragraph__oe_accordion().
  */
-function blellow_preprocess_paragraph__oe_accordion(array &$variables): void
-{
+function blellow_preprocess_paragraph__oe_accordion(array &$variables): void {
   // Massage data to be compliant with ECL accordions component data structure.
   $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
   $variables['identifier'] = 'paragraph-' . $variables['paragraph']->id();
@@ -156,8 +151,7 @@ function blellow_preprocess_paragraph__oe_accordion(array &$variables): void
 /**
  * Implements hook_preprocess_menu_local_tasks().
  */
-function blellow_preprocess_menu_local_tasks(array &$variables): void
-{
+function blellow_preprocess_menu_local_tasks(array &$variables): void {
 
   uasort($variables['primary'], [SortArray::class, 'sortByWeightProperty']);
   foreach ($variables['primary'] as $link) {
@@ -189,16 +183,14 @@ function blellow_preprocess_menu_local_tasks(array &$variables): void
 /**
  * Implements hook_preprocess_input__radio().
  */
-function blellow_preprocess_input__radio(array &$variables): void
-{
+function blellow_preprocess_input__radio(array &$variables): void {
   _blellow_oe_theme_preprocess_input_label_wrapper($variables);
 }
 
 /**
  * Implements hook_preprocess_input__checkbox().
  */
-function blellow_preprocess_input__checkbox(array &$variables): void
-{
+function blellow_preprocess_input__checkbox(array &$variables): void {
   _blellow_oe_theme_preprocess_input_label_wrapper($variables);
 }
 
@@ -211,8 +203,7 @@ function blellow_preprocess_input__checkbox(array &$variables): void
  * @param array $variables
  *   Set of available variables.
  */
-function _blellow_oe_theme_preprocess_input_label_wrapper(array &$variables): void
-{
+function _blellow_oe_theme_preprocess_input_label_wrapper(array &$variables): void {
   $element = &$variables['element'];
   $variables['has_error'] = !empty($element['#errors']);
 
@@ -248,8 +239,7 @@ function _blellow_oe_theme_preprocess_input_label_wrapper(array &$variables): vo
  * Disables displaying of the label for checkbox and radio elements, as the
  * label is already rendered in the input template.
  */
-function blellow_preprocess_form_element(array &$variables): void
-{
+function blellow_preprocess_form_element(array &$variables): void {
   if (in_array($variables['element']['#type'], ['checkbox', 'radio'])) {
     $variables['label_display'] = 'none';
   }
@@ -264,13 +254,14 @@ function blellow_preprocess_form_element(array &$variables): void
  * guide pager component requirements.
  * Most of the bare-bones are copy-pasted from the Drupal implementation.
  */
-function blellow_preprocess_pager(array &$variables): void
-{
+function blellow_preprocess_pager(array &$variables): void {
   $element = $variables['pager']['#element'];
   $parameters = $variables['pager']['#parameters'];
   $route_name = $variables['pager']['#route_name'];
   $route_parameters = $variables['pager']['#route_parameters'] ?? [];
   global $pager_page_array, $pager_total;
+
+  $pager_manager = \Drupal::service('pager.manager');
 
   // Nothing to do if there is only one page.
   if ($pager_total[$element] <= 1) {
@@ -298,7 +289,7 @@ function blellow_preprocess_pager(array &$variables): void
   if ($pager_page_array[$element] > 0) {
     $variables['items']['first'] = [];
     $options = [
-      'query' => pager_query_add_page($parameters, $element, 0),
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, 0),
     ];
     $variables['items']['first']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     $variables['items']['first']['text'] = '1';
@@ -306,7 +297,7 @@ function blellow_preprocess_pager(array &$variables): void
 
     $variables['items']['previous'] = [];
     $options = [
-      'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] - 1),
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_page_array[$element] - 1),
     ];
     $variables['items']['previous']['href'] = \Drupal::url($route_name, $route_parameters, $options);
     $variables['items']['previous']['text'] = t('‹ Previous');
@@ -330,9 +321,9 @@ function blellow_preprocess_pager(array &$variables): void
       }
 
       $options = [
-        'query' => pager_query_add_page($parameters, $element, $i - 1),
+        'query' => $pager_manager->getUpdatedParameters($parameters, $element, $i - 1),
       ];
-      $variables['items']['pages'][$i]['href'] = \Drupal::url($route_name, $route_parameters, $options);
+      $variables['items']['pages'][$i]['href'] = new Url($route_name, $route_parameters, $options);
       if ($i == $pager_current) {
         $variables['current'] = $i;
       }
@@ -346,18 +337,18 @@ function blellow_preprocess_pager(array &$variables): void
     // Setting up variables for the next page link.
     $variables['items']['next'] = [];
     $options = [
-      'query' => pager_query_add_page($parameters, $element, $pager_page_array[$element] + 1),
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_page_array[$element] + 1),
     ];
-    $variables['items']['next']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['next']['href'] = new Url($route_name, $route_parameters, $options);
     $variables['items']['next']['text'] = t('Next ›');
     $variables['items']['next']['title'] = t('Go to next page');
 
     // Setting up the variables for the last page link.
     $variables['items']['last'] = [];
     $options = [
-      'query' => pager_query_add_page($parameters, $element, $pager_max - 1),
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_max - 1),
     ];
-    $variables['items']['last']['href'] = \Drupal::url($route_name, $route_parameters, $options);
+    $variables['items']['last']['href'] = new Url($route_name, $route_parameters, $options);
     $variables['items']['last']['text'] = (string) $pager_total[$element];
     $variables['items']['last']['title'] = t('Go to page @number', ['@number' => $pager_total[$element]]);
   }
@@ -369,8 +360,7 @@ function blellow_preprocess_pager(array &$variables): void
 /**
  * Implements hook_preprocess_links().
  */
-function blellow_preprocess_links__language_block(array &$variables): void
-{
+function blellow_preprocess_links__language_block(array &$variables): void {
   $current_language = \Drupal::languageManager()
     ->getCurrentLanguage()
     ->getId();
@@ -395,8 +385,7 @@ function blellow_preprocess_links__language_block(array &$variables): void
 /**
  * Implements hook_preprocess_links__cnect_corporate_blocks_select_languages().
  */
-function blellow_preprocess_cnect_corporate_blocks_select_languages(array &$variables): void
-{
+function blellow_preprocess_cnect_corporate_blocks_select_languages(array &$variables): void {
   blellow_preprocess_links__language_block($variables);
 }
 
@@ -406,8 +395,7 @@ function blellow_preprocess_cnect_corporate_blocks_select_languages(array &$vari
  * Adds extra variables regarding the current and the unavailable languages,
  * and prepares the links for rendering.
  */
-function blellow_preprocess_links__oe_multilingual_content_language_block(array &$variables): void
-{
+function blellow_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
   $entity = \Drupal::service('oe_multilingual.helper')->getEntityFromCurrentRoute();
   /** @var \Drupal\Core\Entity\EntityInterface $translation */
   $translation = \Drupal::service('oe_multilingual.helper')->getCurrentLanguageEntityTranslation($entity);
@@ -440,8 +428,7 @@ function blellow_preprocess_links__oe_multilingual_content_language_block(array 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_dialog(array &$variables): void
-{
+function blellow_preprocess_pattern_dialog(array &$variables): void {
   // Make sure it has default values.
   $variables += [
     'dialog_id' => Html::getUniqueId('ecl-dialog'),
@@ -468,8 +455,7 @@ function blellow_preprocess_pattern_dialog(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_gallery__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_gallery__preview(array &$variables): void {
   foreach ($variables['items'] as &$item) {
     $item = GalleryItemValueObject::fromArray($item);
   }
@@ -481,8 +467,7 @@ function blellow_preprocess_pattern_gallery__preview(array &$variables): void
  * @param array $variables
  *   The params.
  */
-function blellow_preprocess_pattern_page_header(array &$variables): void
-{
+function blellow_preprocess_pattern_page_header(array &$variables): void {
   $variables['#attached']['library'][] = 'blellow/group_header';
 
   $title = $variables['title'];
@@ -493,8 +478,7 @@ function blellow_preprocess_pattern_page_header(array &$variables): void
 /**
  * TODO: prefix the block eg fut_group_page_header.
  */
-function blellow_preprocess_page_header_block(array &$variables): void
-{
+function blellow_preprocess_page_header_block(array &$variables): void {
 
   $variables['#attached']['library'][] = 'blellow/group_header';
 
@@ -533,8 +517,7 @@ function blellow_preprocess_page_header_block(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_accordion(array &$variables): void
-{
+function blellow_preprocess_pattern_accordion(array &$variables): void {
   // If no identifier is provided generate a random, unique one.
   if (empty($variables['identifier'])) {
     $random = new Random();
@@ -559,8 +542,7 @@ function blellow_preprocess_pattern_accordion(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_dropdown(array &$variables): void
-{
+function blellow_preprocess_pattern_dropdown(array &$variables): void {
   $defaults = [
     'wrapper_id' => 'ecl-button-dropdown',
     'expandable_id' => 'expandable-ecl-button-dropdown',
@@ -584,8 +566,7 @@ function blellow_preprocess_pattern_dropdown(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_link_block(array &$variables): void
-{
+function blellow_preprocess_pattern_link_block(array &$variables): void {
   // Format links in order to respect ECL expectations.
   foreach ($variables['links'] as $key => $link) {
     $variables['links'][$key]['href'] = $link['url'];
@@ -595,8 +576,7 @@ function blellow_preprocess_pattern_link_block(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function _blellow_oe_theme_preprocess_pattern_social_media_links(array &$variables): void
-{
+function _blellow_oe_theme_preprocess_pattern_social_media_links(array &$variables): void {
   // Format social media links in order to respect ECL expectations.
   foreach ($variables['links'] as $key => $link) {
     $variables['links'][$key]['variant'] = $link['service'];
@@ -610,16 +590,14 @@ function _blellow_oe_theme_preprocess_pattern_social_media_links(array &$variabl
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_social_media_links_vertical(array &$variables): void
-{
+function blellow_preprocess_pattern_social_media_links_vertical(array &$variables): void {
   _blellow_oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_social_media_links_horizontal(array &$variables): void
-{
+function blellow_preprocess_pattern_social_media_links_horizontal(array &$variables): void {
   _blellow_oe_theme_preprocess_pattern_social_media_links($variables);
 }
 
@@ -628,8 +606,7 @@ function blellow_preprocess_pattern_social_media_links_horizontal(array &$variab
  *
  * Add css class for splash page.
  */
-function blellow_preprocess_html(array &$variables): void
-{
+function blellow_preprocess_html(array &$variables): void {
   if ('language_selection_page' === \Drupal::request()->attributes->get('_route')) {
     $variables['attributes']['class'][] = 'page-splash';
   }
@@ -638,8 +615,7 @@ function blellow_preprocess_html(array &$variables): void
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
  */
-function blellow_preprocess_paragraph__oe_list_item(array &$variables): void
-{
+function blellow_preprocess_paragraph__oe_list_item(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -689,8 +665,7 @@ function blellow_preprocess_paragraph__oe_list_item(array &$variables): void
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
  */
-function blellow_preprocess_paragraph__oe_list_item_block(array &$variables): void
-{
+function blellow_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -714,8 +689,7 @@ function blellow_preprocess_paragraph__oe_list_item_block(array &$variables): vo
  * Prepares the inpage navigation by creating links for the inner paragraphs
  * that implement a title.
  */
-function blellow_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void
-{
+function blellow_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -761,8 +735,7 @@ function blellow_preprocess_paragraph__oe_content_row__variant_inpage_navigation
 /**
  * Implements hook_preprocess_pattern().
  */
-function blellow_preprocess_pattern_date_block(array &$variables): void
-{
+function blellow_preprocess_pattern_date_block(array &$variables): void {
   // This make sure that the variant value will always fallback to
   // "default" if an empty or not valid value is passed.
   $variants = [
@@ -780,16 +753,14 @@ function blellow_preprocess_pattern_date_block(array &$variables): void
 /**
  * Implements hook_preprocess_pattern_file__preview().
  */
-function blellow_preprocess_pattern_file__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_file__preview(array &$variables): void {
   $variables['file'] = FileValueObject::fromArray($variables['file']);
 }
 
 /**
  * Implements hook_preprocess_pattern_file_link__preview().
  */
-function blellow_preprocess_pattern_file_link__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_file_link__preview(array &$variables): void {
   $variables['files'] = array_map(
     function ($file) {
       return FileValueObject::fromArray($file);
@@ -801,8 +772,7 @@ function blellow_preprocess_pattern_file_link__preview(array &$variables): void
 /**
  * Implements hook_preprocess_pattern_file_translation().
  */
-function blellow_preprocess_pattern_file_translation(array &$variables): void
-{
+function blellow_preprocess_pattern_file_translation(array &$variables): void {
   // This is defined in ui_patterns contrib module in ui_patterns_theme().
   if ($variables['translations'] !== NULL) {
     return;
@@ -816,8 +786,7 @@ function blellow_preprocess_pattern_file_translation(array &$variables): void
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_file_translation__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_file_translation__preview(array &$variables): void {
   $variables['file'] = FileValueObject::fromArray($variables['file']);
 
   foreach ((array) $variables['translations'] as $index => $translation) {
@@ -828,40 +797,35 @@ function blellow_preprocess_pattern_file_translation__preview(array &$variables)
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_list_item__variant_date__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_list_item__variant_date__preview(array &$variables): void {
   $variables['date'] = DateValueObject::fromArray($variables['date']);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function blellow_preprocess_pattern_date_block__preview(array &$variables): void
-{
+function blellow_preprocess_pattern_date_block__preview(array &$variables): void {
   $variables['date'] = DateValueObject::fromArray($variables['date']);
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function blellow_theme_suggestions_form_alter(array &$suggestions, array $variables): void
-{
+function blellow_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
   $suggestions[] = $variables['theme_hook_original'] . '__' . $variables['element']['#form_id'];
 }
 
 /**
  * Implements hook_preprocess_input().
  */
-function blellow_preprocess_input__search(array &$variables): void
-{
+function blellow_preprocess_input__search(array &$variables): void {
   _blellow_oe_theme_preprocess_input_text($variables['element']);
 }
 
 /**
  * Implements hook_preprocess_form().
  */
-function blellow_preprocess_form__oe_search_search_form(array &$variables): void
-{
+function blellow_preprocess_form__oe_search_search_form(array &$variables): void {
   _blellow_oe_theme_preprocess_input_text($variables['element']['keys']);
   $variables['input'] = $variables['element']['keys']['ecl_array'];
   $variables['label'] = t('Search');
@@ -876,8 +840,7 @@ function blellow_preprocess_form__oe_search_search_form(array &$variables): void
  * @param array $element
  *   Set of element data.
  */
-function _blellow_oe_theme_preprocess_input_text(array &$element): void
-{
+function _blellow_oe_theme_preprocess_input_text(array &$element): void {
   // Generate the extra attributes array from the general attributes.
   $extra_attributes = !empty($element['#attributes']) ? $element['#attributes'] : [];
   $element['ecl_array'] = [
@@ -908,8 +871,7 @@ function _blellow_oe_theme_preprocess_input_text(array &$element): void
  *
  * https://ui-patterns.readthedocs.io/en/8.x-1.x/content/developer-documentation.html
  */
-function blellow_ui_patterns_suggestions_alter(array &$suggestions, array $variables, $context)
-{
+function blellow_ui_patterns_suggestions_alter(array &$suggestions, array $variables, $context) {
   // kint($variables);
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_header';
@@ -918,8 +880,7 @@ function blellow_ui_patterns_suggestions_alter(array &$suggestions, array $varia
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$suggestions, array $variables): void
-{
+function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$suggestions, array $variables): void {
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_footer';
 }
@@ -927,8 +888,7 @@ function blellow_theme_suggestions_oe_corporate_blocks_footer_alter(array &$sugg
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$suggestions, array $variables): void
-{
+function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$suggestions, array $variables): void {
   $hook = $variables['theme_hook_original'];
   $suggestions[] = $hook . '__futurium_footer';
 }
@@ -936,8 +896,7 @@ function blellow_theme_suggestions_cnect_corporate_blocks_footer_alter(array &$s
 /**
  * Implements hook_theme_preprocess_HOOK().
  */
-function blellow_preprocess_field(&$variables, $hook)
-{
+function blellow_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
 
   // Resolve and call the local hook for the particular field_name,
@@ -969,8 +928,7 @@ function blellow_preprocess_field(&$variables, $hook)
  * @param string $hook
  *   Hook name.
  */
-function blellow_preprocess_image(array &$variables, $hook): void
-{
+function blellow_preprocess_image(array &$variables, $hook): void {
   $capture = ['src', 'alt', 'typeof'];
   $attributes = $variables['attributes'];
 
@@ -978,14 +936,13 @@ function blellow_preprocess_image(array &$variables, $hook): void
     $variables[$key] = _blellow_capture_and_unset($attributes, $key);
   }
   $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
-  $variables['extra_attributes'] = $namevalue;
+  $element['ecl_array']['extra_attributes'] = $namevalue;
 }
 
 /**
  * Implements hook_preprocess_menu__main().
  */
-function blellow_preprocess_group_navigation(array &$variables): void
-{
+function blellow_preprocess_group_navigation(array &$variables): void {
 
   $current_path = \Drupal::request()->getRequestUri();
 
@@ -1001,8 +958,7 @@ function blellow_preprocess_group_navigation(array &$variables): void
 /**
  * Implements hook_form_comment_form_alter().
  */
-function blellow_form_comment_form_alter(&$form, &$form_state)
-{
+function blellow_form_comment_form_alter(&$form, &$form_state) {
   // We could also  hide($form['subject']);.
   $form['subject']['#access'] = FALSE;
 }
@@ -1010,11 +966,12 @@ function blellow_form_comment_form_alter(&$form, &$form_state)
 /**
  * Implements hook_preprocess_node().
  */
-function blellow_preprocess_node(&$variables)
-{
+function blellow_preprocess_node(&$variables) {
   /* todo: can be removed as not used now */
   $node = $variables['node'];
-  $variables['avatar'] = user_view($node->getOwner(), 'fut_default_thumbnail');
+  $variables['avatar'] = \Drupal::entityTypeManager()
+    ->getViewBuilder('user')
+    ->view($node->getOwner(), 'fut_default_thumbnail');
 
   /* Bring group info to the nodes */
   $group_content_entity = GroupContent::loadByEntity($node);
@@ -1026,7 +983,7 @@ function blellow_preprocess_node(&$variables)
       $group = $group_content->getGroup();
       $variables['group_id'] = $group->id();
       $variables['group_label'] = $group->label();
-      $variables['group_url'] = $group->url();
+      $variables['group_url'] = $group->toUrl();
       $group_short_name = $group->get('fut_short_name')->getValue();
       $variables['group_short_name'] = reset($group_short_name);
       $logo = $group->get('fut_logo')->getValue();
@@ -1038,8 +995,7 @@ function blellow_preprocess_node(&$variables)
 /**
  * Implements hook_preprocess_menu_local_action().
  */
-function blellow_preprocess_menu_local_action(&$variables)
-{
+function blellow_preprocess_menu_local_action(&$variables) {
   $variables['link']['#options']['attributes']['class'][] = 'ecl-button';
   $variables['link']['#options']['attributes']['class'][] = 'ecl-button--default';
 }
@@ -1050,20 +1006,17 @@ function blellow_preprocess_menu_local_action(&$variables)
  *   An array of alternate, more specific names for template files or theme
  *   functions.
  */
-function blellow_theme_suggestions_user_alter(&$suggestions, $vars, $hook)
-{
-
+function blellow_theme_suggestions_user_alter(&$suggestions, $vars, $hook) {
   // Define the view mode.
   $mode = $vars['elements']['#view_mode'];
   // Create a theme hook suggestion which has the view mode name in it.
-  $suggestions[] = 'user__' . $mode;
+  $suggestions[] = "user__$mode";
 }
 
 /**
  * Implements hook_preprocess_media().
  */
-function blellow_preprocess_media(array &$variables): void
-{
+function blellow_preprocess_media(array &$variables): void {
   if (array_key_exists('field_media_file', $variables['content'])) {
     _blellow_preprocess_media__field_media_file($variables);
   };
@@ -1076,23 +1029,22 @@ function blellow_preprocess_media(array &$variables): void
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
-{
+function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   /* Translate submit button exposed filters */
   if (isset($form['actions']['submit'])) {
     $form['actions']['submit']['#value'] = t($form['actions']['submit']['#value']);
   }
-  
+
   /* Translate label Sort by - should be handled by form_element_label_alter */
   if (isset($form['sort_by']['#title'])) {
     $form['sort_by']['#title'] = t($form['sort_by']['#title']);
   }
-  
+
   /* Translate label Sort by - should be handled by form_element_label_alter */
   if (isset($form['#info']['filter-label']['label'])) {
     $form['#info']['filter-label']['label'] = t($form['#info']['filter-label']['label']);
   }
-  
+
   // TODO it is not needed any more due to gitlab issue#243.
   if ($form['#id'] == 'views-exposed-form-fut-group-posts-management-default') {
     $form['#attributes']['class'][] = 'group-post-management';
@@ -1105,8 +1057,7 @@ function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_
  * Adds twig template suggestion for the group homepage.
  */
 
-function blellow_theme_suggestions_page_alter(&$suggestions, &$vars)
-{
+function blellow_theme_suggestions_page_alter(&$suggestions, &$vars) {
   $request = \Drupal::routeMatch()->getRouteObject()->getPath();
   if ($request == '/group/{group}') {
     $suggestions[] = 'page__group__front';
@@ -1144,8 +1095,7 @@ function blellow_theme_suggestions_form_element_label_alter(&$suggestions, &$var
  * Implements hook_preprocess_swiftmailer().
  */
 
-function blellow_preprocess_swiftmailer(&$variables)
-{
+function blellow_preprocess_swiftmailer(&$variables) {
   $variables['base_path'] = \Drupal::request()->getSchemeAndHttpHost() . '/';
 }
 
@@ -1162,8 +1112,7 @@ function blellow_theme_suggestions_image_formatter_alter(array &$suggestions, ar
 /**
  * Implements hook_preprocess_media() for media_file field.
  */
-function _blellow_preprocess_media__field_media_file(array &$variables): void
-{
+function _blellow_preprocess_media__field_media_file(array &$variables): void {
   $media_file = $variables['content']['field_media_file'];
   foreach ($media_file as $key => $value) {
     if (is_numeric($key)) {
@@ -1177,13 +1126,16 @@ function _blellow_preprocess_media__field_media_file(array &$variables): void
 /**
  * mplements hook_preprocess_media() for media_file field.
  */
-function _blellow_preprocess_media__fut_field_media_image_link(array &$variables): void
-{
+function _blellow_preprocess_media__fut_field_media_image_link(array &$variables): void {
   $image_link = $variables['content']['fut_field_media_image_link'];
-  if (!isset($image_link['#items'])) { return; };
+  if (!isset($image_link['#items'])) {
+    return;
+  }
   $items = $image_link['#items'];
   $link = $items->first();
-  if(!isset($link)) { return; };
+  if (!isset($link)) {
+    return;
+  }
   $url_string = $link->getUrl()->toString();
   $variables['content']['fut_field_media_image_link']['uri_string'] = $url_string;
 }
@@ -1198,8 +1150,7 @@ function _blellow_preprocess_media__fut_field_media_image_link(array &$variables
  * @return array
  *   A name/value pair array
  */
-function _blellow_namevalue_mapper($value, $key)
-{
+function _blellow_namevalue_mapper($value, $key) {
   return ['name' => $key, 'value' => $value];
 }
 
@@ -1214,8 +1165,7 @@ function _blellow_namevalue_mapper($value, $key)
  * @return mixed
  *   The captured value.
  */
-function _blellow_capture_and_unset(array &$array, $key)
-{
+function _blellow_capture_and_unset(array &$array, $key) {
   $value = NULL;
   if (array_key_exists($key, $array)) {
     $value = $array[$key];
@@ -1237,8 +1187,7 @@ function _blellow_capture_and_unset(array &$array, $key)
  * @return mixed|string
  *   Reduced Title.
  */
-function _blellow_title_reduce($title)
-{
+function _blellow_title_reduce($title) {
   $title = $title ?? '';
   if (is_scalar($title)) {
     return $title;
@@ -1258,8 +1207,7 @@ function _blellow_title_reduce($title)
  * @param string $hook
  *   Hook name.
  */
-function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hook): void
-{
+function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hook): void {
   // See https://api.drupal.org/api/drupal/core!includes!theme.inc/function/template_preprocess_field/8.6.x
   $variable_name = 'cnect_tag_items';
   $variables[$variable_name] = [];
@@ -1287,8 +1235,7 @@ function _blellow_preprocess_field__extra_field_fut_tags(array &$variables, $hoo
  * @param string $hook
  *   Hook name.
  */
-function _blellow_preprocess_field__fut_registration_form(array &$variables, $hook): void
-{
+function _blellow_preprocess_field__fut_registration_form(array &$variables, $hook): void {
   // TODO: Find a better way to prevent a field from get rendered.
   $group = $variables['element']['#object'];
   $show = $group->get('fut_registration_form_inhome')->value;
@@ -1309,8 +1256,7 @@ function _blellow_preprocess_field__fut_registration_form(array &$variables, $ho
  * @return string
  *   The encoded tag.
  */
-function _blellow_encode_tag(string $tag, string $term_name): string
-{
+function _blellow_encode_tag(string $tag, string $term_name): string {
   if (empty(\Drupal::hasService('pathauto.alias_cleaner'))) {
     return $tag;
   }
@@ -1325,8 +1271,7 @@ function _blellow_encode_tag(string $tag, string $term_name): string
  * @param string $hook
  *   Hook name.
  */
-function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void
-{
+function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): void {
   $element = $variables['element'];
   if (isset($element[0]['start_date'])) {
     $data['start'] = strtotime($element[0]['start_date']['#attributes']['datetime']);
@@ -1349,8 +1294,7 @@ function _blellow_preprocess_field__fut_event_date(array &$variables, $hook): vo
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function blellow_theme_suggestions_menu_alter(array &$suggestions, array $variables)
-{
+function blellow_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   // Add theme suggestion for group navigation menus.
   if (_blellow_is_group_menu($variables['menu_name'])) {
     $suggestions[] = 'menu__group_navigation';
@@ -1366,8 +1310,7 @@ function blellow_theme_suggestions_menu_alter(array &$suggestions, array $variab
  * @return bool
  *   TRUE if is a group navigation menu.
  */
-function _blellow_is_group_menu(string $menu_name)
-{
+function _blellow_is_group_menu(string $menu_name) {
   $re = '/group-([([0-9]+)-navigation/m';
   return (bool) preg_match_all($re, $menu_name, $matches, PREG_SET_ORDER, 0);
 }
