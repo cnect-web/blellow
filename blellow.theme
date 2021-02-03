@@ -1078,6 +1078,24 @@ function blellow_theme_suggestions_select_alter(&$suggestions, &$vars) {
 }
 
 /**
+ * Implements hook_preprocess_links().
+ *
+ * Replaces "Log in or register to post comments" to "Log in to post comments"  
+ *
+ */
+
+function blellow_preprocess_links__node(&$variables) {
+  if (isset($variables['links']['comment-forbidden'])) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $destination = ['destination' => $node->toUrl('canonical', ['fragment' => 'comment-form'])->toString()];
+
+    $variables['links']['comment-forbidden']['text'] = t('<a href=":login">Log in</a> to post comments', [
+      ':login' => Url::fromRoute('user.login', [], ['query' => $destination])->toString(),
+    ]);
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter().
  *
  * Adds twig template suggestion for form element label (used in exposed filters)
