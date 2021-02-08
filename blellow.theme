@@ -1026,6 +1026,15 @@ function blellow_preprocess_media(array &$variables): void {
   };
 }
 
+function blellow_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  $variables['display_id'] = $view->current_display;
+  if($variables['display_id'] == "block_featured_groups") {
+    $variables['more']['#title'] = t('More Link override');
+    $variables['footer']['area']['#text'] = t('<a href="/groups">View footer override</a>');
+  }
+}
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
