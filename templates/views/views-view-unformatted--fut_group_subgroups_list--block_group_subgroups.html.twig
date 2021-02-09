@@ -25,10 +25,10 @@
 <div class="views-row-wrapper">
   {% set footer = '' %}
   {% for row in rows %}
-    {% if loop.index <= 4 %} 
+    {% if loop.index <= 4 or show_all_subgroups == 1  %} 
       <div {{ row.attributes.addClass('ecl-list-item') }}>{{ row.content }}</div> 
     {% endif %} 
-    {% if loop.index > 4 %} 
+    {% if loop.index > 4 and show_all_subgroups != 1 %} 
       {% set footer %}
         <footer>
           <a href="#" id="show_subgroups" class="ecl-button ecl-button--call ecl-button--caret-right">{{ 'Show all subgroups'|t }}</a>

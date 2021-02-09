@@ -1052,6 +1052,23 @@ function blellow_form_views_exposed_form_alter(&$form, FormStateInterface $form_
 }
 
 /**
+ * Implements template_preprocess_views_view_unformatted.
+ * TEMP solution:
+ * Show all subgroups instead of 4 in fut_group_subgroups_list on group HP
+ */
+
+function blellow_preprocess_views_view_unformatted(&$variables) {
+  $view = $variables['view'];
+  $view_display = $view->current_display;
+  if($view_display == "block_group_subgroups") {
+    $group_id = $view->args[0];
+    if($group_id == 15) {
+      $variables['show_all_subgroups'] = 1;
+    }
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter().
  *
  * Adds twig template suggestion for the group homepage.
