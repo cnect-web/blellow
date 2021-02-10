@@ -25,3 +25,25 @@
 .ecl-file + .fut_external_url.bl-field {
   padding-top: 0;
 }
+
+/* to be reviewed - author and year of publication */
+
+.media--type-fut-document .fut_author.bl-field,
+.media--type-fut-document .fut_year_of_publication.bl-field {
+  margin-top: -1rem;
+  padding: 0 1.66rem 1.66rem;
+}
+ 
+.media--type-fut-document .fut_author.bl-field *,
+.media--type-fut-document .fut_year_of_publication.bl-field * {
+  display: inline;
+}
+ 
+.media--type-fut-document .fut_author.bl-field,
+.media--type-fut-document .fut_year_of_publication.bl-field {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  margin-top: 0.33rem;
+  margin-bottom: -1.66rem;
+  padding-bottom: 1.66rem
+}
