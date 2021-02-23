@@ -1,49 +1,35 @@
 .media--type-fut-document {
   background: #ebebeb;
   
-  .fut_author.bl-field{
+  .fut_author.bl-field, 
+  .fut_year_of_publication.bl-field,
+  .fut_external_url.bl-field {
     @extend .ecl-file__info;
 
-    margin-top: - map-get($ecl-spacing, 's');
-    padding: 0 map-get($ecl-spacing, 'm') map-get($ecl-spacing, 'm');
+    color: #404040;
+    font-size: map-get($ecl-font-size, 's');
+    margin: 0 0 map-get($ecl-spacing, 'xxs') 0;
+    padding: 0 map-get($ecl-spacing, 'm') 0 map-get($ecl-spacing, 'm');
 
     * {
       display: inline;
     }
   }
+  
+/* only for external URL */
+  
+  .fut_external_url.bl-field {
+      padding-top: map-get($ecl-spacing, 'm');
+  }
+  
+/* last field */
+  
+  .bl-field:last-child {
+      padding-bottom: map-get($ecl-spacing, 'm');
+  }
 }
 
-/* Link to external document */
-
-.fut_external_url.bl-field {
-  background: #ebebeb;
-  padding: map-get($ecl-spacing, 'm');
-}
-
-/* Document followed by a link to an external document */
-
-.ecl-file + .fut_external_url.bl-field {
+.media--type-fut-document .ecl-file + .bl-field {
+  margin-top: 0;
   padding-top: 0;
-}
-
-/* to be reviewed - author and year of publication */
-
-.media--type-fut-document .fut_author.bl-field,
-.media--type-fut-document .fut_year_of_publication.bl-field {
-  margin-top: -1rem;
-  padding: 0 1.66rem 1.66rem;
-}
- 
-.media--type-fut-document .fut_author.bl-field *,
-.media--type-fut-document .fut_year_of_publication.bl-field * {
-  display: inline;
-}
- 
-.media--type-fut-document .fut_author.bl-field,
-.media--type-fut-document .fut_year_of_publication.bl-field {
-  font-size: 0.875rem;
-  line-height: 1.3;
-  margin-top: 0.33rem;
-  margin-bottom: -1.66rem;
-  padding-bottom: 1.66rem
 }
