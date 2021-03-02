@@ -9,5 +9,9 @@
 
     margin-bottom: map-get($ecl-spacing, 's');
   }
+  
+  .ecl-message {
+    margin-top: map-get($ecl-spacing, 'm');
+  }
 
 }
