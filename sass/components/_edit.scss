@@ -497,3 +497,27 @@ details.form-wrapper {
 .user-blocked .views-field-name::before {
 	content: fa-content($fa-var-user-lock);
 }
+
+// published and unpublished content 
+
+tr.node-status {
+  .views-field-status span {
+    border-radius: map-get($ecl-spacing, 'xxxs');
+    display: inline-block;
+    padding: map-get($ecl-spacing, 'xxxs');
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+tr.node-status--published {
+  .views-field-status span {
+    background: $ecl-color-success;    
+  }
+}
+
+tr.node-status--unpublished {
+  .views-field-status span {
+    background: $ecl-color-warning;
+  }
+}
