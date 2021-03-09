@@ -928,16 +928,20 @@ function blellow_preprocess_field(&$variables, $hook) {
  * @param string $hook
  *   Hook name.
  */
+ 
 function blellow_preprocess_image(array &$variables, $hook): void {
   $capture = ['src', 'alt', 'typeof'];
   $attributes = $variables['attributes'];
-
+ 
   foreach ($capture as &$key) {
     $variables[$key] = _blellow_capture_and_unset($attributes, $key);
   }
+ 
   $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
-  $element['ecl_array']['extra_attributes'] = $namevalue;
+  $variables['element']['ecl_array']['extra_attributes'] = $namevalue;
 }
+
+
 
 /**
  * Implements hook_preprocess_menu__main().
@@ -1199,7 +1203,7 @@ function _blellow_preprocess_media__fut_field_media_image_link(array &$variables
  *   A name/value pair array
  */
 function _blellow_namevalue_mapper($value, $key) {
-  return ['name' => $key, 'value' => $value];
+  return ['name' => $key, 'value' => is_array($value) ? implode(' ', $value) : $value];
 }
 
 /**
