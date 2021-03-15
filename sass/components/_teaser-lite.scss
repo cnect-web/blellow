@@ -3,6 +3,7 @@
 .teaser--fut-teaser-lite {
 
   .teaser__header {
+    display: none;
     margin-bottom:  map-get($ecl-spacing, 'xxs');
   }
 
@@ -26,13 +27,11 @@
   }
 }
 
-/* Remove teaser header in subgroups */
+/* show teaser lite on HP and has-subgroup pages */
 
-.is-subgroup .teaser--fut-teaser-lite {
+.has-subgroups .teaser--fut-teaser-lite,
+.block-views-blockfut-my-contributions-block-my-contributions .teaser--fut-teaser-lite {
   .teaser__header {
-    display: none;
-  }
-  .teaser__body {
-    margin-top: map-get($ecl-spacing, 'm');
+    display: block;
   }
 }

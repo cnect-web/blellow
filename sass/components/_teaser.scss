@@ -119,9 +119,16 @@
 
 // hide group name & group image in subgroups
 
-.is-subgroup .teaser__group-info {
+.teaser__group-info {
   span {
     display: none;
+  }
+}
+
+.has-subgroups .teaser__group-info,
+.path-frontpage .teaser__group-info{
+  span {
+    display: block;
   }
 }
 
