@@ -60,6 +60,7 @@
 }
  
 /* Implement messages classes
+ * These are the messages when you upload a document 
  *
  * .ecl-message
  * .ecl-message--success
@@ -72,9 +73,12 @@
   @extend .ecl-message;
 
   align-items: center;
+  // Override grid 
+  display: block;
   grid-column-gap: 0.3em;
   grid-template-columns: min-content 1fr;
   min-height: calc(36px + 0.66rem);
+
 }
 
 .messages--status {
