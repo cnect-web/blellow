@@ -136,3 +136,9 @@ body div.tabledrag-changed-warning {
 .ecl-tag__item {
   white-space: normal;
 }
+
+/* Fix color webtools countdown */
+
+.wtCdown p.wtCdown-local {
+  color: #fff;
+}
