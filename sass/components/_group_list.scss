@@ -5,7 +5,7 @@
     'group-logo group-label'
     'group-logo group-description'
     'group-logo group-join';
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 40px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
 /*  &--no-image {
     grid-template-areas:
@@ -45,5 +45,20 @@
 
   .extra-field--join-group {
     grid-area: group-join;
+  }
+}
+
+.fut-groups-list .views-row-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  column-gap: map-get($ecl-spacing, 'xl');
+
+  @include ecl-media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+    
+  @include ecl-media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
