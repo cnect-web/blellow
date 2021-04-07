@@ -8,6 +8,22 @@
   grid-template-columns: 40px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
   
+  .fut_new {
+    
+  }
+  
+  .public {
+      display: none;
+      &::after {
+        @extend %fa-icon;
+        @extend .fas;
+        @extend .fa-fw;
+    	  color: $ecl-color-primary;
+        content: fa-content($fa-var-user-lock);
+      }
+  }
+  
+  
   .img-placeholder {
     background: #f7f7f7 url($ecl-assets-path+'images/default_group_icon.png');
     height: 40px;
@@ -19,14 +35,19 @@
     grid-area: group-logo;
     margin-bottom: 0;
   }
-
+  
   h3 {
+    display: inline-block;
+  }
+
+  .test {
     grid-area: group-label;
     margin-top: 0;
-    
+
     @include fut-header-3;
     a {
       text-decoration: none;
+      display: inline-block;
       &:hover {
         color: $ecl-color-shade;
         text-decoration: underline;

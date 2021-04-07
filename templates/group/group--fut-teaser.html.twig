@@ -55,5 +55,17 @@
       </a>
     </div>
   {% endif  %}
-  {{ content }}
+
+
+    {#{{ content }}#}
+  
+    <div class="test">
+      <span class="public">{{ group_is_public }}</span> <span> {{ content.label }} </span> <span class="fut_new">{{ group_is_new }}</span> 
+    </div>
+    {{ content.fut_description }}
+    {{ content.extra_field_join_group }}
+
 </article>
+
+{{ kint(content.label) }}
+{#{{ kint(parent_group) }}#}
