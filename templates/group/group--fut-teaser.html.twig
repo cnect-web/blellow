@@ -56,16 +56,17 @@
     </div>
   {% endif  %}
 
-
-    {#{{ content }}#}
-  
     <div class="test">
       <span class="public">{{ group_is_public }}</span> <span> {{ content.label }} </span> <span class="fut_new">{{ group_is_new }}</span> 
     </div>
     {{ content.fut_description }}
     {{ content.extra_field_join_group }}
 
+
 </article>
 
-{{ kint(content.label) }}
-{#{{ kint(parent_group) }}#}
+{% set parent_group_id = parent_group.id[0].value %}
+{% set parent_group_label = parent_group.label[0].value %}
+{% set parent_group_path = parent_group.path[0].value.alias %}
+
+Part of <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }} </a>
