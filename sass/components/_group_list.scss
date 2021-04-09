@@ -7,22 +7,32 @@
     'group-logo group-join';
   grid-template-columns: 40px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
+
+  .group-privacy {
+    &::before {
+      @extend %fa-icon;
+      @extend .fas;
+      @extend .fa-fw;
+    	color: $ecl-color-primary;
+    	display: inline;
+    }
+  }
   
   .fut_new {
-    
+    background-color: $ecl-color-primary;
+    color: #fff;
+    padding: map-get($ecl-spacing, 'xxxs');
+    text-transform: uppercase;
+    font-size: map-get($ecl-font-size, 'xs');
   }
   
-  .public {
-      display: none;
-      &::after {
-        @extend %fa-icon;
-        @extend .fas;
-        @extend .fa-fw;
-    	  color: $ecl-color-primary;
-        content: fa-content($fa-var-user-lock);
-      }
-  }
+  /* .group-privacy--public::before {
+    content: fa-content($fa-var-lock-open);
+  } */
   
+  .group-privacy--private::before {
+    content: fa-content($fa-var-lock);
+  }
   
   .img-placeholder {
     background: #f7f7f7 url($ecl-assets-path+'images/default_group_icon.png');
@@ -36,18 +46,17 @@
     margin-bottom: 0;
   }
   
-  h3 {
-    display: inline-block;
-  }
-
-  .test {
+  .group-teaser--header {
     grid-area: group-label;
     margin-top: 0;
+    
+    h3 {
+      display: inline-block;
+    }
 
-    @include fut-header-3;
+    /* @include fut-header-3; */
     a {
       text-decoration: none;
-      display: inline-block;
       &:hover {
         color: $ecl-color-shade;
         text-decoration: underline;
