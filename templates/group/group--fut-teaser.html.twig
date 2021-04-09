@@ -47,6 +47,10 @@
   ]
 %}
 
+{% set parent_group_id = parent_group.id[0].value %}
+{% set parent_group_label = parent_group.label[0].value %}
+{% set parent_group_path = parent_group.path[0].value.alias %}
+
 <article{{ attributes.addClass(classes) }}>
   {% if content.fut_logo|render is empty %}
     <div class="fut_logo bl-field" >
@@ -56,17 +60,17 @@
     </div>
   {% endif  %}
 
-    <div class="test">
-      <span class="public">{{ group_is_public }}</span> <span> {{ content.label }} </span> <span class="fut_new">{{ group_is_new }}</span> 
-    </div>
+  <div class="test">
+    
+    <h3><span class="public">{{ group_is_public }}</span><a href="{{ url }}">{{ label }}</a></h3><span class="fut_new">{{ group_is_new }}</span>
+      
+      {% if parent_group_id is not empty %}
+        {% trans %}Part of {% endtrans %} <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }} </a>
+      {% endif %}
+    
+  </div>
+    
     {{ content.fut_description }}
     {{ content.extra_field_join_group }}
 
-
 </article>
-
-{% set parent_group_id = parent_group.id[0].value %}
-{% set parent_group_label = parent_group.label[0].value %}
-{% set parent_group_path = parent_group.path[0].value.alias %}
-
-Part of <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }} </a>
