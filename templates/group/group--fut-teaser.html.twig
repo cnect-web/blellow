@@ -66,6 +66,8 @@
       </a>
     </div>
   {% endif  %}
+  
+  {{ content.fut_logo }}
 
   <div class="group-teaser--header">
     <h3 class="{{ group_privacy|join(' ') }}">
@@ -76,7 +78,7 @@
     {% endif %}
       
     {% if parent_group_id is not empty %}
-      <p><span>{% trans %}Part of {% endtrans %}</span> <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }}</a></p>
+      <p class="group-parent-group"><span>{% trans %}Part of {% endtrans %}</span> <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }}</a></p>
     {% endif %}
   </div>
     
