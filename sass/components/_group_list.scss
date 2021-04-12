@@ -7,7 +7,7 @@
     'group-logo group-join';
   grid-template-columns: 40px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
-
+  
   .group-privacy {
     &::before {
       @extend %fa-icon;
@@ -24,6 +24,11 @@
     padding: map-get($ecl-spacing, 'xxxs');
     text-transform: uppercase;
     font-size: map-get($ecl-font-size, 'xs');
+    margin-left: map-get($ecl-spacing, 'xxxs');
+  }
+  
+  p.group-parent-group {
+    margin-top: 0;
   }
   
   /* .group-privacy--public::before {
@@ -85,5 +90,12 @@
     
   @include ecl-media-breakpoint-up(lg) {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fut-groups-list .ecl-list-item {
+  border-bottom: 0;
+  &:first-child {
+    border-top: 0;
   }
 }
