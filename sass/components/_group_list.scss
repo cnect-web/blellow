@@ -2,7 +2,7 @@
   display: grid;
   grid-column-gap: map-get($ecl-spacing, 'm');
   grid-template-areas:
-    'group-logo group-label'
+    'group-logo group-teaser-header'
     'group-logo group-description'
     'group-logo group-join';
   grid-template-columns: 40px 1fr;
@@ -18,6 +18,10 @@
     }
   }
   
+  .group-privacy--private::before {
+    content: fa-content($fa-var-lock);
+  }
+  
   .fut_new {
     background-color: $ecl-color-primary;
     color: #fff;
@@ -29,14 +33,6 @@
   
   p.group-parent-group {
     margin-top: 0;
-  }
-  
-  /* .group-privacy--public::before {
-    content: fa-content($fa-var-lock-open);
-  } */
-  
-  .group-privacy--private::before {
-    content: fa-content($fa-var-lock);
   }
   
   .img-placeholder {
@@ -52,7 +48,7 @@
   }
   
   .group-teaser--header {
-    grid-area: group-label;
+    grid-area: group-teaser-header;
     margin-top: 0;
     
     h3 {
