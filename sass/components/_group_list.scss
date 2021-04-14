@@ -103,11 +103,14 @@
   border: 0px;
   padding: 0;
   width: auto;
-  form {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .ecl-select {
-    width: auto;  
+  
+  @include ecl-media-breakpoint-up(md) {
+    form {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .ecl-select {
+      width: auto;  
+    }
   }
 }
