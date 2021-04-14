@@ -95,3 +95,19 @@
     border-top: 0;
   }
 }
+
+/* Adapted Filter */
+
+.block-views-exposed-filter-blockfut-groups-list-page-groups-list {
+  background: none;
+  border: 0px;
+  padding: 0;
+  width: auto;
+  form {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .ecl-select {
+    width: auto;  
+  }
+}
