@@ -51,6 +51,7 @@
   set group_privacy = [
     'group-privacy',
     group_is_public ? 'group-privacy--' ~ group_is_public|clean_class,
+    group_user_is_member ? 'group-member',
   ]
 %}
 

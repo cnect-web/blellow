@@ -22,13 +22,17 @@
     content: fa-content($fa-var-lock);
   }
   
+  .group-member.group-privacy--private::before {
+    content: fa-content($fa-var-lock-open);
+  }
+  
   .fut_new {
     background-color: $ecl-color-primary;
     color: #fff;
-    padding: map-get($ecl-spacing, 'xxxs');
-    text-transform: uppercase;
     font-size: map-get($ecl-font-size, 'xs');
     margin-left: map-get($ecl-spacing, 'xxxs');
+    padding: map-get($ecl-spacing, 'xxxs');
+    text-transform: uppercase;
   }
   
   p.group-parent-group {
@@ -37,9 +41,10 @@
   
   .img-placeholder {
     background: #f7f7f7 url($ecl-assets-path+'images/default_group_icon.png');
+    background-size: 40px 40px;
     height: 40px;
     width: 40px;
-    background-size: 40px 40px;
+
   }
 
   .fut_logo {
@@ -75,10 +80,10 @@
 }
 
 .fut-groups-list .views-row-wrapper {
+  column-gap: map-get($ecl-spacing, 'xl');
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  column-gap: map-get($ecl-spacing, 'xl');
 
   @include ecl-media-breakpoint-up(md) {
     grid-template-columns: repeat(2, 1fr);
@@ -100,7 +105,7 @@
 
 .block-views-exposed-filter-blockfut-groups-list-page-groups-list {
   background: none;
-  border: 0px;
+  border: 0;
   padding: 0;
   width: auto;
   
