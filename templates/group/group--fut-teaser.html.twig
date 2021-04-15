@@ -47,6 +47,18 @@
   ]
 %}
 
+{%
+  set group_privacy = [
+    'group-privacy',
+    group_is_public ? 'group-privacy--' ~ group_is_public|clean_class,
+    group_user_is_member ? 'group-member',
+  ]
+%}
+
+{% set parent_group_id = parent_group.id[0].value %}
+{% set parent_group_label = parent_group.label[0].value %}
+{% set parent_group_path = parent_group.path[0].value.alias %}
+
 <article{{ attributes.addClass(classes) }}>
   {% if content.fut_logo|render is empty %}
     <div class="fut_logo bl-field" >
@@ -55,5 +67,23 @@
       </a>
     </div>
   {% endif  %}
-  {{ content }}
+  
+  {{ content.fut_logo }}
+
+  <div class="group-teaser--header">
+    <h3 class="{{ group_privacy|join(' ') }}">
+      <a href="{{ url }}">{{ label }}</a>
+    </h3>
+    {% if group_is_new is not empty %}
+      <span class="fut_new">{{ group_is_new }}</span>
+    {% endif %}
+      
+    {% if parent_group_id is not empty %}
+      <p class="group-parent-group"><span>{% trans %}Part of {% endtrans %}</span> <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }}</a></p>
+    {% endif %}
+  </div>
+    
+  {{ content.fut_description }}
+  {{ content.extra_field_join_group }}
+
 </article>
