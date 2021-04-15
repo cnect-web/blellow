@@ -2,34 +2,65 @@
   display: grid;
   grid-column-gap: map-get($ecl-spacing, 'm');
   grid-template-areas:
-    'group-logo group-label'
+    'group-logo group-teaser-header'
     'group-logo group-description'
     'group-logo group-join';
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 40px 1fr;
   padding: map-get($ecl-spacing, 'm') 0;
-/*  &--no-image {
-    grid-template-areas:
-      'group-label'
-      'group-description'
-      'group-join';
-    grid-template-columns: 1fr;
-  }*/
+  
+  .group-privacy {
+    &::before {
+      @extend %fa-icon;
+      @extend .fas;
+      @extend .fa-fw;
+    	color: $ecl-color-primary;
+    	display: inline;
+    }
+  }
+  
+  .group-privacy--private::before {
+    content: fa-content($fa-var-lock);
+  }
+  
+  .group-member.group-privacy--private::before {
+    content: fa-content($fa-var-lock-open);
+  }
+  
+  .fut_new {
+    background-color: $ecl-color-primary;
+    color: #fff;
+    font-size: map-get($ecl-font-size, 'xs');
+    margin-left: map-get($ecl-spacing, 'xxxs');
+    padding: map-get($ecl-spacing, 'xxxs');
+    text-transform: uppercase;
+  }
+  
+  p.group-parent-group {
+    margin-top: 0;
+  }
   
   .img-placeholder {
     background: #f7f7f7 url($ecl-assets-path+'images/default_group_icon.png');
-    height: 100px;
+    background-size: 40px 40px;
+    height: 40px;
+    width: 40px;
+
   }
 
   .fut_logo {
     grid-area: group-logo;
     margin-bottom: 0;
   }
-
-  h3 {
-    grid-area: group-label;
+  
+  .group-teaser--header {
+    grid-area: group-teaser-header;
     margin-top: 0;
     
-    @include fut-header-3;
+    h3 {
+      display: inline-block;
+    }
+
+    /* @include fut-header-3; */
     a {
       text-decoration: none;
       &:hover {
@@ -45,5 +76,46 @@
 
   .extra-field--join-group {
     grid-area: group-join;
+  }
+}
+
+.fut-groups-list .views-row-wrapper {
+  column-gap: map-get($ecl-spacing, 'xl');
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+  @include ecl-media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+    
+  @include ecl-media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fut-groups-list .ecl-list-item {
+  border-bottom: 0;
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+/* Adapted Filter */
+
+.block-views-exposed-filter-blockfut-groups-list-page-groups-list {
+  background: none;
+  border: 0;
+  padding: 0;
+  width: auto;
+  
+  @include ecl-media-breakpoint-up(md) {
+    form {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .ecl-select {
+      width: auto;  
+    }
   }
 }
