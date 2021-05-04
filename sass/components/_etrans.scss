@@ -15,6 +15,7 @@
     @extend %fa-icon;
     @extend .fas;
     @extend .fa-fw;
+    
     color: $ecl-color-primary;
     display: inline-block;
     text-decoration: none;
@@ -40,9 +41,9 @@
 /* OVERRIDE mtec_translation.css */
 
 .mtec-control-wrapper a {
-  border: none;
-  padding: map-get($ecl-spacing, 'xs') map-get($ecl-spacing, 's') !important;
   background: none;
+  border: 0;
+  padding: map-get($ecl-spacing, 'xs') map-get($ecl-spacing, 's') !important;
 }
 
 /* CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
@@ -61,16 +62,14 @@
 }
 
 .mtec-disclaimer {
-  background: aliceblue;
+  background: lighten(map-get($ecl-colors, 'blue-25'), 10);
   border: 1px solid $ecl-color-primary;
   bottom: 0;
-  background: aliceblue;
   font-size: smaller;
   height: auto;
-  padding: 15px;
-  margin: 20px;
+  margin: map-get($ecl-spacing, 'm');
   max-width: 400px;
-  padding: 0 20px 10px;
+  padding: 0 map-get($ecl-spacing, 's') map-get($ecl-spacing, 'xs');
   position: fixed;
   right: 0;
 }
