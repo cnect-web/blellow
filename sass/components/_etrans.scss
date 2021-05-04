@@ -37,6 +37,14 @@
   }
 }
 
+/* OVERRIDE mtec_translation.css */
+
+.mtec-control-wrapper a {
+  border: none;
+  padding: map-get($ecl-spacing, 'xs') map-get($ecl-spacing, 's') !important;
+  background: none;
+}
+
 /* CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
 
 .mtec-control-wrapper {
@@ -55,7 +63,7 @@
 .mtec-disclaimer {
   background: aliceblue;
   border: 1px solid $ecl-color-primary;
-  bottom: 0px;
+  bottom: 0;
   background: aliceblue;
   font-size: smaller;
   height: auto;
@@ -64,5 +72,5 @@
   max-width: 400px;
   padding: 0 20px 10px;
   position: fixed;
-  right: 0px;
+  right: 0;
 }
