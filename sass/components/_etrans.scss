@@ -1,3 +1,68 @@
 .ecl-button.hidden {
   display: none;
 }
+
+/* provide icon */
+
+.mtec-translation-link,
+.mtec-translate-all-link,
+.mtec-translation-link-revert,
+.mtec-revert-all-link {
+  cursor: pointer;
+
+  &::after,
+  &::before, {
+    @extend %fa-icon;
+    @extend .fas;
+    @extend .fa-fw;
+    color: $ecl-color-primary;
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
+.mtec-translation-link,
+.mtec-translate-all-link {
+  &::after {
+    content: fa-content($fa-var-globe-europe);
+    margin-left: 5px;
+  }
+}
+
+.mtec-translation-link-revert,
+.mtec-revert-all-link {
+  &::before {
+    content: fa-content($fa-var-undo);
+    margin-right: 5px;
+  }
+}
+
+/* CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
+
+.mtec-control-wrapper {
+  .trigger-wrapper {
+    text-align: left;
+  }
+}
+
+/* END CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
+
+.disclaimer svg {
+  margin-bottom: -7px;
+  margin-right: 10px;
+}
+
+.mtec-disclaimer {
+  background: aliceblue;
+  border: 1px solid $ecl-color-primary;
+  bottom: 0px;
+  background: aliceblue;
+  font-size: smaller;
+  height: auto;
+  padding: 15px;
+  margin: 20px;
+  max-width: 400px;
+  padding: 0 20px 10px;
+  position: fixed;
+  right: 0px;
+}
