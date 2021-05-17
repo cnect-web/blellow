@@ -1079,7 +1079,7 @@ function blellow_preprocess_views_view_unformatted(&$variables) {
   $view_display = $view->current_display;
   if($view_display == "block_group_subgroups") {
     $group_id = $view->args[0];
-    if($group_id == 15) {
+    if($group_id == 15 || $group_id == 48) {
       $variables['show_all_subgroups'] = 1;
     }
   }
