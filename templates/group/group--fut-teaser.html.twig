@@ -73,10 +73,11 @@
   <div class="group-teaser--header">
     <h3 class="{{ group_privacy|join(' ') }}">
       <a href="{{ url }}">{{ label }}</a>
+      {% if group_is_new is not empty %}
+        <span class="fut_new">{{ group_is_new }}</span>
+      {% endif %}
     </h3>
-    {% if group_is_new is not empty %}
-      <span class="fut_new">{{ group_is_new }}</span>
-    {% endif %}
+    
       
     {% if parent_group_id is not empty %}
       <p class="group-parent-group"><span>{% trans %}Part of {% endtrans %}</span> <a href="{{ base_path }}{{ parent_group_path }}" />{{ parent_group_label }}</a></p>
