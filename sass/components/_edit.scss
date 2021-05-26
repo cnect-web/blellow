@@ -455,7 +455,8 @@ tbody tr td.views-field-sortable-handle-1 span:after {
 }
 
 // fix margin for group radio form items
-.ecl-form-group.js-form-type-radio:first-child {
+.ecl-form-group.js-form-type-radio:first-child,
+.ecl-form-group.js-form-type-checkbox:first-child {
   margin-top: map-get($ecl-spacing, 'xs'); 
 }
 
