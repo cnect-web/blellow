@@ -1,0 +1,10 @@
+<div class="mtec-control-wrapper">
+  <div class="trigger-wrapper">
+    {% if has_local_translation %}
+      <a class="mtec-translation-link mtec-request-translation ecl-button ecl-button--ghost" data-translation-id="{{ translation_id }}" data-target-language="{{ target_language }}" data-source-language="{{ source_language }}" data-local-translation="yes"></a>
+    {% else %}
+      <a class="mtec-translation-link mtec-request-translation ecl-button ecl-button--ghost" data-translation-id="{{ translation_id }}" data-target-language="{{ target_language }}" data-source-language="{{ source_language }}"></a>
+    {% endif %}
+    <a class="mtec-translation-link-revert hidden ecl-button ecl-button--ghost" data-translation-id="{{ translation_id }}" data-target-language="{{ target_language }}" data-source-language="{{ source_language }}"></a>
+  </div>
+</div>
