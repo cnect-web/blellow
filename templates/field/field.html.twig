@@ -61,11 +61,13 @@
     <div {{ attributes.addClass(wrapper_classes) }}>
       {% for item in items %}
         <div {{ item.attributes.addClass(content_wrapper) }}>{{ item.content }}</div>
+        {{ item.translation_links }}
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
       <div{{ attributes.addClass(wrapper_classes) }}>{{ item.content }}</div>
+      {{ item.translation_links }}
     {% endfor %}
   {% endif %}
 {% else %}
@@ -76,6 +78,7 @@
       {% endif %}
       {% for item in items %}
         <div {{ item.attributes.addClass(content_wrapper) }}>{{ item.content }}</div>
+        {{ item.translation_links }}
       {% endfor %}
       {% if multiple %}
     </div>
