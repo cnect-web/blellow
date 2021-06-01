@@ -1,0 +1,75 @@
+.ecl-button.hidden {
+  display: none;
+}
+
+/* provide icon */
+
+.mtec-translation-link,
+.mtec-translate-all-link,
+.mtec-translation-link-revert,
+.mtec-revert-all-link {
+  cursor: pointer;
+
+  &::after,
+  &::before, {
+    @extend %fa-icon;
+    @extend .fas;
+    @extend .fa-fw;
+    
+    color: $ecl-color-primary;
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
+.mtec-translation-link,
+.mtec-translate-all-link {
+  &::after {
+    content: fa-content($fa-var-globe-europe);
+    margin-left: 5px;
+  }
+}
+
+.mtec-translation-link-revert,
+.mtec-revert-all-link {
+  &::before {
+    content: fa-content($fa-var-undo);
+    margin-right: 5px;
+  }
+}
+
+/* OVERRIDE mtec_translation.css */
+
+.mtec-control-wrapper a {
+  background: none;
+  border: 0;
+  padding: map-get($ecl-spacing, 'xs') map-get($ecl-spacing, 's') !important;
+}
+
+/* CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
+
+.mtec-control-wrapper {
+  .trigger-wrapper {
+    text-align: left;
+  }
+}
+
+/* END CAN BE REMOVED WHEN OVERRIDE.CSS iS GONE */
+
+.disclaimer svg {
+  margin-bottom: -7px;
+  margin-right: 10px;
+}
+
+.mtec-disclaimer {
+  background: lighten(map-get($ecl-colors, 'blue-25'), 10);
+  border: 1px solid $ecl-color-primary;
+  bottom: 0;
+  font-size: smaller;
+  height: auto;
+  margin: map-get($ecl-spacing, 'm');
+  max-width: 400px;
+  padding: 0 map-get($ecl-spacing, 's') map-get($ecl-spacing, 'xs');
+  position: fixed;
+  right: 0;
+}
