@@ -117,5 +117,15 @@
     .ecl-select {
       width: auto;  
     }
+    
+    .ecl-form-group {
+      align-self: flex-end;
+      margin-left: map-get($ecl-spacing, 's');
+    }
+    
+    .ecl-text-input {
+      line-height: initial;
+      padding: 0.66rem;
+    }
   }
 }
