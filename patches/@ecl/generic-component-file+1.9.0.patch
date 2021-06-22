@@ -1,24 +1,4 @@
 patch-package
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
 --- a/node_modules/@ecl/generic-component-file/generic-component-file.twig
 +++ b/node_modules/@ecl/generic-component-file/generic-component-file.twig
 @@ -17,6 +17,7 @@
