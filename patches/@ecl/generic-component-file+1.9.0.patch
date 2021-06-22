@@ -1,24 +1,4 @@
 patch-package
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
-old mode 100644
-new mode 100755
 --- a/node_modules/@ecl/generic-component-file/generic-component-file.twig
 +++ b/node_modules/@ecl/generic-component-file/generic-component-file.twig
 @@ -17,6 +17,7 @@
@@ -112,7 +92,7 @@ new mode 100755
 +          {% if _href is empty %}
 +            {% set _button_extra_attributes = [{ 'name': 'type', 'value': 'button' }] %}
 +          {% else %}
-+            {% set _button_extra_attributes = [{ 'name': 'download', 'value': meta }] %}
++            {% set _button_extra_attributes = [{ 'name': 'download', 'value': title }] %}
 +          {% endif %}
 +
            {% include '@ecl/' ~ system ~ '-component-button' with {
