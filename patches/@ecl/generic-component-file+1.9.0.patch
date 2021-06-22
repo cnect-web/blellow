@@ -92,7 +92,7 @@ patch-package
 +          {% if _href is empty %}
 +            {% set _button_extra_attributes = [{ 'name': 'type', 'value': 'button' }] %}
 +          {% else %}
-+            {% set _button_extra_attributes = [{ 'name': 'download', 'value': title }] %}
++            {% set _button_extra_attributes = [{ 'name': 'download', 'value': meta }] %}
 +          {% endif %}
 +
            {% include '@ecl/' ~ system ~ '-component-button' with {
