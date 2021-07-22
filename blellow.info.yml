@@ -40,13 +40,9 @@ config_devel:
 
 # components module needs to be installed to use
 # {% include "@myLib/box/box.twig" %}
-component-libraries:
-  patterns:
-    paths:
-      - templates/patterns
-  # ecl:
-  #   paths:
-  #     - templates/components
-  cnectlib:
-    paths:
-      - templates/cnect_component_lib
+components:
+  namespaces:
+    patterns:
+      - /templates/patterns
+    cnectlib:
+      - /templates/cnect_component_lib
