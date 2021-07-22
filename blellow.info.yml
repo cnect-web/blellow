@@ -43,6 +43,6 @@ config_devel:
 components:
   namespaces:
     patterns:
-      - /templates/patterns
+      - ./templates/patterns
     cnectlib:
-      - /templates/cnect_component_lib
+      - ./templates/cnect_component_lib
