@@ -372,11 +372,17 @@ function blellow_preprocess_links__language_block(array &$variables): void {
       ->setOptions($link['link']['#options'])
       ->setAbsolute(TRUE)
       ->toString();
+
+    // pt-br becomes br.
+    $specific_language_code = strpos($language_code, '-')
+      ? substr($language_code, strpos($language_code, "-") + 1)
+      : $language_code;
+
     $variables['languages'][] = [
       'href' => $href,
       'hreflang' => $language_code,
       'label' => $link['link']['#title'],
-      'lang' => $language_code,
+      'lang' => $specific_language_code,
       'is_active' => $language_code === $current_language,
     ];
   }
