@@ -17,14 +17,14 @@
     "dependencies": {
         "@dgcnect/builder": "^0.2.1",
         "@ecl/ec-preset-website": "1.2.0",
-        "@ecl/stylelint-config": "^0.2.1",
+        "@ecl/stylelint-config": "~0.2.1",
         "chokidar-cli": "^3.0.0",
         "glob": "^7.1.7",
         "glob-base": "^0.3.0",
         "npm-run-all": "^4.1.5",
-        "stylelint": "^13.13.1",
+        "stylelint": "^9.0.0",
         "stylelint-no-browser-hacks": "^1.2.1",
-        "stylelint-config-prettier": "^8.0.2"
+        "stylelint-config-prettier": "7.0.0"
     },
     "engines": {
         "node": ">=10",
