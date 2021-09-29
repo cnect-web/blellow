@@ -934,15 +934,15 @@ function blellow_preprocess_field(&$variables, $hook) {
  * @param string $hook
  *   Hook name.
  */
- 
+
 function blellow_preprocess_image(array &$variables, $hook): void {
   $capture = ['src', 'alt', 'typeof'];
   $attributes = $variables['attributes'];
- 
+
   foreach ($capture as &$key) {
     $variables[$key] = _blellow_capture_and_unset($attributes, $key);
   }
- 
+
   $namevalue = array_map('_blellow_namevalue_mapper', $attributes, array_keys($attributes));
   $variables['element']['ecl_array']['extra_attributes'] = $namevalue;
 }
@@ -1038,7 +1038,7 @@ function blellow_preprocess_media(array &$variables): void {
 
 /**
  * Implements hook_preprocess_views_view().
- * Add a t for more link in view 
+ * Add a t for more link in view
  */
 
 function blellow_preprocess_views_view(&$variables) {
@@ -1085,7 +1085,8 @@ function blellow_preprocess_views_view_unformatted(&$variables) {
   $view_display = $view->current_display;
   if($view_display == "block_group_subgroups") {
     $group_id = $view->args[0];
-    if($group_id == 15 || $group_id == 48) {
+    $excluded_groups = array(15, 48, 61);
+    if(in_array($group_id, $excluded_groups)) {
       $variables['show_all_subgroups'] = 1;
     }
   }
@@ -1120,7 +1121,7 @@ function blellow_theme_suggestions_select_alter(&$suggestions, &$vars) {
 /**
  * Implements hook_preprocess_links().
  *
- * Replaces "Log in or register to post comments" to "Log in to post comments"  
+ * Replaces "Log in or register to post comments" to "Log in to post comments"
  *
  */
 
@@ -1182,7 +1183,7 @@ function _blellow_preprocess_media__field_media_file(array &$variables): void {
 }
 
 /**
- * mplements hook_preprocess_media() for media_file field.
+ * Implements hook_preprocess_media() for media_file field.
  */
 function _blellow_preprocess_media__fut_field_media_image_link(array &$variables): void {
   $image_link = $variables['content']['fut_field_media_image_link'];
